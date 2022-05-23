@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="DSAppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="actionMenuTextColor">@color/pri_4</item>
+        <item name="android:actionMenuTextAppearance">@style/ToolbarButtonCTA</item>
+        <item name="titleTextColor">@color/ink_5</item>
+    </style>
+
+    <style name="DSSnackbarStyle" parent="Widget.MaterialComponents.Snackbar">
+        <item name="android:background">@drawable/shape_snackbar</item>
+        <item name="android:layout_margin">@dimen/px16</item>
+        <item name="actionTextColorAlpha">1</item>
+        <item name="animationMode">slide</item>
+    </style>
+
+    <style name="DSSnackbarTextStyle" parent="Widget.MaterialComponents.Snackbar.TextView">
+        <item name="android:alpha">1</item>
+        <item name="android:textColor">@color/ink_1</item>
+        <item name="fontFamily">@font/googlesans_medium</item>
+        <item name="android:textAppearance">@style/T16H24R</item>
+    </style>
+
+    <style name="DSSnackbarButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Snackbar">
+        <item name="android:textColor">@color/pri_1</item>
+    </style>
+
+    <!--<editor-fold desc="Background">-->
+    <style name="BackgroundStrokeInk2R4PaddingH8">
+        <item name="android:paddingEnd">@dimen/px16</item>
+        <item name="android:paddingStart">@dimen/px16</item>
+        <item name="android:paddingBottom">@dimen/px8</item>
+        <item name="android:paddingTop">@dimen/px8</item>
+        <item name="android:background">@drawable/selector_form_input_normal</item>
+    </style>
+
+    <style name="BottomStrokeInk2R4">
+        <item name="android:paddingEnd">@dimen/px8</item>
+        <item name="android:paddingStart">@dimen/px16</item>
+        <item name="android:paddingBottom">@dimen/px12</item>
+        <item name="android:paddingTop">@dimen/px12</item>
+        <item name="android:background">@drawable/selector_form_input_normal</item>
+    </style>
+    <!--</editor-fold>-->
+
+    <!--<editor-fold desc="Typography">-->
+    <style name="T10H14">
+        <item name="android:textSize">@dimen/sp10</item>
+        <item name="lineHeight">@dimen/px14</item>
+    </style>
+
+    <style name="T10H14R" parent="T10H14">
+        <item name="textFont">regular</item>
+    </style>
+
+    <style name="T12H18">
+        <item name="android:textSize">@dimen/sp12</item>
+        <item name="lineHeight">@dimen/px18</item>
+    </style>
+
+    <style name="T12H18R" parent="T12H18">
+        <item name="textFont">regular</item>
+    </style>
+
+    <style name="T12H18M" parent="T12H18">
+        <item name="textFont">medium</item>
+    </style>
+
+    <style name="T12H18B" parent="T12H18">
+        <item name="textFont">bold</item>
+    </style>
+
+    <style name="T12H20">
+        <item name="android:textSize">@dimen/sp12</item>
+        <item name="lineHeight">@dimen/px20</item>
+    </style>
+
+    <style name="T12H20R" parent="T12H20">
+        <item name="textFont">regular</item>
+    </style>
+
+    <style name="T14H18">
+        <item name="android:textSize">@dimen/sp14</item>
+        <item name="lineHeight">@dimen/px18</item>
+    </style>
+
+
+    <style name="T14H18B" parent="T14H18">
+        <item name="textFont">bold</item>
+    </style>
+
+    <style name="T14H20">
+        <item name="android:textSize">@dimen/sp14</item>
+        <item name="lineHeight">@dimen/px20</item>
+    </style>
+
+    <style name="T14H22">
+        <item name="android:textSize">@dimen/sp14</item>
+        <item name="lineHeight">@dimen/px22</item>
+    </style>
+
+    <style name="T14H20R" parent="T14H20">
+        <item name="textFont">regular</item>
+    </style>
+
+    <style name="T14H20M" parent="T14H20">
+        <item name="textFont">medium</item>
+    </style>
+
+    <style name="T14H20B" parent="T14H20">
+        <item name="textFont">bold</item>
+    </style>
+
+    <style name="T14H22B" parent="T14H22">
+        <item name="textFont">bold</item>
+    </style>
+
+    <style name="T16H24">
+        <item name="android:textSize">@dimen/sp16</item>
+        <item name="lineHeight">@dimen/px24</item>
+    </style>
+
+    <style name="T16H20">
+        <item name="android:textSize">@dimen/sp16</item>
+        <item name="lineHeight">@dimen/px20</item>
+    </style>
+
+    <style name="T16H20M" parent="T16H20">
+        <item name="textFont">medium</item>
+    </style>
+
+    <style name="T16H24R" parent="T16H24">
+        <item name="textFont">regular</item>
+    </style>
+
+    <style name="T16H24M" parent="T16H24">
+        <item name="textFont">medium</item>
+    </style>
+
+    <style name="T16H24B" parent="T16H24">
+        <item name="textFont">bold</item>
+    </style>
+
+    <style name="T20H28">
+        <item name="android:textSize">@dimen/sp20</item>
+        <item name="lineHeight">@dimen/px28</item>
+    </style>
+
+    <style name="T20H28R" parent="T20H28">
+        <item name="textFont">regular</item>
+    </style>
+
+    <style name="T20H28M" parent="T20H28">
+        <item name="textFont">medium</item>
+    </style>
+
+    <style name="T20H28B" parent="T20H28">
+        <item name="textFont">bold</item>
+    </style>
+
+    <style name="T24H32">
+        <item name="android:textSize">@dimen/sp24</item>
+        <item name="lineHeight">@dimen/px32</item>
+    </style>
+
+    <style name="T24H32B" parent="T24H32">
+        <item name="textFont">bold</item>
+    </style>
+
+    <style name="T30H38">
+        <item name="android:textSize">@dimen/sp30</item>
+        <item name="lineHeight">@dimen/px38</item>
+    </style>
+
+    <style name="T30H38B" parent="T30H38">
+        <item name="textFont">bold</item>
+    </style>
+
+    <style name="T46H56">
+        <item name="android:textSize">@dimen/sp46</item>
+        <item name="lineHeight">@dimen/px56</item>
+    </style>
+
+    <style name="T46H56B" parent="T46H56">
+        <item name="textFont">bold</item>
+    </style>
+
+    <style name="T56H64">
+        <item name="android:textSize">@dimen/sp56</item>
+        <item name="lineHeight">@dimen/px64</item>
+    </style>
+
+    <style name="T56H64B" parent="T56H64">
+        <item name="textFont">bold</item>
+    </style>
+
+    <style name="T72H84">
+        <item name="android:textSize">@dimen/sp72</item>
+        <item name="lineHeight">@dimen/px84</item>
+    </style>
+
+    <style name="T72H84B" parent="T72H84">
+        <item name="textFont">bold</item>
+    </style>
+
+    <style name="T14Sportypo">
+        <item name="android:textSize">@dimen/sp14</item>
+        <item name="textFont">sportypo</item>
+    </style>
+    <!--</editor-fold>-->
+
+    <!--<editor-fold desc="Toolbar">-->
+    <style name="ToolbarTitle.Normal" parent="T16H24M">
+        <item name="fontFamily">@font/googlesans_medium</item>
+    </style>
+
+    <style name="ToolbarTitle.Large" parent="T20H28M">
+        <item name="fontFamily">@font/googlesans_medium</item>
+    </style>
+
+    <style name="ToolbarButtonCTA" parent="T16H24M">
+        <item name="android:textColor">@color/pri_4</item>
+        <item name="fontFamily">@font/googlesans_medium</item>
+    </style>
+    <!--</editor-fold>-->
+
+    <!--<editor-fold desc="Bottom Navigation">-->
+    <style name="BottomNavigationItemTextActive" parent="T12H18M">
+        <item name="android:textColor">@color/ink_5</item>
+        <item name="fontFamily">@font/googlesans_medium</item>
+        <item name="android:textSize">@dimen/px12</item>
+    </style>
+
+    <style name="BottomNavigationItemTextInActive" parent="T12H18R">
+        <item name="android:textColor">@color/ink_4</item>
+        <item name="fontFamily">@font/googlesans_regular</item>
+        <item name="android:textSize">@dimen/px12</item>
+    </style>
+    <!--</editor-fold>-->
+
+    <!--<editor-fold desc="Divider">-->
+    <style name="Divider1PxInk200">
+        <item name="android:background">@color/ink_2</item>
+    </style>
+
+    <style name="Divider1PxWildSandHorizontal">
+        <item name="android:layout_height">@dimen/px1</item>
+        <item name="android:background">@color/wild_sand</item>
+    </style>
+
+    <style name="Divider1PxInk200Vertical" parent="Divider1PxInk200">
+        <item name="android:layout_width">@dimen/px1</item>
+    </style>
+
+    <style name="Divider1PxInk200Horizontal" parent="Divider1PxInk200">
+        <item name="android:layout_height">@dimen/px1</item>
+    </style>
+
+    <style name="Divider1PxInk300">
+        <item name="android:background">@color/ink_3</item>
+    </style>
+
+    <style name="Divider1PxInk300Vertical" parent="Divider1PxInk300">
+        <item name="android:layout_width">@dimen/px1</item>
+    </style>
+
+    <style name="Divider1PxInk300Horizontal" parent="Divider1PxInk300">
+        <item name="android:layout_height">@dimen/px1</item>
+    </style>
+
+    <style name="Divider1PxInk100">
+        <item name="android:background">@color/ink_1</item>
+    </style>
+
+    <style name="Divider1PxInk100Vertical" parent="Divider1PxInk100">
+        <item name="android:layout_width">@dimen/px1</item>
+    </style>
+
+    <style name="Divider1PxInk100Horizontal" parent="Divider1PxInk100">
+        <item name="android:layout_height">@dimen/px1</item>
+    </style>
+    <!--</editor-fold>-->
+
+    <!--<editor-fold desc="Progress & Seekbar">-->
+    <style name="SeekbarPrimary" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:progressDrawable">@drawable/seekbar_primary_background</item>
+        <item name="colorPrimary">@color/pri_4</item>
+        <item name="colorPrimaryDark">@color/white_5</item>
+        <item name="colorAccent">@color/pri_4</item>
+        <item name="android:thumbOffset">@dimen/px14</item>
+    </style>
+
+    <style name="ProgressbarPrimary" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/progressbar_primary_background</item>
+    </style>
+    <!--</editor-fold>-->
+
+    <!-- <editor-fold desc="Button Primary">-->
+    <style name="ButtonPrimary" parent="T14H20M">
+        <item name="android:background">@drawable/selector_button_primary</item>
+        <item name="android:textColor">@color/white_5</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ButtonPrimary.SizeS" parent="ButtonPrimary">
+        <item name="android:layout_height">@dimen/px32</item>
+    </style>
+
+    <style name="ButtonPrimary.SizeM" parent="ButtonPrimary">
+        <item name="android:layout_height">@dimen/px36</item>
+    </style>
+
+    <style name="ButtonPrimary.SizeL" parent="ButtonPrimary">
+        <item name="android:layout_height">@dimen/px40</item>
+    </style>
+
+    <style name="ButtonPrimary.Mini" parent="ButtonPrimary">
+        <item name="android:layout_height">@dimen/px36</item>
+        <item name="android:minWidth">@dimen/px50</item>
+        <item name="android:lines">1</item>
+        <item name="android:textSize">@dimen/sp12</item>
+        <item name="lineHeight">@dimen/sp18</item>
+        <item name="textFont">medium</item>
+        <item name="android:paddingStart">@dimen/px16</item>
+        <item name="android:paddingEnd">@dimen/px16</item>
+    </style>
+
+    <style name="ButtonPrimary.Mini.MinWidth180" parent="ButtonPrimary.Mini">
+        <item name="android:minWidth">@dimen/px180</item>
+    </style>
+
+    <style name="ButtonPrimary.2Column" parent="ButtonPrimary">
+        <item name="android:layout_height">@dimen/px40</item>
+        <item name="android:layout_width">@dimen/px158</item>
+        <item name="android:minWidth">@dimen/px158</item>
+        <item name="android:maxWidth">@dimen/px158</item>
+    </style>
+
+    <style name="ButtonStartHome" parent="T14Sportypo">
+        <item name="android:background">@drawable/selector_button_primary</item>
+        <item name="android:textColor">@color/white_5</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:layout_height">@dimen/px46</item>
+    </style>
+    <!--</editor-fold>-->
+
+    <!--<editor-fold desc="Button Secondary">-->
+    <style name="ButtonSecondary" parent="T14H20M">
+        <item name="android:background">@drawable/selector_button_secondary</item>
+        <item name="android:textColor">@color/pri_4</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ButtonSecondary.SizeS" parent="ButtonSecondary">
+        <item name="android:layout_height">@dimen/px32</item>
+    </style>
+
+    <style name="ButtonSecondary.SizeM" parent="ButtonSecondary">
+        <item name="android:layout_height">@dimen/px36</item>
+    </style>
+
+    <style name="ButtonSecondary.SizeL" parent="ButtonSecondary">
+        <item name="android:layout_height">@dimen/px40</item>
+    </style>
+
+    <style name="ButtonSecondary.Mini" parent="ButtonSecondary">
+        <item name="android:layout_height">@dimen/px36</item>
+        <item name="android:minWidth">@dimen/px50</item>
+        <item name="android:lines">1</item>
+        <item name="android:paddingStart">@dimen/px16</item>
+        <item name="android:paddingEnd">@dimen/px16</item>
+        <item name="android:textSize">@dimen/sp12</item>
+        <item name="lineHeight">@dimen/sp18</item>
+        <item name="textFont">medium</item>
+    </style>
+
+    <style name="ButtonSecondary.Mini.Icon" parent="ButtonSecondary.Mini">
+        <item name="android:drawablePadding">@dimen/px8</item>
+    </style>
+
+    <style name="ButtonSecondary.2Column" parent="ButtonSecondary">
+        <item name="android:layout_height">@dimen/px40</item>
+        <item name="android:layout_width">@dimen/px158</item>
+        <item name="android:minWidth">@dimen/px158</item>
+        <item name="android:maxWidth">@dimen/px158</item>
+    </style>
+
+    <!--</editor-fold>-->
+
+    <!--<editor-fold desc="Button Plain">-->
+    <style name="ButtonPlain" parent="T14H20M">
+        <item name="android:textColor">@color/ink_3</item>
+        <item name="android:background">@drawable/selector_button_plain_1</item>
+        <item name="android:lines">1</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ButtonPlain.SizeS" parent="ButtonPlain">
+        <item name="android:layout_height">@dimen/px32</item>
+    </style>
+
+    <style name="ButtonPlain.SizeM" parent="ButtonPlain">
+        <item name="android:layout_height">@dimen/px36</item>
+    </style>
+
+    <style name="ButtonPlain.SizeL" parent="ButtonPlain">
+        <item name="android:layout_height">@dimen/px40</item>
+    </style>
+
+    <style name="ButtonPlain.SizeS.Style3" parent="ButtonPlain.SizeS">
+        <item name="android:textColor">@color/secondary</item>
+        <item name="android:background">@drawable/selector_button_plain_3</item>
+    </style>
+
+    <style name="ButtonPlain.Mini" parent="T14H20M">
+        <item name="android:lines">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minWidth">@dimen/px50</item>
+        <item name="textFont">medium</item>
+    </style>
+
+    <style name="ButtonPlain.Mini.SizeS" parent="ButtonPlain.Mini">
+        <item name="android:layout_height">@dimen/px32</item>
+        <item name="android:paddingStart">@dimen/px8</item>
+        <item name="android:paddingEnd">@dimen/px8</item>
+    </style>
+
+    <style name="ButtonPlain.Mini.SizeS.Style1" parent="ButtonPlain.Mini.SizeS">
+        <item name="android:textColor">@color/ink_3</item>
+        <item name="android:background">@drawable/selector_button_plain_1</item>
+    </style>
+
+    <style name="ButtonPlain.Mini.SizeS.Style2" parent="ButtonPlain.Mini.SizeS">
+        <item name="android:textColor">@color/pri_4</item>
+        <item name="android:background">@drawable/selector_button_plain_2</item>
+    </style>
+
+    <style name="ButtonPlain.Mini.SizeS.Style3" parent="ButtonPlain.Mini.SizeS">
+        <item name="android:textColor">@color/secondary</item>
+        <item name="android:background">@drawable/selector_button_plain_3</item>
+    </style>
+
+    <style name="ButtonPlain.Mini.SizeXL" parent="ButtonPlain.Mini">
+        <item name="android:layout_height">@dimen/px48</item>
+        <item name="android:paddingStart">@dimen/px24</item>
+        <item name="android:paddingEnd">@dimen/px24</item>
+    </style>
+
+    <style name="ButtonPlain.Mini.SizeXL.Style1" parent="ButtonPlain.Mini.SizeXL">
+        <item name="android:textColor">@color/ink_3</item>
+        <item name="android:background">@drawable/selector_button_plain_1</item>
+    </style>
+
+    <style name="ButtonPlain.Mini.SizeXL.Style2" parent="ButtonPlain.Mini.SizeXL">
+        <item name="android:background">@drawable/selector_button_plain_2</item>
+        <item name="android:textColor">@color/pri_4</item>
+    </style>
+
+    <style name="ButtonPlain.Mini.SizeXL.Style3" parent="ButtonPlain.Mini.SizeXL">
+        <item name="android:textColor">@color/secondary</item>
+        <item name="android:background">@drawable/selector_button_plain_3</item>
+    </style>
+    <!--</editor-fold>-->
+
+    <!--<editor-fold desc="Button With Dark Background">-->
+    <style name="ButtonWithDarkBackground" parent="T12H18M">
+        <item name="android:textColor">@color/ink_5</item>
+        <item name="android:background">@drawable/selector_button_with_dark_background</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">@dimen/px36</item>
+        <item name="android:minWidth">@dimen/px120</item>
+    </style>
+
+    <style name="ButtonWithDarkBackground.MinWidth180" parent="ButtonWithDarkBackground">
+        <item name="android:minWidth">@dimen/px180</item>
+    </style>
+    <!--</editor-fold>-->
+
+    <!--<editor-fold desc="Button Login 3Party">-->
+    <style name="ButtonGoogle" parent="T14H20M">
+        <item name="drawableStartCompat">@drawable/ic_google</item>
+        <item name="android:background">@drawable/selector_button_google</item>
+        <item name="android:textColor">@color/ink_5</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">@dimen/px16</item>
+        <item name="android:paddingEnd">@dimen/px16</item>
+    </style>
+
+    <style name="ButtonGoogle.2Column" parent="ButtonGoogle">
+        <item name="android:layout_height">@dimen/px40</item>
+        <item name="android:layout_width">@dimen/px158</item>
+        <item name="android:minWidth">@dimen/px158</item>
+        <item name="android:maxWidth">@dimen/px158</item>
+    </style>
+
+    <style name="ButtonGoogle.SizeL" parent="ButtonGoogle">
+        <item name="android:layout_height">@dimen/px40</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="ButtonFacebook" parent="T14H20M">
+        <item name="drawableStartCompat">@drawable/ic_facebook_lite_light</item>
+        <item name="android:background">@drawable/selector_button_facebook</item>
+        <item name="android:textColor">@color/white_5</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">@dimen/px16</item>
+        <item name="android:paddingEnd">@dimen/px16</item>
+    </style>
+
+    <style name="ButtonFacebook.2Column" parent="ButtonFacebook">
+        <item name="android:layout_height">@dimen/px40</item>
+        <item name="android:layout_width">@dimen/px158</item>
+        <item name="android:minWidth">@dimen/px158</item>
+        <item name="android:maxWidth">@dimen/px158</item>
+    </style>
+
+    <style name="ButtonFacebook.SizeL" parent="ButtonFacebook">
+        <item name="android:layout_height">@dimen/px40</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+    <!--</editor-fold>-->
+
+    <!--<editor-fold desc="Button Toggle">-->
+    <style name="ButtonToggle">
+        <item name="android:layout_width">@dimen/px32</item>
+        <item name="android:layout_height">@dimen/px32</item>
+    </style>
+    <!--</editor-fold>-->
+
+    <!--<editor-fold desc="Form Input">-->
+    <style name="TextFieldLabel" parent="T12H18R" />
+
+    <style name="TextFieldLabelNormal" parent="TextFieldLabel">
+        <item name="android:textColor">@color/ink_3</item>
+    </style>
+
+    <style name="TextFieldValueBox" parent="T14H20R">
+        <item name="android:layout_height">@dimen/px48</item>
+        <item name="android:paddingStart">@dimen/px16</item>
+        <item name="android:paddingEnd">@dimen/px8</item>
+        <item name="android:layout_marginTop">@dimen/px4</item>
+        <item name="android:textColor">@color/ink_5</item>
+    </style>
+
+    <style name="TextFieldValueBoxNormal" parent="TextFieldValueBox">
+        <item name="android:background">@drawable/shape_text_field_normal</item>
+    </style>
+
+    <style name="PickerValueBox" parent="T14H20R">
+        <item name="android:layout_height">@dimen/px48</item>
+        <item name="android:paddingStart">@dimen/px16</item>
+        <item name="android:paddingEnd">@dimen/px8</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginTop">@dimen/px4</item>
+        <item name="android:textColor">@color/ink_5</item>
+        <item name="android:background">@drawable/selector_picker</item>
+    </style>
+    <!--</editor-fold>-->
+
+    <!--<editor-fold desc="List Item">-->
+    <style name="ListItem.Title" parent="T14H20R">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/ink_5</item>
+        <item name="android:lines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="ListItem.Title.Medium" parent="ListItem.Title">
+        <item name="textFont">medium</item>
+    </style>
+
+    <style name="ListItem.Description" parent="T12H20R">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/ink_3</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="ListItem.Description.Style1" parent="T12H18R">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/ink_4</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="ListItem.ValueText.Style1" parent="T14H20M">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/ink_5</item>
+        <item name="android:layout_marginStart">@dimen/px8</item>
+    </style>
+
+    <style name="ListItem.ValueText.Style2" parent="T12H18R">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/ink_3</item>
+        <item name="android:layout_marginStart">@dimen/px8</item>
+    </style>
+
+    <style name="ListItemIcon">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="ListItemIcon.Start" parent="ListItemIcon">
+        <item name="android:layout_marginEnd">@dimen/px8</item>
+    </style>
+
+    <style name="ListItemIcon.End" parent="ListItemIcon">
+        <item name="android:layout_marginStart">@dimen/px8</item>
+    </style>
+
+    <style name="ListItemIcon.Value" parent="ListItemIcon">
+        <item name="android:layout_marginStart">@dimen/px8</item>
+    </style>
+
+    <style name="ListItem">
+        <item name="android:paddingStart">@dimen/px16</item>
+        <item name="android:paddingEnd">@dimen/px16</item>
+        <item name="android:background">@color/white_5</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="ListItem.SizeS" parent="ListItem">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/px48</item>
+    </style>
+
+    <style name="ListItem.SizeM" parent="ListItem">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/px56</item>
+    </style>
+
+    <style name="ListItem.SizeL" parent="ListItem">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/px64</item>
+    </style>
+
+    <style name="ListItem.SizeL.Gray" parent="ListItem.SizeL">
+        <item name="android:background">@drawable/selector_list_item_gray</item>
+    </style>
+
+    <style name="ListItem.SizeL.NonBackground" parent="ListItem.SizeL">
+        <item name="android:background">@null</item>
+        <item name="android:foreground">@null</item>
+    </style>
+    <!--</editor-fold>-->
+
+    <!--<editor-fold desc="Text Label">-->
+    <style name="Label" parent="T14H20M">
+        <item name="android:paddingStart">@dimen/px16</item>
+        <item name="android:paddingEnd">@dimen/px16</item>
+        <item name="android:paddingTop">@dimen/px12</item>
+        <item name="android:paddingBottom">@dimen/px8</item>
+        <item name="android:background">@color/white_5</item>
+        <item name="android:textColor">@color/ink_5</item>
+    </style>
+    <!--</editor-fold>-->
+
+    <!--<editor-fold desc="Tab View">-->
+    <style name="TabItem">
+        <item name="tabTextColor">@color/ink_3</item>
+        <item name="tabSelectedTextColor">@color/pri_4</item>
+        <item name="tabInlineLabel">true</item>
+        <item name="tabTextAppearance">@style/TabItemText</item>
+    </style>
+
+    <style name="TabItemText" parent="T14H20M">
+        <item name="fontFamily">@font/googlesans_medium</item>
+        <item name="textAllCaps">false</item>
+    </style>
+    <!--</editor-fold>-->
+
+    <!--<editor-fold desc="BottomSheet">-->
+    <style name="BottomSheet.Title" parent="T16H24M">
+        <item name="android:textColor">@color/ink_5</item>
+    </style>
+    <!--</editor-fold>-->
+
+    <!--<editor-fold desc="Touch">-->
+    <style name="TouchIcon16">
+        <item name="android:layout_width">@dimen/px32</item>
+        <item name="android:layout_height">@dimen/px32</item>
+        <item name="android:padding">@dimen/px8</item>
+    </style>
+
+    <style name="TouchIcon24">
+        <item name="android:layout_width">@dimen/px32</item>
+        <item name="android:layout_height">@dimen/px32</item>
+        <item name="android:padding">@dimen/px4</item>
+    </style>
+
+    <style name="TouchIcon56">
+        <item name="android:layout_width">@dimen/px64</item>
+        <item name="android:layout_height">@dimen/px64</item>
+        <item name="android:padding">@dimen/px4</item>
+    </style>
+    <!--</editor-fold>-->
+
+    <!--<editor-fold desc="Shadow View">-->
+    <style name="Shadow">
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="cornerRadius">@dimen/px4</item>
+        <item name="shadowMargin">@dimen/px4</item>
+        <item name="shadowRadius">@dimen/px16</item>
+    </style>
+
+    <style name="MiniShadow" parent="Shadow">
+        <item name="shadowColor">#40000000</item>
+        <item name="shadowDx">0</item>
+        <item name="shadowDy">6</item>
+    </style>
+
+    <style name="CenterShadow" parent="Shadow">
+        <item name="shadowColor">#26000000</item>
+    </style>
+
+    <style name="LightShadow" parent="Shadow">
+        <item name="shadowColor">#1A000000</item>
+    </style>
+
+    <style name="BrandShadow" parent="Shadow">
+        <item name="shadowColor">#669755FA</item>
+        <item name="shadowDx">0</item>
+        <item name="shadowDy">6</item>
+    </style>
+    <!--</editor-fold>-->
+</resources>

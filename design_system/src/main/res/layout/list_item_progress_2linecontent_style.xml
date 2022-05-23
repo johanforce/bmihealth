@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ProgressBar
+            android:id="@+id/progressCircular"
+            style="@style/Widget.MaterialComponents.CircularProgressIndicator"
+            android:layout_width="@dimen/px54"
+            android:layout_height="@dimen/px54"
+            android:layout_centerVertical="true"
+            android:background="@drawable/circle_progressbar_shape"
+            android:indeterminate="false"
+            android:max="100"
+            android:progressDrawable="@drawable/circular_progress_bar"
+            tools:progress="35" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvProgressValue"
+            android:layout_width="@dimen/px54"
+            android:layout_height="@dimen/px54"
+            android:layout_centerVertical="true"
+            android:paddingHorizontal="@dimen/px4"
+            android:textColor="@color/pri_4"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:gravity="center"
+            style="@style/T12H18M"
+            tools:text="3333330%" />
+
+        <LinearLayout
+            android:id="@+id/viewContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/px8"
+            android:layout_toEndOf="@+id/progressCircular"
+            android:orientation="vertical">
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvTitle"
+                style="@style/ListItem.Title.Medium"
+                tools:text="Đây là title dài dằng dặc" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvDescription"
+                style="@style/ListItem.Description"
+                android:layout_marginTop="@dimen/px2"
+                tools:text="Description" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivEndIcon"
+            style="@style/ListItemIcon.End"
+            android:layout_alignParentEnd="true"
+            android:visibility="visible"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_arrow_next" />
+    </RelativeLayout>
+</layout>

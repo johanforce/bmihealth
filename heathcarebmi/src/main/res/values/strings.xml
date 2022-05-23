@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="very_underweight">Very underweight</string>
+    <string name="underweight">Underweight</string>
+    <string name="healthy_weight">Healthy weight</string>
+    <string name="overweight">Overweight</string>
+    <string name="moderately_obese">Moderately obese</string>
+    <string name="very_obese">Very obese</string>
+    <string name="obese">Obese</string>
+    <string name="dw_all_text_cancel">Cancel</string>
+    <string name="dw_all_text_ok">OK</string>
+
+    <string name="unit_kg" translatable="false">kg</string>
+    <string name="unit_lb" translatable="false">lbs</string>
+    <string name="unit_cm" translatable="false">cm</string>
+    <string name="unit_in" translatable="false">in</string>
+    <string name="unit_ft" translatable="false">ft</string>
+
+    <!--dialog picker-->
+    <string name="dialog_weight_title">Weight</string>
+    <string name="dialog_height_title">Height</string>
+    <string name="pf_change_unit_metric">Unit (%s)</string>
+    <string name="pf_change_unit_imperial">Imperial (%s)</string>
+
+    <string name="bmi_barview_adult_label1">15</string>
+    <string name="bmi_barview_adult_label2">16</string>
+    <string name="bmi_barview_adult_label3">18.5</string>
+    <string name="bmi_barview_adult_label4">25</string>
+    <string name="bmi_barview_adult_label5">30</string>
+    <string name="bmi_barview_adult_label6">35</string>
+    <string name="bmi_barview_adult_label7">40</string>
+
+    <string name="bmi_barview_child_label1"></string>
+    <string name="bmi_barview_child_label2">3rd</string>
+    <string name="bmi_barview_child_label3">15th</string>
+    <string name="bmi_barview_child_label4">85th</string>
+    <string name="bmi_barview_child_label5">97th</string>
+    <string name="bmi_barview_child_label6"></string>
+
+</resources>

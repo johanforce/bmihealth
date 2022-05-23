@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/viewControl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/viewLine25"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.333333" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/viewLine50"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.666666" />
+
+            <View
+                android:id="@+id/viewLine1"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/tvView1"
+                app:layout_constraintLeft_toLeftOf="@+id/viewLine25"
+                app:layout_constraintRight_toRightOf="@+id/viewLine25"
+                app:layout_constraintTop_toTopOf="@+id/tvView1" />
+
+            <View
+                android:id="@+id/viewLine2"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/tvView1"
+                app:layout_constraintLeft_toLeftOf="@+id/viewLine50"
+                app:layout_constraintRight_toRightOf="@+id/viewLine50"
+                app:layout_constraintTop_toTopOf="@+id/tvView1" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvView1"
+                style="@style/T14H20M"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_radius_left_select"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingHorizontal="@dimen/px2"
+                android:paddingVertical="@dimen/px14"
+                android:text="view1"
+                android:textColor="@color/pri_4"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="@+id/viewLine1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvView2"
+                style="@style/T14H20M"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_normal"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingHorizontal="@dimen/px2"
+                android:paddingVertical="@dimen/px14"
+                android:text="view2"
+                android:textColor="@color/ink_3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@+id/viewLine1"
+                app:layout_constraintRight_toRightOf="@+id/viewLine2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvView4"
+                style="@style/T14H20M"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-10px"
+                android:background="@drawable/shape_radius_right_un_select"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingHorizontal="@dimen/px2"
+                android:paddingVertical="@dimen/px14"
+                android:text="view3"
+                android:textColor="@color/ink_3"
+                app:layout_constraintBottom_toBottomOf="@+id/tvView1"
+                app:layout_constraintLeft_toLeftOf="@+id/viewLine2"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvView1" />
+
+            <View
+                android:id="@+id/viewLinePri1"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:background="@color/pri_4"
+                app:layout_constraintBottom_toBottomOf="@+id/tvView1"
+                app:layout_constraintLeft_toLeftOf="@+id/viewLine1"
+                app:layout_constraintRight_toRightOf="@+id/viewLine1"
+                app:layout_constraintTop_toTopOf="@+id/tvView1" />
+
+            <View
+                android:id="@+id/viewLinePri2"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:background="@color/ink_2"
+                app:layout_constraintBottom_toBottomOf="@+id/viewLine2"
+                app:layout_constraintLeft_toLeftOf="@+id/viewLine2"
+                app:layout_constraintRight_toRightOf="@+id/viewLine2"
+                app:layout_constraintTop_toTopOf="@+id/viewLine2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/layout_choose_number">
+
+    <View
+        android:id="@+id/line2"
+        style="@style/Divider1PxInk100Horizontal"
+        android:layout_width="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/line3"
+        style="@style/Divider1PxInk100Vertical"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPositive"
+        app:layout_constraintLeft_toRightOf="@+id/tvNegative"
+        app:layout_constraintRight_toLeftOf="@+id/tvPositive"
+        app:layout_constraintTop_toTopOf="@+id/tvPositive" />
+
+    <com.jarvis.design_system.button.JxButton
+        android:id="@+id/tvPositive"
+        style="@style/ButtonPlain.Mini.SizeXL.Style2"
+        tools:text="Save"
+        android:layout_width="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/tvNegative"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.jarvis.design_system.button.JxButton
+        android:id="@+id/tvNegative"
+        style="@style/ButtonPlain.Mini.SizeXL.Style1"
+        tools:text="Cancel"
+        android:layout_width="0dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvPositive"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tvPositive"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

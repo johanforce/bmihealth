@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/bmi_blue</color>
+    <color name="colorPrimaryDark">@color/bmi_blue</color>
+    <color name="colorAccent">@color/bmi_blue</color>
+
+    <color name="bmi_green">#47B749</color>
+    <color name="bmi_blue">#1173fa</color>
+    <color name="bmi_white">#ffffff</color>
+    <color name="bmi_black">#222021</color>
+    <color name="bmi_background">#eaf4fe</color>
+    <color name="bmi_status_bar">#eaf4fe</color>
+    <color name="bmi_gray">#b6b6b6</color>
+    <color name="bmi_line">#E5E5E5</color>
+    <color name="bmi_orange">#FF7A00</color>
+
+    <color name="bmi_barview_bg_adult_start_1">#6BD3FF</color>
+    <color name="bmi_barview_bg_adult_start_2">#68A5F8</color>
+    <color name="bmi_barview_bg_adult_start_3">#4ACB86</color>
+    <color name="bmi_barview_bg_adult_start_4">#FFCB08</color>
+    <color name="bmi_barview_bg_adult_start_5">#FF974B</color>
+    <color name="bmi_barview_bg_adult_start_6">#EB4545</color>
+
+    <color name="bmi_barview_bg_adult_end_1">#6BD3FF</color>
+    <color name="bmi_barview_bg_adult_end_2">#68A5F8</color>
+    <color name="bmi_barview_bg_adult_end_3">#4ACB86</color>
+    <color name="bmi_barview_bg_adult_end_4">#FFCB08</color>
+    <color name="bmi_barview_bg_adult_end_5">#FF974B</color>
+    <color name="bmi_barview_bg_adult_end_6">#EB4545</color>
+
+    <color name="bmi_barview_bg_child_start_1">#6BD3FF</color>
+    <color name="bmi_barview_bg_child_start_2">#68A5F8</color>
+    <color name="bmi_barview_bg_child_start_3">#4ACB86</color>
+    <color name="bmi_barview_bg_child_start_4">#FFCB08</color>
+    <color name="bmi_barview_bg_child_start_5">#EB4545</color>
+
+    <color name="bmi_barview_bg_child_end_1">#6BD3FF</color>
+    <color name="bmi_barview_bg_child_end_2">#68A5F8</color>
+    <color name="bmi_barview_bg_child_end_3">#4ACB86</color>
+    <color name="bmi_barview_bg_child_end_4">#FFCB08</color>
+    <color name="bmi_barview_bg_child_end_5">#EB4545</color>
+    <color name="bmi_barview_unit">#3B3B3B</color>
+
+    <color name="bmi_circleview_bg_adult_1">#6BD3FF</color>
+    <color name="bmi_circleview_bg_adult_2">#68A5F8</color>
+    <color name="bmi_circleview_bg_adult_3">#4ACB86</color>
+    <color name="bmi_circleview_bg_adult_4">#FFCB08</color>
+    <color name="bmi_circleview_bg_adult_5">#FF974B</color>
+    <color name="bmi_circleview_bg_adult_6">#EB4545</color>
+
+    <color name="bmi_circleview_bg_child_1">#6BD3FF</color>
+    <color name="bmi_circleview_bg_child_2">#68A5F8</color>
+    <color name="bmi_circleview_bg_child_3">#4ACB86</color>
+    <color name="bmi_circleview_bg_child_4">#FFCB08</color>
+    <color name="bmi_circleview_bg_child_5">#EB4545</color>
+
+
+</resources>

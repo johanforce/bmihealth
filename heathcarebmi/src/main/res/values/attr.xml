@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BmiView">
+        <attr name="background_color" format="color" />
+        <attr name="text_color" format="color" />
+        <attr name="ruler_color" format="color" />
+    </declare-styleable>
+    <declare-styleable name="BMICircleView">
+        <attr name="triangle_color" format="color" />
+    </declare-styleable>
+</resources>

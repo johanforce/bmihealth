@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivStartIcon"
+            style="@style/ListItemIcon.Start"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            tools:src="@drawable/ic_arrow_down" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvTitle"
+            style="@style/ListItem.Title"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/btnToggle"
+            android:layout_toEndOf="@+id/ivStartIcon"
+            tools:text="Đây là title dài dằng dặc" />
+
+        <com.jarvis.design_system.button.JxToggleButton
+            android:id="@+id/btnToggle"
+            style="@style/ButtonToggle"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/px8"
+            android:clickable="false"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+
+        <com.jarvis.design_system.button.JxCheckBoxButton
+            android:id="@+id/btnCheckbox"
+            style="@style/ButtonToggle"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/px8"
+            android:clickable="false"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+</layout>

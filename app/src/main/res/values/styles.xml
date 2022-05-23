@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TitleLabel" parent="T14H20M">
+        <item name="android:paddingStart">@dimen/px16</item>
+        <item name="android:paddingEnd">@dimen/px16</item>
+        <item name="android:paddingTop">@dimen/px8</item>
+        <item name="android:paddingBottom">@dimen/px8</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="minHeight">@dimen/px40</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/ink_5</item>
+        <item name="android:background">@color/bg_02</item>
+    </style>
+
+    <declare-styleable name="ViewItemRequired">
+        <attr name="title" format="string" />
+        <attr name="icon" format="reference" />
+        <attr name="unit" format="string" />
+        <attr name="index" format="string" />
+    </declare-styleable>
+</resources>

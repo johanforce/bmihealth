@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="JxCustomTextView">
+        <attr name="textFont" format="enum">
+            <enum name="regular" value="0" />
+            <enum name="medium" value="1" />
+            <enum name="bold" value="2" />
+            <enum name="sportypo" value="3" />
+        </attr>
+        <attr name="drawableStartCompat" format="reference" />
+        <attr name="drawableEndCompat" format="reference" />
+        <attr name="drawableTopCompat" format="reference" />
+        <attr name="drawableBottomCompat" format="reference" />
+        <attr name="selected" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="JxPickerText">
+        <attr name="endText" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="JxInputTextField">
+        <attr name="title" format="string" />
+        <attr name="des" format="string" />
+        <attr name="hint" format="string" />
+        <attr name="titleVisibility">
+            <enum name="visible" value="0" />
+            <!-- Not displayed, but taken into account during layout (space is left for it). -->
+            <enum name="invisible" value="1" />
+            <!-- Completely hidden, as if the view had not been added. -->
+            <enum name="gone" value="2" />
+        </attr>
+        <attr name="android:inputType" />
+        <attr name="android:imeOptions" />
+        <attr name="enableErrorState" format="boolean" />
+        <attr name="singleLine" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="JxToolbar">
+        <attr name="toolbarViewStyle" format="enum">
+            <enum name="logo" value="0" />
+            <enum name="title" value="1" />
+            <enum name="backTitle" value="2" />
+            <enum name="backTitleButton" value="3" />
+            <enum name="backTitleIcon" value="4" />
+            <enum name="backTitle2Icon" value="5" />
+            <enum name="title2Icon" value="6" />
+        </attr>
+        <attr name="toolbarTitle" format="string" />
+        <attr name="toolbarDisableCta" format="boolean" />
+        <attr name="toolbarLogo" format="reference" />
+        <attr name="toolbarTextCta" format="string" />
+        <attr name="toolbarAction1" format="reference" />
+        <attr name="toolbarAction2" format="reference" />
+        <attr name="toolbarHideDivider" format="boolean" />
+        <attr name="toolbarBackIcon" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="JxListItem">
+        <attr name="itemStartElement" format="enum">
+            <enum name="hide" value="0" />
+            <enum name="display" value="1" />
+        </attr>
+        <attr name="itemContentElement" format="enum">
+            <enum name="onlyTitle" value="0" />
+            <enum name="titleAndDescriptionStyle1" value="1" />
+            <enum name="titleAndDescriptionStyle2" value="2" />
+            <enum name="titleAndDescriptionStyle3" value="4" />
+            <enum name="progressAndTitleAndDescription" value="3" />
+            <enum name="titleAndDescriptionEndWithTextAndIcon" value="5" />
+        </attr>
+        <attr name="itemEndElement" format="enum">
+            <enum name="hide" value="0" />
+            <enum name="icon" value="1" />
+            <enum name="textValueStyle1" value="2" />
+            <enum name="textValueStyle2" value="3" />
+            <enum name="textAndIcon" value="4" />
+            <enum name="toggle" value="5" />
+            <enum name="button" value="6" />
+            <enum name="invisible" value="7" />
+        </attr>
+        <attr name="itemEndButtonStyle" format="enum">
+            <enum name="primary" value="0" />
+            <enum name="secondary" value="1" />
+            <enum name="plain" value="2" />
+        </attr>
+        <attr name="iteamEndToggleStyle" format="enum">
+            <enum name="toggle" value="0" />
+            <enum name="checkbox" value="1" />
+        </attr>
+        <attr name="itemTitle" format="string" />
+        <attr name="itemDescription" format="string" />
+        <attr name="itemEndText" format="string" />
+        <attr name="itemEndTextColor" format="color" />
+        <attr name="itemEndButtonText" format="string" />
+        <attr name="itemStartIcon" format="reference" />
+        <attr name="itemEndIcon" format="reference" />
+        <attr name="nameSmartWatch" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="JxBottomSheetHeader">
+        <attr name="bottomSheetTitle" format="string" />
+        <attr name="bottomSheetShowGrabber" format="boolean" />
+        <attr name="bottomSheetShowCloseButton" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="JxBanner">
+        <attr name="bannerIcon" format="reference" />
+        <attr name="bannerTitle" format="string" />
+        <attr name="bannerSubsTitle" format="string" />
+        <attr name="bannerDescription" format="string" />
+        <attr name="bannerTextCTA" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="JxItemAdditionalInfo">
+        <attr name="additionalInfoIcon" format="reference" />
+        <attr name="additionalInfoTitle" format="string" />
+        <attr name="additionalInfoDes" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="JxTab">
+        <attr name="hasIcon" format="boolean" />
+        <attr name="tabIconStyle" format="enum">
+            <enum name="crow" value="0" />
+            <enum name="tick" value="1" />
+        </attr>
+        <attr name="android:text" />
+    </declare-styleable>
+
+    <declare-styleable name="JxLabel">
+        <attr name="textTitle" format="string" />
+        <attr name="textAction" format="string" />
+        <attr name="labelType">
+            <enum name="type1" value="0" />
+            <enum name="type2" value="1" />
+            <enum name="type3" value="2" />
+            <enum name="type4" value="3" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="JxPickerIconWithLabel">
+        <attr name="title1" format="string" />
+        <attr name="hint1" format="string" />
+        <attr name="itemPickerIcon1" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="JxPickerIcon">
+        <attr name="itemPickerIcon" format="reference" />
+    </declare-styleable>
+</resources>

@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">BMIHealth</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="unit_lbs" translatable="false">lbs</string>
+    <string name="unit_kg" translatable="false">kg</string>
+    <string name="unit_in" translatable="false">in</string>
+    <string name="unit_cm" translatable="false">cm</string>
+    <string name="unit_kcal" translatable="false">kcal</string>
+    <string name="unit_ft" translatable="false">ft</string>
+    <string name="unit_mi" translatable="false">mi</string>
+
+    <string name="all_happy">Happy</string>
+    <string name="all_register">Register</string>
+    <string name="all_height">Height</string>
+    <string name="all_weight">Weight</string>
+    <string name="all_life">Life</string>
+    <string name="all_name_app">Happy Life</string>
+    <string name="all_firstname">First Name</string>
+    <string name="all_lastname">Last Name</string>
+    <string name="all_birthday">Birthday</string>
+    <string name="all_gender">Gender</string>
+    <string name="all_activity_level">Activity Level</string>
+    <string name="all_goal">Goal</string>
+
+    <string name="home_title_bmi">Body Mass Index</string>
+    <string name="home_title_calo">Daily Calories Required</string>
+    <string name="home_title_health">Health Index</string>
+    <string name="home_title_bmr">BMR</string>
+    <string name="home_title_heart">Heart Rate</string>
+    <string name="home_title_blood">Blood Pressure</string>
+    <string name="home_title_oxy">Oxygen Saturation</string>
+    <string name="home_title_respi">Respiraton Rate</string>
+    <string name="home_title_maintain">Maintain weight</string>
+    <string name="register_personal_information">Personal Information</string>
+    <string name="register_health_information">Health Information</string>
+    <string name="register_activity_information">Activity Information</string>
+
+    <string name="home_exit">Tap again to exit</string>
+    <string name="home">Home</string>
+    <string name="bmi_other">Bmi Other</string>
+    <string name="profile">Profile</string>
+</resources>

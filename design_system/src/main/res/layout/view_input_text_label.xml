@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:minHeight="@dimen/px52"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.jarvis.design_system.forminput.JxTextFieldLabel
+        android:id="@+id/tvTitle"
+        style="@style/TextFieldLabelNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Label" />
+
+    <com.jarvis.design_system.textview.CustomTextView
+        android:id="@+id/tvDes"
+        style="@style/T10H14R"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/px4"
+        android:layout_marginTop="@dimen/px4"
+        android:layout_toEndOf="@+id/tvTitle"
+        android:textColor="@color/ink_2" />
+
+    <com.jarvis.design_system.forminput.JxTextField
+        android:id="@+id/tvInputLabel"
+        style="@style/TextFieldValueBoxNormal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvTitle"
+        android:minHeight="@dimen/px42"
+        android:scrollbars="vertical"
+        android:textColor="@color/ink_5"
+        android:textColorHint="@color/ink_2" />
+</RelativeLayout>
