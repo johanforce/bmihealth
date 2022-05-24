@@ -26,11 +26,11 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNoteRepository(noteDatabase: AppDatabase): ProfileUserRepository =
-        ProfileUserRepositoryImpl(noteDatabase.profileUserDao)
+    fun provideAppRepository(appDatabase: AppDatabase): ProfileUserRepository =
+        ProfileUserRepositoryImpl(appDatabase.profileUserDao)
 
     @Provides
     @Singleton
-    fun provideNoteUseCases(noteRepository: ProfileUserRepository): UserProfileUseCase =
-        UserProfileUseCase(noteRepository)
+    fun provideProfileUserUseCases(profileUserRepository: ProfileUserRepository): UserProfileUseCase =
+        UserProfileUseCase(profileUserRepository)
 }
