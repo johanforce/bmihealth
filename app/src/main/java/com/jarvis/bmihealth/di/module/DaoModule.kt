@@ -1,21 +1,20 @@
-package com.jarvis.bmihealth.di
+package com.jarvis.bmihealth.di.module
 
 import android.app.Application
+import android.content.Context
 import androidx.room.Room
 import com.jarvis.bmihealth.data.data_source.AppDatabase
 import com.jarvis.bmihealth.data.repository.ProfileUserRepositoryImpl
 import com.jarvis.bmihealth.domain.repository.ProfileUserRepository
-import com.jarvis.bmihealth.domain.use_case.UserProfileUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-@Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
-
+@Module
+class DaoModule {
     @Provides
     @Singleton
     fun provideDatabase(application: Application) = Room.databaseBuilder(
@@ -28,9 +27,4 @@ object AppModule {
     @Singleton
     fun provideAppRepository(appDatabase: AppDatabase): ProfileUserRepository =
         ProfileUserRepositoryImpl(appDatabase.profileUserDao)
-
-    @Provides
-    @Singleton
-    fun provideProfileUserUseCases(profileUserRepository: ProfileUserRepository): UserProfileUseCase =
-        UserProfileUseCase(profileUserRepository)
 }
