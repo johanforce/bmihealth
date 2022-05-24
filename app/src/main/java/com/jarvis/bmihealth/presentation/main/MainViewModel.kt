@@ -2,7 +2,7 @@ package com.jarvis.bmihealth.presentation.main
 
 import androidx.lifecycle.MutableLiveData
 import com.jarvis.bmihealth.domain.model.ProfileUser
-import com.jarvis.bmihealth.domain.repository.NoteRepository
+import com.jarvis.bmihealth.domain.repository.ProfileUserRepository
 import com.jarvis.bmihealth.presentation.utilx.Constant.Companion.MALE
 import com.jarvis.bmihealth.presentation.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,7 +12,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(private val noteRepository: NoteRepository): BaseViewModel() {
+class MainViewModel @Inject constructor(private val noteRepository: ProfileUserRepository): BaseViewModel() {
     var tempFrag = MutableLiveData<Int>()
 
     fun insertProfile(){

@@ -3,8 +3,8 @@ package com.jarvis.bmihealth.di
 import android.app.Application
 import androidx.room.Room
 import com.jarvis.bmihealth.data.data_source.AppDatabase
-import com.jarvis.bmihealth.data.repository.NoteRepositoryImpl
-import com.jarvis.bmihealth.domain.repository.NoteRepository
+import com.jarvis.bmihealth.data.repository.ProfileUserRepositoryImpl
+import com.jarvis.bmihealth.domain.repository.ProfileUserRepository
 import com.jarvis.bmihealth.domain.use_case.UserProfileUseCase
 import dagger.Module
 import dagger.Provides
@@ -26,11 +26,11 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNoteRepository(noteDatabase: AppDatabase): NoteRepository =
-        NoteRepositoryImpl(noteDatabase.profileUserDao)
+    fun provideNoteRepository(noteDatabase: AppDatabase): ProfileUserRepository =
+        ProfileUserRepositoryImpl(noteDatabase.profileUserDao)
 
     @Provides
     @Singleton
-    fun provideNoteUseCases(noteRepository: NoteRepository): UserProfileUseCase =
+    fun provideNoteUseCases(noteRepository: ProfileUserRepository): UserProfileUseCase =
         UserProfileUseCase(noteRepository)
 }

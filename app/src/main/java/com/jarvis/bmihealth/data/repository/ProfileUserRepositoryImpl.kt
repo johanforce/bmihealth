@@ -2,23 +2,24 @@ package com.jarvis.bmihealth.data.repository
 
 import com.jarvis.bmihealth.data.data_source.ProfileUserDao
 import com.jarvis.bmihealth.domain.model.ProfileUser
-import com.jarvis.bmihealth.domain.repository.NoteRepository
+import com.jarvis.bmihealth.domain.repository.ProfileUserRepository
 
-class NoteRepositoryImpl(private val noteDao: ProfileUserDao) : NoteRepository {
+class ProfileUserRepositoryImpl(private val profileUserDao: ProfileUserDao) :
+    ProfileUserRepository {
     override suspend fun getProfileById(id: Int): ProfileUser? {
-        return noteDao.getNoteById(id)
+        return profileUserDao.getNoteById(id)
     }
 
     override suspend fun insertProfile(profile: ProfileUser) {
-        noteDao.insertNote(profile)
+        profileUserDao.insertNote(profile)
     }
 
     override suspend fun updateProfile(profile: ProfileUser) {
-        noteDao.updateNote(profile)
+        profileUserDao.updateNote(profile)
     }
 
     override suspend fun deleteProfile(profile: ProfileUser) {
-        noteDao.deleteNote(profile)
+        profileUserDao.deleteNote(profile)
     }
 
 }

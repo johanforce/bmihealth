@@ -1,24 +1,24 @@
 package com.jarvis.bmihealth.domain.use_case
 
 import com.jarvis.bmihealth.domain.model.ProfileUser
-import com.jarvis.bmihealth.domain.repository.NoteRepository
+import com.jarvis.bmihealth.domain.repository.ProfileUserRepository
 
 class UserProfileUseCase(
-    private var noteRepository: NoteRepository
+    private var profileUserRepository: ProfileUserRepository
 ) {
     suspend fun deleteProfileUser(profileUser: ProfileUser) {
-        noteRepository.deleteProfile(profileUser)
+        profileUserRepository.deleteProfile(profileUser)
     }
 
     suspend fun getUserProfile(id: Int) {
-        noteRepository.getProfileById(id)
+        profileUserRepository.getProfileById(id)
     }
 
     suspend fun insertProfileUser(profileUser: ProfileUser) {
-        noteRepository.insertProfile(profileUser)
+        profileUserRepository.insertProfile(profileUser)
     }
 
     suspend fun updateProfileUser(profileUser: ProfileUser) {
-        noteRepository.updateProfile(profileUser)
+        profileUserRepository.updateProfile(profileUser)
     }
 }

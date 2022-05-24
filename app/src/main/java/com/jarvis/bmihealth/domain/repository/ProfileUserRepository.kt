@@ -2,7 +2,7 @@ package com.jarvis.bmihealth.domain.repository
 
 import com.jarvis.bmihealth.domain.model.ProfileUser
 
-interface NoteRepository {
+interface ProfileUserRepository {
 
     suspend fun getProfileById(id:Int): ProfileUser?
 
