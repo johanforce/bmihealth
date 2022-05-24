@@ -10,8 +10,8 @@ class UserProfileUseCase(
         profileUserRepository.deleteProfile(profileUser)
     }
 
-    suspend fun getUserProfile(id: Int) {
-        profileUserRepository.getProfileById(id)
+    suspend fun getUserProfile(id: Int): ProfileUser? {
+        return profileUserRepository.getProfileById(id)
     }
 
     suspend fun insertProfileUser(profileUser: ProfileUser) {
