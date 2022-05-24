@@ -1,4 +1,5 @@
 package com.jarvis.bmihealth.presentation.base
+
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,12 +7,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.transition.platform.MaterialSharedAxis
-import com.jarvis.bmihealth.MainApplication
 import com.jarvis.bmihealth.R
-import com.jarvis.bmihealth.presentation.base.BaseViewModel
 import com.jarvis.design_system.toolbar.JxToolbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -19,7 +17,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-abstract class BaseActivity<B : ViewBinding, ViewModel : BaseViewModel>(val bindingFactory: (LayoutInflater) -> B) :
+abstract class BaseActivity<B : ViewBinding>(val bindingFactory: (LayoutInflater) -> B) :
     AppCompatActivity(), CoroutineScope {
     protected val binding: B by lazy { bindingFactory(layoutInflater) }
 
@@ -28,8 +26,6 @@ abstract class BaseActivity<B : ViewBinding, ViewModel : BaseViewModel>(val bind
 
     private lateinit var job: Job
 
-    protected lateinit var viewModel: ViewModel
-    protected abstract fun getViewModelClass(): Class<ViewModel>
 
 //    var localeDelegate = LocaleHelperActivityDelegateImpl()
 
@@ -61,7 +57,6 @@ abstract class BaseActivity<B : ViewBinding, ViewModel : BaseViewModel>(val bind
         initAnim()
         setContentView(binding.root)
         initToolbar()
-        initViewModel()
         observeData()
         setUpViews()
         initCoroutineScope()
@@ -91,13 +86,6 @@ abstract class BaseActivity<B : ViewBinding, ViewModel : BaseViewModel>(val bind
         }
         window.exitTransition = exit.addTarget(binding.root)
         window.allowEnterTransitionOverlap = true
-    }
-
-    fun initViewModel() {
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.AndroidViewModelFactory.getInstance(MainApplication.applicationContext())
-        ).get(getViewModelClass())
     }
 
     override fun onLowMemory() {

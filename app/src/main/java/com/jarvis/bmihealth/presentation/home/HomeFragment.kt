@@ -1,22 +1,29 @@
 package com.jarvis.bmihealth.presentation.home
 
+import android.content.Context
 import android.os.Bundle
-import com.jarvis.bmihealth.databinding.ActivityMainBinding
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.jarvis.bmihealth.databinding.FragmentHomeBinding
 import com.jarvis.bmihealth.presentation.base.BaseFragment
+import com.jarvis.bmihealth.presentation.utilx.LogUtil
+import com.jarvis.bmihealth.presentation.utilx.observe
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
+class HomeFragment(context: AppCompatActivity) :
+    BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
-class HomeFragment :
-    BaseFragment<FragmentHomeBinding, HomeViewModel>(FragmentHomeBinding::inflate) {
-    override fun getViewModelClass() = HomeViewModel::class.java
+    private val viewModel: HomeViewModel by context.viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.homeViewModel = viewModel
         binding.lifecycleOwner = this
 
-
+        viewModel.getProfile()
+        LogUtil.ct("-------vao day--------")
+        observe(viewModel.profileUser) {
+            binding.tvData.text = it.toString()
+        }
     }
-
-
 }

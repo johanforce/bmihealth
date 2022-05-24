@@ -13,7 +13,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>(val bindingFactory: (LayoutInflater) -> Binding) :
+abstract class BaseFragment<Binding : ViewBinding>(val bindingFactory: (LayoutInflater) -> Binding) :
     Fragment(), CoroutineScope {
     protected val binding: Binding by lazy { bindingFactory(layoutInflater) }
     override val coroutineContext: CoroutineContext
@@ -23,13 +23,9 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>(va
 
     open var useSharedViewModel: Boolean = false
 
-    protected lateinit var viewModel: ViewModel
-    protected abstract fun getViewModelClass(): Class<ViewModel>
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         job = Job() // create the Job
-        init()
     }
 
     override fun onCreateView(
@@ -61,16 +57,6 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>(va
     open fun setUpViews() {}
 
     open fun observeData() {}
-
-    private fun init() {
-        viewModel = if (useSharedViewModel) {
-            ViewModelProvider(requireActivity()).get(
-                getViewModelClass()
-            )
-        } else {
-            ViewModelProvider(this).get(getViewModelClass())
-        }
-    }
 
     override fun onDestroy() {
         job.cancel() // cancel the Job

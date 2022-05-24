@@ -5,8 +5,9 @@ import android.app.Application
 import android.os.Bundle
 import androidx.multidex.MultiDexApplication
 import com.google.gson.Gson
+import dagger.hilt.android.HiltAndroidApp
 
-
+@HiltAndroidApp
 class MainApplication : MultiDexApplication(), Application.ActivityLifecycleCallbacks {
     lateinit var gson: Gson
 

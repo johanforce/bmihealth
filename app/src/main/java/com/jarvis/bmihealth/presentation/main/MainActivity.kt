@@ -4,19 +4,21 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.ActivityMainBinding
-import com.jarvis.bmihealth.presentation.Utils.Constant
+import com.jarvis.bmihealth.presentation.utilx.Constant
 import com.jarvis.bmihealth.presentation.base.BaseActivity
 import com.jarvis.bmihealth.presentation.bmiother.OtherFragment
 import com.jarvis.bmihealth.presentation.home.HomeFragment
 import com.jarvis.bmihealth.presentation.profile.ProfileFragment
+import com.jarvis.bmihealth.presentation.utilx.LogUtil
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity :
-    BaseActivity<ActivityMainBinding, MainViewModel>(ActivityMainBinding::inflate) {
-    override fun getViewModelClass() = MainViewModel::class.java
+    BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
     private var isBackPress = false
     private var homeFragment: HomeFragment? = null
@@ -24,28 +26,31 @@ class MainActivity :
     private var otherFragment: OtherFragment? = null
     private val fragments: MutableList<Fragment> = arrayListOf()
     private var currentIndex: Int = 0
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.mainViewModel = viewModel
         binding.lifecycleOwner = this
+    }
 
+    override fun setUpViews() {
         initFragment()
         clickShowFragment(Constant.KEY_HOME)
         clickControlView()
         binding.viewControl.setItemSelected(R.id.home, true)
+        viewModel.insertProfile()
     }
 
     private fun initFragment() {
-        try {
-            homeFragment = HomeFragment()
-            profileFragment = ProfileFragment()
-            otherFragment = OtherFragment()
+            homeFragment = HomeFragment(this)
+            profileFragment = ProfileFragment(this)
+            otherFragment = OtherFragment(this)
             fragments.add(otherFragment!!)
             fragments.add(homeFragment!!)
             fragments.add(profileFragment!!)
 
             val size = fragments.size
+            LogUtil.ct("-------vao day--------"+ size)
             val supportFragmentManager = supportFragmentManager
 
             for (index in 0 until size) {
@@ -60,26 +65,18 @@ class MainActivity :
                     fragmentTransaction.commitAllowingStateLoss()
                 }
             }
-
-        } catch (e: java.lang.Exception) {
-            e.printStackTrace()
-        }
     }
 
     private fun clickShowFragment(position: Int) {
         try {
-            if (fragments.size == 0) {
-                return
-            }
-
-            Toast.makeText(this, "----------" + position, Toast.LENGTH_SHORT).show()
-
+            LogUtil.ct("-------vao day--------"+ position)
             val targetFragment = fragments[position]
             val currentFragment: Fragment = getCurrentFragment()
             if (currentFragment.isAdded) {
                 currentFragment.onPause()
             }
             if (!isFinishing) {
+                LogUtil.ct("-------vao day--------"+ currentFragment+"/"+ targetFragment)
                 supportFragmentManager.beginTransaction().hide(currentFragment).show(targetFragment)
                     .commitAllowingStateLoss()
                 currentIndex = position
