@@ -1,4 +1,4 @@
-package com.jarvis.bmihealth.data.data_source
+package com.jarvis.bmihealth.data.datasource
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

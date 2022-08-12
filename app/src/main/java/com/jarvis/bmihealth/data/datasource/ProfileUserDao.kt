@@ -1,5 +1,4 @@
-package com.jarvis.bmihealth.data.data_source
-
+package com.jarvis.bmihealth.data.datasource
 import androidx.room.*
 import com.jarvis.bmihealth.domain.model.ProfileUser
 

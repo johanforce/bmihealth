@@ -1,4 +1,4 @@
-package com.jarvis.bmihealth.domain.use_case
+package com.jarvis.bmihealth.domain.usecase
 
 import com.jarvis.bmihealth.domain.model.ProfileUser
 import com.jarvis.bmihealth.domain.repository.ProfileUserRepository
