@@ -3,10 +3,11 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id "io.gitlab.arturbosch.detekt" version "1.21.0"
 }
 
 android {
-    compileSdk 31
+    compileSdk 32
 
     defaultConfig {
         applicationId "com.jarvis.bmihealth"
@@ -35,7 +36,7 @@ android {
         }
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
     }
 
     dataBinding {
@@ -48,14 +49,15 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 }
 
 dependencies {
     implementation project(':design_system')
     implementation project(':heathcarebmi')
+    implementation 'com.github.johanforce:avatarview:1.0.0'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
@@ -98,4 +100,29 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.7'
 
     implementation 'com.github.ismaeldivita:chip-navigation-bar:1.4.0'
+}
+
+detekt {
+    toolVersion = "1.21.0"
+    config = files("detekt-config.yml")
+    basePath = projectDir
+    buildUponDefaultConfig = true
+    allRules = true
+    ignoredBuildTypes = ["release"]
+    ignoredFlavors = ["production"]
+    ignoredVariants = ["productionRelease"]
+    reports {
+        xml {
+            enabled = true
+            destination = file("build/reports/detekt.xml")
+        }
+        html {
+            enabled = true
+            destination = file("build/reports/detekt.html")
+        }
+        txt {
+            enabled = true
+            destination = file("build/reports/detekt.txt")
+        }
+    }
 }

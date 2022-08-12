@@ -16,7 +16,9 @@ import java.util.List;
 import java.util.Locale;
 
 import cn.carbswang.android.numberpickerview.library.NumberPickerView;
+import kotlin.Suppress;
 
+@Suppress(names = "unused")
 public class DatePickerDialog extends BaseFragmentDialog {
     private SimpleDateFormat sdfToYear = new SimpleDateFormat("yyyy", Locale.getDefault());
     private SimpleDateFormat sdfToMonth = new SimpleDateFormat("MM", Locale.getDefault());

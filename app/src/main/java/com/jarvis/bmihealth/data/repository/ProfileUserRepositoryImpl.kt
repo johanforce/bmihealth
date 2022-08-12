@@ -1,6 +1,6 @@
 package com.jarvis.bmihealth.data.repository
 
-import com.jarvis.bmihealth.data.data_source.ProfileUserDao
+import com.jarvis.bmihealth.data.datasource.ProfileUserDao
 import com.jarvis.bmihealth.domain.model.ProfileUser
 import com.jarvis.bmihealth.domain.repository.ProfileUserRepository
 

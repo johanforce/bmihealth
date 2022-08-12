@@ -1,9 +1,8 @@
 package com.jarvis.bmihealth.di.module
 
 import android.app.Application
-import android.content.Context
 import androidx.room.Room
-import com.jarvis.bmihealth.data.data_source.AppDatabase
+import com.jarvis.bmihealth.data.datasource.AppDatabase
 import com.jarvis.bmihealth.data.repository.ProfileUserRepositoryImpl
 import com.jarvis.bmihealth.domain.repository.ProfileUserRepository
 import dagger.Module

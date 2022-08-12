@@ -1,7 +1,7 @@
 package com.jarvis.bmihealth.di.module
 
 import com.jarvis.bmihealth.domain.repository.ProfileUserRepository
-import com.jarvis.bmihealth.domain.use_case.UserProfileUseCase
+import com.jarvis.bmihealth.domain.usecase.UserProfileUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
