@@ -25,8 +25,9 @@ jobs:
       # Checkout the code as the first step.
       - checkout
       
-      - android permission:
-        chmod +x gradlew
+      - run:  
+          name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
+          command: sudo chmod +x ./gradlew
       # The next step will run the unit tests
       - android/run-tests:
           test-command: ./gradlew lint testDebug --continue
