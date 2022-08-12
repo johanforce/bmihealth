@@ -731,5 +731,11 @@
         <item name="shadowDx">0</item>
         <item name="shadowDy">6</item>
     </style>
+
+    <style name="CustomText">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/sp14</item>
+        <item name="android:textColor">@color/alabaster</item>
+    </style>
     <!--</editor-fold>-->
 </resources>

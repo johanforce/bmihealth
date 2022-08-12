@@ -10,6 +10,7 @@ import com.jarvis.bmihealth.di.DaggerAppComponent
 import com.jarvis.bmihealth.di.module.DaoModule
 import dagger.hilt.android.HiltAndroidApp
 
+@Suppress("unused")
 @HiltAndroidApp
 class MainApplication : MultiDexApplication(), Application.ActivityLifecycleCallbacks {
     lateinit var gson: Gson
@@ -41,21 +42,27 @@ class MainApplication : MultiDexApplication(), Application.ActivityLifecycleCall
     }
 
     override fun onActivityCreated(p0: Activity, p1: Bundle?) {
+        //do something
     }
 
     override fun onActivityStarted(p0: Activity) {
+        //do something
     }
 
     override fun onActivityResumed(p0: Activity) {
+        //do something
     }
 
     override fun onActivityPaused(p0: Activity) {
+        //do something
     }
 
     override fun onActivityStopped(p0: Activity) {
+        //do something
     }
 
     override fun onActivitySaveInstanceState(p0: Activity, p1: Bundle) {
+        //do something
     }
 
     override fun onActivityDestroyed(p0: Activity) {

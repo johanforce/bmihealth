@@ -24,3 +24,13 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+
+    - name: Distribute App
+      run: |
+        curl \
+          -H "Authorization: token ${{secrets.DEPLOYGATE_KEY_API}}" \
+          -F "file=@app/build/outputs/apk/debug/app-debug.apk" \
+          -F "message=Any message" \
+          -F "distribution_key=${{secrets.DEPLOYGATE_KEY_DISTRIBUTIONS}}" \
+          -F "release_note=Release Note" \
+            "https://deploygate.com/api/users/johanforce/apps"
