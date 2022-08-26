@@ -35,6 +35,7 @@ jobs:
           -F "release_note=Release Note" \
             "https://deploygate.com/api/users/johanforce/apps"
             
+            
     - name: Distribute App 2
       run: |
         curl \
