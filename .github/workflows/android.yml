@@ -41,5 +41,5 @@ jobs:
         curl \
               -H "Content-Type: application/json" \
               -X POST "${{secrets.SHARE_CHAT_GOOGLE_KEY}}" \
-              --data "{\"cards\": [{\"sections\":[{\"widgets\":[{\"keyValue\":{\"content\":\"${{CI_COMMIT_AUTHOR}}\",\"contentMultiline\":false,\"icon\":\"PERSON\",\"onClick\":{\"openLink\":{\"url\":\"mailto:${GITLAB_USER_EMAIL}\"}}}}]},{\"widgets\":[{\"image\":{\"imageUrl\":\"${DEPLOYGATE_DISTRIBUTION_QR_CODE_IMAGE_URL}\",\"altText\":\"\",\"onClick\":{\"openLink\":{\"url\":\"${DEPLOYGATE_SHARING_URL}\"}}}}]},{\"widgets\":[{\"buttons\":[{\"textButton\":{\"text\":\"DOWNLOAD\",\"onClick\":{\"openLink\":{\"url\":\"${DEPLOYGATE_SHARING_URL}\"}}}}]}]}],\"header\":{\"title\":\"The new version is released\",\"subtitle\":\"${COMMIT_TIME}\",\"imageUrl\":\"https://c.tenor.com/U7h-gyy--akAAAAM/kiss.gif\",\"imageStyle\":\"AVATAR\"}}]}"
+              --data "1234"
         fi
