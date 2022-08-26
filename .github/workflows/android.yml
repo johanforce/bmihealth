@@ -39,4 +39,4 @@ jobs:
         curl \
               -H "Content-Type: application/json" \
               -X POST "${{secrets.SHARE_CHAT_GOOGLE_KEY}}" \
-              --data "1234"
+              --data "{\"text\":\"1234\"}"
