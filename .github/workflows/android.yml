@@ -23,15 +23,15 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
    
-    - name: Distribute App
-      run: |
-        curl \
-          -H "Authorization: token ${{secrets.DEPLOYGATE_KEY_API}}" \
-          -F "file=@app/build/outputs/apk/debug/app-debug.apk" \
-          -F "message=Any message" \
-          -F "distribution_key=${{secrets.DEPLOYGATE_KEY_DISTRIBUTIONS}}" \
-          -F "release_note=Release Note" \
-            "https://deploygate.com/api/users/johanforce/apps"
+#     - name: Distribute App
+#       run: |
+#         curl \
+#           -H "Authorization: token ${{secrets.DEPLOYGATE_KEY_API}}" \
+#           -F "file=@app/build/outputs/apk/debug/app-debug.apk" \
+#           -F "message=Any message" \
+#           -F "distribution_key=${{secrets.DEPLOYGATE_KEY_DISTRIBUTIONS}}" \
+#           -F "release_note=Release Note" \
+#             "https://deploygate.com/api/users/johanforce/apps"
             
             
     - name: Distribute App 2
