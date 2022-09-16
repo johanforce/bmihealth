@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_01">
+
+        <com.jarvis.bmihealth.presentation.onboarding.ViewIntroduceOnBoarding
+            android:id="@+id/vIntroduce"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/btLogin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+        <com.jarvis.design_system.button.JxButton
+            android:id="@+id/btLogin"
+            style="@style/ButtonPrimary.SizeL"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="@dimen/px12"
+            android:layout_marginHorizontal="@dimen/px32"
+            android:layout_marginBottom="@dimen/px16"
+            android:text="@string/onboarding_next"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:visibility="visible" />
+
+        <FrameLayout
+            android:id="@+id/clSkipLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/px16"
+            android:layout_marginEnd="@dimen/px16"
+            android:background="@drawable/all_bg_alabaster_18px"
+            android:paddingVertical="@dimen/px8"
+            android:paddingStart="@dimen/px24"
+            android:paddingEnd="@dimen/px24"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvSkipLogin"
+                style="@style/T14H20M"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/all_skip_login"
+                android:textColor="@color/ink_4"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

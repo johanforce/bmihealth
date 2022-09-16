@@ -111,6 +111,7 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.20'
 
     implementation 'com.github.warkiz.widget:indicatorseekbar:2.1.2'
+    implementation 'com.tbuonomo:dotsindicator:4.2'
 }
 
 detekt {

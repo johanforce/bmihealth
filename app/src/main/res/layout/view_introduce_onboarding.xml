@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/viewOptionLoginRoot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_01"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/tvTermOfService"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/viewBody"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.jarvis.design_system.textview.CustomTextView
+                    android:id="@+id/tvTitleSplash"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="@dimen/px30"
+                    android:maxLines="2"
+                    style="@style/T24H32B"
+                    android:visibility="invisible"
+                    android:textColor="@color/ink_5"
+                    android:layout_marginTop="@dimen/px24"
+                    app:layout_constraintBottom_toTopOf="@+id/tvContent"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    app:layout_constraintVertical_bias="0.5"
+                    app:layout_constraintLeft_toLeftOf="@+id/ivAvatar"
+                    app:layout_constraintRight_toRightOf="@+id/ivAvatar"
+                    app:layout_constraintTop_toBottomOf="@+id/ivAvatar"
+                    tools:text="@string/onboarding_title_tab1" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivAvatar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/px240"
+                    android:adjustViewBounds="true"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toTopOf="@+id/tvTitleSplash"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    android:src="@drawable/onboarding_ic_tab2" />
+
+                <com.jarvis.design_system.textview.CustomTextView
+                    android:id="@+id/tvContent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/px24"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    style="@style/T16H24"
+                    android:visibility="invisible"
+                    android:textColor="@color/ink_3"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="@+id/tvTitleSplash"
+                    app:layout_constraintRight_toRightOf="@+id/tvTitleSplash"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitleSplash"
+                    tools:text="@string/onboarding_des_tab1" />
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/vpLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:overScrollMode="never"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+                    android:id="@+id/dots_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/px40"
+                    android:layout_marginBottom="@dimen/px30"
+                    app:dotsColor="@color/ink_2"
+                    app:dotsCornerRadius="@dimen/px16"
+                    app:dotsSize="@dimen/px4"
+                    app:dotsSpacing="@dimen/px10"
+                    app:dotsWidthFactor="6"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvContent"
+                    app:progressMode="false"
+                    app:selectedDotColor="@color/pri_1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvTermOfService"
+            style="@style/T12H18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/px12"
+            android:gravity="center"
+            android:textColor="@color/ink_4"
+            android:layout_marginHorizontal="@dimen/px8"
+            android:paddingHorizontal="@dimen/px20"
+            android:text="@string/onboarding_by_get_start"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

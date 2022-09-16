@@ -20,7 +20,7 @@
         android:theme="@style/Theme.App.Starting"
         tools:replace="android:allowBackup">
         <activity
-            android:name=".presentation.register.RegisterActivity"
+            android:name=".presentation.onboarding.OnBoardingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,5 +40,22 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/DSAppTheme" />
+
+        <activity
+            android:name=".presentation.register.RegisterActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/DSAppTheme" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:ignore="WrongManifestParent">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
     </application>
 </manifest>

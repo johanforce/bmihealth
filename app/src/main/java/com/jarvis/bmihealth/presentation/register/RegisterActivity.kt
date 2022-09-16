@@ -4,10 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
+import androidx.lifecycle.ViewModelProvider
 import com.jarvis.bmihealth.databinding.ActivityRegisterBinding
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.presentation.base.BaseActivity
+import com.jarvis.bmihealth.presentation.home.HomeViewModel
 import com.jarvis.bmihealth.presentation.main.MainActivity
+import com.jarvis.bmihealth.presentation.pref.AppPreference
+import com.jarvis.bmihealth.presentation.pref.AppPreferenceKey
 import com.jarvis.bmihealth.presentation.utilx.OtherProfile
 import com.jarvis.bmihealth.presentation.utilx.TypeUnit.Companion.METRIC
 import com.jarvis.bmihealth.presentation.utilx.cropimage.PermissionConst
@@ -16,10 +20,15 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class RegisterActivity :
-    BaseActivity<ActivityRegisterBinding>(ActivityRegisterBinding::inflate) {
+    BaseActivity<ActivityRegisterBinding, RegisterViewModel>(ActivityRegisterBinding::inflate) {
 
-    private val viewModel: RegisterViewModel by viewModels()
     private var userInfo: ProfileUserModel? = null
+    private var appPreference: AppPreference? = null
+
+    override fun initViewModel() {
+        viewModel =
+            ViewModelProvider(this, viewModelFactory)[RegisterViewModel::class.java]
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +50,7 @@ class RegisterActivity :
         super.setUpViews()
         getDataIntent()
         setOnClick()
+        appPreference = AppPreference.getInstance()
         binding.viewInfo.setEnableErrorStateInputField(false)
         if (userInfo == null) {
             binding.viewInfoOther.initDefaultValue(OtherProfile())
@@ -97,6 +107,7 @@ class RegisterActivity :
             )
 
             intent.putExtra(KEY_USER_INFO, userInfo)
+            appPreference!!.put(AppPreferenceKey.KEY_IS_INPUT_INFO_SUCCESS, true)
             startActivity(intent)
         }
     }
@@ -122,4 +133,5 @@ class RegisterActivity :
             PermissionConst.REQUEST_CODE_PERMISSIONS
         )
     }
+
 }

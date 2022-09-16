@@ -9,6 +9,7 @@ import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.transition.platform.MaterialSharedAxis
+import com.jarvis.bmihealth.MainApplication
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.presentation.pref.AppPreference
 import com.jarvis.bmihealth.presentation.pref.AppPreferenceKey
@@ -19,9 +20,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-abstract class BaseActivity<B : ViewBinding>(val bindingFactory: (LayoutInflater) -> B) :
+abstract class BaseActivity<B : ViewBinding, T : BaseViewModel>(val bindingFactory: (LayoutInflater) -> B) :
     AppCompatActivity(), CoroutineScope {
     protected val binding: B by lazy { bindingFactory(layoutInflater) }
 
@@ -30,6 +32,11 @@ abstract class BaseActivity<B : ViewBinding>(val bindingFactory: (LayoutInflater
 
     private lateinit var job: Job
 
+    @Inject
+    lateinit var viewModel: T
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
 
 //    var localeDelegate = LocaleHelperActivityDelegateImpl()
 
@@ -56,16 +63,20 @@ abstract class BaseActivity<B : ViewBinding>(val bindingFactory: (LayoutInflater
 //    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        inject((activity?.application as MainApplication).appComponent())
         this.initDarkMode()
         super.onCreate(savedInstanceState)
         job = Job()
         initAnim()
         setContentView(binding.root)
+        initViewModel()
         initToolbar()
         observeData()
         setUpViews()
         initCoroutineScope()
     }
+
+
 
     open fun setUpViews() {}
 
@@ -101,6 +112,11 @@ abstract class BaseActivity<B : ViewBinding>(val bindingFactory: (LayoutInflater
     protected open fun getToolbar(): JxToolbar? {
         return null
     }
+
+    /**
+     * This is the method to init or get view model
+     */
+    abstract fun initViewModel()
 
     fun initToolbar() {
         val toolbar = getToolbar() ?: return

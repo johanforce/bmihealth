@@ -6,6 +6,7 @@ import android.os.Looper
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.ActivityMainBinding
 import com.jarvis.bmihealth.presentation.utilx.Constant
@@ -13,12 +14,13 @@ import com.jarvis.bmihealth.presentation.base.BaseActivity
 import com.jarvis.bmihealth.presentation.bmiother.OtherFragment
 import com.jarvis.bmihealth.presentation.home.HomeFragment
 import com.jarvis.bmihealth.presentation.profile.ProfileFragment
+import com.jarvis.bmihealth.presentation.register.RegisterViewModel
 import com.jarvis.bmihealth.presentation.utilx.LogUtil
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity :
-    BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
+    BaseActivity<ActivityMainBinding, MainViewModel>(ActivityMainBinding::inflate) {
 
     private var isBackPress = false
     private var homeFragment: HomeFragment? = null
@@ -26,7 +28,11 @@ class MainActivity :
     private var otherFragment: OtherFragment? = null
     private val fragments: MutableList<Fragment> = arrayListOf()
     private var currentIndex: Int = 0
-    private val viewModel: MainViewModel by viewModels()
+
+    override fun initViewModel() {
+        viewModel =
+            ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -129,4 +135,5 @@ class MainActivity :
         }
 
     }
+
 }

@@ -29,6 +29,13 @@ class MainApplication : MultiDexApplication(), Application.ActivityLifecycleCall
         instance = this
     }
 
+    /**
+     *  make instance
+     */
+    open fun appComponent(): AppComponent {
+        return appComponent
+    }
+
     private fun initDI() {
         appComponent = DaggerAppComponent.builder()
             .daoModule(DaoModule())

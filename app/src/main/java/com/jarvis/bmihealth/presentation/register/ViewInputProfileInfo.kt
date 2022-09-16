@@ -386,6 +386,7 @@ class ViewInputProfileInfo : ConstraintLayout {
         ) {
             this.isPermissionStorage = true
         }
+
     }
 
     private fun checkHideKeybroadWhenTouchClick() {
