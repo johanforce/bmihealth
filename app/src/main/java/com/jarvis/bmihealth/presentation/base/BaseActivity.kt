@@ -10,6 +10,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.transition.platform.MaterialSharedAxis
 import com.jarvis.bmihealth.R
+import com.jarvis.bmihealth.presentation.pref.AppPreference
+import com.jarvis.bmihealth.presentation.pref.AppPreferenceKey
+import com.jarvis.bmihealth.presentation.pref.ThemeMode
+import com.jarvis.bmihealth.presentation.pref.ThemeHelper
 import com.jarvis.design_system.toolbar.JxToolbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -29,21 +33,22 @@ abstract class BaseActivity<B : ViewBinding>(val bindingFactory: (LayoutInflater
 
 //    var localeDelegate = LocaleHelperActivityDelegateImpl()
 
-//    open fun initDarkMode() {
-//        val appPreference = AppPreference.getInstance()
-//
-//        setTheme(R.style.DSAppTheme)
+    open fun initDarkMode() {
+        val appPreference = AppPreference.getInstance()
+
+        setTheme(R.style.DSAppTheme)
 //        val themeMode = appPreference.get(AppPreferenceKey.KEY_THEMEMODE, Int::class.java)
-//        val isPurchased = BillingPreference.getInstance().getIsVip() == 1
 //
 //        //Bỏ đoạn check Purchase này nếu muốn test chuyển Mode
-//        if ((themeMode == ThemeMode.DARK || themeMode == ThemeMode.FOLLOW_SYSTEM) && !isPurchased) {
+//        if ((themeMode == ThemeMode.DARK || themeMode == ThemeMode.FOLLOW_SYSTEM)) {
 //            appPreference.putSync(AppPreferenceKey.KEY_THEMEMODE, ThemeMode.LIGHT)
 //            ThemeHelper.applyTheme(ThemeMode.LIGHT)
 //        } else {
 //            ThemeHelper.applyTheme(themeMode!!)
 //        }
-//    }
+        ThemeHelper.applyTheme(2)
+    }
+
 
 //    fun isDarkTheme(): Boolean {
 //        val uiMode = this.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
@@ -51,7 +56,7 @@ abstract class BaseActivity<B : ViewBinding>(val bindingFactory: (LayoutInflater
 //    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-//        this.initDarkMode()
+        this.initDarkMode()
         super.onCreate(savedInstanceState)
         job = Job()
         initAnim()

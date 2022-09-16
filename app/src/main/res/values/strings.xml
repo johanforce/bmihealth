@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">BMIHealth</string>
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="unit_lbs" translatable="false">lbs</string>
@@ -13,32 +13,591 @@
 
     <string name="all_happy">Happy</string>
     <string name="all_register">Register</string>
-    <string name="all_height">Height</string>
-    <string name="all_weight">Weight</string>
     <string name="all_life">Life</string>
     <string name="all_name_app">Happy Life</string>
-    <string name="all_firstname">First Name</string>
-    <string name="all_lastname">Last Name</string>
-    <string name="all_birthday">Birthday</string>
-    <string name="all_gender">Gender</string>
     <string name="all_activity_level">Activity Level</string>
     <string name="all_goal">Goal</string>
 
     <string name="home_title_bmi">Body Mass Index</string>
     <string name="home_title_calo">Daily Calories Required</string>
     <string name="home_title_health">Health Index</string>
-    <string name="home_title_bmr">BMR</string>
     <string name="home_title_heart">Heart Rate</string>
     <string name="home_title_blood">Blood Pressure</string>
     <string name="home_title_oxy">Oxygen Saturation</string>
     <string name="home_title_respi">Respiraton Rate</string>
-    <string name="home_title_maintain">Maintain weight</string>
     <string name="register_personal_information">Personal Information</string>
     <string name="register_health_information">Health Information</string>
     <string name="register_activity_information">Activity Information</string>
-
-    <string name="home_exit">Tap again to exit</string>
     <string name="home">Home</string>
     <string name="bmi_other">Bmi Other</string>
     <string name="profile">Profile</string>
+    <string name="registration">Registration</string>
+    <string name="facebook_app_id" translatable="false">4440512069358516</string>
+    <string name="default_notification_channel_id" translatable="false">fb_cm_wellbeing</string>
+
+    <string name="unit_in_symbol" translatable="false">\"</string>
+
+    <string name="all_well" translatable="false">Well</string>
+    <string name="all_be" translatable="false">Be</string>
+    <string name="setting_unit_metric" translatable="false">kg / cm / km</string>
+    <string name="setting_unit_imperial" translatable="false">lbs / ft / mi</string>
+    <string name="onboarding_unit_cm_per_kg" translatable="false">cm / kg</string>
+    <string name="onboarding_unit_inch_per_lbs" translatable="false">inch / lbs</string>
+    <string name="bmi_adult_type_1" translatable="false">15 - 16</string>
+    <string name="bmi_adult_type_2" translatable="false">16 - 18.4</string>
+    <string name="bmi_adult_type_3" translatable="false">18.5 - 24.9</string>
+    <string name="bmi_adult_type_4" translatable="false">25 - 29.9</string>
+    <string name="bmi_adult_type_5" translatable="false">30 - 34.9</string>
+    <string name="bmi_adult_type_6" translatable="false">35 - 39.9</string>
+    <string name="bmi_adult_type_7" translatable="false">>40</string>
+    <string name="edit_profile_weight_lbs" translatable="false">%s lbs</string>
+    <string name="edit_profile_weight_kg" translatable="false">%s kg</string>
+    <string name="edit_profile_height_in" translatable="false">%1$d\'%2$d\"</string>
+    <string name="edit_profile_height_cm" translatable="false">%s cm</string>
+    <string name="bmi_child_type_1" translatable="false">&lt;3rd</string>
+    <string name="bmi_child_type_2" translatable="false">3rd - 15th</string>
+    <string name="bmi_child_type_3" translatable="false">15th - 85th</string>
+    <string name="bmi_child_type_4" translatable="false">85th - 97th</string>
+    <string name="bmi_child_type_5" translatable="false">>=97th</string>
+    <string name="bmi_table_index_adult" translatable="false">BMI (kg/m2)</string>
+    <string name="about_hyper_link" translatable="false"><a href="https://mywelltraining.com">https://mywelltraining.com</a></string>
+    <string name="statistic_bmi_user" translatable="false">BMI %s</string>
+    <string name="body_type_women_1" translatable="false">&lt;15%</string>
+    <string name="body_type_women_2" translatable="false">15% - 18%</string>
+    <string name="body_type_women_3" translatable="false">18% - 22%</string>
+    <string name="body_type_women_4" translatable="false">22% - 30%</string>
+    <string name="body_type_women_5" translatable="false">30% - 40%</string>
+    <string name="body_type_women_6" translatable="false">> 40%</string>
+    <string name="body_type_man_1" translatable="false">&lt;5%</string>
+    <string name="body_type_man_2" translatable="false">5% - 8%</string>
+    <string name="body_type_man_3" translatable="false">8% - 12%</string>
+    <string name="body_type_man_4" translatable="false">12% - 20%</string>
+    <string name="body_type_man_5" translatable="false">20% - 30%</string>
+    <string name="body_type_man_6" translatable="false">> 30%</string>
+    <string name="healthy_weight" translatable="false">@string/bmi_healthy_weight</string>
+    <string name="onboarding_goal" translatable="false">@string/rpe_goad</string>
+    <string name="onboarding_maintain" translatable="false">@string/home_title_maintain</string>
+    <string name="setting_about_us" translatable="false">@string/about_us</string>
+    <string name="bmi_obesity_des" translatable="false">@string/bmi_obesity</string>
+    <string name="healthy_weight_toolbar" translatable="false">@string/home_healthy_weight</string>
+    <string name="healthy_weight_status_1" translatable="false">@string/bmi_over_weight</string>
+    <string name="healthy_weight_status_3" translatable="false">@string/bmi_under_weight</string>
+    <string name="edit_profile_toolbar" translatable="false">@string/profile_edit</string>
+    <string name="edit_index_toolbar" translatable="false">@string/all_edit</string>
+    <string name="body_explanation_title_1" translatable="false">@string/body_type_1</string>
+    <string name="body_explanation_title_2" translatable="false">@string/body_type_2</string>
+    <string name="body_explanation_title_3" translatable="false">@string/body_type_3</string>
+    <string name="body_explanation_title_4" translatable="false">@string/body_type_4</string>
+    <string name="body_explanation_title_5" translatable="false">@string/body_type_5</string>
+    <string name="body_explanation_title_6" translatable="false">@string/body_type_6</string>
+    <string name="body_explanation_des_1" translatable="false">@string/body_type_des_1</string>
+    <string name="body_explanation_des_2" translatable="false">@string/body_type_des_2</string>
+    <string name="body_explanation_des_3" translatable="false">@string/body_type_des_3</string>
+    <string name="body_explanation_des_4" translatable="false">@string/body_type_des_4</string>
+    <string name="body_explanation_des_5" translatable="false">@string/body_type_des_5</string>
+    <string name="body_explanation_des_6" translatable="false">@string/body_type_des_6</string>
+    <string name="transformation_edit_weight" translatable="false">@string/addweight_edit_weight</string>
+    <string name="transformation_add_weight" translatable="false">@string/addweight_title</string>
+    <string name="share_via" translatable="false">@string/preview_share</string>
+
+    <string name="all_days_ago">%d days ago</string>
+    <string name="all_year_ago">%d year ago</string>
+    <string name="all_years_ago">%d years ago</string>
+    <string name="body_women">Woman (% Fat)</string>
+    <string name="body_man">Man (% Fat)</string>
+    <string name="transformation_days_decrease">%1$d days - Decrease %2$s%3$s</string>
+    <string name="transformation_days_increase">%1$d days - Increase %2$s%3$s</string>
+    <string name="transformation_days_not_data">%1$d days - Not enough data</string>
+    <string name="notifi_sale_off">%s OFF</string>
+    <string name="version_app">Version: %s</string>
+    <string name="profile_bmi_user">BMI %s |</string>
+    <string name="profile_des_billing">Don\'t let ads interrupt your experience</string>
+    <string name="profile_rate_love_description">Please let us know your feeling! We\'d love to hear your feedback anytime.</string>
+    <string name="rate_completed_description">We appreciate your rating \n We will improve better in the future</string>
+    <string name="onboarding_let_go">Let\’s go</string>
+    <string name="bmi_answer_child">BMI is based on weight and height, it is only an indicator of body fatness. After BMI is calculated for children and teens, it is expressed as a percentile. Percentiles express a child\’s BMI relative to other children.\n\nCheck BMI-for-age annually. Tracking growth patterns over time can help you make sure your child is achieving or maintaining a healthy weight.\n\nPlease keep in mind that this BMI  is not meant to serve as a source of clinical guidance and is not intended to be a substitute for professional medical advice.</string>
+    <string name="bmi_visit_child"><![CDATA[This formula is derived from <html><font color="#0645AD"><a href="https://www.who.int/tools/growth-reference-data-for-5to19-years/indicators/bmi-for-age">WHO’s website</a></font></html>.]]></string>
+    <string name="healthy_weight_answer">The Healthy weight is derived by using your height in the reverse of the BMI formula. \nThis is done for both the minimum and maximum value of the recommended BMI</string>
+    <string name="healthy_weight_status_des_2">You are in the healthy weight gap. Maintain healthy habits to maintain a healthy weight</string>
+    <string name="healthy_weight_status_des_1"><![CDATA[You need to <html><font color="#FF974B">lose %1$s %2$s</font></html> to reach goal. Don\'t wait anymore! Let\'s practice to achieve the goal.]]></string>
+    <string name="healthy_weight_status_des_3"><![CDATA[You need to <html><font color="#68A5F8">gain %1$s %2$s</font></html> to reach goal.  Improve your nutrition to improve weight.]]></string>
+    <string name="all_week">Week</string>
+    <string name="all_weight">Weight</string>
+    <string name="all_height">Height</string>
+    <string name="all_birthday">Birthday</string>
+    <string name="all_gender">Gender</string>
+    <string name="all_firstname">First Name</string>
+    <string name="all_goal_weight">Goal weight</string>
+    <string name="all_name">Name</string>
+    <string name="all_lastname">Last Name</string>
+    <string name="all_setting">Setting</string>
+    <string name="all_done">Done</string>
+    <string name="all_cancel">Cancel</string>
+    <string name="all_save">Save</string>
+    <string name="all_saved">Saved</string>
+    <string name="all_close">Close</string>
+    <string name="all_edit">Edit</string>
+    <string name="all_you">You</string>
+    <string name="all_change">Change</string>
+    <string name="all_metric">Metric</string>
+    <string name="all_imperial">Imperial</string>
+    <string name="all_ok">OK</string>
+    <string name="all_exit">Exit</string>
+    <string name="all_came">Camera</string>
+    <string name="all_gallery">Gallery</string>
+    <string name="all_today">Today</string>
+    <string name="all_yesterday">Yesterday</string>
+    <string name="all_discard">Discard</string>
+    <string name="all_share">Share</string>
+    <string name="all_save_changes">Save changes?</string>
+    <string name="all_delete">Delete</string>
+    <string name="all_term_of_service">Terms of Service</string>
+    <string name="all_tks_iu">Thank you!</string>
+    <string name="all_stride_length">Stride length</string>
+    <string name="all_month">Month</string>
+    <string name="all_year">Year</string>
+    <string name="all_day">Day</string>
+    <string name="all_update_weight_success">Update weight successfully</string>
+    <string name="all_update_height_success">Update height successfully</string>
+    <string name="all_delete_success">Delete successfully</string>
+    <string name="all_strict_gain_description">Use proper nutrition and exercise to achieve your goal.</string>
+    <string name="all_strict_loss_description">Apply sports exercises and try to achieve your goal.</string>
+    <string name="all_normal_loss_description">Apply sports exercises and try to achieve your goal.</string>
+    <string name="all_comfortable_loss_description">Apply sports exercises and try to achieve your goal.</string>
+    <string name="all_maintain_weight_description">Maintain healthy habits to maintain a healthy weight.</string>
+    <string name="all_normal_gain_description">Use proper nutrition and exercise to achieve your goal.</string>
+    <string name="all_network_error_message">Network unavailable!</string>
+    <string name="all_retry">Try again</string>
+    <string name="all_unit_kcal_day">kcal/day</string>
+    <string name="all_diary">Diary</string>
+    <string name="all_transformed">Transformed</string>
+    <string name="home_control_health">Health</string>
+    <string name="home_control_profile">Profile</string>
+    <string name="home_exit">Tap again to exit</string>
+    <string name="home_des_bmi">Body Mass Index</string>
+    <string name="home_healthy_weight">Healthy weight</string>
+    <string name="home_body_fat">Body fat</string>
+    <string name="home_body_measurement">Body Measurement</string>
+    <string name="home_title_bmr">BMR</string>
+    <string name="home_title_maintain">Maintain weight</string>
+    <string name="home_title_calculator_others">BMI Calculate for Others</string>
+    <string name="home_recommend">Recommend</string>
+    <string name="home_des_install_welltraining">WellTraining: Running and Cycling Tracker App</string>
+    <string name="home_title_install_welltraining">Install</string>
+    <string name="home_workout">Workout</string>
+    <string name="home_des_open">Start your workouts with WellTraining</string>
+    <string name="profile_edit">Edit profile</string>
+    <string name="profile_title_billing">Become VIP forever</string>
+    <string name="profile_title_share_friends">Share WellBe to your friends</string>
+    <string name="profile_title_wellTrining">More app by Welly Group</string>
+    <string name="profile_des_wellTrining">WellTraining</string>
+    <string name="setting_unit">Unit</string>
+    <string name="setting_language">Language</string>
+    <string name="setting_dark_mode">Dark mode</string>
+    <string name="setting_feedback">Feedback</string>
+    <string name="rate_love_title">Love WellBe?</string>
+    <string name="rate_love_description">If you enjoy using WellBe, please rate us on Google Play Store. Thank you!</string>
+    <string name="rate_love_button_yes">Yes, I really like WellBe</string>
+    <string name="rate_love_button_no">No, I want experience more</string>
+    <string name="rating_two_star">Bad! Give us some feedback</string>
+    <string name="rating_one_star">Terrible! Give us some feedback</string>
+    <string name="rpe_activity_level">Activity level</string>
+    <string name="rpe_moderately">Moderately</string>
+    <string name="rpe_moderately_des">Moderately exercise, sport 3-5 days per week.</string>
+    <string name="rpe_goad">Goal</string>
+    <string name="rpe_normal_weight">Normal Lose Weight</string>
+    <string name="rpe_sedentary">Sedentary</string>
+    <string name="rpe_sedentary_des">Little or no exercise, desk job.</string>
+    <string name="rpe_lightly">Lightly Active</string>
+    <string name="rpe_lightly_des">Light exercises, sport 1-3 days per week.</string>
+    <string name="rpe_very_active">Very Active</string>
+    <string name="rpe_very_active_des">Heavy exercise, sport 6-7 days per week.</string>
+    <string name="rpe_extremely">Extremely Active</string>
+    <string name="rpe_extremely_des">Very heavy exercises, physical job or trainings almost everyday, sometimes 2 times per day.</string>
+    <string name="onboarding_des_tab1">Manage your personal stats like BMI, BMR, Body fat and more…</string>
+    <string name="onboarding_des_tab2">Calculate charts for weight/height tracker</string>
+    <string name="onboarding_des_tab3">Measure heart rate, set weight goal, reminders, and more coming soon</string>
+    <string name="onboarding_title_tab1">Body Measurements</string>
+    <string name="onboarding_title_tab2">Health Tracking</string>
+    <string name="onboarding_title_tab3">And much more</string>
+    <string name="onboarding_by_get_start">By get started, you agree to our</string>
+    <string name="onboarding_view_our">and our</string>
+    <string name="onboarding_privacy_policy">Privacy Policy</string>
+    <string name="onboarding_strict_loos">Weight loss III</string>
+    <string name="onboarding_mormal_weight">Weight loss II</string>
+    <string name="onboarding_comfortable">Weight loss I</string>
+    <string name="onboarding_normal">Weight gain I</string>
+    <string name="onboarding_strict">Weight gain II</string>
+    <string name="onboarding_get_start">Get started</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_your_name">Your name</string>
+    <string name="onboarding_des_dialog_fonfirm">Are you sure you want to exit app?</string>
+    <string name="onboarding_title_dialog_fonfirm">Exit app?</string>
+    <string name="onboarding_title_set_your_gender">Set your gender and date of birth</string>
+    <string name="onboarding_title_set_your_height">Set your height and weight</string>
+    <string name="onboarding_title_set_your_activtiy">Set your activity metric</string>
+    <string name="onboarding_des_example">(-0.45kg/week)</string>
+    <string name="bmi_title">Your BMI</string>
+    <string name="bmi_title_des">Update your result</string>
+    <string name="bmi_toolbar_child">Body Mass Index (Child)</string>
+    <string name="bmi_toolbar_adult">Body Mass Index</string>
+    <string name="bmi_very_under_weight">Very underweight</string>
+    <string name="bmi_under_weight">Underweight</string>
+    <string name="bmi_healthy_weight">Healthy Weight</string>
+    <string name="bmi_over_weight">Overweight</string>
+    <string name="bmi_moderatelt_1">Moderately obese (Class I)</string>
+    <string name="bmi_moderatelt_2">Severely Obese (Class II)</string>
+    <string name="bmi_moderatelt_3">Super Obese (Class III)</string>
+    <string name="bmi_obesity">Obesity</string>
+    <string name="bmi_healthy_weight_des">Congratulation! You are in a great position. Maintain healthy habits to maintain a healthy weight.</string>
+    <string name="bmi_very_under_weight_des">You should go to the doctor and consider some measures to gain weight, improve your diet to limit health risks.</string>
+    <string name="bmi_under_weight_des">Improve your nutrition to improve weight.</string>
+    <string name="bmi_over_weight_des">Your condition is not serious, change your diet to bring your weight back to a safe threshold.</string>
+    <string name="bmi_moderatelt_1_des">You need to apply weight loss exercises and limit high-fat foods.</string>
+    <string name="bmi_moderatelt_2_des">Your condition is getting serious and consider consulting a doctor</string>
+    <string name="bmi_moderatelt_3_des">You need to monitor your own weight and consider consulting a doctor</string>
+    <string name="bmi_very_under_weight_des_child">You should go to the doctor and consider some measures to gain weight, improve your diet to limit health risks.</string>
+    <string name="bmi_under_weight_des_child">Improve your nutrition to improve weight.</string>
+    <string name="bmi_healthy_weight_des_child">Congratulation! You are in a great position. Maintain healthy habits to maintain a healthy weight</string>
+    <string name="bmi_over_weight_des_child">Your condition is not serious, change your diet to bring your weight back to a safe threshold.</string>
+    <string name="bmi_obesity_des_child">You need to monitor your own weight and consider consulting a doctor.</string>
+    <string name="bmi_question_adult">What is BMI?</string>
+    <string name="bmi_question_child">What is BMI? (for child)</string>
+    <string name="bmi_answer_adult">Body mass index (BMI) is a measure of body fat based on height and weight that applies to adult men and women.</string>
+    <string name="bmi_table_name_adult">Weight Categories</string>
+    <string name="bmi_table_name_child">Weight Categories Child</string>
+    <string name="bmi_table_index_child">Percentile</string>
+    <string name="healthy_weight_title">Your Healthy Weight</string>
+    <string name="healthy_weight_des">Update your result</string>
+    <string name="healthy_weight_question">What is Healthy weight?</string>
+    <string name="healthy_weight_status_2">Good</string>
+    <string name="other_bmi_calculator">Calculate</string>
+    <string name="other_bmi_recalculator">Recalculate</string>
+    <string name="preview_share">Share with friends</string>
+    <string name="preview_toolbar">Preview</string>
+    <string name="share_invite_friend">Invite Friend use app</string>
+    <string name="share_link_download">Link download WellBe App</string>
+    <string name="share_copy_message">Copied to Clipboard!</string>
+    <string name="share_copy">Copy</string>
+    <string name="other_name">My friend</string>
+    <string name="addweight_title">Add Weight</string>
+    <string name="addheight_title">Add Height</string>
+    <string name="addweight_select_time">Select time</string>
+    <string name="addweight_to_day">Today</string>
+    <string name="addweight_your_look">Your look?</string>
+    <string name="addweight_optional">(optional)</string>
+    <string name="addweight_keep_in_touch">Keep in touch with your progress</string>
+    <string name="addweight_keep_note">Note</string>
+    <string name="addweight_take_note_something">Take note something</string>
+    <string name="addweight_choose_photo_title">Choose photo from:</string>
+    <string name="addweight_content_error">Sorry, an unexpected error occurred. \nPlease try again later</string>
+    <string name="addweight_replace">Replace</string>
+    <string name="addweight_discard_record">Discard record</string>
+    <string name="addweight_discard_des">Are you sure you want to discard this record?</string>
+    <string name="addweight_discard_discard">Discard</string>
+    <string name="addweight_edit_weight">Edit Weight</string>
+    <string name="addweight_edit_height">Edit Height</string>
+    <string name="statistic_week_change">Week change</string>
+    <string name="statistic_weekly_average">Week average</string>
+    <string name="all_add">Add</string>
+    <string name="statistic_height_statistic">Height statistic</string>
+    <string name="statistic_weight_statistic">Weight statistic</string>
+    <string name="body_classification">Classification</string>
+    <string name="body_type_1">Low Body Fat Risk</string>
+    <string name="body_type_2">Ultra Lean</string>
+    <string name="body_type_3">Lean</string>
+    <string name="body_type_4">Moderately Lean</string>
+    <string name="body_type_5">Excessive Fat</string>
+    <string name="body_type_6">High Body Fat Risk</string>
+    <string name="body_fat_toolbar">Body Fat Percentage</string>
+    <string name="body_title">Your BFP</string>
+    <string name="body_des">Calculated based on BMI</string>
+    <string name="body_question">What is Body Fat Percent?</string>
+    <string name="body_answer">The body fat percentage is total mass of fat divided by total body mass; It includes essential and storage body fat. Essential body fat is necessary to maintain life and reproductive functions. The body fat percentage is a measure of fitness level, since it is the only body measurement, which directly calculates a person\'s relative body composition without regard to height or weight</string>
+    <string name="body_title_table_man">Body Fat for Man</string>
+    <string name="body_title_table_women">Body Fat for Woman</string>
+    <string name="body_explanation">Explanation</string>
+    <string name="body_type_des_1">Ask your doctor about increasing your body fat safety.</string>
+    <string name="body_type_des_2">This is the typical body fat level found in athletes.</string>
+    <string name="body_type_des_3">This is excellent for health and also lower than most people. Please maintain daily activities to maintain the body fat</string>
+    <string name="body_type_des_4">Generally acceptable  for health.</string>
+    <string name="body_type_des_5">It\’s recommended to review your diet and to increase your exercise.\nThis level indicates an excess of fat.</string>
+    <string name="body_type_des_6">Ask your doctor about decreasing your body fat safety.</string>
+    <string name="about_us">About us</string>
+    <string name="about_visit_our">Visit our website at</string>
+    <string name="result_toolbar">Result</string>
+    <string name="basal_metabolic_rate">Basal Metabolic Rate</string>
+    <string name="maintain_weight">Maintain Weight</string>
+    <string name="update_your_result">Update your result</string>
+    <string name="your_bmr">Your BMR</string>
+    <string name="bmr_question">What is BMR?</string>
+    <string name="your_calories_required">Your Calories Required</string>
+    <string name="bmr_description">This is a minimum number of calories per day required for basic functions at rest</string>
+    <string name="bmr_answer">Basal Metabolic Rate, also known as BMR, is the amount of energy your body burns at rest on a daily basis. In other words: It is the number of calories required to keep your body function while you are not doing any physical activities.</string>
+    <string name="calories_description">You are in the healthy weight gap</string>
+    <string name="calories_title_question_one">What is TDEE?</string>
+    <string name="calories_title_question_two">What is Calories Required?</string>
+    <string name="calories_title_answer_one">TDEE (Total Daily Energy Expenditure) is the number of calories needed by the body in a day including all the sleeping and eating activities you have during the day.</string>
+    <string name="calories_title_answer_two">To reach your desired weight, you need to balance the calories you consume through food and drink with the calories you burn through physical activity.</string>
+    <string name="calories_required_toolbar">Calories Required</string>
+    <string name="diary_no_image">No image added</string>
+    <string name="diary_your_look">Your look</string>
+    <string name="diary_title_dialog_delete">Delete record</string>
+    <string name="diary_des_dialog_delete">You will not able to restore this record. Do you want to delete it?</string>
+    <string name="transformation_toolbar">Transformation</string>
+    <string name="transformation_start_day">Start day</string>
+    <string name="transformation_end_day">End day</string>
+    <string name="transformation_weight_tracker">Weight Tracker</string>
+    <string name="transformation_image">Transformation Image</string>
+    <string name="transformation_no_data">No data</string>
+    <string name="transformation_before">Before</string>
+    <string name="transformation_after">After</string>
+    <string name="transformation_add_image">Add image</string>
+    <string name="transformation_add_data">Add data</string>
+    <string name="billing_purchase">Purchase now</string>
+    <string name="billing_promo_end_at">Flash Sale ending:</string>
+    <string name="billing_purchased_successful">Purchased successful!</string>
+    <string name="billing_purchased_successful_des">Thank you for purchased. Please enjoy your Premium!</string>
+    <string name="billing_explore">Explore</string>
+    <string name="billing_forever_benefits">Forever Benefits</string>
+    <string name="billing_remove_ads">Remove ads</string>
+    <string name="all_years_old">%d Years old</string>
+    <string name="statistic_month_change">Month change</string>
+    <string name="statistic_year_change">Year change</string>
+    <string name="statistic_monthly_average">Month average</string>
+    <string name="statistic_yearly_average">Year average</string>
+    <string name="all_select_mode">Select mode</string>
+    <string name="all_mode_light">Light</string>
+    <string name="all_mode_dark">Dark</string>
+    <string name="all_mode_system">System</string>
+    <string name="all_on">On</string>
+    <string name="all_off">Off</string>
+    <string name="all_loading_ads">Loading ads…</string>
+    <string name="bmi_toolbar_teen">Body Mass Index (Teenager)</string>
+    <string name="ucrop_label_edit_photo">Crop image</string>
+    <string name="all_invalid_time">Invalid time</string>
+    <string name="home_start">Start</string>
+    <string name="bmi_visit_adult"><![CDATA[For further information, please visit  <html><font color="#0645AD"><a href="https://www.who.int/tools/growth-reference-data-for-5to19-years/indicators/bmi-for-age">WHO’s website</a></font></html>.]]></string>
+    <string name="home_billing">Get Premium with %s</string>
+
+    <string name="bmi_moderately_obese">Moderately obese</string>
+    <string name="bmi_very_obese">Very obese</string>
+    <string name="notification_sale_description">Hurry Up! Open to catch it NOW 👉</string>
+    <string name="notification_sale_title">🔥FLASH SALE -25% Just For You 🔥</string>
+    <string name="app_update_message">An update has been downloaded. Restart to install.</string>
+    <string name="app_update_action">Restart</string>
+
+    <string name="calories_title_answer_three">Required calories are based on TDEE combined with goal weight. If your goal is to Maintain Weight, then calories required = TDEE</string>
+
+    <!--    String mới-->
+    <string name="title_rate">We are working hard for a better user experience. We\’d greatly appreciate if you can tell us about your feeling!</string>
+    <string name="rate_recommend">The best we can get</string>
+    <string name="rate_us">Rate us</string>
+    <string name="rate">Rate</string>
+    <string name="rate_us_google_play">Rate us on Google Play</string>
+    <string name="rating_three_star">So so! we will try to improve</string>
+    <string name="rating_four_star">Pretty good!</string>
+    <string name="rating_five_star">I love it!</string>
+    <string name="rate_dialog_des_bad">Oh, no! we will try to improve</string>
+
+
+    <!--    Sprint 2.0.0-->
+    <string name="unit_km" translatable="false">km</string>
+    <string name="calo_last_hour" translatable="false">%s kcal</string>
+    <string name="distance_last_hour_in_km" translatable="false">%s km</string>
+    <string name="distance_last_hour_in_mi" translatable="false">%s mi</string>
+    <string name="all_facebook" translatable="false">Facebook</string>
+    <string name="all_google" translatable="false">Google</string>
+
+    <plurals name="weight_day_left_goal">
+        <item quantity="one">@string/weight_day_left</item>
+        <item quantity="other">@string/weight_days_left</item>
+    </plurals>
+
+    <plurals name="weight_hour_left_goal">
+        <item quantity="one">@string/weight_hour_left</item>
+        <item quantity="other">@string/weight_hours_left</item>
+    </plurals>
+
+    <plurals name="weight_minute_left_goal">
+        <item quantity="one">@string/weight_minute_left</item>
+        <item quantity="other">@string/weight_minutes_left</item>
+    </plurals>
+
+    <plurals name="step_last_hour">
+        <item quantity="one">@string/step_last_hour_one</item>
+        <item quantity="other">@string/step_last_hour_ohter</item>
+    </plurals>
+
+    <plurals name="all_unit_hour">
+        <item quantity="one">@string/all_hour</item>
+        <item quantity="other">@string/all_hours</item>
+    </plurals>
+
+    <plurals name="all_step">
+        <item quantity="one">@string/activity_step</item>
+        <item quantity="other">@string/activity_steps</item>
+    </plurals>
+
+
+    <string name="weight_start_time">Start with %1$s %2$s</string>
+    <string name="weight_goal">Goal: %1$s %2$s</string>
+    <string name="weight_days_left">%s days left</string>
+    <string name="weight_hours_left">%s hours left</string>
+    <string name="weight_minutes_left">%s minutes left</string>
+    <string name="weight_day_left">%s day left</string>
+    <string name="weight_hour_left">%s hour left</string>
+    <string name="weight_minute_left">%s minute left</string>
+    <string name="step_last_hour_one">%d step</string>
+    <string name="step_last_hour_ohter">%d steps</string>
+    <string name="time_last_hour">%s min</string>
+    <string name="profile_bmi_user_other">BMI %s </string>
+    <string name="notify_step_goal">Your target today is %d. Try to achieve the goal!</string>
+    <string name="statistic_goal_steps">Goal: %s steps</string>
+    <string name="statistic_goal_step">Goal: %s step</string>
+    <string name="distance_unit">Distance (%s)</string>
+    <string name="delete_profile_tittle">Delete %s</string>
+    <string name="delete_profile_content">Are you sure you want to delete %s, data will be loss and could not recover.</string>
+    <string name="count_profile">%d/4 Profile</string>
+    <string name="premium_time_left">(%d times left)</string>
+    <string name="premium_people_install_vip">and %s others are premium users</string>
+    <string name="rtp_guide_message_scroll">Please scroll to find \'%s\' and enable it. It will never collect your privacy!</string>
+
+    <string name="tv_home_activity_data">Activity Data</string>
+    <string name="activity_steps">Steps</string>
+    <string name="activity_step">Step</string>
+    <string name="tv_activity_last_hour">Last hour:</string>
+    <string name="permission_physical_activity"><![CDATA[You need to allow <b>Physical Activity Permission</b> so we can calculate and show your steps]]></string>
+    <string name="allow_permission">Allow</string>
+    <string name="deny_permission">Deny</string>
+    <string name="all_completed">Completed</string>
+    <string name="all_distance">Distance</string>
+    <string name="all_calories">Calories</string>
+    <string name="all_time">Time</string>
+    <string name="goal_not_set">Not set</string>
+    <string name="goal_daily_title">Daily Step Goal</string>
+    <string name="all_broze">Bronze</string>
+    <string name="all_silver">Silver</string>
+    <string name="all_gold">Gold</string>
+    <string name="all_platium">Platinum</string>
+    <string name="all_diamond">Diamond</string>
+    <string name="all_custom">Custom</string>
+    <string name="weight_add_goal">Add Goal</string>
+    <string name="weight_goal_weight">Weight goal</string>
+
+    <string name="weight_edit_goal">Edit Goal</string>
+    <string name="weight_new_goal">Add new goal</string>
+    <string name="weight_add_weight_goal">Add Weight Goal</string>
+    <string name="weight_target_time">Target time</string>
+
+    <string name="home_title_required">Daily Calories Required</string>
+    <string name="all_login">Login</string>
+    <string name="all_manage">Manage</string>
+    <string name="profile_workout_report">Workout Report</string>
+    <string name="profile_index_report">Body index Report</string>
+    <string name="profile_coming_soon">coming soon</string>
+    <string name="tittle_permission_allow">Allow Permission</string>
+    <string name="content_permission"><![CDATA[Enable <b>\“Physical Activity Permission\”</b> for WellBe count your steps when moving]]></string>
+    <string name="content_permission_deny"><![CDATA[Enable <b>\“Physical Activity Permission\”</b> for WellBe count your steps when moving.<br><br>Go to \[Settings\] -> \[Permissions\]]]></string>
+
+    <string name="analysis_title">Activity Analysis</string>
+    <string name="analysis_most_active">Most active hours</string>
+    <string name="goal_completed">Completed!</string>
+
+
+    <string name="manage_profile_tittle">Manage profile</string>
+    <string name="primary_profile">Primary profile</string>
+    <string name="other_profile">Other profile</string>
+
+
+    <string name="body_index">Body Index</string>
+    <string name="body_index_title">Save body stats</string>
+    <string name="body_index_des">Don\'t forget to update your body mass index daily to keep track of your body fat</string>
+    <string name="body_index_des_bot">Add your Body Index \nfor more precise Body Fat\’s result</string>
+    <string name="all_uncompleted">Uncompleted</string>
+    <string name="all_add_profile">Add profile</string>
+    <string name="all_primary">PRIMARY</string>
+    <string name="all_health_information">Health Information</string>
+    <string name="all_activity_information">Activity Information</string>
+    <string name="all_hour">hour</string>
+    <string name="all_hours">hours</string>
+    <string name="analysis_this_day">This day</string>
+    <string name="analysis_this_week">This week</string>
+    <string name="analysis_this_month">This month</string>
+    <string name="analysis_this_year">This year</string>
+    <string name="analysis_vs_last_week">vs. last week</string>
+    <string name="analysis_vs_last_month">vs. last month</string>
+    <string name="analysis_vs_last_year">vs. last year</string>
+    <string name="all_no_data">No data</string>
+    <string name="body_go_to_index">Go to body index</string>
+    <string name="body_index_title_bfp_bodyindex">Calculated based on Body index</string>
+    <string name="body_index_no_data">No body index at all</string>
+    <string name="body_index_add_data">Add data</string>
+    <string name="body_bmi_formula">Base on BMI formula</string>
+    <string name="body_base_index">Base on Body Index</string>
+    <string name="body_index_neck">Neck</string>
+    <string name="body_index_chest">Chest</string>
+    <string name="body_index_waist">Waist</string>
+    <string name="body_index_hips">Hips</string>
+    <string name="all_statistics">Statistics</string>
+
+    <string name="login_content_error">Sorry, an unexpected error occurred. \nPlease try again later</string>
+    <string name="login_failed">Login failed</string>
+    <string name="all_syncing">Sync data</string>
+    <string name="all_skip_login">Skip login</string>
+    <string name="login_registration">Registration</string>
+
+    <string name="login_loading">Loading…</string>
+    <string name="login_final_step_content">The information below help us calculate calories and health metric. This will help the statistics be more accurate</string>
+    <string name="login_final_step">Final step</string>
+    <string name="login_login_with">Login with</string>
+    <string name="login_account">Account</string>
+    <string name="login_login_content">To synchronize your data between product of Welly Group</string>
+    <string name="login_primary_profile_only">Primary profile (Only 1)</string>
+    <string name="login_unselected_profiles_guild">Unselected profiles will be deleted</string>
+    <string name="login_accept_login">Accept login</string>
+    <string name="login_keep_data">You want to keep data. </string>
+    <string name="login_switch_another_account">Switch another account</string>
+    <string name="login_merge_profile">Merge Profile</string>
+    <string name="premium_unlock_max">Unlock maximum 5 profiles</string>
+    <string name="premium_daily_report">Daily report</string>
+    <string name="premium_remove_ads">Remove ads forever</string>
+    <string name="all_standard">Standard</string>
+    <string name="all_addon">Add-on</string>
+    <string name="premium_add_profile">Add 1 profile</string>
+    <string name="premium_purchase_restore">Restore Purchase</string>
+    <string name="add_profile_message">Add success</string>
+    <string name="delete_profile_message">Delete success</string>
+    <string name="login_other_profile">Other profile (Max: %d)</string>
+    <string name="login_deleted_user_profile">Deleted</string>
+    <string name="login_present">Present</string>
+    <string name="login_synced">Synced</string>
+    <string name="login_chose_max_profile">You chose max profile</string>
+    <string name="permission_title_allow_background">Allow Run in Background</string>
+    <string name="permission_des_allow_background">Grant all options below to helps Step Counter Feature work normally.</string>
+    <string name="permission_auto_start">Auto start</string>
+    <string name="permission_ignore_battery">Ignore battery optimization</string>
+    <string name="setting_step_couter">Step counter not work?</string>
+
+    <string name="all_sale">Sale</string>
+    <string name="profile_full_tittle">Profile is full</string>
+    <string name="profile_full_content">You have reached your profile limit. Please check again!</string>
+    <string name="switch_profile_loading">Switching profile…</string>
+    <string name="sync_data_noti">Sync data…</string>
+    <string name="sync_data_noti_body">Touch to open</string>
+    <string name="all_not_accessible">Not accessible</string>
+    <string name="switch_profile_tittle">Switch profile</string>
+
+    <string name="all_minutes">minutes</string>
+    <string name="all_minute">minute</string>
+
+    <plurals name="all_unit_minute">
+        <item quantity="one">@string/all_minute</item>
+        <item quantity="other">@string/all_minutes</item>
+    </plurals>
+
+    <string name="analysis_day_average">Day average</string>
+
+    <string name="all_none">None</string>
+    <string name="all_min">min</string>
 </resources>

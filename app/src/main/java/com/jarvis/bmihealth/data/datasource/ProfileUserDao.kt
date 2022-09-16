@@ -7,6 +7,9 @@ interface ProfileUserDao {
     @Query("select * from profileuser where id=:id")
     suspend fun getNoteById(id:Int): ProfileUser?
 
+    @Query("select * from profileuser")
+    suspend fun getAllProfile(): List<ProfileUser>?
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNote(profileUser: ProfileUser)
 
@@ -15,4 +18,7 @@ interface ProfileUserDao {
 
     @Delete
     suspend fun deleteNote(profileUser: ProfileUser)
+
+    @Query("delete from profileuser where id = :id")
+    suspend fun deleteProfile(id: Int)
 }

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="@dimen/px296"
+            android:layout_height="@dimen/px290"
+            android:background="@drawable/bg_01_boder_8px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvTitle"
+                style="@style/T16H24M"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/px16"
+                android:gravity="center"
+                android:text="@string/onboarding_goal"
+                android:textColor="@color/ink_5"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/lineTop"
+                style="@style/Divider1PxMercuryHorizontal"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/px12"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+            <com.jarvis.design_system.button.JxButton
+                android:id="@+id/btCancel"
+                style="@style/ButtonPlain.Mini.SizeS"
+                android:layout_width="0dp"
+                android:text="@string/all_cancel"
+                android:textColor="@color/ink_3"
+                app:layout_constraintBottom_toBottomOf="@+id/btSave"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/btSave"
+                app:layout_constraintTop_toTopOf="@+id/btSave"/>
+
+            <com.jarvis.design_system.button.JxButton
+                android:id="@+id/btSave"
+                style="@style/ButtonPlain.Mini.SizeS"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/px2"
+                android:text="@string/all_save"
+                android:textColor="@color/pri_1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/btCancel"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <View
+                android:id="@+id/lineBottom"
+                style="@style/Divider1PxMercuryHorizontal"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="@dimen/px2"
+                app:layout_constraintBottom_toTopOf="@+id/btSave" />
+
+            <com.jarvis.bmihealth.presentation.register.ViewGoalEdit
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/rvGoal"
+                app:layout_constraintBottom_toTopOf="@id/lineBottom"
+                app:layout_constraintTop_toBottomOf="@+id/lineTop" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

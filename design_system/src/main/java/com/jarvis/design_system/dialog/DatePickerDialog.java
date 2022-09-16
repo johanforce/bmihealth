@@ -20,25 +20,23 @@ import kotlin.Suppress;
 
 @Suppress(names = "unused")
 public class DatePickerDialog extends BaseFragmentDialog {
-    private SimpleDateFormat sdfToYear = new SimpleDateFormat("yyyy", Locale.getDefault());
-    private SimpleDateFormat sdfToMonth = new SimpleDateFormat("MM", Locale.getDefault());
-    private SimpleDateFormat sdfToDay = new SimpleDateFormat("dd", Locale.getDefault());
+    private final SimpleDateFormat sdfToYear = new SimpleDateFormat("yyyy", Locale.getDefault());
+    private final SimpleDateFormat sdfToMonth = new SimpleDateFormat("MM", Locale.getDefault());
+    private final SimpleDateFormat sdfToDay = new SimpleDateFormat("dd", Locale.getDefault());
 
     private NumberPickerView pickerView1;
     private NumberPickerView pickerView2;
     private NumberPickerView pickerView3;
-    private JxBottomSheetHeader viewHeader;
-    private TextView tvOkay;
-    private TextView tvCancel;
 
     private int day;
     private int month;
     private int year;
 
     private long birthday;
-    private String negativeButtonText, positiveButtonText;
-    private OnDialogClickDate onDialogClickDate;
-    private String title;
+    private final String negativeButtonText;
+    private final String positiveButtonText;
+    private final OnDialogClickDate onDialogClickDate;
+    private final String title;
     private List<String> listMonth = new ArrayList();
 
     public DatePickerDialog(Builder builder) {
@@ -74,30 +72,30 @@ public class DatePickerDialog extends BaseFragmentDialog {
         this.pickerView1 = contentView.findViewById(R.id.npv_number1);
         this.pickerView2 = contentView.findViewById(R.id.npv_number2);
         this.pickerView3 = contentView.findViewById(R.id.npv_number3);
-        this.tvOkay = contentView.findViewById(R.id.tvPositive);
-        this.tvCancel = contentView.findViewById(R.id.tvNegative);
-        this.viewHeader = contentView.findViewById(R.id.viewHeader);
+        TextView tvOkay = contentView.findViewById(R.id.tvPositive);
+        TextView tvCancel = contentView.findViewById(R.id.tvNegative);
+        JxBottomSheetHeader viewHeader = contentView.findViewById(R.id.viewHeader);
 
-        if (this.viewHeader != null) {
-            this.viewHeader.setTitle(title);
+        if (viewHeader != null) {
+            viewHeader.setTitle(title);
         }
 
-        if (this.tvCancel != null) {
-            this.tvCancel.setText(negativeButtonText);
+        if (tvCancel != null) {
+            tvCancel.setText(negativeButtonText);
         }
 
-        if (this.tvOkay != null) {
-            this.tvOkay.setText(positiveButtonText);
+        if (tvOkay != null) {
+            tvOkay.setText(positiveButtonText);
         }
 
-        this.tvCancel.setOnClickListener(new View.OnClickListener() {
+        tvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
             }
         });
 
-        this.tvOkay.setOnClickListener(new View.OnClickListener() {
+        tvOkay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (onDialogClickDate != null) {
@@ -252,43 +250,22 @@ public class DatePickerDialog extends BaseFragmentDialog {
     }
 
     private void setPickerUnitChange() {
-        this.pickerView1.setOnValueChangedListener(new NumberPickerView.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPickerView picker, int oldVal, int newVal) {
-                day = Integer.parseInt(DatePickerDialog.this.pickerView1.getContentByCurrValue());
-                Calendar calendar = Calendar.getInstance();
-                calendar.set(Calendar.YEAR, year);
-                calendar.set(Calendar.MONTH, month - 1);
-                calendar.set(Calendar.DAY_OF_MONTH, day);
-                birthday = calendar.getTimeInMillis();
-            }
+        this.pickerView1.setOnValueChangedListener((picker, oldVal, newVal) -> {
+            day = Integer.parseInt(DatePickerDialog.this.pickerView1.getContentByCurrValue());
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.YEAR, year);
+            calendar.set(Calendar.MONTH, month - 1);
+            calendar.set(Calendar.DAY_OF_MONTH, day);
+            birthday = calendar.getTimeInMillis();
         });
-        this.pickerView2.setOnValueChangedListener(new NumberPickerView.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPickerView picker, int oldVal, int newVal) {
-                try {
-                    String contentByCurrValue = DatePickerDialog.this.pickerView2.getContentByCurrValue();
-                    if (listMonth.contains(contentByCurrValue)) {
-                        month = listMonth.indexOf(contentByCurrValue) + 1;
-                    } else {
-                        month = 1;
-                    }
-                    Calendar calendar = Calendar.getInstance();
-                    calendar.set(Calendar.YEAR, year);
-                    calendar.set(Calendar.MONTH, month - 1);
-                    calendar.set(Calendar.DAY_OF_MONTH, day);
-                    birthday = calendar.getTimeInMillis();
-                    DatePickerDialog.this.refreshPicker();
-                    DatePickerDialog.this.initViewData();
-                } catch (Exception e) {
+        this.pickerView2.setOnValueChangedListener((picker, oldVal, newVal) -> {
+            try {
+                String contentByCurrValue = DatePickerDialog.this.pickerView2.getContentByCurrValue();
+                if (listMonth.contains(contentByCurrValue)) {
+                    month = listMonth.indexOf(contentByCurrValue) + 1;
+                } else {
                     month = 1;
                 }
-            }
-        });
-        this.pickerView3.setOnValueChangedListener(new NumberPickerView.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPickerView picker, int oldVal, int newVal) {
-                year = Integer.parseInt(DatePickerDialog.this.pickerView3.getContentByCurrValue());
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, month - 1);
@@ -296,7 +273,19 @@ public class DatePickerDialog extends BaseFragmentDialog {
                 birthday = calendar.getTimeInMillis();
                 DatePickerDialog.this.refreshPicker();
                 DatePickerDialog.this.initViewData();
+            } catch (Exception e) {
+                month = 1;
             }
+        });
+        this.pickerView3.setOnValueChangedListener((picker, oldVal, newVal) -> {
+            year = Integer.parseInt(DatePickerDialog.this.pickerView3.getContentByCurrValue());
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.YEAR, year);
+            calendar.set(Calendar.MONTH, month - 1);
+            calendar.set(Calendar.DAY_OF_MONTH, day);
+            birthday = calendar.getTimeInMillis();
+            DatePickerDialog.this.refreshPicker();
+            DatePickerDialog.this.initViewData();
         });
     }
 
@@ -315,6 +304,7 @@ public class DatePickerDialog extends BaseFragmentDialog {
         void onPositionCLickDate(long birthday);
     }
 
+    @Suppress(names = "unused")
     public static class Builder {
 
         private long birthday = Calendar.getInstance().getTimeInMillis();

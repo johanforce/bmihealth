@@ -3,18 +3,18 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-<!--    <com.well.designsystem.view.forminput.WellTextFieldLabel-->
-<!--        android:id="@+id/tvTitle"-->
-<!--        style="@style/TextFieldLabelNormal"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content" />-->
+    <com.jarvis.design_system.forminput.JxTextFieldLabel
+        android:id="@+id/tvTitle"
+        style="@style/TextFieldLabelNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-<!--    <com.well.designsystem.view.forminput.WellPickerIcon-->
-<!--        android:id="@+id/tvInputLabel"-->
-<!--        style="@style/PickerValueBox"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_below="@id/tvTitle"-->
-<!--        android:inputType="text|textCapWords"-->
-<!--        android:layout_marginTop="@dimen/px4"/>-->
+    <com.jarvis.design_system.forminput.JxPickerIcon
+        android:id="@+id/tvInputLabelx"
+        style="@style/PickerValueBox"
+        android:layout_width="match_parent"
+        android:layout_below="@id/tvTitle"
+        android:inputType="text|textCapWords"
+        android:layout_marginTop="@dimen/px4"/>
 
 </RelativeLayout>

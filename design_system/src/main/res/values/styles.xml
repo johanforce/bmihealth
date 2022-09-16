@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="DSAppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="actionMenuTextColor">@color/pri_4</item>
@@ -423,6 +423,7 @@
     <style name="ButtonPlain.Mini.SizeS" parent="ButtonPlain.Mini">
         <item name="android:layout_height">@dimen/px32</item>
         <item name="android:paddingStart">@dimen/px8</item>
+        <item name="android:paddingVertical" tools:targetApi="o">@dimen/px12</item>
         <item name="android:paddingEnd">@dimen/px8</item>
     </style>
 

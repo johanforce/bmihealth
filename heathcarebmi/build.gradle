@@ -2,13 +2,11 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0.0"
+        targetSdkVersion 33
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -24,10 +22,10 @@ android {
     afterEvaluate {
         generateReleaseBuildConfig.enabled = false
     }
-
-    lintOptions {
+    lint {
         abortOnError false
     }
+
 
 }
 

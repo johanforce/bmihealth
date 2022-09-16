@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_01"
+        android:paddingTop="@dimen/px20"
+        android:paddingBottom="@dimen/px16">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.jarvis.design_system.item.JxListItem
+                android:id="@+id/viewGender"
+                style="@style/ListItem.SizeS"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px74"
+                android:background="@color/bg_01"
+                app:itemContentElement="onlyTitle"
+                app:itemEndElement="hide"
+                app:itemStartElement="hide"
+                app:itemTitle="@string/all_gender"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.jarvis.design_system.forminput.JxTextFieldLabel
+                android:id="@+id/tvBirthday"
+                style="@style/TextFieldLabelNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/px16"
+                android:layout_marginTop="@dimen/px16"
+                android:text="@string/all_birthday"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewGender" />
+
+            <com.jarvis.design_system.forminput.JxPickerIcon
+                android:id="@+id/tvValueBirthday"
+                style="@style/PickerValueBox"
+                android:layout_width="0dp"
+                android:layout_marginTop="@dimen/px4"
+                android:layout_marginEnd="@dimen/px16"
+                android:ellipsize="end"
+                android:hint="mm dd, yyyy"
+                android:maxLines="1"
+                app:itemPickerIcon="@drawable/ic_arrow_down"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tvBirthday"
+                app:layout_constraintTop_toBottomOf="@+id/tvBirthday" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivUnknown"
+                android:layout_width="@dimen/px48"
+                android:layout_height="@dimen/px48"
+                android:layout_marginEnd="@dimen/px16"
+                app:layout_constraintBottom_toBottomOf="@id/viewGender"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/selector_other_unknown" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivFemale"
+                android:layout_width="@dimen/px48"
+                android:layout_height="@dimen/px48"
+                android:layout_marginEnd="@dimen/px12"
+                app:layout_constraintBottom_toBottomOf="@id/viewGender"
+                app:layout_constraintEnd_toStartOf="@id/ivUnknown"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/selector_other_female" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivMale"
+                android:layout_width="@dimen/px48"
+                android:layout_height="@dimen/px48"
+                android:layout_marginEnd="@dimen/px12"
+                app:layout_constraintBottom_toBottomOf="@id/viewGender"
+                app:layout_constraintRight_toLeftOf="@+id/ivFemale"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/selector_other_male" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.jarvis.design_system.forminput.JxTextFieldLabel
+            android:id="@+id/tvTittleHeight"
+            style="@style/TextFieldLabelNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/px16"
+            android:layout_marginTop="@dimen/px12"
+            android:text="@string/all_height"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clGender" />
+
+        <com.jarvis.design_system.forminput.JxPickerText
+            android:id="@+id/viewHeight"
+            style="@style/PickerValueBox"
+            android:layout_width="0dp"
+            android:layout_marginStart="@dimen/px16"
+            android:layout_marginTop="@dimen/px4"
+            android:layout_marginEnd="@dimen/px16"
+            app:endText="@string/unit_cm"
+            app:layout_constraintEnd_toStartOf="@id/guideline"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTittleHeight" />
+
+        <com.jarvis.design_system.forminput.JxTextFieldLabel
+            android:id="@+id/tvTittleWeight"
+            style="@style/TextFieldLabelNormal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/px12"
+            android:layout_marginTop="@dimen/px28"
+            android:text="@string/all_weight"
+            app:layout_constraintBaseline_toBaselineOf="@id/tvTittleHeight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline" />
+
+        <com.jarvis.design_system.forminput.JxPickerText
+            android:id="@+id/viewWeight"
+            style="@style/PickerValueBox"
+            android:layout_width="0dp"
+            android:layout_marginStart="@dimen/px12"
+            android:layout_marginTop="@dimen/px4"
+            android:layout_marginEnd="@dimen/px16"
+            app:endText="@string/unit_kg"
+            app:layout_constraintBottom_toBottomOf="@+id/viewHeight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/guideline" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

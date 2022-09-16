@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_01"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <com.jarvis.design_system.toolbar.JxToolbar
+            android:id="@+id/tb_add_profile"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/bg_01"
+            app:layout_constraintTop_toTopOf="parent"
+            app:toolbarBackIcon="@drawable/all_ic_back"
+            app:toolbarHideDivider="false"
+            app:toolbarTitle="@string/registration"
+            app:toolbarViewStyle="backTitle" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:overScrollMode="never"
+            app:layout_constraintBottom_toTopOf="@id/layoutNext"
+            app:layout_constraintTop_toBottomOf="@id/tb_add_profile">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clBg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.jarvis.bmihealth.presentation.register.ViewInputProfileInfo
+                    android:id="@+id/view_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_editor_absoluteX="0dp" />
+
+                <com.jarvis.design_system.textview.CustomTextView
+                    android:id="@+id/tvHealthInfo"
+                    style="@style/TitleLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/all_health_information"
+                    android:textColor="@color/ink_5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view_info" />
+
+                <com.jarvis.bmihealth.presentation.register.ViewInputHealthInfo
+                    android:id="@+id/view_info_other"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/tvHealthInfo" />
+
+                <com.jarvis.bmihealth.presentation.register.ViewRPE
+                    android:id="@+id/viewRPE"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/px24"
+                    app:layout_constraintTop_toBottomOf="@id/view_info_other" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <include
+            android:id="@+id/layoutNext"
+            layout="@layout/view_bottom_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

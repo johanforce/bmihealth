@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.jarvis.bmihealth.databinding.FragmentHomeBinding
 import com.jarvis.bmihealth.presentation.base.BaseFragment
 import com.jarvis.bmihealth.presentation.utilx.LogUtil
+import com.jarvis.bmihealth.presentation.utilx.click
 import com.jarvis.bmihealth.presentation.utilx.observe
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,8 +20,18 @@ class HomeFragment(context: AppCompatActivity) :
         super.onCreate(savedInstanceState)
         binding.lifecycleOwner = this
 
+        initData()
+    }
+
+    private fun initData(){
         viewModel.getProfile()
-        LogUtil.ct("-------vao day--------")
+        binding.btAddProfile.click {
+
+        }
+
+    }
+
+    override fun observeData() {
         observe(viewModel.profileUser) {
             binding.tvData.text = it.toString()
         }

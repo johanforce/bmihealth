@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "5d172c7f28e068613f7e033e82ea43f3",
+    "identityHash": "e3fc62190fa46142b1d2dcea3361779c",
     "entities": [
       {
         "tableName": "ProfileUser",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`firstname` TEXT NOT NULL, `lastname` TEXT NOT NULL, `gender` INTEGER NOT NULL, `birthday` INTEGER NOT NULL, `age` INTEGER NOT NULL, `weight` REAL NOT NULL, `height` REAL NOT NULL, `bio` TEXT NOT NULL, `national` TEXT NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`firstname` TEXT NOT NULL, `lastname` TEXT NOT NULL, `gender` INTEGER NOT NULL, `birthday` INTEGER NOT NULL, `age` INTEGER NOT NULL, `weight` REAL NOT NULL, `height` REAL NOT NULL, `avatar` BLOB, `avatarUrl` TEXT NOT NULL, `bio` TEXT NOT NULL, `unit` INTEGER NOT NULL, `national` TEXT NOT NULL, `goal` INTEGER NOT NULL, `activity_level` INTEGER NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
         "fields": [
           {
             "fieldPath": "firstname",
@@ -51,15 +51,45 @@
             "notNull": true
           },
           {
+            "fieldPath": "avatar",
+            "columnName": "avatar",
+            "affinity": "BLOB",
+            "notNull": false
+          },
+          {
+            "fieldPath": "avatarUrl",
+            "columnName": "avatarUrl",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
             "fieldPath": "bio",
             "columnName": "bio",
             "affinity": "TEXT",
             "notNull": true
           },
           {
+            "fieldPath": "unit",
+            "columnName": "unit",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
             "fieldPath": "national",
             "columnName": "national",
             "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "goal",
+            "columnName": "goal",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "activityLevel",
+            "columnName": "activity_level",
+            "affinity": "INTEGER",
             "notNull": true
           },
           {
@@ -82,7 +112,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5d172c7f28e068613f7e033e82ea43f3')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e3fc62190fa46142b1d2dcea3361779c')"
     ]
   }
 }

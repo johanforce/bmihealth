@@ -38,7 +38,6 @@ class MainActivity :
         clickShowFragment(Constant.KEY_HOME)
         clickControlView()
         binding.viewControl.setItemSelected(R.id.home, true)
-        viewModel.insertProfile()
     }
 
     private fun initFragment() {

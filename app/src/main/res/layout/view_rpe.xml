@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_01"
+        android:paddingBottom="@dimen/px12">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivActivity"
+            android:layout_width="@dimen/px24"
+            android:layout_height="@dimen/px24"
+            android:layout_marginStart="@dimen/px16"
+            android:layout_marginTop="@dimen/px20"
+            android:src="@drawable/rpe_ic_activity"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvTitleActivity"
+            style="@style/T14H20R"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/px8"
+            android:layout_marginEnd="@dimen/px4"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/rpe_activity_level"
+            android:textColor="@color/ink_5"
+            app:layout_constraintBottom_toBottomOf="@+id/ivActivity"
+            app:layout_constraintLeft_toRightOf="@+id/ivActivity"
+            app:layout_constraintRight_toLeftOf="@+id/tvStatus"
+            app:layout_constraintTop_toTopOf="@+id/ivActivity" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvStatus"
+            style="@style/T16H24M"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            tools:text="@string/rpe_moderately"
+            android:textColor="@color/pri_1"
+            app:layout_constraintBottom_toBottomOf="@+id/ivActivity"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivActivity" />
+
+        <com.warkiz.widget.IndicatorSeekBar
+            android:id="@+id/sbEffortNew"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/px2"
+            android:layout_marginTop="@dimen/px2"
+            app:isb_max="10"
+            app:isb_only_thumb_draggable="false"
+            app:isb_progress="8"
+            app:isb_seek_smoothly="false"
+            app:isb_show_indicator="none"
+            app:isb_show_tick_marks_type="oval"
+            app:isb_show_tick_texts="false"
+            app:isb_thumb_color="@color/bmi_orange"
+            app:isb_thumb_drawable="@drawable/ic_thumb"
+            app:isb_thumb_size="@dimen/px50"
+            app:isb_tick_marks_color="@color/bg_01"
+            app:isb_tick_marks_size="@dimen/px2"
+            app:isb_ticks_count="6"
+            app:isb_track_background_color="@color/ink_2"
+            app:isb_track_background_size="@dimen/px4"
+            app:isb_track_progress_color="@color/pri_1"
+            app:isb_track_progress_size="@dimen/px2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivActivity" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvDesStatus"
+            style="@style/T12H18R"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/px16"
+            android:layout_marginTop="@dimen/px4"
+            android:layout_marginEnd="@dimen/px16"
+            android:ellipsize="end"
+            android:maxLines="2"
+            tools:text="@string/rpe_moderately_des"
+            android:textColor="@color/ink_4"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sbEffortNew" />
+
+        <com.jarvis.design_system.forminput.JxPickerIconWithLabel
+            android:id="@+id/viewGoal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/px16"
+            android:layout_marginTop="@dimen/px12"
+            android:background="@color/bg_01"
+            app:itemContentElement="onlyTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvDesStatus"
+            app:title1="@string/onboarding_goal" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/viewGoalTitle"
+            style="@style/T14H20M"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/px16"
+            android:layout_marginBottom="@dimen/px16"
+            tools:text="@string/rpe_normal_weight"
+            android:textColor="@color/ink_5"
+            app:layout_constraintBottom_toBottomOf="@+id/viewGoal"
+            app:layout_constraintEnd_toStartOf="@+id/viewGoalDes"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="@+id/viewGoal" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/viewGoalDes"
+            style="@style/T12H18R"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/px2"
+            tools:text="@string/onboarding_des_example"
+            android:textColor="@color/ink_5"
+            app:layout_constraintBottom_toBottomOf="@+id/viewGoalTitle"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/viewGoalTitle"
+            app:layout_constraintTop_toTopOf="@+id/viewGoalTitle" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/viewGoal"
+            app:layout_constraintTop_toTopOf="@+id/viewGoalTitle"
+            app:layout_constraintBottom_toBottomOf="@+id/viewGoalTitle"
+            app:srcCompat="@drawable/ic_arrow_down"
+            android:layout_marginEnd="@dimen/px10"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

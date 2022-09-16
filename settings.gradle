@@ -12,3 +12,7 @@ rootProject.name = "BMIHealth"
 include ':app'
 include ':design_system'
 include ':heathcarebmi'
+include ':ucrop'
+include ':unitlibrary'
+include ':locale-helper'
+include ':compressor'

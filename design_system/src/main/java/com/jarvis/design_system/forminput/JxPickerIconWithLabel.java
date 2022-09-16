@@ -45,19 +45,17 @@ public class JxPickerIconWithLabel extends RelativeLayout implements OnStateChan
     @SuppressLint("ClickableViewAccessibility")
     private void initView(Context context) {
         View inflate = LayoutInflater.from(context).inflate(R.layout.view_picker_icon_label, this);
-        this.inputField = inflate.findViewById(R.id.tvInputLabel);
+        this.inputField = inflate.findViewById(R.id.tvInputLabelx);
         this.textTitle = inflate.findViewById(R.id.tvTitle);
         inputField.setOnStateChangedListener(this);
         inputField.setOnClickListener(v -> {
-            if (onListenerClick != null) {
-                onListenerClick.onClick();
-            }
+            if (onListenerClick == null) return;
+            onListenerClick.onClick();
         });
 
         inputField.setOnLongClickListener(v -> {
-            if (onListenerClick != null) {
-                onListenerClick.onClick();
-            }
+            if (onListenerClick == null) return false;
+            onListenerClick.onClick();
             return false;
         });
     }

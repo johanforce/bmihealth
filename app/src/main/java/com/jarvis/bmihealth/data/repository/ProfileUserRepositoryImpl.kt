@@ -10,6 +10,10 @@ class ProfileUserRepositoryImpl(private val profileUserDao: ProfileUserDao) :
         return profileUserDao.getNoteById(id)
     }
 
+    override suspend fun getAllProfile(): List<ProfileUser>? {
+        return profileUserDao.getAllProfile()
+    }
+
     override suspend fun insertProfile(profile: ProfileUser) {
         profileUserDao.insertNote(profile)
     }
@@ -22,4 +26,7 @@ class ProfileUserRepositoryImpl(private val profileUserDao: ProfileUserDao) :
         profileUserDao.deleteNote(profile)
     }
 
+    override suspend fun deleteProfile(id: Int) {
+        profileUserDao.deleteProfile(id)
+    }
 }

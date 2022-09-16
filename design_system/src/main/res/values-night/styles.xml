@@ -1,0 +1,34 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="DSAppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="actionMenuTextColor">@color/pri_4</item>
+        <item name="actionMenuTextAppearance">@style/ToolbarButtonCTA</item>
+        <item name="titleTextColor">@color/ink_5</item>
+        <item name="colorControlHighlight">@color/press_color</item>
+
+        <item name="android:timePickerStyle">@style/Theme.TimePicker</item>
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/pri_1</item>
+        <item name="colorPrimaryVariant">@color/pri_1</item>
+        <item name="colorOnPrimary">@color/ink_5</item>
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/pri_1</item>
+        <item name="colorSecondaryVariant">@color/pri_1</item>
+        <item name="colorOnSecondary">@color/white_5</item>
+
+        <!-- Snackbar color-->
+        <item name="snackbarStyle">@style/DSSnackbarStyle</item>
+        <item name="snackbarTextViewStyle">@style/DSSnackbarTextStyle</item>
+        <item name="snackbarButtonStyle">@style/DSSnackbarButtonStyle</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/bg_01</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+    </style>
+
+    <style name="Theme.TimePicker" parent="android:Widget.Material.TimePicker">
+        <item name="android:timePickerMode">clock</item>
+        <item name="android:headerBackground">@color/pri_1</item>
+    </style>
+</resources>

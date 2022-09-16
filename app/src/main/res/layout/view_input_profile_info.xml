@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_01"
+        android:paddingHorizontal="@dimen/px16"
+        android:paddingBottom="@dimen/px16">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <com.well.avatar.ViewAvatar
+            android:id="@+id/avatar_view"
+            android:layout_width="@dimen/px80"
+            android:layout_height="@dimen/px80"
+            android:layout_marginTop="@dimen/px12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_camera"
+            android:layout_width="@dimen/px30"
+            android:layout_height="@dimen/px30"
+            app:layout_constraintBottom_toBottomOf="@id/avatar_view"
+            app:layout_constraintEnd_toEndOf="@id/avatar_view"
+            app:srcCompat="@drawable/ic_profile_camera" />
+
+        <com.jarvis.design_system.forminput.JxInputTextFieldWithLabel
+            android:id="@+id/edFirstName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/px28"
+            android:layout_marginEnd="@dimen/px4"
+            android:imeOptions="actionNext"
+            android:inputType="text|textCapWords"
+            app:hint="Well"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_camera"
+            app:layout_goneMarginTop="@dimen/px16"
+            app:singleLine="true"
+            app:title="@string/all_firstname" />
+
+        <com.jarvis.design_system.forminput.JxInputTextFieldWithLabel
+            android:id="@+id/edLastName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/px4"
+            android:layout_marginTop="@dimen/px28"
+            android:imeOptions="actionNext"
+            android:inputType="text|textCapWords"
+            app:hint="Be"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintBottom_toBottomOf="@+id/edFirstName"
+            app:layout_goneMarginTop="@dimen/px16"
+            app:singleLine="true"
+            app:title="@string/all_lastname" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

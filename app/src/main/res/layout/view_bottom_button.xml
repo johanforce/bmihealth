@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:id="@+id/flButtonLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_01"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <com.jarvis.design_system.button.JxButton
+            android:id="@+id/btNext"
+            style="@style/ButtonPrimary.SizeL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="@dimen/px12"
+            android:layout_marginStart="@dimen/px16"
+            android:layout_marginTop="@dimen/px14"
+            android:layout_marginEnd="@dimen/px16"
+            android:layout_marginBottom="@dimen/px24"
+            android:text="@string/onboarding_next" />
+    </FrameLayout>
+</layout>

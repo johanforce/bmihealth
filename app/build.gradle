@@ -57,6 +57,10 @@ android {
 dependencies {
     implementation project(':design_system')
     implementation project(':heathcarebmi')
+    implementation project(':ucrop')
+    implementation project(':unitlibrary')
+    implementation project(':locale-helper')
+    implementation project(':compressor')
     implementation 'com.github.johanforce:avatarview:1.0.0'
 
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -100,6 +104,13 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.7'
 
     implementation 'com.github.ismaeldivita:chip-navigation-bar:1.4.0'
+
+    //rx java
+    implementation 'androidx.core:core-splashscreen:1.0.0-alpha01'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.20'
+
+    implementation 'com.github.warkiz.widget:indicatorseekbar:2.1.2'
 }
 
 detekt {

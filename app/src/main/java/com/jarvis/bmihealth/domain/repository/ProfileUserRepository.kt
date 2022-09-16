@@ -6,9 +6,13 @@ import com.jarvis.bmihealth.domain.model.ProfileUser
 interface ProfileUserRepository {
     suspend fun getProfileById(id:Int): ProfileUser?
 
+    suspend fun getAllProfile(): List<ProfileUser>?
+
     suspend fun insertProfile(profile: ProfileUser)
 
     suspend fun updateProfile(profile: ProfileUser)
 
     suspend fun deleteProfile(profile: ProfileUser)
+
+    suspend fun deleteProfile(id: Int)
 }
