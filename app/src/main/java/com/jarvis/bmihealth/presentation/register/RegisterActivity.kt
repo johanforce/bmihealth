@@ -24,11 +24,7 @@ class RegisterActivity :
 
     private var userInfo: ProfileUserModel? = null
     private var appPreference: AppPreference? = null
-
-    override fun initViewModel() {
-        viewModel =
-            ViewModelProvider(this, viewModelFactory)[RegisterViewModel::class.java]
-    }
+    private val viewModel: RegisterViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -133,5 +129,6 @@ class RegisterActivity :
             PermissionConst.REQUEST_CODE_PERMISSIONS
         )
     }
+
 
 }

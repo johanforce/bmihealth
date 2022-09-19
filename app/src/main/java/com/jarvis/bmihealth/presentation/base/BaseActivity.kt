@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.Window
+import androidx.lifecycle.ViewModel
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.transition.platform.MaterialSharedAxis
@@ -23,7 +24,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-abstract class BaseActivity<B : ViewBinding, T : BaseViewModel>(val bindingFactory: (LayoutInflater) -> B) :
+abstract class BaseActivity<B : ViewBinding, T : ViewModel>(val bindingFactory: (LayoutInflater) -> B) :
     AppCompatActivity(), CoroutineScope {
     protected val binding: B by lazy { bindingFactory(layoutInflater) }
 
@@ -31,12 +32,6 @@ abstract class BaseActivity<B : ViewBinding, T : BaseViewModel>(val bindingFacto
         get() = Dispatchers.Main + job
 
     private lateinit var job: Job
-
-    @Inject
-    lateinit var viewModel: T
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
 
 //    var localeDelegate = LocaleHelperActivityDelegateImpl()
 
@@ -63,20 +58,16 @@ abstract class BaseActivity<B : ViewBinding, T : BaseViewModel>(val bindingFacto
 //    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        inject((activity?.application as MainApplication).appComponent())
         this.initDarkMode()
         super.onCreate(savedInstanceState)
         job = Job()
         initAnim()
         setContentView(binding.root)
-        initViewModel()
         initToolbar()
         observeData()
         setUpViews()
         initCoroutineScope()
     }
-
-
 
     open fun setUpViews() {}
 
@@ -112,11 +103,6 @@ abstract class BaseActivity<B : ViewBinding, T : BaseViewModel>(val bindingFacto
     protected open fun getToolbar(): JxToolbar? {
         return null
     }
-
-    /**
-     * This is the method to init or get view model
-     */
-    abstract fun initViewModel()
 
     fun initToolbar() {
         val toolbar = getToolbar() ?: return

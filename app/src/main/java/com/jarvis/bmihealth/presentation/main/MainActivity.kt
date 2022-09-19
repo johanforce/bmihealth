@@ -9,12 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.ActivityMainBinding
-import com.jarvis.bmihealth.presentation.utilx.Constant
 import com.jarvis.bmihealth.presentation.base.BaseActivity
 import com.jarvis.bmihealth.presentation.bmiother.OtherFragment
+import com.jarvis.bmihealth.presentation.bmiother.OtherViewModel
+import com.jarvis.bmihealth.presentation.main.MainViewModel
 import com.jarvis.bmihealth.presentation.home.HomeFragment
 import com.jarvis.bmihealth.presentation.profile.ProfileFragment
-import com.jarvis.bmihealth.presentation.register.RegisterViewModel
+import com.jarvis.bmihealth.presentation.utilx.Constant
 import com.jarvis.bmihealth.presentation.utilx.LogUtil
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,10 +30,7 @@ class MainActivity :
     private val fragments: MutableList<Fragment> = arrayListOf()
     private var currentIndex: Int = 0
 
-    override fun initViewModel() {
-        viewModel =
-            ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
-    }
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,41 +45,41 @@ class MainActivity :
     }
 
     private fun initFragment() {
-            homeFragment = HomeFragment(this)
-            profileFragment = ProfileFragment(this)
-            otherFragment = OtherFragment(this)
-            fragments.add(otherFragment!!)
-            fragments.add(homeFragment!!)
-            fragments.add(profileFragment!!)
+        homeFragment = HomeFragment(this)
+        profileFragment = ProfileFragment(this)
+        otherFragment = OtherFragment(this)
+        fragments.add(otherFragment!!)
+        fragments.add(homeFragment!!)
+        fragments.add(profileFragment!!)
 
-            val size = fragments.size
-            LogUtil.ct("-------vao day--------"+ size)
-            val supportFragmentManager = supportFragmentManager
+        val size = fragments.size
+        LogUtil.ct("-------vao day--------" + size)
+        val supportFragmentManager = supportFragmentManager
 
-            for (index in 0 until size) {
-                val fragment = fragments[index]
-                val fragmentTransaction = supportFragmentManager.beginTransaction()
-                if (!fragment.isAdded) {
-                    fragmentTransaction.add(R.id.frag, fragment, "fragment$index")
-                }
-                if (index != 0) {
-                    fragmentTransaction.hide(fragment).commitAllowingStateLoss()
-                } else {
-                    fragmentTransaction.commitAllowingStateLoss()
-                }
+        for (index in 0 until size) {
+            val fragment = fragments[index]
+            val fragmentTransaction = supportFragmentManager.beginTransaction()
+            if (!fragment.isAdded) {
+                fragmentTransaction.add(R.id.frag, fragment, "fragment$index")
             }
+            if (index != 0) {
+                fragmentTransaction.hide(fragment).commitAllowingStateLoss()
+            } else {
+                fragmentTransaction.commitAllowingStateLoss()
+            }
+        }
     }
 
     private fun clickShowFragment(position: Int) {
         try {
-            LogUtil.ct("-------vao day--------"+ position)
+            LogUtil.ct("-------vao day--------" + position)
             val targetFragment = fragments[position]
             val currentFragment: Fragment = getCurrentFragment()
             if (currentFragment.isAdded) {
                 currentFragment.onPause()
             }
             if (!isFinishing) {
-                LogUtil.ct("-------vao day--------"+ currentFragment+"/"+ targetFragment)
+                LogUtil.ct("-------vao day--------" + currentFragment + "/" + targetFragment)
                 supportFragmentManager.beginTransaction().hide(currentFragment).show(targetFragment)
                     .commitAllowingStateLoss()
                 currentIndex = position
@@ -117,7 +115,7 @@ class MainActivity :
 
     private fun clickControlView() {
         binding.viewControl.setOnItemSelectedListener { id ->
-           when (id) {
+            when (id) {
                 R.id.home -> {
                     R.color.pri_app to getString(R.string.home)
                     clickShowFragment(Constant.KEY_HOME)

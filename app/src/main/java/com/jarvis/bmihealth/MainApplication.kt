@@ -5,16 +5,11 @@ import android.app.Application
 import android.os.Bundle
 import androidx.multidex.MultiDexApplication
 import com.google.gson.Gson
-import com.jarvis.bmihealth.di.AppComponent
-import com.jarvis.bmihealth.di.DaggerAppComponent
-import com.jarvis.bmihealth.di.module.DaoModule
 import dagger.hilt.android.HiltAndroidApp
 
-@Suppress("unused")
 @HiltAndroidApp
 class MainApplication : MultiDexApplication(), Application.ActivityLifecycleCallbacks {
     lateinit var gson: Gson
-    private lateinit var appComponent: AppComponent
 
     companion object {
         private var instance: MainApplication? = null
@@ -27,19 +22,6 @@ class MainApplication : MultiDexApplication(), Application.ActivityLifecycleCall
 
     init {
         instance = this
-    }
-
-    /**
-     *  make instance
-     */
-    open fun appComponent(): AppComponent {
-        return appComponent
-    }
-
-    private fun initDI() {
-        appComponent = DaggerAppComponent.builder()
-            .daoModule(DaoModule())
-            .build()
     }
 
     override fun onCreate() {

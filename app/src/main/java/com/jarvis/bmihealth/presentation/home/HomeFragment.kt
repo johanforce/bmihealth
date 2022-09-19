@@ -5,7 +5,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.jarvis.bmihealth.databinding.FragmentHomeBinding
 import com.jarvis.bmihealth.presentation.base.BaseFragment
-import com.jarvis.bmihealth.presentation.utilx.LogUtil
 import com.jarvis.bmihealth.presentation.utilx.click
 import com.jarvis.bmihealth.presentation.utilx.observe
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,7 +22,7 @@ class HomeFragment(context: AppCompatActivity) :
         initData()
     }
 
-    private fun initData(){
+    private fun initData() {
         viewModel.getProfile()
         binding.btAddProfile.click {
 

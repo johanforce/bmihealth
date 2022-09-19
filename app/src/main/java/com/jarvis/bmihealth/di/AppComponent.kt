@@ -1,27 +1,36 @@
 package com.jarvis.bmihealth.di
 
-import com.jarvis.bmihealth.di.module.DaoModule
-import com.jarvis.bmihealth.di.module.RepoModule
-import com.jarvis.bmihealth.di.module.ViewModelModule
-import com.jarvis.bmihealth.presentation.bmiother.OtherFragment
-import com.jarvis.bmihealth.presentation.home.HomeFragment
-import com.jarvis.bmihealth.presentation.main.MainActivity
-import com.jarvis.bmihealth.presentation.onboarding.OnBoardingActivity
-import com.jarvis.bmihealth.presentation.onboarding.OnBoardingFragment
-import com.jarvis.bmihealth.presentation.profile.ProfileFragment
-import com.jarvis.bmihealth.presentation.register.RegisterActivity
-import dagger.Component
+import android.app.Application
+import androidx.room.Room
+import com.jarvis.bmihealth.data.datasource.AppDatabase
+import com.jarvis.bmihealth.data.repository.ProfileUserRepositoryImpl
+import com.jarvis.bmihealth.domain.repository.ProfileUserRepository
+import com.jarvis.bmihealth.domain.usecase.UserProfileUseCase
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-@Singleton
-@Component(modules = [DaoModule::class, RepoModule::class, ViewModelModule::class])
-interface AppComponent {
-    fun inject(activity: MainActivity)
-    fun inject(activity: OnBoardingActivity)
-    fun inject(activity: RegisterActivity)
+@Module
+@InstallIn(SingletonComponent::class)
+object AppComponent {
 
-    fun inject(fragment: HomeFragment)
-    fun inject(fragment: OtherFragment)
-    fun inject(fragment: ProfileFragment)
-    fun inject(fragment: OnBoardingFragment)
+    @Provides
+    @Singleton
+    fun provideDatabase(application: Application) = Room.databaseBuilder(
+        application,
+        AppDatabase::class.java,
+        AppDatabase.DATABASE_NAME
+    ).build()
+
+    @Provides
+    @Singleton
+    fun provideAppRepository(appDatabase: AppDatabase): ProfileUserRepository =
+        ProfileUserRepositoryImpl(appDatabase.profileUserDao)
+
+    @Provides
+    @Singleton
+    fun provideProfileUserUseCases(profileUserRepository: ProfileUserRepository): UserProfileUseCase =
+        UserProfileUseCase(profileUserRepository)
 }
