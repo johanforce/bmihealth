@@ -3,6 +3,7 @@
 
     <style name="DSAppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="actionMenuTextColor">@color/pri_4</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/bg_03</item>
         <item name="android:actionMenuTextAppearance">@style/ToolbarButtonCTA</item>
         <item name="titleTextColor">@color/ink_5</item>
     </style>

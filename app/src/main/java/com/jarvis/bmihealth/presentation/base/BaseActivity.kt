@@ -33,29 +33,12 @@ abstract class BaseActivity<B : ViewBinding, T : ViewModel>(val bindingFactory: 
 
     private lateinit var job: Job
 
-//    var localeDelegate = LocaleHelperActivityDelegateImpl()
-
     open fun initDarkMode() {
         val appPreference = AppPreference.getInstance()
 
         setTheme(R.style.DSAppTheme)
-//        val themeMode = appPreference.get(AppPreferenceKey.KEY_THEMEMODE, Int::class.java)
-//
-//        //Bỏ đoạn check Purchase này nếu muốn test chuyển Mode
-//        if ((themeMode == ThemeMode.DARK || themeMode == ThemeMode.FOLLOW_SYSTEM)) {
-//            appPreference.putSync(AppPreferenceKey.KEY_THEMEMODE, ThemeMode.LIGHT)
-//            ThemeHelper.applyTheme(ThemeMode.LIGHT)
-//        } else {
-//            ThemeHelper.applyTheme(themeMode!!)
-//        }
         ThemeHelper.applyTheme(2)
     }
-
-
-//    fun isDarkTheme(): Boolean {
-//        val uiMode = this.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-//        return uiMode == Configuration.UI_MODE_NIGHT_YES
-//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         this.initDarkMode()

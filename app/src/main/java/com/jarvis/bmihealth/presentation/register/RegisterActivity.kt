@@ -4,11 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
-import androidx.lifecycle.ViewModelProvider
 import com.jarvis.bmihealth.databinding.ActivityRegisterBinding
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.presentation.base.BaseActivity
-import com.jarvis.bmihealth.presentation.home.HomeViewModel
 import com.jarvis.bmihealth.presentation.main.MainActivity
 import com.jarvis.bmihealth.presentation.pref.AppPreference
 import com.jarvis.bmihealth.presentation.pref.AppPreferenceKey
@@ -18,6 +16,7 @@ import com.jarvis.bmihealth.presentation.utilx.cropimage.PermissionConst
 import com.jarvis.design_system.toolbar.JxToolbar
 import dagger.hilt.android.AndroidEntryPoint
 
+@Suppress("unused", "DEPRECATION")
 @AndroidEntryPoint
 class RegisterActivity :
     BaseActivity<ActivityRegisterBinding, RegisterViewModel>(ActivityRegisterBinding::inflate) {
@@ -35,7 +34,7 @@ class RegisterActivity :
         const val KEY_USER_INFO = "user_info"
     }
 
-    fun getDataIntent() {
+    private fun getDataIntent() {
         if (intent.hasExtra(KEY_USER_INFO)) {
             this.userInfo =
                 intent.getSerializableExtra(KEY_USER_INFO) as ProfileUserModel
@@ -117,6 +116,7 @@ class RegisterActivity :
         binding.viewInfo.executeOnPermissionResult(requestCode, permissions, grantResults)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         binding.viewInfo.executeOnActivityResult(requestCode, resultCode, data, contentResolver)

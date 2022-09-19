@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.jarvis.bmihealth.presentation.utilx
 
 import android.annotation.SuppressLint
@@ -18,12 +20,12 @@ import java.text.DecimalFormat
 import java.util.*
 
 object FileUtils {
-    val MIME_TYPE_AUDIO = "audio/*"
-    val MIME_TYPE_TEXT = "text/*"
-    val MIME_TYPE_IMAGE = "image/*"
-    val MIME_TYPE_VIDEO = "video/*"
-    val MIME_TYPE_APP = "application/*"
-    val HIDDEN_PREFIX = "."
+    const val MIME_TYPE_AUDIO = "audio/*"
+    const val MIME_TYPE_TEXT = "text/*"
+    const val MIME_TYPE_IMAGE = "image/*"
+    const val MIME_TYPE_VIDEO = "video/*"
+    const val MIME_TYPE_APP = "application/*"
+    const val HIDDEN_PREFIX = "."
 
     /**
      * TAG for log messages.

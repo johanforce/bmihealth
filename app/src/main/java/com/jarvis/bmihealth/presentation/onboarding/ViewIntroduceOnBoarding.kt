@@ -77,19 +77,19 @@ class ViewIntroduceOnBoarding : ConstraintLayout {
     private fun addDataViewPager(context: Context) {
         val onBoardingModels: MutableList<OnBoardingModel> = ArrayList<OnBoardingModel>()
         val modelTab1 = OnBoardingModel()
-        modelTab1.drawable = R.drawable.onboarding_ic_tab1temp
+        modelTab1.drawable = R.drawable.pic_1
         modelTab1.string = context.getString(R.string.onboarding_des_tab1)
         modelTab1.title = context.getString(R.string.onboarding_title_tab1)
         onBoardingModels.add(modelTab1)
 
         val modelTab2 = OnBoardingModel()
-        modelTab2.drawable = R.drawable.onboarding_ic_tab2
+        modelTab2.drawable = R.drawable.pic_2
         modelTab2.string = context.getString(R.string.onboarding_des_tab2)
         modelTab2.title = context.getString(R.string.onboarding_title_tab2)
         onBoardingModels.add(modelTab2)
 
         val modelTab3 = OnBoardingModel()
-        modelTab3.drawable = R.drawable.onboarding_ic_tab3
+        modelTab3.drawable = R.drawable.pic_3
         modelTab3.string = context.getString(R.string.onboarding_des_tab3)
         modelTab3.title = context.getString(R.string.onboarding_title_tab3)
         onBoardingModels.add(modelTab3)

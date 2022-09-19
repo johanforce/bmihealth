@@ -5,7 +5,6 @@
         <item name="actionMenuTextAppearance">@style/ToolbarButtonCTA</item>
         <item name="titleTextColor">@color/ink_5</item>
         <item name="colorControlHighlight">@color/press_color</item>
-
         <item name="android:timePickerStyle">@style/Theme.TimePicker</item>
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/pri_1</item>

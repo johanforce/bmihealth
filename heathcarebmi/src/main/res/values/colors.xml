@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">@color/bmi_blue</color>
-    <color name="colorPrimaryDark">@color/bmi_blue</color>
+    <color name="colorPrimaryDark">@color/bmi_white</color>
     <color name="colorAccent">@color/bmi_blue</color>
 
     <color name="bmi_green">#47B749</color>

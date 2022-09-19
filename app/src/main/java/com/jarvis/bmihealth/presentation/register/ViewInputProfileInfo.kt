@@ -32,6 +32,7 @@ import com.yalantis.ucrop.UCrop
 import java.io.InputStream
 import java.util.*
 
+@Suppress("UNUSED_PARAMETER", "unused", "MemberVisibilityCanBePrivate")
 class ViewInputProfileInfo : ConstraintLayout {
     var byteArray: ByteArray? = null
     private var binding: ViewInputProfileInfoBinding? = null
@@ -98,8 +99,8 @@ class ViewInputProfileInfo : ConstraintLayout {
     }
 
     fun setEnableErrorStateInputField(isEnable: Boolean) {
-        binding?.edFirstName?.setEnableErrorState(isEnable);
-        binding?.edLastName?.setEnableErrorState(isEnable);
+        binding?.edFirstName?.setEnableErrorState(isEnable)
+        binding?.edLastName?.setEnableErrorState(isEnable)
     }
 
     fun setVisibleAvatar(isVisible: Boolean) {
@@ -276,9 +277,9 @@ class ViewInputProfileInfo : ConstraintLayout {
     }
 
     fun isValidInputBMIOther(): Boolean {
-        if (binding?.edFirstName?.inputField?.content?.trim() == "" && binding?.edLastName?.inputField?.content?.trim() == "") {
-            return true
-        } else return binding?.edFirstName?.inputField?.content?.trim() != "" && binding?.edLastName?.inputField?.content?.trim() != ""
+        return if (binding?.edFirstName?.inputField?.content?.trim() == "" && binding?.edLastName?.inputField?.content?.trim() == "") {
+            true
+        } else binding?.edFirstName?.inputField?.content?.trim() != "" && binding?.edLastName?.inputField?.content?.trim() != ""
     }
 
     fun setHintFirstName(data: String) {
@@ -299,7 +300,7 @@ class ViewInputProfileInfo : ConstraintLayout {
 
     fun clearFocusView() {
 
-        checkHideKeybroadWhenTouchClick()
+        checkHideKeyBroadWhenTouchClick()
         binding?.edFirstName?.inputField?.clearFocusWellText()
         binding?.edFirstName?.inputField?.clearFocus()
         binding?.edFirstName?.inputField?.onNormalState()
@@ -313,7 +314,7 @@ class ViewInputProfileInfo : ConstraintLayout {
     }
 
     fun clearFocusViewInit() {
-        checkHideKeybroadWhenTouchClick()
+        checkHideKeyBroadWhenTouchClick()
         binding?.edFirstName?.inputField?.clearFocusWellText()
         binding?.edFirstName?.inputField?.clearFocus()
         binding?.edFirstName?.inputField?.onNormalState()
@@ -389,7 +390,7 @@ class ViewInputProfileInfo : ConstraintLayout {
 
     }
 
-    private fun checkHideKeybroadWhenTouchClick() {
+    private fun checkHideKeyBroadWhenTouchClick() {
         DeviceUtil.hideKeyboard(context as AppCompatActivity)
     }
 

@@ -11,6 +11,7 @@ import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.ViewGoalEditBinding
 import com.jarvis.bmihealth.presentation.pref.AppPreference
 
+@Suppress("unused", "MemberVisibilityCanBePrivate")
 class ViewGoalEdit : ConstraintLayout {
     var binding: ViewGoalEditBinding? = null
     private lateinit var appPreference: AppPreference
@@ -20,24 +21,20 @@ class ViewGoalEdit : ConstraintLayout {
     private var firstPositionItemGoal: Int = 3
     private var lastPositionItemGoal: Int = 5
 
-    constructor(context: Context) :
-            super(context, null, 0, 0) {
-    }
+    constructor(context: Context) : super(context, null, 0, 0)
 
     fun setListenerPosition(onListenerPosition: OnListenerPosition) {
         this.onListenerPosition = onListenerPosition
     }
 
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs, 0, 0) {
-    }
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs, 0, 0)
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
         context,
         attrs,
         defStyleAttr,
         0
-    ) {
-    }
+    )
 
     fun initView(context: Context, boolean: Boolean, index: Int) {
         appPreference = AppPreference.getInstance()
@@ -58,7 +55,7 @@ class ViewGoalEdit : ConstraintLayout {
         binding?.rcGoal?.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
-                if(newState == RecyclerView.SCROLL_STATE_IDLE && lastPositionItemGoal >= firstPositionItemGoal + 1) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE && lastPositionItemGoal >= firstPositionItemGoal + 1) {
                     onListenerPosition?.positionItem((firstPositionItemGoal + lastPositionItemGoal) / 2)
                 }
             }
@@ -73,7 +70,7 @@ class ViewGoalEdit : ConstraintLayout {
         })
         val snapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(binding?.rcGoal)
-        binding?.rcGoal?.scrollToPosition(index-1)
+        binding?.rcGoal?.scrollToPosition(index - 1)
     }
 
     fun setDataChoose(index: Int) {
