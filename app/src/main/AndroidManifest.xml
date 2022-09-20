@@ -39,14 +39,12 @@
         <activity
             android:name=".presentation.main.MainActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/DSAppTheme" />
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".presentation.register.RegisterActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/DSAppTheme" />
+            android:screenOrientation="portrait" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

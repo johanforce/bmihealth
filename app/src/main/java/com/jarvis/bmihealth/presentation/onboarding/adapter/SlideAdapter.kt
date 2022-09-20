@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.jarvis.bmihealth.presentation.onboarding.adapter
 
 import android.view.ViewGroup

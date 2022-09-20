@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--color from design system-->
-    <color name="brand">#7C58E0</color>
+    <color name="brand">#98BFFD</color>
     <color name="secondary">#6BD3FF</color>
     <color name="transparent">#00FFFFFF</color>
 
-    <color name="pri_5">#6643C9</color>
+    <color name="pri_5">#98BFFD</color>
     <color name="pri_4">#FFEFE4</color>
     <color name="pri_3">#FFD5A3</color>
     <color name="pri_2">#FFA96A</color>
@@ -33,6 +33,12 @@
     <color name="bg_01">#FFFFFF</color>
     <color name="bg_02">#F2F2F2</color>
     <color name="bg_03">#E4E4E4</color>
+
+    <color name="bg_jx_5">#F1F2F3</color>
+    <color name="bg_jx_4">#BABFC5</color>
+    <color name="bg_jx_3">#6F767E</color>
+    <color name="bg_jx_2">#515861</color>
+    <color name="bg_jx_1">#2E3238</color>
 
     <color name="dodgle_blue">#51A8FF</color>
     <color name="mercury">#E3E3E3</color>

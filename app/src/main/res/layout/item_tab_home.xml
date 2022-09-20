@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/clItem"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px60"
+        android:background="@drawable/shape_item_data"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivImage"
+            android:layout_width="@dimen/px40"
+            android:layout_height="@dimen/px40"
+            android:layout_marginVertical="@dimen/px16"
+            android:layout_marginStart="@dimen/px16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/ic_bmr" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvDex"
+            style="@style/T14H18"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/px8"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingHorizontal="@dimen/px8"
+            tools:text="@string/body_index"
+            android:textColor="@color/ink_5"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/ivImage"
+            app:layout_constraintLeft_toRightOf="@+id/ivImage"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivImage" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvData"
+            style="@style/T14H18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/px16"
+            tools:text="Data"
+            android:textColor="@color/ink_5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

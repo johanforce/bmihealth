@@ -1,4 +1,7 @@
-@file:Suppress("unused")
+@file:Suppress(
+    "unused", "MemberVisibilityCanBePrivate", "FunctionName", "LocalVariableName",
+    "DEPRECATION"
+)
 
 package com.jarvis.bmihealth.presentation.utilx
 
@@ -15,7 +18,8 @@ import android.os.Environment
 import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.webkit.MimeTypeMap
-import java.io.*
+import java.io.File
+import java.io.FileFilter
 import java.text.DecimalFormat
 import java.util.*
 
@@ -36,20 +40,18 @@ object FileUtils {
     /**
      * File and folder comparator. TODO Expose sorting option method
      *
-     * @author paulburke
+     * @author
      */
-    var sComparator: Comparator<File?> = object : Comparator<File?> {
-
-        override fun compare(p0: File?, p1: File?): Int {
-            return p0!!.name.toLowerCase().compareTo(
-                p0.name.toLowerCase())
-        }
+    var sComparator: Comparator<File?> = Comparator<File?> { p0, _ ->
+        p0!!.name.lowercase(Locale.getDefault()).compareTo(
+            p0.name.lowercase(Locale.getDefault())
+        )
     }
 
     /**
      * File (not directories) filter.
      *
-     * @author paulburke
+     * @author
      */
     var sFileFilter = FileFilter { file ->
         val fileName = file.name
@@ -60,7 +62,7 @@ object FileUtils {
     /**
      * Folder (directories) filter.
      *
-     * @author paulburke
+     * @author
      */
     var sDirFilter = FileFilter { file ->
         val fileName = file.name
@@ -95,9 +97,7 @@ object FileUtils {
      * @return Whether the URI is a local one.
      */
     fun isLocal(url: String?): Boolean {
-        return if (url != null && !url.startsWith("http://") && !url.startsWith("https://")) {
-            true
-        } else false
+        return url != null && !url.startsWith("http://") && !url.startsWith("https://")
     }
 
     /**
@@ -136,8 +136,10 @@ object FileUtils {
                 val filepath = file.absolutePath
 
                 // Construct path without file name.
-                var pathwithoutname = filepath.substring(0,
-                    filepath.length - filename.length)
+                var pathwithoutname = filepath.substring(
+                    0,
+                    filepath.length - filename.length
+                )
                 if (pathwithoutname.endsWith("/")) {
                     pathwithoutname = pathwithoutname.substring(0, pathwithoutname.length - 1)
                 }
@@ -151,16 +153,17 @@ object FileUtils {
      */
     fun getMimeType(file: File): String? {
         val extension = getExtension(file.name)
-        return if (extension!!.length > 0) MimeTypeMap.getSingleton().getMimeTypeFromExtension(
-            extension.substring(1)) else "application/octet-stream"
+        return if (extension!!.isNotEmpty()) MimeTypeMap.getSingleton().getMimeTypeFromExtension(
+            extension.substring(1)
+        ) else "application/octet-stream"
     }
 
     /**
      * @return The MIME type for the give Uri.
      */
     fun getMimeType(context: Context, uri: Uri): String? {
-        val file = File(getPath(context, uri))
-        return getMimeType(file)
+        val file = getPath(context, uri)?.let { File(it) }
+        return file?.let { getMimeType(it) }
     }
 
     /**
@@ -219,12 +222,14 @@ object FileUtils {
             column
         )
         try {
-            cursor = context.contentResolver.query(uri!!, projection, selection, selectionArgs,
-                null)
+            cursor = context.contentResolver.query(
+                uri!!, projection, selection, selectionArgs,
+                null
+            )
             if (cursor != null && cursor.moveToFirst()) {
                 if (DEBUG) DatabaseUtils.dumpCursor(cursor)
-                val column_index = cursor.getColumnIndexOrThrow(column)
-                return cursor.getString(column_index)
+                val columnIndex = cursor.getColumnIndexOrThrow(column)
+                return cursor.getString(columnIndex)
             }
         } finally {
             cursor?.close()
@@ -232,43 +237,6 @@ object FileUtils {
         return null
     }
 
-    /**
-     * Get a file path from a Uri. This will get the the path for Storage Access
-     * Framework Documents, as well as the _data field for the MediaStore and
-     * other file-based ContentProviders.<br>
-     * <br>
-     * Callers should check whether the path is local before assuming it
-     * represents a local file.
-     *
-     * @param context The context.
-     * @param uri     The Uri to query.
-     * @author paulburke
-     * @see #isLocal(String)
-     * @see #getFile(Context, Uri)
-     */
-
-    /**
-     * Get a file path from a Uri. This will get the the path for Storage Access
-     * Framework Documents, as well as the _data field for the MediaStore and
-     * other file-based ContentProviders.<br></br>
-     * <br></br>
-     * Callers should check whether the path is local before assuming it
-     * represents a local file.
-     *
-     * @param context The context.
-     * @param uri     The Uri to query.
-     * @author paulburke
-     * @see .isLocal
-     * @see .getFile
-     */
-    /**
-     * Convert Uri into File, if possible.
-     *
-     * @return file A local file that the Uri was pointing to, or null if the
-     * Uri is unsupported or pointed to a remote resource.
-     * @author paulburke
-     * @see .getPath
-     */
     fun getFile(context: Context, uri: Uri?): File? {
         if (uri != null) {
             val path = getPath(context, uri)
@@ -279,14 +247,7 @@ object FileUtils {
         return null
     }
 
-    /**
-     * Get the file size in a human-readable string.
-     *
-     * @param size
-     * @return
-     * @author paulburke
-     */
-    fun getReadableFileSize(size: Int): String? {
+    fun getReadableFileSize(size: Int): String {
         val BYTES_IN_KILOBYTES = 1024
         val dec = DecimalFormat("###.#")
         val KILOBYTES = " KB"
@@ -297,9 +258,9 @@ object FileUtils {
         if (size > BYTES_IN_KILOBYTES) {
             fileSize = (size / BYTES_IN_KILOBYTES).toFloat()
             if (fileSize > BYTES_IN_KILOBYTES) {
-                fileSize = fileSize / BYTES_IN_KILOBYTES
+                fileSize /= BYTES_IN_KILOBYTES
                 if (fileSize > BYTES_IN_KILOBYTES) {
-                    fileSize = fileSize / BYTES_IN_KILOBYTES
+                    fileSize /= BYTES_IN_KILOBYTES
                     suffix = GIGABYTES
                 } else {
                     suffix = MEGABYTES
@@ -359,25 +320,23 @@ object FileUtils {
                 cursor = resolver.query(uri, null, null, null, null)
                 if (cursor!!.moveToFirst()) {
                     val id = cursor.getInt(0)
-                    //                    if (DEBUG)
-//                        Log.d(TAG, "Got thumb ID: " + id);
                     if (mimeType!!.contains("video")) {
                         bm = MediaStore.Video.Thumbnails.getThumbnail(
                             resolver,
                             id.toLong(),
                             MediaStore.Video.Thumbnails.MINI_KIND,
-                            null)
-                    } else if (mimeType.contains(FileUtils.MIME_TYPE_IMAGE)) {
+                            null
+                        )
+                    } else if (mimeType.contains(MIME_TYPE_IMAGE)) {
                         bm = MediaStore.Images.Thumbnails.getThumbnail(
                             resolver,
                             id.toLong(),
                             MediaStore.Images.Thumbnails.MINI_KIND,
-                            null)
+                            null
+                        )
                     }
                 }
             } catch (e: Exception) {
-//                if (DEBUG)
-//                    Log.e(TAG, "getThumbnail", e);
             } finally {
                 cursor?.close()
             }
@@ -389,9 +348,8 @@ object FileUtils {
      * Get the Intent for selecting content to be used in an Intent Chooser.
      *
      * @return The intent for opening a file with Intent.createChooser()
-     * @author paulburke
      */
-    fun createGetContentIntent(): Intent? {
+    fun createGetContentIntent(): Intent {
         // Implicitly allow the user to select a particular kind of data
         val intent = Intent(Intent.ACTION_GET_CONTENT)
         // The MIME data type filter
@@ -411,7 +369,7 @@ object FileUtils {
      * @param uri     The Uri to query.
      * @author paulburke
      */
-    @SuppressLint("NewApi")
+    @SuppressLint("NewApi", "ObsoleteSdkInt")
     fun getPath(context: Context, uri: Uri): String? {
         val isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT
 
@@ -430,19 +388,24 @@ object FileUtils {
             } else if (isDownloadsDocument(uri)) {
                 val id = DocumentsContract.getDocumentId(uri)
                 val contentUri = ContentUris.withAppendedId(
-                    Uri.parse("content://downloads/public_downloads"), java.lang.Long.valueOf(id))
+                    Uri.parse("content://downloads/public_downloads"), java.lang.Long.valueOf(id)
+                )
                 return getDataColumn(context, contentUri, null, null)
             } else if (isMediaDocument(uri)) {
                 val docId = DocumentsContract.getDocumentId(uri)
                 val split = docId.split(":").toTypedArray()
                 val type = split[0]
                 var contentUri: Uri? = null
-                if ("image" == type) {
-                    contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-                } else if ("video" == type) {
-                    contentUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI
-                } else if ("audio" == type) {
-                    contentUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
+                when (type) {
+                    "image" -> {
+                        contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+                    }
+                    "video" -> {
+                        contentUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+                    }
+                    "audio" -> {
+                        contentUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
+                    }
                 }
                 val selection = "_id=?"
                 val selectionArgs = arrayOf(
@@ -453,10 +416,12 @@ object FileUtils {
         } else if ("content".equals(uri.scheme, ignoreCase = true)) {
 
             // Return the remote address
-            return if (isGooglePhotosUri(uri)) uri.lastPathSegment else getDataColumn(context,
+            return if (isGooglePhotosUri(uri)) uri.lastPathSegment else getDataColumn(
+                context,
                 uri,
                 null,
-                null)
+                null
+            )
         } else if ("file".equals(uri.scheme, ignoreCase = true)) {
             return uri.path
         }

@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.jarvis.bmihealth.presentation.onboarding
 
 import android.content.Context
@@ -21,9 +23,10 @@ import com.jarvis.bmihealth.databinding.ViewIntroduceOnboardingBinding
 import com.jarvis.bmihealth.presentation.onboarding.adapter.SlideAdapter
 import java.util.*
 
+@Suppress("unused", "MemberVisibilityCanBePrivate")
 class ViewIntroduceOnBoarding : ConstraintLayout {
     var binding: ViewIntroduceOnboardingBinding? = null
-    var slideAdapter: SlideAdapter? = null
+    private var slideAdapter: SlideAdapter? = null
 
     companion object {
         var onClickListenerMain: OnClickListener? = null
@@ -150,7 +153,7 @@ class ViewIntroduceOnBoarding : ConstraintLayout {
 
         override fun updateDrawState(ds: TextPaint) {
             ds.color =
-                ContextCompat.getColor(context, R.color.pri_1) // you can use custom color
+                ContextCompat.getColor(context, R.color.pri_5) // you can use custom color
             ds.isUnderlineText = false // set to false to remove underline
         }
     }
@@ -163,7 +166,7 @@ class ViewIntroduceOnBoarding : ConstraintLayout {
         }
 
         override fun updateDrawState(ds: TextPaint) {
-            ds.color = ContextCompat.getColor(context, R.color.pri_1)// you can use custom color
+            ds.color = ContextCompat.getColor(context, R.color.pri_5)// you can use custom color
             ds.isUnderlineText = false // set to false to remove underline
         }
     }

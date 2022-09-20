@@ -25,6 +25,8 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.jarvis.bmihealth.R
+import java.math.RoundingMode
+import java.text.DecimalFormat
 import java.util.*
 
 object DeviceUtil {
@@ -38,6 +40,13 @@ object DeviceUtil {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
+
+    fun roundOffDecimal(number: Double): String {
+//        val numberString  = number.toString().replace(",",".")
+        val df = DecimalFormat("#.##")
+        df.roundingMode = RoundingMode.CEILING
+        return df.format(number)
     }
 
     fun share(context: Context) {

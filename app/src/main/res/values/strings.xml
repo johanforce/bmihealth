@@ -600,4 +600,11 @@
 
     <string name="all_none">None</string>
     <string name="all_min">min</string>
+    <string name="my_bmi">My BMI</string>
+    <string name="health_index">Health Index</string>
+    <string name="bmr">BMR</string>
+    <string name="extension">Extensions</string>
+    <string name="reauthentication">Reauthentication</string>
+    <string name="version">Version</string>
+    <string name="bio">Bio</string>
 </resources>

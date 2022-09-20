@@ -35,17 +35,13 @@ class RegisterActivity :
     }
 
     private fun getDataIntent() {
-        if (intent.hasExtra(KEY_USER_INFO)) {
-            this.userInfo =
-                intent.getSerializableExtra(KEY_USER_INFO) as ProfileUserModel
-        }
+
     }
 
     override fun setUpViews() {
         super.setUpViews()
         getDataIntent()
         setOnClick()
-        appPreference = AppPreference.getInstance()
         binding.viewInfo.setEnableErrorStateInputField(false)
         if (userInfo == null) {
             binding.viewInfoOther.initDefaultValue(OtherProfile())
@@ -53,6 +49,7 @@ class RegisterActivity :
             binding.viewInfo.setUserProfile(userInfo)
             binding.viewInfoOther.setUserInfo(userInfo)
         }
+        viewModel.getProfile()
         binding.viewRPE.init(this, userInfo?.unit == METRIC, 3, 4)
     }
 
@@ -85,26 +82,31 @@ class RegisterActivity :
 
         binding.layoutNext.btNext.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
-
-            val userInfo = ProfileUserModel(
-                binding.viewInfo.getFirstName() ?: "",
-                binding.viewInfo.getLastName() ?: "",
-                binding.viewInfoOther.gender,
-                binding.viewInfoOther.birthDay,
-                23,
-                binding.viewInfo.byteArray,
-                "",
-                binding.viewInfoOther.weight,
-                binding.viewInfoOther.unit,
-                binding.viewInfoOther.height,
-                "",
-                "VN", 0, 0
-            )
-
-            intent.putExtra(KEY_USER_INFO, userInfo)
-            appPreference!!.put(AppPreferenceKey.KEY_IS_INPUT_INFO_SUCCESS, true)
+            val userInfo = getDataUserProfileModel()
+            if(viewModel.profileUsers.value?.isEmpty() == true){
+                viewModel.insertProfile(userInfo)
+            }
             startActivity(intent)
         }
+    }
+
+    private fun getDataUserProfileModel():ProfileUserModel{
+        return ProfileUserModel(
+            binding.viewInfo.getFirstName() ?: "",
+            binding.viewInfo.getLastName() ?: "",
+            binding.viewInfoOther.gender,
+            binding.viewInfoOther.birthDay,
+            23,
+            binding.viewInfo.byteArray,
+            "",
+            binding.viewInfoOther.weight,
+            binding.viewInfoOther.unit,
+            binding.viewInfoOther.height,
+            binding.viewInfo.getBio(),
+            "VN",
+            binding.viewRPE.goalTemp,
+            binding.viewRPE.activityTemp
+        )
     }
 
     override fun onRequestPermissionsResult(

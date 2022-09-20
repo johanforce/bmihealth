@@ -28,24 +28,112 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.ismaeldivita.chipnavigation.ChipNavigationBar
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/viewControl"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cnb_addBottomInset="false"
-            app:cnb_addLeftInset="false"
-            app:cnb_addRightInset="false"
-            app:cnb_addTopInset="false"
-            android:background="@color/white_5"
-            app:cnb_animationDuration="175"
-            app:cnb_badgeColor="@color/pri_app"
-            app:cnb_iconSize="@dimen/px24"
-            app:cnb_menuResource="@menu/menu_item"
-            app:cnb_orientationMode="horizontal"
-            app:cnb_radius="@dimen/px24"
-            app:cnb_unselectedColor="@color/black_3"
+            android:layout_height="@dimen/px78"
+            android:background="@color/bg_02"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintRight_toRightOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ivControlBackground"
+                android:layout_width="@dimen/px286"
+                android:layout_height="@dimen/px54"
+                android:layout_marginBottom="@dimen/px4"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivBgCenter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:adjustViewBounds="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintLeft_toLeftOf="@+id/viewControlHealth"
+                    app:layout_constraintRight_toRightOf="@+id/viewControlProfile"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/home_bg_control_center" />
+
+                <LinearLayout
+                    android:id="@+id/viewControlHealth"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/ripple_home_bg_left"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/ivBgCenter"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivHealth"
+                        android:layout_width="@dimen/px24"
+                        android:layout_height="@dimen/px24"
+                        app:srcCompat="@drawable/home_selector_ic_health" />
+
+                    <com.jarvis.design_system.textview.CustomTextView
+                        android:id="@+id/tvHealth"
+                        style="@style/T12H18M"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/px2"
+                        android:text="@string/home_control_health"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/viewControlProfile"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/ripple_home_bg_right"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintLeft_toRightOf="@+id/ivBgCenter"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivProfile"
+                        android:layout_width="@dimen/px24"
+                        android:layout_height="@dimen/px24"
+                        app:srcCompat="@drawable/home_selector_ic_profile"/>
+
+                    <com.jarvis.design_system.textview.CustomTextView
+                        android:id="@+id/tvProfile"
+                        style="@style/T12H18M"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/px2"
+                        android:text="@string/home_control_profile" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fbAddGoal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginTop="@dimen/px4"
+                android:layout_marginBottom="@dimen/px20"
+                android:baselineAlignBottom="true"
+                app:backgroundTint="@color/pri_1"
+                app:fabCustomSize="@dimen/px56"
+                app:fabSize="auto"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:maxImageSize="@dimen/px24"
+                app:srcCompat="@drawable/home_ic_add_24"
+                app:tint="@color/white" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

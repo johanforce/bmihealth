@@ -16,9 +16,7 @@ import java.util.List;
 import java.util.Locale;
 
 import cn.carbswang.android.numberpickerview.library.NumberPickerView;
-import kotlin.Suppress;
 
-@Suppress(names = "unused")
 public class DatePickerDialog extends BaseFragmentDialog {
     private final SimpleDateFormat sdfToYear = new SimpleDateFormat("yyyy", Locale.getDefault());
     private final SimpleDateFormat sdfToMonth = new SimpleDateFormat("MM", Locale.getDefault());
@@ -304,7 +302,6 @@ public class DatePickerDialog extends BaseFragmentDialog {
         void onPositionCLickDate(long birthday);
     }
 
-    @Suppress(names = "unused")
     public static class Builder {
 
         private long birthday = Calendar.getInstance().getTimeInMillis();

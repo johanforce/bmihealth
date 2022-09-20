@@ -1,48 +1,41 @@
+@file:Suppress("MemberVisibilityCanBePrivate", "UNUSED_PARAMETER", "NAME_SHADOWING")
+
 package com.jarvis.bmihealth.presentation.utilx
 
 import android.annotation.SuppressLint
 import android.content.Context
 import com.jarvis.bmihealth.R
-import welly.training.localize.helper.LocaleHelper
-
+import com.jarvis.locale_helper.helper.LocaleHelper
 import java.text.DateFormatSymbols
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
+import kotlin.math.abs
 
-@Suppress("unused")
+@Suppress("unused","ConstantLocale")
 object TimeUtil {
-
     val dM = SimpleDateFormat("d/M", Locale.getDefault())
     val ddMMyyyy = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-
-    //    val EEEddMMyyyy = SimpleDateFormat("EEE, dd MMMM yyyy", Locale.getDefault())
     val hhmma = SimpleDateFormat("hh:mm aaa", Locale.getDefault())
     val HHmm = SimpleDateFormat("HH:mm", Locale.getDefault())
     val hhmmss = SimpleDateFormat("hh:mm:ss", Locale.getDefault())
     val mmss = SimpleDateFormat("mm:ss", Locale.getDefault())
-//    val MMMdd = SimpleDateFormat("MMM dd", Locale.getDefault())
-//    val ddMMM = SimpleDateFormat("dd MMM", Locale.getDefault())
-//    val simpleDateFormatMonthDateYear =
-//        SimpleDateFormat("MMMM, yyyy", Locale.getDefault())
-//    val MMMMyyyy =
-//        SimpleDateFormat("MMMM yyyy", Locale.getDefault())
 
-    val EEEddMMyyyy = "EEE, dd MMMM yyyy"
-    val MMMdd = "MMM dd"
-    val ddMMM = "dd MMM"
-    val simpleDateFormatMonthDateYear = "MMMM, yyyy"
-    val simpleMMMddyyyy = "MMM dd, yyyy"
-    val MMMMyyyy = "MMMM yyyy"
-    val yyyyMMdd = "yyyyMMdd"
+    const val EEEddMMyyyy = "EEE, dd MMMM yyyy"
+    const val MMMdd = "MMM dd"
+    const val ddMMM = "dd MMM"
+    const val simpleDateFormatMonthDateYear = "MMMM, yyyy"
+    const val simpleMMMddyyyy = "MMM dd, yyyy"
+    const val MMMMyyyy = "MMMM yyyy"
+    const val yyyyMMdd = "yyyyMMdd"
     val MMMddyyyy = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
 
     fun capitalizeDate(dateString: String): String {
         val dateStringBuilder = StringBuilder(dateString.lowercase(Locale.getDefault()))
-        for (i in 0 until dateStringBuilder.length) {
+        for (i in dateStringBuilder.indices) {
             val c = dateStringBuilder[i]
-            if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z') {
+            if (c in 'a'..'z' || c in 'A'..'Z') {
                 dateStringBuilder.setCharAt(i, Character.toUpperCase(dateStringBuilder[i]))
                 break
             }
@@ -61,6 +54,7 @@ object TimeUtil {
     }
 
 
+    @SuppressLint("SimpleDateFormat")
     fun formatDateDayHHmmss(dateInMillis: Long): String {
         val date = Date(dateInMillis)
         val dateFormat = SimpleDateFormat("HH:mm:ss")
@@ -68,6 +62,7 @@ object TimeUtil {
         return dateFormat.format(date)
     }
 
+    @SuppressLint("SimpleDateFormat")
     fun formatMonthMMM(dateInMillis: Long): String {
         val date = Date(dateInMillis)
         val dateFormat = SimpleDateFormat("MMM")
@@ -82,7 +77,7 @@ object TimeUtil {
         return capitalizeDate(simpleDateFormat.format(date))
     }
 
-    fun formatDateWithPattern(dateInMillis: Long, locale: Locale?, pattern: String?): String? {
+    fun formatDateWithPattern(dateInMillis: Long, locale: Locale?, pattern: String?): String {
         val date = Date(dateInMillis)
         val sdf = SimpleDateFormat(pattern, locale)
         return capitalizeDate(sdf.format(date))
@@ -94,7 +89,7 @@ object TimeUtil {
         return simpleDateFormat.format(date)
     }
 
-    fun formatDate(dateInMillis: Long, context: Context): String? {
+    fun formatDate(dateInMillis: Long, context: Context): String {
         val date = Date(dateInMillis)
         val sdf: SimpleDateFormat = if (LocaleHelper.getInstance().getCurrentLanguageCode(context)
                 .equals("vi", ignoreCase = true)
@@ -106,7 +101,7 @@ object TimeUtil {
         return capitalizeDate(sdf.format(date))
     }
 
-    fun formatDateYYYY(dateInMillis: Long, context: Context): String? {
+    fun formatDateYYYY(dateInMillis: Long, context: Context): String {
         val date = Date(dateInMillis)
         val sdf: SimpleDateFormat = if (LocaleHelper.getInstance().getCurrentLanguageCode(context)
                 .equals("vi", ignoreCase = true)
@@ -160,23 +155,23 @@ object TimeUtil {
     fun getDifferenceDays(startTime: Long, endTime: Long): Long {
         val startTimeStr: String = formatDateDay(startTime)
         val endTimeStr: String = formatDateDay(endTime)
-        val date1: Date = ddMMyyyy.parse(startTimeStr)
-        val date2: Date = ddMMyyyy.parse(endTimeStr)
-        val diff = Math.abs(date1.time - date2.time)
+        val date1: Date = ddMMyyyy.parse(startTimeStr) as Date
+        val date2: Date = ddMMyyyy.parse(endTimeStr) as Date
+        val diff = abs(date1.time - date2.time)
         return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + 1
     }
 
     fun getDifferenceHours(startTime: Long, endTime: Long): Long {
         val startTimeStr: String = formatDateDay(startTime)
         val endTimeStr: String = formatDateDay(endTime)
-        val date1: Date = ddMMyyyy.parse(startTimeStr)
-        val date2: Date = ddMMyyyy.parse(endTimeStr)
-        val diff = Math.abs(date1.time - date2.time)
+        val date1: Date = ddMMyyyy.parse(startTimeStr) as Date
+        val date2: Date = ddMMyyyy.parse(endTimeStr) as Date
+        val diff = abs(date1.time - date2.time)
         return TimeUnit.HOURS.convert(diff, TimeUnit.MILLISECONDS) + 1
     }
 
     fun getDifferenceMinutes(startTime: Long, endTime: Long): Int {
-        return Math.abs((endTime - startTime) / (1000 * 60)).toInt()
+        return abs((endTime - startTime) / (1000 * 60)).toInt()
     }
 
     fun monthsBetween(a: Date, b: Date?): Int {
@@ -185,7 +180,9 @@ object TimeUtil {
         if (a.before(b)) {
             cal.time = a
         } else {
-            cal.time = b
+            if (b != null) {
+                cal.time = b
+            }
             b = a
         }
         var c = 0
@@ -220,6 +217,7 @@ object TimeUtil {
         return dayNames[day]
     }
 
+    @SuppressLint("SimpleDateFormat")
     fun getTodayIntDate(): Int {
         return SimpleDateFormat("yyyyMMdd").format(Date()).toInt()
     }
@@ -267,8 +265,8 @@ object TimeUtil {
     }
 
     fun getStartEndTime(currentTime: Long): Pair<Long, Long> {
-        var startTime = 0L
-        var endTime = 0L
+        val startTime: Long
+        val endTime: Long
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = currentTime
         calendar.timeZone = TimeZone.getTimeZone("UTC")
@@ -330,8 +328,8 @@ object TimeUtil {
         currentTime: Long,
         timezone: TimeZone
     ): Pair<Long, Long> {
-        var startTime = 0L
-        var endTime = 0L
+        val startTime: Long
+        val endTime: Long
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = currentTime
         calendar.timeZone = timezone
@@ -365,8 +363,8 @@ object TimeUtil {
         currentTime: Long,
         timezone: TimeZone
     ): Pair<Long, Long> {
-        var startTime = 0L
-        var endTime = 0L
+        val startTime: Long
+        val endTime: Long
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = currentTime
         calendar.timeZone = timezone
@@ -399,8 +397,8 @@ object TimeUtil {
         currentTime: Long,
         timezone: TimeZone
     ): Pair<Long, Long> {
-        var startTime = 0L
-        var endTime = 0L
+        val startTime : Long
+        val endTime : Long
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = currentTime
         calendar.timeZone = timezone
@@ -434,7 +432,6 @@ object TimeUtil {
         val timeInSeconds = timeMilSecond / 1000
         var diffMinutes: Long = timeInSeconds / 60 % 60
         var diffHours: Long = timeInSeconds / (60 * 60)
-        val diffSeconds: Long = (timeInSeconds - diffHours * 60 * 60 - diffMinutes * 60);
         if (diffMinutes < 0) diffMinutes = 0
         if (diffHours < 0) diffHours = 0
 
@@ -455,14 +452,14 @@ object TimeUtil {
             diffMinutes.toInt()
         )
 
-        if (diffHours > 0) {
+        return if (diffHours > 0) {
             val unitHour = context.resources.getQuantityString(
                 R.plurals.all_unit_hour,
                 diffHours.toInt()
             )
-            return String.format(Locale.US, "%d $unitHour %d $unitMinutes", diffHours, diffMinutes)
+            String.format(Locale.US, "%d $unitHour %d $unitMinutes", diffHours, diffMinutes)
         } else {
-            return String.format(Locale.US, "%d $unitMinutes", diffMinutes)
+            String.format(Locale.US, "%d $unitMinutes", diffMinutes)
         }
 
     }
@@ -475,11 +472,11 @@ object TimeUtil {
         if (diffMinutes < 0) diffMinutes = 0
         if (diffHours < 0) diffHours = 0
 
-        if (diffHours > 0) {
-            return String.format(Locale.US, "%dh %dm", diffHours, diffMinutes)
+        return if (diffHours > 0) {
+            String.format(Locale.US, "%dh %dm", diffHours, diffMinutes)
         } else {
             val minString = context.getString(R.string.all_min)
-            return String.format(Locale.US, "%d $minString", diffMinutes)
+            String.format(Locale.US, "%d $minString", diffMinutes)
         }
     }
 
@@ -525,6 +522,7 @@ object TimeUtil {
         return calendar.timeInMillis
     }
 
+    @SuppressLint("SimpleDateFormat")
     fun convertShortDateToDate(shortDate: Int): Date? {
         val sdf = SimpleDateFormat("yyyyMMdd")
         var parse: Date? = null

@@ -19,4 +19,17 @@
 
     </declare-styleable>
 
+    <style name="TabItemRegular">
+        <item name="tabTextColor">@color/ink_3</item>
+        <item name="tabSelectedTextColor">@color/pri_4</item>
+        <item name="tabInlineLabel">true</item>
+        <item name="tabIndicatorHeight">@dimen/px2</item>
+        <item name="tabTextAppearance">@style/TabItemText</item>
+    </style>
+
+    <declare-styleable name="ItemTabView">
+        <attr name="text_des" format="string"/>
+        <attr name="text_data" format="string"/>
+        <attr name="image" format="integer"/>
+    </declare-styleable>
 </resources>

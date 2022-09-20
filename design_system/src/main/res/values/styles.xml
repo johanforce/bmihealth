@@ -278,7 +278,7 @@
     </style>
 
     <style name="Divider1PxInk100Horizontal" parent="Divider1PxInk100">
-        <item name="android:layout_height">@dimen/px1</item>
+        <item name="android:layout_height">@dimen/px0.5</item>
     </style>
     <!--</editor-fold>-->
 
@@ -703,41 +703,6 @@
         <item name="android:layout_width">@dimen/px64</item>
         <item name="android:layout_height">@dimen/px64</item>
         <item name="android:padding">@dimen/px4</item>
-    </style>
-    <!--</editor-fold>-->
-
-    <!--<editor-fold desc="Shadow View">-->
-    <style name="Shadow">
-        <item name="android:foreground">?attr/selectableItemBackground</item>
-        <item name="cornerRadius">@dimen/px4</item>
-        <item name="shadowMargin">@dimen/px4</item>
-        <item name="shadowRadius">@dimen/px16</item>
-    </style>
-
-    <style name="MiniShadow" parent="Shadow">
-        <item name="shadowColor">#40000000</item>
-        <item name="shadowDx">0</item>
-        <item name="shadowDy">6</item>
-    </style>
-
-    <style name="CenterShadow" parent="Shadow">
-        <item name="shadowColor">#26000000</item>
-    </style>
-
-    <style name="LightShadow" parent="Shadow">
-        <item name="shadowColor">#1A000000</item>
-    </style>
-
-    <style name="BrandShadow" parent="Shadow">
-        <item name="shadowColor">#669755FA</item>
-        <item name="shadowDx">0</item>
-        <item name="shadowDy">6</item>
-    </style>
-
-    <style name="CustomText">
-        <item name="android:textAllCaps">true</item>
-        <item name="android:textSize">@dimen/sp14</item>
-        <item name="android:textColor">@color/alabaster</item>
     </style>
     <!--</editor-fold>-->
 </resources>

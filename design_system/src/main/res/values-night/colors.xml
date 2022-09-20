@@ -6,6 +6,12 @@
     <color name="ink_2">#515861</color>
     <color name="ink_1">#2E3238</color>
 
+    <color name="bg_jx_5">#2E3238</color>
+    <color name="bg_jx_4">#515861</color>
+    <color name="bg_jx_3">#6F767E</color>
+    <color name="bg_jx_2">#B9BFC5</color>
+    <color name="bg_jx_1">#F1F2F3</color>
+
     <color name="bg_01">#1C1C1E</color>
     <color name="bg_02">#2C2C2E</color>
     <color name="bg_03">#3A3A3C</color>

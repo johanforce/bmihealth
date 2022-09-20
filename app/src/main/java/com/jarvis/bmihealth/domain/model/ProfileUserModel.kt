@@ -5,18 +5,18 @@ import com.jarvis.heathcarebmi.utils.GoalType
 import java.io.Serializable
 
 data class ProfileUserModel(
-    val firstname: String,
-    val lastname: String,
-    val gender: Int,
-    val birthday: Long,
-    val age: Int,
-    val avatar: ByteArray?,
-    val avatarUrl: String,
-    val weight: Double,
-    val unit: Int,
-    val height: Double,
-    val bio: String,
-    val national: String,
+    val firstname: String = "",
+    val lastname: String = "",
+    val gender: Int = 0,
+    val birthday: Long = 0L,
+    val age: Int = 0,
+    val avatar: ByteArray? = ByteArray(0),
+    val avatarUrl: String = "",
+    val weight: Double = 0.0,
+    val unit: Int = 0,
+    val height: Double = 0.0,
+    val bio: String = "",
+    val national: String = "",
     var goal: Int? = GoalType.MAINTAIN_WEIGHT,
     var activityLevel: Int? = ActivityLevel.MODERATELY
 ): Serializable {

@@ -24,6 +24,8 @@ class HomeViewModel @Inject constructor(private val userProfileUseCase: UserProf
 
     val toastMessage = MutableLiveData<String>()
 
+    val isShowHealthIndex = MutableLiveData<Boolean>().apply { value = false }
+
     override val coroutineContext: kotlin.coroutines.CoroutineContext
         get() = Dispatchers.Main + job
 
@@ -34,33 +36,4 @@ class HomeViewModel @Inject constructor(private val userProfileUseCase: UserProf
         job.cancel() // huỷ bỏ job
     }
 
-    var profileUser = MutableLiveData<List<ProfileUserModel>>()
-    fun getProfile() {
-        launch(Dispatchers.Main) {
-            withContext(Dispatchers.IO) {
-                profileUser.postValue(userProfileUseCase.getAllUserProfile())
-            }
-        }
-    }
-
-    fun insertProfile() {
-
-//        launch(Dispatchers.Main) {
-//            withContext(Dispatchers.IO) {
-//                userProfileUseCase.insertProfileUser(
-//                    ProfileUserModel(
-//                        "Nguyen",
-//                        "Thang",
-//                        MALE,
-//                        931194000000,
-//                        23,
-//                        70.0,
-//                        165.0,
-//                        "ALa",
-//                        "Vn"
-//                    )
-//                )
-//            }
-//        }
-    }
 }

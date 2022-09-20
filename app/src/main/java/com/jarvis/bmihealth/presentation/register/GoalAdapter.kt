@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_PARAMETER")
+
 package com.jarvis.bmihealth.presentation.register
 
 import android.annotation.SuppressLint
@@ -45,7 +47,7 @@ class  GoalAdapter : RecyclerView.Adapter<GoalAdapter.ViewHolderView>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolderView, position: Int) {
-        holder.bindView(mDataset.get(position), position)
+        holder.bindView(mDataset[position], position)
     }
 
 }

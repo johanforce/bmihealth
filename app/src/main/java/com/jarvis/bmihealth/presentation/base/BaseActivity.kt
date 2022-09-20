@@ -16,6 +16,7 @@ import com.jarvis.bmihealth.presentation.pref.AppPreference
 import com.jarvis.bmihealth.presentation.pref.AppPreferenceKey
 import com.jarvis.bmihealth.presentation.pref.ThemeMode
 import com.jarvis.bmihealth.presentation.pref.ThemeHelper
+import com.jarvis.bmihealth.presentation.register.RegisterViewModel
 import com.jarvis.design_system.toolbar.JxToolbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -27,22 +28,22 @@ import kotlin.coroutines.CoroutineContext
 abstract class BaseActivity<B : ViewBinding, T : ViewModel>(val bindingFactory: (LayoutInflater) -> B) :
     AppCompatActivity(), CoroutineScope {
     protected val binding: B by lazy { bindingFactory(layoutInflater) }
-
+    private var appPreference: AppPreference? = null
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + job
 
     private lateinit var job: Job
 
     open fun initDarkMode() {
-        val appPreference = AppPreference.getInstance()
 
         setTheme(R.style.DSAppTheme)
         ThemeHelper.applyTheme(2)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        this.initDarkMode()
         super.onCreate(savedInstanceState)
+        appPreference = AppPreference.getInstance()
+        this.initDarkMode()
         job = Job()
         initAnim()
         setContentView(binding.root)

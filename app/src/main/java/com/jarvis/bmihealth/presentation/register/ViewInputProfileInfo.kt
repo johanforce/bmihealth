@@ -101,6 +101,7 @@ class ViewInputProfileInfo : ConstraintLayout {
     fun setEnableErrorStateInputField(isEnable: Boolean) {
         binding?.edFirstName?.setEnableErrorState(isEnable)
         binding?.edLastName?.setEnableErrorState(isEnable)
+        binding?.edBio?.setEnableErrorState(isEnable)
     }
 
     fun setVisibleAvatar(isVisible: Boolean) {
@@ -139,14 +140,26 @@ class ViewInputProfileInfo : ConstraintLayout {
         this.binding?.edLastName?.setSelection()
     }
 
+    fun setBio(name: String) {
+        this.binding?.edBio?.setValue(name)
+        this.binding?.edBio?.setSelection()
+    }
+
+
     fun clearFocus(name: String) {
         this.binding?.edLastName?.clearFocus()
         this.binding?.edFirstName?.clearFocus()
+        this.binding?.edBio?.clearFocus()
     }
 
     fun clickFirstName() {
         this.binding?.edFirstName?.inputField?.requestFocus()
         this.binding?.edFirstName?.setValue("")
+    }
+
+    fun clickBio() {
+        this.binding?.edBio?.inputField?.requestFocus()
+        this.binding?.edBio?.setValue("")
     }
 
     fun clickLastName() {
@@ -201,8 +214,17 @@ class ViewInputProfileInfo : ConstraintLayout {
             }
         })
 
-        binding?.edLastName?.inputField?.setOnEditorActionListener { _, p1, _ ->
+        binding?.edBio?.inputField?.setOnEditorActionListener { _, p1, _ ->
             if (p1 == EditorInfo.IME_ACTION_DONE) {
+                binding?.edBio?.inputField?.clearFocusWellText()
+                binding?.edBio?.inputField?.onNormalState()
+                //showError()
+            }
+            false
+        }
+
+        binding?.edLastName?.inputField?.setOnEditorActionListener { _, p1, _ ->
+            if (p1 == EditorInfo.IME_ACTION_NEXT) {
                 binding?.edLastName?.inputField?.clearFocusWellText()
                 binding?.edLastName?.inputField?.onNormalState()
                 //showError()
@@ -235,6 +257,10 @@ class ViewInputProfileInfo : ConstraintLayout {
             return "Well"
         }
         return binding?.edFirstName?.inputField?.content
+    }
+
+    fun getBio(): String {
+        return binding?.edBio?.inputField?.content?: "Bio"
     }
 
     fun getLastName(): String? {
@@ -290,7 +316,9 @@ class ViewInputProfileInfo : ConstraintLayout {
         this.binding?.edLastName?.setHintValue(data)
     }
 
-
+    fun setHintBio(data: String) {
+        this.binding?.edBio?.setHintValue(data)
+    }
 //    private fun showError() {
 //        binding?.edFirstName?.inputField?.isContentValid
 //        binding?.edFirstName?.inputField?.clearFocusWellText()
@@ -304,10 +332,14 @@ class ViewInputProfileInfo : ConstraintLayout {
         binding?.edFirstName?.inputField?.clearFocusWellText()
         binding?.edFirstName?.inputField?.clearFocus()
         binding?.edFirstName?.inputField?.onNormalState()
+        binding?.edBio?.inputField?.clearFocusWellText()
+        binding?.edBio?.inputField?.clearFocus()
+        binding?.edBio?.inputField?.onNormalState()
         binding?.edLastName?.inputField?.clearFocusWellText()
         binding?.edLastName?.inputField?.clearFocus()
         binding?.edLastName?.inputField?.onNormalState()
         binding?.edFirstName?.clearFocus()
+        binding?.edBio?.clearFocus()
         binding?.edLastName?.clearFocus()
 //            showError()
 
@@ -318,10 +350,14 @@ class ViewInputProfileInfo : ConstraintLayout {
         binding?.edFirstName?.inputField?.clearFocusWellText()
         binding?.edFirstName?.inputField?.clearFocus()
         binding?.edFirstName?.inputField?.onNormalState()
+        binding?.edBio?.inputField?.clearFocusWellText()
+        binding?.edBio?.inputField?.clearFocus()
+        binding?.edBio?.inputField?.onNormalState()
         binding?.edLastName?.inputField?.clearFocusWellText()
         binding?.edLastName?.inputField?.clearFocus()
         binding?.edLastName?.inputField?.onNormalState()
         binding?.edFirstName?.clearFocus()
+        binding?.edBio?.clearFocus()
         binding?.edLastName?.clearFocus()
 
     }

@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_PARAMETER")
+
 package com.jarvis.bmihealth.presentation.profile
 
 import android.os.Bundle

@@ -4,16 +4,16 @@ import com.jarvis.bmihealth.presentation.utilx.TypeUnit.Companion.METRIC
 import com.jarvis.heathcarebmi.utils.ActivityLevel
 import com.jarvis.heathcarebmi.utils.GoalType
 /**
- * Created by Domingo Luan on 08/18/2021.
+ * Created by Jarvis Nguyen on 020/09/2022.
  */
 
 @Suppress("unused")
 class OtherProfile {
     var userId: Int? = null
 
-    var lastName: String? = null
+    var lastName: String? = "Care"
 
-    var firstName: String? = null
+    var firstName: String? = "Health"
 
     var avatar: String? = null
 
@@ -22,8 +22,6 @@ class OtherProfile {
     var gender: Int = Gender.MALE
 
     var unit: Int = METRIC
-
-    var userType: Int = 0
 
     var goal: Int? = GoalType.MAINTAIN_WEIGHT
 

@@ -5,18 +5,17 @@ import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.ActivityMainBinding
 import com.jarvis.bmihealth.presentation.base.BaseActivity
 import com.jarvis.bmihealth.presentation.bmiother.OtherFragment
-import com.jarvis.bmihealth.presentation.bmiother.OtherViewModel
-import com.jarvis.bmihealth.presentation.main.MainViewModel
 import com.jarvis.bmihealth.presentation.home.HomeFragment
 import com.jarvis.bmihealth.presentation.profile.ProfileFragment
 import com.jarvis.bmihealth.presentation.utilx.Constant
-import com.jarvis.bmihealth.presentation.utilx.LogUtil
+import com.jarvis.bmihealth.presentation.utilx.click
+import com.jarvis.bmihealth.presentation.utilx.observe
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,8 +39,21 @@ class MainActivity :
     override fun setUpViews() {
         initFragment()
         clickShowFragment(Constant.KEY_HOME)
-        clickControlView()
-        binding.viewControl.setItemSelected(R.id.home, true)
+        intiData()
+        setOnClickView()
+    }
+
+    private fun intiData() {
+        viewModel.getProfile()
+    }
+
+    private fun setOnClickView() {
+        binding.viewControlHealth.click {
+            viewModel.tempFrag.value = Constant.KEY_HOME
+        }
+        binding.viewControlProfile.click {
+            viewModel.tempFrag.value = Constant.KEY_PROFILE
+        }
     }
 
     private fun initFragment() {
@@ -53,7 +65,6 @@ class MainActivity :
         fragments.add(profileFragment!!)
 
         val size = fragments.size
-        LogUtil.ct("-------vao day--------" + size)
         val supportFragmentManager = supportFragmentManager
 
         for (index in 0 until size) {
@@ -72,14 +83,12 @@ class MainActivity :
 
     private fun clickShowFragment(position: Int) {
         try {
-            LogUtil.ct("-------vao day--------" + position)
             val targetFragment = fragments[position]
             val currentFragment: Fragment = getCurrentFragment()
             if (currentFragment.isAdded) {
                 currentFragment.onPause()
             }
             if (!isFinishing) {
-                LogUtil.ct("-------vao day--------" + currentFragment + "/" + targetFragment)
                 supportFragmentManager.beginTransaction().hide(currentFragment).show(targetFragment)
                     .commitAllowingStateLoss()
                 currentIndex = position
@@ -93,12 +102,30 @@ class MainActivity :
         return fragments[currentIndex]
     }
 
+    override fun observeData() {
+        super.observeData()
+        observe(viewModel.tempFrag) { position ->
+            if (position != null) {
+                clickShowFragment(position)
+            }
+            val colorProfileText =
+                if (position == Constant.KEY_PROFILE) ContextCompat.getColor(this, R.color.pri_1) else  ContextCompat.getColor(this,R.color.ink_2)
+            binding.tvProfile.setTextColor(colorProfileText)
+
+            val colorHomeText =
+                if (position == Constant.KEY_HOME) ContextCompat.getColor(this, R.color.pri_1) else  ContextCompat.getColor(this,R.color.ink_2)
+            binding.tvHealth.setTextColor(colorHomeText)
+
+            binding.ivHealth.isSelected = position == Constant.KEY_HOME
+            binding.ivProfile.isSelected = position == Constant.KEY_PROFILE
+        }
+    }
+
 
     override fun onBackPressed() {
         if (this.currentIndex != 1) {
             this.viewModel.tempFrag.value = 1
             clickShowFragment(Constant.KEY_HOME)
-            binding.viewControl.setItemSelected(R.id.home, true)
             return
         }
         if (!isBackPress) {
@@ -111,27 +138,4 @@ class MainActivity :
         }
         super.onBackPressed()
     }
-
-
-    private fun clickControlView() {
-        binding.viewControl.setOnItemSelectedListener { id ->
-            when (id) {
-                R.id.home -> {
-                    R.color.pri_app to getString(R.string.home)
-                    clickShowFragment(Constant.KEY_HOME)
-                }
-                R.id.other -> {
-                    R.color.pri_app to getString(R.string.bmi_other)
-                    clickShowFragment(Constant.KEY_OTHER)
-                }
-                R.id.profile -> {
-                    R.color.pri_app to getString(R.string.profile)
-                    clickShowFragment(Constant.KEY_PROFILE)
-                }
-                else -> R.color.white to ""
-            }
-        }
-
-    }
-
 }
