@@ -31,6 +31,9 @@ class RegisterViewModel @Inject constructor(private val userProfileUseCase: User
     private val job: kotlinx.coroutines.Job = kotlinx.coroutines.SupervisorJob()
 
     var profileUsers = MutableLiveData<List<ProfileUserModel>>()
+    var profileUser = ProfileUserModel()
+
+    var isInsertProfile = MutableLiveData<Boolean>()
 
     override fun onCleared() {
         super.onCleared()
@@ -49,6 +52,16 @@ class RegisterViewModel @Inject constructor(private val userProfileUseCase: User
         launch(Dispatchers.Main) {
             withContext(Dispatchers.IO) {
                 userProfileUseCase.insertProfileUser(userModel)
+                isInsertProfile.value = true
+            }
+        }
+    }
+
+    fun updateProfile(userModel: ProfileUserModel) {
+        launch(Dispatchers.Main) {
+            withContext(Dispatchers.IO) {
+                userProfileUseCase.updateProfileUser(userModel)
+                isInsertProfile.value = true
             }
         }
     }

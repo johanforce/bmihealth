@@ -9,11 +9,13 @@ import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.presentation.base.BaseActivity
 import com.jarvis.bmihealth.presentation.main.MainActivity
 import com.jarvis.bmihealth.presentation.pref.AppPreference
-import com.jarvis.bmihealth.presentation.pref.AppPreferenceKey
 import com.jarvis.bmihealth.presentation.utilx.OtherProfile
 import com.jarvis.bmihealth.presentation.utilx.TypeUnit.Companion.METRIC
+import com.jarvis.bmihealth.presentation.utilx.click
 import com.jarvis.bmihealth.presentation.utilx.cropimage.PermissionConst
+import com.jarvis.bmihealth.presentation.utilx.observe
 import com.jarvis.design_system.toolbar.JxToolbar
+import com.jarvis.heathcarebmi.utils.HealthIndexUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 @Suppress("unused", "DEPRECATION")
@@ -21,9 +23,10 @@ import dagger.hilt.android.AndroidEntryPoint
 class RegisterActivity :
     BaseActivity<ActivityRegisterBinding, RegisterViewModel>(ActivityRegisterBinding::inflate) {
 
-    private var userInfo: ProfileUserModel? = null
     private var appPreference: AppPreference? = null
     private val viewModel: RegisterViewModel by viewModels()
+
+    private var isGoToFromProfile = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +35,10 @@ class RegisterActivity :
 
     companion object {
         const val KEY_USER_INFO = "user_info"
+    }
+
+    override fun getToolbar(): JxToolbar {
+        return binding.tbAddProfile
     }
 
     private fun getDataIntent() {
@@ -43,19 +50,47 @@ class RegisterActivity :
         getDataIntent()
         setOnClick()
         binding.viewInfo.setEnableErrorStateInputField(false)
-        if (userInfo == null) {
-            binding.viewInfoOther.initDefaultValue(OtherProfile())
-        } else {
-            binding.viewInfo.setUserProfile(userInfo)
-            binding.viewInfoOther.setUserInfo(userInfo)
-        }
         viewModel.getProfile()
-        binding.viewRPE.init(this, userInfo?.unit == METRIC, 3, 4)
     }
 
-    override fun getToolbar(): JxToolbar {
-        return binding.tbAddProfile
+    private fun initDataToOnBoarding() {
+        binding.viewInfoOther.initDefaultValue(OtherProfile())
+        binding.viewRPE.init(this, viewModel.profileUser.unit == METRIC, 3, 4)
     }
+
+    private fun initDataToProfile() {
+        binding.viewInfo.setUserProfile(viewModel.profileUser)
+        binding.viewInfoOther.setUserInfo(viewModel.profileUser)
+        binding.viewRPE.init(
+            this,
+            viewModel.profileUser.unit == METRIC,
+            viewModel.profileUser.goal ?: 0,
+            viewModel.profileUser.activityLevel ?: 4
+        )
+    }
+
+    override fun observeData() {
+        super.observeData()
+        observe(viewModel.profileUsers) {
+            viewModel.profileUser = it.firstOrNull() ?: ProfileUserModel()
+
+            if (it.isEmpty()) {
+                initDataToOnBoarding()
+            } else {
+                initDataToProfile()
+            }
+        }
+
+        observe(viewModel.isInsertProfile){
+            if(!isGoToFromProfile){
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }else{
+                finish()
+            }
+        }
+    }
+
 
     private fun setOnClick() {
         binding.viewInfo.setOnClickListener(object : ViewInputProfileInfo.OnClickListener {
@@ -80,23 +115,23 @@ class RegisterActivity :
             }
         })
 
-        binding.layoutNext.btNext.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+        binding.layoutNext.btNext.click {
             val userInfo = getDataUserProfileModel()
-            if(viewModel.profileUsers.value?.isEmpty() == true){
+            if (viewModel.profileUsers.value?.isEmpty() == true) {
                 viewModel.insertProfile(userInfo)
+            }else{
+                viewModel.updateProfile(userInfo)
             }
-            startActivity(intent)
         }
     }
 
-    private fun getDataUserProfileModel():ProfileUserModel{
+    private fun getDataUserProfileModel(): ProfileUserModel {
         return ProfileUserModel(
             binding.viewInfo.getFirstName() ?: "",
             binding.viewInfo.getLastName() ?: "",
             binding.viewInfoOther.gender,
             binding.viewInfoOther.birthDay,
-            23,
+            HealthIndexUtils.calculateAgeInYear(binding.viewInfoOther.birthDay),
             binding.viewInfo.byteArray,
             "",
             binding.viewInfoOther.weight,

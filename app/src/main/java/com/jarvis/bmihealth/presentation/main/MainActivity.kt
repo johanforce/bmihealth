@@ -47,6 +47,11 @@ class MainActivity :
         viewModel.getProfile()
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getProfile()
+    }
+
     private fun setOnClickView() {
         binding.viewControlHealth.click {
             viewModel.tempFrag.value = Constant.KEY_HOME
