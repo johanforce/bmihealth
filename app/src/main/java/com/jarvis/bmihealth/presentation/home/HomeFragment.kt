@@ -13,6 +13,7 @@ import com.jarvis.bmihealth.presentation.main.MainViewModel
 import com.jarvis.bmihealth.presentation.utilx.DeviceUtil
 import com.jarvis.bmihealth.presentation.utilx.TypeUnit.Companion.METRIC
 import com.jarvis.bmihealth.presentation.utilx.observe
+import com.jarvis.heathcarebmi.utils.HealthIndexUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -48,7 +49,7 @@ class HomeFragment(context: AppCompatActivity) :
         observe(mainViewModel.profileUsers) {
             mainViewModel.profileUser = it.firstOrNull() ?: ProfileUserModel()
             mainViewModel.isKmSetting = mainViewModel.profileUser.unit == METRIC
-            binding.viewBMI.progressBMI.setCurrentValues(mainViewModel.getBMI().toFloat())
+            binding.viewBMI.progressBMI.setCurrentValues(mainViewModel.getBMI().toFloat(), mainViewModel.isChild)
             val healthyWeight = mainViewModel.getHealthyWeight()
             "${DeviceUtil.roundOffDecimal(healthyWeight.healthyWeightTo)} - ${
                 DeviceUtil.roundOffDecimal(

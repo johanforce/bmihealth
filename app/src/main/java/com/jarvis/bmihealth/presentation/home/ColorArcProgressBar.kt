@@ -1,4 +1,5 @@
-@file:Suppress("MemberVisibilityCanBePrivate", "unused", "SameParameterValue", "DEPRECATION",
+@file:Suppress(
+    "MemberVisibilityCanBePrivate", "unused", "SameParameterValue", "DEPRECATION",
     "NAME_SHADOWING", "PrivatePropertyName"
 )
 
@@ -13,6 +14,7 @@ import android.view.View
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import com.jarvis.bmihealth.R
+import com.jarvis.bmihealth.presentation.utilx.DeviceUtil
 
 /**
  * colorful arc progress bar
@@ -44,6 +46,7 @@ class ColorArcProgressBar : View {
     private var colors = intArrayOf(Color.GREEN, Color.YELLOW, Color.RED, Color.RED)
     private var maxValues = 60f
     private var curValues = 0f
+    private var isChild = false
     private var bgArcWidth = dipToPx(2f).toFloat()
     private var progressWidth = dipToPx(10f).toFloat()
     private var textSize = dipToPx(60f).toFloat()
@@ -53,7 +56,7 @@ class ColorArcProgressBar : View {
     private val longdegree = dipToPx(13f).toFloat()
     private val shortdegree = dipToPx(5f).toFloat()
     private val DEGREE_PROGRESS_DISTANCE = dipToPx(8f)
-    private val hintColor = "#676767"
+    private var hintColor = context.getColor(R.color.ink_3)
     private val longDegreeColor = "#111111"
     private val shortDegreeColor = "#111111"
     private val bgArcColor = context.getColor(R.color.ink_3)
@@ -64,6 +67,41 @@ class ColorArcProgressBar : View {
     private var isNeedUnit = false
     private var isNeedDial = false
     private var isNeedContent = false
+    private var dataBMI = 0.0f
+    private var listColorAdult = listOf(
+        context.getColor(R.color.secondary),
+        context.getColor(R.color.bmi_level1),
+        context.getColor(R.color.bmi_level2),
+        context.getColor(R.color.bmi_level3),
+        context.getColor(R.color.bmi_level4),
+        context.getColor(R.color.bmi_level5),
+        context.getColor(R.color.bmi_level5),
+    )
+    private var listColorChild = listOf(
+        context.getColor(R.color.secondary),
+        context.getColor(R.color.bmi_level1),
+        context.getColor(R.color.bmi_level2),
+        context.getColor(R.color.bmi_level3),
+        context.getColor(R.color.bmi_level5),
+    )
+
+    private var listStringChild = listOf(
+        context.getString(R.string.bmi_very_under_weight),
+        context.getString(R.string.bmi_under_weight),
+        context.getString(R.string.bmi_healthy_weight),
+        context.getString(R.string.bmi_over_weight),
+        context.getString(R.string.bmi_obesity),
+    )
+
+    private var listStringAdult = listOf(
+        context.getString(R.string.bmi_very_under_weight),
+        context.getString(R.string.bmi_under_weight),
+        context.getString(R.string.bmi_healthy_weight),
+        context.getString(R.string.bmi_over_weight),
+        context.getString(R.string.bmi_moderatelt_1),
+        context.getString(R.string.bmi_moderatelt_2),
+        context.getString(R.string.bmi_moderatelt_3),
+    )
 
     // sweepAngle / maxValues 的值
     private var k = 0f
@@ -117,7 +155,7 @@ class ColorArcProgressBar : View {
         titleString = a.getString(R.styleable.ColorArcProgressBar_string_title)
         curValues = a.getFloat(R.styleable.ColorArcProgressBar_current_value, 0f)
         maxValues = a.getFloat(R.styleable.ColorArcProgressBar_max_value, 60f)
-        setCurrentValues(curValues)
+        setCurrentValues(curValues, isChild)
         setMaxValues(maxValues)
         a.recycle()
     }
@@ -166,19 +204,19 @@ class ColorArcProgressBar : View {
         //内容显示文字
         vTextPaint = Paint()
         vTextPaint!!.textSize = textSize
-        vTextPaint!!.color = Color.BLACK
+        vTextPaint!!.color = ContextCompat.getColor(context, R.color.ink_5)
         vTextPaint!!.textAlign = Paint.Align.CENTER
 
         //显示单位文字
         hintPaint = Paint()
         hintPaint!!.textSize = hintSize
-        hintPaint!!.color = Color.parseColor(hintColor)
+        hintPaint!!.color = hintColor
         hintPaint!!.textAlign = Paint.Align.CENTER
 
         //显示标题文字
         curSpeedPaint = Paint()
         curSpeedPaint!!.textSize = curSpeedSize
-        curSpeedPaint!!.color = Color.parseColor(hintColor)
+        curSpeedPaint!!.color = hintColor
         curSpeedPaint!!.textAlign = Paint.Align.CENTER
         mDrawFilter = PaintFlagsDrawFilter(0, Paint.ANTI_ALIAS_FLAG or Paint.FILTER_BITMAP_FLAG)
         sweepGradient = SweepGradient(centerX, centerY, colors, null)
@@ -232,13 +270,14 @@ class ColorArcProgressBar : View {
         canvas.drawArc(bgRect!!, startAngle, currentAngle, false, progressPaint!!)
         if (isNeedContent) {
             canvas.drawText(
-                String.format("%.0f", curValues),
+                String.format("%.0f", dataBMI),
                 centerX,
                 centerY + textSize / 3,
                 vTextPaint!!
             )
         }
         if (isNeedUnit) {
+            hintPaint!!.color = hintColor
             canvas.drawText(hintString!!, centerX, centerY + 2 * textSize / 3, hintPaint!!)
         }
         if (isNeedTitle) {
@@ -262,14 +301,29 @@ class ColorArcProgressBar : View {
      *
      * @param currentValues
      */
-    fun setCurrentValues(currentValues: Float) {
-        var currentValues = currentValues
+    fun setCurrentValues(bmi: Float, isChild: Boolean) {
+        val totalValue = if (isChild) { 100f } else { 40f }
+        dataBMI = bmi
+        var currentValues = bmi / totalValue * 100
         if (currentValues > maxValues) {
             currentValues = maxValues
         }
         if (currentValues < 0) {
             currentValues = 0f
         }
+
+        hintColor = if(isChild){
+            listColorChild[DeviceUtil.levelBMChild(bmi.toDouble())-1]
+        }else{
+            listColorAdult[DeviceUtil.levelBMIAdult(bmi.toDouble())-1]
+        }
+
+        hintString = if(isChild){
+            listStringChild[DeviceUtil.levelBMChild(bmi.toDouble())-1]
+        }else{
+            listStringAdult[DeviceUtil.levelBMIAdult(bmi.toDouble())-1]
+        }
+
         curValues = currentValues
         lastAngle = currentAngle
         setAnimation(lastAngle, currentValues * k, aniSpeed)

@@ -20,7 +20,7 @@ class OnBoardingActivity :
     private val viewModel: OnBoardingViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
         binding.lifecycleOwner = this
 

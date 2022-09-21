@@ -25,7 +25,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:max_value="100"
         app:string_unit="百分比%"
-        app:total_engle="290" />
+        app:total_engle="286" />
 
     <com.jarvis.design_system.textview.CustomTextView
         style="@style/T16H24B"
@@ -81,7 +81,7 @@
 
         <com.jarvis.design_system.textview.CustomTextView
             android:id="@+id/tvWeight"
-            style="@style/T20H28B"
+            style="@style/T16H24B"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/px4"
@@ -99,6 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/ink_4"
+            style="@style/T12H18M"
             app:layout_constraintBaseline_toBaselineOf="@+id/tvWeight"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintLeft_toRightOf="@+id/tvWeight"
@@ -144,7 +145,7 @@
 
         <com.jarvis.design_system.textview.CustomTextView
             android:id="@+id/tvBodyPercent"
-            style="@style/T20H28B"
+            style="@style/T16H24B"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/px4"
@@ -162,6 +163,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="%"
+            style="@style/T12H18M"
             android:textColor="@color/ink_4"
             app:layout_constraintBaseline_toBaselineOf="@+id/tvBodyPercent"
             app:layout_constraintHorizontal_chainStyle="packed"

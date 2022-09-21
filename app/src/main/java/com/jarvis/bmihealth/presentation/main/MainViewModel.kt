@@ -45,6 +45,7 @@ class MainViewModel @Inject constructor(private val userProfileUseCase: UserProf
     var profileUsers = MutableLiveData<List<ProfileUserModel>>()
     var profileUser = ProfileUserModel()
     var isKmSetting = false
+    var isChild = false
     var tempFrag = MutableLiveData<Int>()
 
     fun onClickFrag(temp: Int) {
@@ -62,6 +63,7 @@ class MainViewModel @Inject constructor(private val userProfileUseCase: UserProf
                 profileUsers.postValue(userProfileUseCase.getAllUserProfile())
                 profileUser= profileUsers.value?.firstOrNull()?: ProfileUserModel()
                 isKmSetting = profileUser.unit == METRIC
+                isChild = HealthIndexUtils.isChild(profileUser.birthday)
             }
         }
     }
@@ -104,45 +106,5 @@ class MainViewModel @Inject constructor(private val userProfileUseCase: UserProf
             ),
             profileUser.goal?:0
         ).toInt()
-    }
-
-    fun getLevelBMI(): Pair<Boolean, Int>{
-        val isAdult = !HealthIndexUtils.isChild(profileUser.birthday)
-
-        return if(isAdult){
-            true to levelBMIAdult(getBMI())
-        }else{
-            false to levelBMChild(getBMI())
-        }
-    }
-
-    fun levelBMIAdult(bmi: Double): Int{
-        return if(bmi < 16.0){
-            BMILevelAdult.BMI_1
-        }else if(bmi >= 16 && bmi <18.5){
-            BMILevelAdult.BMI_2
-        }else if(bmi >= 18.5 && bmi <25){
-            BMILevelAdult.BMI_3
-        }else if(bmi >= 25 && bmi <30){
-            BMILevelAdult.BMI_4
-        }else if(bmi >= 30 && bmi <35){
-            BMILevelAdult.BMI_5
-        }else {
-            BMILevelAdult.BMI_6
-        }
-    }
-
-    fun levelBMChild(bmi: Double): Int{
-        return if(bmi < 3.0){
-            BMILevelChild.BMI_1
-        }else if(bmi >= 3.0 && bmi <15.0){
-            BMILevelChild.BMI_2
-        }else if(bmi >= 15 && bmi <85){
-            BMILevelChild.BMI_3
-        }else if(bmi >= 85 && bmi <97){
-            BMILevelChild.BMI_4
-        }else {
-            BMILevelAdult.BMI_5
-        }
     }
 }

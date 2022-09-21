@@ -6,7 +6,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @IntDef({BMILevelAdult.BMI_1, BMILevelAdult.BMI_2, BMILevelAdult.BMI_3,
-        BMILevelAdult.BMI_4, BMILevelAdult.BMI_5,BMILevelAdult.BMI_6})
+        BMILevelAdult.BMI_4, BMILevelAdult.BMI_5,BMILevelAdult.BMI_6,BMILevelAdult.BMI_7})
 @Retention(RetentionPolicy.SOURCE)
 public @interface BMILevelAdult {
     int BMI_1 = 1;
@@ -15,4 +15,5 @@ public @interface BMILevelAdult {
     int BMI_4 = 4;
     int BMI_5 = 5;
     int BMI_6 = 6;
+    int BMI_7 = 7;
 }

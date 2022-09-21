@@ -25,6 +25,8 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.jarvis.bmihealth.R
+import com.jarvis.heathcarebmi.utils.BMILevelAdult
+import com.jarvis.heathcarebmi.utils.BMILevelChild
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.util.*
@@ -39,6 +41,38 @@ object DeviceUtil {
             context.startActivity(intent)
         } catch (e: Exception) {
             e.printStackTrace()
+        }
+    }
+
+    fun levelBMIAdult(bmi: Double): Int{
+        return if(bmi < 16.0){
+            BMILevelAdult.BMI_1
+        }else if(bmi >= 16 && bmi <18.5){
+            BMILevelAdult.BMI_2
+        }else if(bmi >= 18.5 && bmi <25){
+            BMILevelAdult.BMI_3
+        }else if(bmi >= 25 && bmi <30){
+            BMILevelAdult.BMI_4
+        }else if(bmi >= 30 && bmi <35){
+            BMILevelAdult.BMI_5
+        }else if(bmi >35 && bmi <40){
+            BMILevelAdult.BMI_6
+        }else {
+            BMILevelAdult.BMI_7
+        }
+    }
+
+    fun levelBMChild(bmi: Double): Int{
+        return if(bmi < 3.0){
+            BMILevelChild.BMI_1
+        }else if(bmi >= 3.0 && bmi <15.0){
+            BMILevelChild.BMI_2
+        }else if(bmi >= 15 && bmi <85){
+            BMILevelChild.BMI_3
+        }else if(bmi >= 85 && bmi <97){
+            BMILevelChild.BMI_4
+        }else {
+            BMILevelAdult.BMI_5
         }
     }
 
@@ -252,18 +286,18 @@ object DeviceUtil {
         }
         return ret.toString()
     }
-}
 
-fun openMarket(context: Context, packageName: String) {
-    try {
-        if (TextUtils.isEmpty(packageName)) {
-            return
+    fun openMarket(context: Context, packageName: String) {
+        try {
+            if (TextUtils.isEmpty(packageName)) {
+                return
+            }
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse("https://play.google.com/store/apps/details?id=$packageName")
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(intent)
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
-        val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse("https://play.google.com/store/apps/details?id=$packageName")
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        context.startActivity(intent)
-    } catch (e: Exception) {
-        e.printStackTrace()
     }
 }
