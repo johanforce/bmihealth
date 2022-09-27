@@ -1,5 +1,6 @@
 package com.jarvis.bmihealth.domain.model
 
+import com.jarvis.bmihealth.presentation.pref.ThemeMode.Companion.LIGHT
 import com.jarvis.heathcarebmi.utils.ActivityLevel
 import com.jarvis.heathcarebmi.utils.GoalType
 import java.io.Serializable
@@ -19,7 +20,8 @@ data class ProfileUserModel(
     var bio: String = "",
     var national: String = "",
     var goal: Int? = GoalType.MAINTAIN_WEIGHT,
-    var activityLevel: Int? = ActivityLevel.MODERATELY
+    var activityLevel: Int? = ActivityLevel.MODERATELY,
+    var themeMode: Int? = LIGHT
 ) : Serializable {
     companion object {
         fun convertEntityToModel(entity: ProfileUser): ProfileUserModel {
@@ -38,7 +40,8 @@ data class ProfileUserModel(
                 unit = entity.unit,
                 national = entity.national,
                 goal = entity.goal,
-                activityLevel = entity.activityLevel
+                activityLevel = entity.activityLevel,
+                themeMode = entity.themeMode
             )
         }
 
@@ -58,7 +61,8 @@ data class ProfileUserModel(
                 unit = model.unit,
                 national = model.national,
                 goal = model.goal ?: 0,
-                activityLevel = model.activityLevel ?: 0
+                activityLevel = model.activityLevel ?: 0,
+                themeMode = model.themeMode ?: LIGHT
             )
         }
 

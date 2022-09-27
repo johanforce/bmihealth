@@ -48,7 +48,7 @@ class CaloriesRequiredActivity :
 
     override fun observeData() {
         super.observeData()
-        observe(viewModel.profileUsers){
+        observe(viewModel.profileUsers) {
             viewModel.updateDataView()
             updateView()
         }

@@ -15,11 +15,11 @@ class ProfileUserRepositoryImpl(private val profileUserDao: ProfileUserDao) :
     }
 
     override suspend fun insertProfile(profile: ProfileUser) {
-        profileUserDao.insertNote(profile)
+        return profileUserDao.insertNote(profile)
     }
 
     override suspend fun updateProfile(profile: ProfileUser) {
-        profileUserDao.updateNote(profile)
+        return profileUserDao.updateProfile(profile)
     }
 
     override suspend fun deleteProfile(profile: ProfileUser) {

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.jarvis.bmihealth.domain.model.ProfileUser
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.domain.usecase.UserProfileUseCase
+import com.jarvis.bmihealth.presentation.base.BaseViewModel
 import com.jarvis.bmihealth.presentation.utilx.Constant.MALE
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -52,7 +53,7 @@ class RegisterViewModel @Inject constructor(private val userProfileUseCase: User
         launch(Dispatchers.Main) {
             withContext(Dispatchers.IO) {
                 userProfileUseCase.insertProfileUser(userModel)
-                isInsertProfile.postValue(true)
+                isInsertProfile.value = true
             }
         }
     }
@@ -61,7 +62,7 @@ class RegisterViewModel @Inject constructor(private val userProfileUseCase: User
         launch(Dispatchers.Main) {
             withContext(Dispatchers.IO) {
                 userProfileUseCase.updateProfileUser(userModel)
-                isInsertProfile.postValue(true)
+                isInsertProfile.value = true
             }
         }
     }

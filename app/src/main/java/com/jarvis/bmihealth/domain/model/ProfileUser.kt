@@ -3,6 +3,7 @@ package com.jarvis.bmihealth.domain.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.jarvis.bmihealth.presentation.pref.ThemeMode.Companion.LIGHT
 
 @Entity
 data class ProfileUser(
@@ -14,15 +15,15 @@ data class ProfileUser(
     @ColumnInfo(name = "lastname")
     val lastname: String = "",
     @ColumnInfo(name = "gender")
-    val gender: Int     = 0,
+    val gender: Int = 0,
     @ColumnInfo(name = "birthday")
-    val birthday: Long  = System.currentTimeMillis() ,
+    val birthday: Long = System.currentTimeMillis(),
     @ColumnInfo(name = "age")
     val age: Int = 0,
     @ColumnInfo(name = "weight")
     val weight: Double = 0.0,
     @ColumnInfo(name = "height")
-    val height: Double  = 0.0,
+    val height: Double = 0.0,
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
     var avatar: ByteArray? = null,
     @ColumnInfo(name = "avatarUrl")
@@ -36,5 +37,7 @@ data class ProfileUser(
     @ColumnInfo(name = "goal")
     val goal: Int = 0,
     @ColumnInfo(name = "activity_level")
-    val activityLevel: Int = 0
+    val activityLevel: Int = 0,
+    @ColumnInfo(name = "theme_mode")
+    val themeMode: Int = LIGHT
 )

@@ -24,7 +24,7 @@ class ViewInputDataHome : ConstraintLayout {
     }
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-        init(context,attrs)
+        init(context, attrs)
     }
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
@@ -96,10 +96,10 @@ class ViewInputDataHome : ConstraintLayout {
         initClickListener()
     }
 
-    fun setDataView(data: Double, isInt: Boolean){
-        if(isInt){
+    fun setDataView(data: Double, isInt: Boolean) {
+        if (isInt) {
             binding?.tvData?.text = data.toInt().toString()
-        }else{
+        } else {
             binding?.tvData?.text = DeviceUtil.roundOffDecimal(data)
         }
     }

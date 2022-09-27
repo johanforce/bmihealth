@@ -2,12 +2,18 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "e3fc62190fa46142b1d2dcea3361779c",
+    "identityHash": "dc8c532e6239ffc802511f4fa6cdf86d",
     "entities": [
       {
         "tableName": "ProfileUser",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`firstname` TEXT NOT NULL, `lastname` TEXT NOT NULL, `gender` INTEGER NOT NULL, `birthday` INTEGER NOT NULL, `age` INTEGER NOT NULL, `weight` REAL NOT NULL, `height` REAL NOT NULL, `avatar` BLOB, `avatarUrl` TEXT NOT NULL, `bio` TEXT NOT NULL, `unit` INTEGER NOT NULL, `national` TEXT NOT NULL, `goal` INTEGER NOT NULL, `activity_level` INTEGER NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `firstname` TEXT NOT NULL, `lastname` TEXT NOT NULL, `gender` INTEGER NOT NULL, `birthday` INTEGER NOT NULL, `age` INTEGER NOT NULL, `weight` REAL NOT NULL, `height` REAL NOT NULL, `avatar` BLOB, `avatarUrl` TEXT NOT NULL, `bio` TEXT NOT NULL, `unit` INTEGER NOT NULL, `national` TEXT NOT NULL, `goal` INTEGER NOT NULL, `activity_level` INTEGER NOT NULL, `theme_mode` INTEGER NOT NULL)",
         "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
           {
             "fieldPath": "firstname",
             "columnName": "firstname",
@@ -93,8 +99,8 @@
             "notNull": true
           },
           {
-            "fieldPath": "id",
-            "columnName": "id",
+            "fieldPath": "themeMode",
+            "columnName": "theme_mode",
             "affinity": "INTEGER",
             "notNull": true
           }
@@ -112,7 +118,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e3fc62190fa46142b1d2dcea3361779c')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'dc8c532e6239ffc802511f4fa6cdf86d')"
     ]
   }
 }

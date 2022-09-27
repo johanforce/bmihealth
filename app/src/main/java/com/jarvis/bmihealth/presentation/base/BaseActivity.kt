@@ -1,6 +1,7 @@
 package com.jarvis.bmihealth.presentation.base
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -28,17 +29,28 @@ import kotlin.coroutines.CoroutineContext
 abstract class BaseActivity<B : ViewBinding, T : ViewModel>(val bindingFactory: (LayoutInflater) -> B) :
     AppCompatActivity(), CoroutineScope {
     protected val binding: B by lazy { bindingFactory(layoutInflater) }
-    private var appPreference: AppPreference? = null
+    var appPreference: AppPreference? = null
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + job
 
     private lateinit var job: Job
 
     open fun initDarkMode() {
-
         setTheme(R.style.DSAppTheme)
-        ThemeHelper.applyTheme(2)
+        val themeMode = appPreference?.get(AppPreferenceKey.KEY_THEMEMODE, Int::class.java)
+        if ((themeMode == ThemeMode.DARK || themeMode == ThemeMode.FOLLOW_SYSTEM)) {
+            appPreference?.putSync(AppPreferenceKey.KEY_THEMEMODE, ThemeMode.LIGHT)
+            ThemeHelper.applyTheme(ThemeMode.LIGHT)
+        } else {
+            ThemeHelper.applyTheme(themeMode!!)
+        }
     }
+
+    fun isDarkTheme(): Boolean {
+        val uiMode = this.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        return uiMode == Configuration.UI_MODE_NIGHT_YES
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,8 +61,8 @@ abstract class BaseActivity<B : ViewBinding, T : ViewModel>(val bindingFactory: 
         setContentView(binding.root)
         initToolbar()
         observeData()
-        setUpViews()
         initCoroutineScope()
+        setUpViews()
     }
 
     open fun setUpViews() {}

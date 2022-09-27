@@ -9,20 +9,14 @@ import android.text.method.LinkMovementMethod
 import android.view.View
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.flowWithLifecycle
-import androidx.lifecycle.lifecycleScope
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.ActivityBmiUserBinding
 import com.jarvis.bmihealth.presentation.base.BaseActivity
-import com.jarvis.bmihealth.presentation.main.MainViewModel
 import com.jarvis.bmihealth.presentation.utilx.observe
 import com.jarvis.design_system.toolbar.JxToolbar
 import com.jarvis.heathcarebmi.utils.Consts
 import com.jarvis.heathcarebmi.utils.HealthIndexUtils
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
 class BmiUserIndexActivity :
@@ -105,7 +99,7 @@ class BmiUserIndexActivity :
 
     override fun observeData() {
         super.observeData()
-        observe(viewModel.profileUsers){
+        observe(viewModel.profileUsers) {
             viewModel.updateDataView()
             initData()
         }

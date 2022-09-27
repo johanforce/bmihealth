@@ -39,17 +39,7 @@ class MainActivity :
     override fun setUpViews() {
         initFragment()
         clickShowFragment(Constant.KEY_HOME)
-        intiData()
         setOnClickView()
-    }
-
-    private fun intiData() {
-        viewModel.getProfile()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.getProfile()
     }
 
     private fun setOnClickView() {
@@ -62,12 +52,12 @@ class MainActivity :
     }
 
     private fun initFragment() {
-        homeFragment = HomeFragment(this)
-        profileFragment = ProfileFragment(this)
-        otherFragment = OtherFragment(this)
-        fragments.add(otherFragment!!)
-        fragments.add(homeFragment!!)
-        fragments.add(profileFragment!!)
+        homeFragment = HomeFragment(this@MainActivity)
+        profileFragment = ProfileFragment(this@MainActivity)
+        otherFragment = OtherFragment(this@MainActivity)
+        fragments.add(otherFragment?: OtherFragment(this@MainActivity))
+        fragments.add(homeFragment ?: ProfileFragment(this@MainActivity))
+        fragments.add(profileFragment?: HomeFragment(this@MainActivity))
 
         val size = fragments.size
         val supportFragmentManager = supportFragmentManager
@@ -114,11 +104,17 @@ class MainActivity :
                 clickShowFragment(position)
             }
             val colorProfileText =
-                if (position == Constant.KEY_PROFILE) ContextCompat.getColor(this, R.color.pri_1) else  ContextCompat.getColor(this,R.color.ink_2)
+                if (position == Constant.KEY_PROFILE) ContextCompat.getColor(
+                    this,
+                    R.color.pri_1
+                ) else ContextCompat.getColor(this, R.color.ink_2)
             binding.tvProfile.setTextColor(colorProfileText)
 
             val colorHomeText =
-                if (position == Constant.KEY_HOME) ContextCompat.getColor(this, R.color.pri_1) else  ContextCompat.getColor(this,R.color.ink_2)
+                if (position == Constant.KEY_HOME) ContextCompat.getColor(
+                    this,
+                    R.color.pri_1
+                ) else ContextCompat.getColor(this, R.color.ink_2)
             binding.tvHealth.setTextColor(colorHomeText)
 
             binding.ivHealth.isSelected = position == Constant.KEY_HOME

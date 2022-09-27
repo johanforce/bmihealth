@@ -1,22 +1,13 @@
 package com.jarvis.bmihealth.presentation.main
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jarvis.bmihealth.domain.model.ProfileUser
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.domain.usecase.UserProfileUseCase
 import com.jarvis.bmihealth.presentation.base.BaseViewModel
-import com.jarvis.bmihealth.presentation.utilx.Constant.MALE
-import com.jarvis.bmihealth.presentation.utilx.DeviceUtil
 import com.jarvis.bmihealth.presentation.utilx.TypeUnit
-import com.jarvis.bmihealth.presentation.utilx.TypeUnit.Companion.METRIC
-import com.jarvis.heathcarebmi.utils.BMILevelAdult
-import com.jarvis.heathcarebmi.utils.BMILevelChild
-import com.jarvis.heathcarebmi.utils.BMIUtils
 import com.jarvis.heathcarebmi.utils.HealthIndexUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -33,8 +24,6 @@ class MainViewModel @Inject constructor(private val userProfileUseCase: UserProf
     var isChild = false
     var tempFrag = MutableLiveData<Int>()
 
-    var isLoadDataProfile = MutableLiveData<Boolean>()
-
     fun onClickFrag(temp: Int) {
         if (temp == 0) {
             tempFrag.value = 0
@@ -49,14 +38,27 @@ class MainViewModel @Inject constructor(private val userProfileUseCase: UserProf
         }
     }
 
+    fun updateProfile(userModel: ProfileUserModel) {
+        launch(Dispatchers.Main) {
+            withContext(Dispatchers.IO) {
+                userProfileUseCase.updateProfileUser(userModel)
+            }
+        }
+    }
+
     fun updateDataView() {
         profileUser = profileUsers.value?.firstOrNull() ?: ProfileUserModel()
         isKmSetting = profileUser.unit == TypeUnit.METRIC
         isChild = HealthIndexUtils.isChild(profileUser.birthday)
     }
 
-    fun getBMR(): Int{
-        return HealthIndexUtils.getBmr(profileUser.weight, profileUser.height, profileUser.birthday, profileUser.gender).toInt()
+    fun getBMR(): Int {
+        return HealthIndexUtils.getBmr(
+            profileUser.weight,
+            profileUser.height,
+            profileUser.birthday,
+            profileUser.gender
+        ).toInt()
     }
 
     fun getHealthyWeight(): HealthIndexUtils.HealthyWeight {
@@ -67,7 +69,7 @@ class MainViewModel @Inject constructor(private val userProfileUseCase: UserProf
         )
     }
 
-    fun getBMI():Double{
+    fun getBMI(): Double {
         return HealthIndexUtils.getBmi(
             profileUser.birthday,
             System.currentTimeMillis(),
@@ -77,7 +79,7 @@ class MainViewModel @Inject constructor(private val userProfileUseCase: UserProf
         )
     }
 
-    fun getBodyFat():Double{
+    fun getBodyFat(): Double {
         return HealthIndexUtils.getBodyFatPercentage(
             getBMI(),
             profileUser.gender,
@@ -85,13 +87,13 @@ class MainViewModel @Inject constructor(private val userProfileUseCase: UserProf
         )
     }
 
-    fun getCalories():Int{
+    fun getCalories(): Int {
         return HealthIndexUtils.getCaloRequired(
             HealthIndexUtils.getTdee(
                 getBMR().toDouble(),
-                profileUser.activityLevel?:0
+                profileUser.activityLevel ?: 0
             ),
-            profileUser.goal?:0
+            profileUser.goal ?: 0
         ).toInt()
     }
 }

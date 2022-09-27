@@ -302,7 +302,11 @@ class ColorArcProgressBar : View {
      * @param currentValues
      */
     fun setCurrentValues(bmi: Float, isChild: Boolean) {
-        val totalValue = if (isChild) { 100f } else { 40f }
+        val totalValue = if (isChild) {
+            100f
+        } else {
+            40f
+        }
         dataBMI = bmi
         var currentValues = bmi / totalValue * 100
         if (currentValues > maxValues) {
@@ -312,16 +316,16 @@ class ColorArcProgressBar : View {
             currentValues = 0f
         }
 
-        hintColor = if(isChild){
-            listColorChild[DeviceUtil.levelBMChild(bmi.toDouble())-1]
-        }else{
-            listColorAdult[DeviceUtil.levelBMIAdult(bmi.toDouble())-1]
+        hintColor = if (isChild) {
+            listColorChild[DeviceUtil.levelBMChild(bmi.toDouble()) - 1]
+        } else {
+            listColorAdult[DeviceUtil.levelBMIAdult(bmi.toDouble()) - 1]
         }
 
-        hintString = if(isChild){
-            listStringChild[DeviceUtil.levelBMChild(bmi.toDouble())-1]
-        }else{
-            listStringAdult[DeviceUtil.levelBMIAdult(bmi.toDouble())-1]
+        hintString = if (isChild) {
+            listStringChild[DeviceUtil.levelBMChild(bmi.toDouble()) - 1]
+        } else {
+            listStringAdult[DeviceUtil.levelBMIAdult(bmi.toDouble()) - 1]
         }
 
         curValues = currentValues

@@ -26,10 +26,18 @@ class UserProfileUseCase(
     }
 
     suspend fun insertProfileUser(profileUserModel: ProfileUserModel) {
-        profileUserRepository.insertProfile(ProfileUserModel.convertModelToEntity(profileUserModel))
+        return profileUserRepository.insertProfile(
+            ProfileUserModel.convertModelToEntity(
+                profileUserModel
+            )
+        )
     }
 
     suspend fun updateProfileUser(profileUserModel: ProfileUserModel) {
-        profileUserRepository.updateProfile(ProfileUserModel.convertModelToEntity(profileUserModel))
+        return profileUserRepository.updateProfile(
+            ProfileUserModel.convertModelToEntity(
+                profileUserModel
+            )
+        )
     }
 }

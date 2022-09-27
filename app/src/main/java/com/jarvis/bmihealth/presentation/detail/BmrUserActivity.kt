@@ -11,7 +11,6 @@ import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.ActivityBmrDetailBinding
 import com.jarvis.bmihealth.presentation.base.BaseActivity
 import com.jarvis.bmihealth.presentation.register.RegisterActivity
-import com.jarvis.bmihealth.presentation.utilx.observe
 import com.jarvis.design_system.toolbar.JxToolbar
 import com.well.unitlibrary.UnitConverter
 import dagger.hilt.android.AndroidEntryPoint

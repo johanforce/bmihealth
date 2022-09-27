@@ -8,7 +8,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.FragmentHomeBinding
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
@@ -39,6 +38,17 @@ class HomeFragment(context: AppCompatActivity) :
         setOnClickView()
     }
 
+    private fun initData() {
+        mainViewModel.getProfile()
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if(!hidden){
+            mainViewModel.getProfile()
+        }
+    }
+
     private fun setOnClickView() {
         binding.tvBodyIndex?.click {
             viewModel.isShowHealthIndex.value = false
@@ -48,7 +58,7 @@ class HomeFragment(context: AppCompatActivity) :
             viewModel.isShowHealthIndex.value = true
         }
 
-        binding.itemBMR?.setOnClickViewListener(object : ViewInputDataHome.OnClickProfileListener{
+        binding.itemBMR?.setOnClickViewListener(object : ViewInputDataHome.OnClickProfileListener {
             override fun clickView() {
                 val intent = Intent()
                 context?.let { it1 -> intent.setClass(it1, BmrUserActivity::class.java) }
@@ -68,17 +78,14 @@ class HomeFragment(context: AppCompatActivity) :
             resultLauncher.launch(intent)
         }
 
-        binding.itemSaveWeight?.setOnClickViewListener(object : ViewInputDataHome.OnClickProfileListener{
+        binding.itemSaveWeight?.setOnClickViewListener(object :
+            ViewInputDataHome.OnClickProfileListener {
             override fun clickView() {
                 val intent = Intent()
                 context?.let { it1 -> intent.setClass(it1, CaloriesRequiredActivity::class.java) }
                 resultLauncher.launch(intent)
             }
         })
-    }
-
-    private fun initData() {
-
     }
 
     override fun observeData() {
@@ -115,8 +122,8 @@ class HomeFragment(context: AppCompatActivity) :
 
         observe(viewModel.isShowHealthIndex) {
             viewModel.isShowHealthIndex.value = null
-            binding.listBody?.visibility = if(it) View.GONE else View.VISIBLE
-            binding.listHealth?.visibility = if(it) View.VISIBLE else View.GONE
+            binding.listBody?.visibility = if (it) View.GONE else View.VISIBLE
+            binding.listHealth?.visibility = if (it) View.VISIBLE else View.GONE
             if (it) {
                 binding.tvBodyIndex?.background = null
                 binding.tvHealIndex?.background =
