@@ -2,11 +2,14 @@ package com.jarvis.bmihealth.presentation.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.jarvis.bmihealth.domain.model.ProfileUser
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.domain.usecase.UserProfileUseCase
+import com.jarvis.bmihealth.presentation.base.BaseViewModel
 import com.jarvis.bmihealth.presentation.utilx.Constant.MALE
 import com.jarvis.bmihealth.presentation.utilx.DeviceUtil
+import com.jarvis.bmihealth.presentation.utilx.TypeUnit
 import com.jarvis.bmihealth.presentation.utilx.TypeUnit.Companion.METRIC
 import com.jarvis.heathcarebmi.utils.BMILevelAdult
 import com.jarvis.heathcarebmi.utils.BMILevelChild
@@ -22,31 +25,15 @@ import javax.inject.Inject
 @Suppress("unused")
 @HiltViewModel
 class MainViewModel @Inject constructor(private val userProfileUseCase: UserProfileUseCase) :
-    ViewModel(), CoroutineScope {
-
-    val empty = MutableLiveData<Boolean>().apply { value = false }
-
-    val dataLoading = MutableLiveData<Boolean>().apply { value = false }
-
-    val dataLoaded = MutableLiveData<Boolean>().apply { value = false }
-
-    val toastMessage = MutableLiveData<String>()
-
-    override val coroutineContext: kotlin.coroutines.CoroutineContext
-        get() = Dispatchers.Main + job
-
-    private val job: kotlinx.coroutines.Job = kotlinx.coroutines.SupervisorJob()
-
-    override fun onCleared() {
-        super.onCleared()
-        job.cancel() // huỷ bỏ job
-    }
+    BaseViewModel() {
 
     var profileUsers = MutableLiveData<List<ProfileUserModel>>()
     var profileUser = ProfileUserModel()
     var isKmSetting = false
     var isChild = false
     var tempFrag = MutableLiveData<Int>()
+
+    var isLoadDataProfile = MutableLiveData<Boolean>()
 
     fun onClickFrag(temp: Int) {
         if (temp == 0) {
@@ -56,16 +43,16 @@ class MainViewModel @Inject constructor(private val userProfileUseCase: UserProf
         }
     }
 
-
     fun getProfile() {
-        launch(Dispatchers.Main) {
-            withContext(Dispatchers.IO) {
-                profileUsers.postValue(userProfileUseCase.getAllUserProfile())
-                profileUser= profileUsers.value?.firstOrNull()?: ProfileUserModel()
-                isKmSetting = profileUser.unit == METRIC
-                isChild = HealthIndexUtils.isChild(profileUser.birthday)
-            }
+        viewModelScope.launch {
+            profileUsers.value = userProfileUseCase.getAllUserProfile()
         }
+    }
+
+    fun updateDataView() {
+        profileUser = profileUsers.value?.firstOrNull() ?: ProfileUserModel()
+        isKmSetting = profileUser.unit == TypeUnit.METRIC
+        isChild = HealthIndexUtils.isChild(profileUser.birthday)
     }
 
     fun getBMR(): Int{

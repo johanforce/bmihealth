@@ -52,7 +52,7 @@ class RegisterViewModel @Inject constructor(private val userProfileUseCase: User
         launch(Dispatchers.Main) {
             withContext(Dispatchers.IO) {
                 userProfileUseCase.insertProfileUser(userModel)
-                isInsertProfile.value = true
+                isInsertProfile.postValue(true)
             }
         }
     }
@@ -61,7 +61,7 @@ class RegisterViewModel @Inject constructor(private val userProfileUseCase: User
         launch(Dispatchers.Main) {
             withContext(Dispatchers.IO) {
                 userProfileUseCase.updateProfileUser(userModel)
-                isInsertProfile.value = true
+                isInsertProfile.postValue(true)
             }
         }
     }

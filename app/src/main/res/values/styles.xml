@@ -17,6 +17,50 @@
         <item name="android:background">@color/bg_02</item>
     </style>
 
+    <style name="TableHeaderWeightCategoryColRight" parent="TableCellRegular">
+        <item name="android:layout_weight">0.36</item>
+    </style>
+
+    <style name="TableRowWeightCategory">
+        <item name="android:weightSum">1</item>
+    </style>
+
+    <style name="TableCellRegular" parent="T12H18R">
+        <item name="android:paddingTop">@dimen/px8</item>
+        <item name="android:paddingBottom">@dimen/px8</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="TableHeaderWeightCategory">
+        <item name="android:weightSum">1</item>
+    </style>
+
+    <style name="TableHeaderWeightCategoryColLeft" parent="TableCellRegular">
+        <item name="android:paddingLeft">@dimen/px4</item>
+        <item name="android:paddingRight">@dimen/px4</item>
+        <item name="android:layout_weight">0.64</item>
+    </style>
+
+    <style name="TableCellMedium" parent="T12H18M">
+        <item name="android:paddingTop">@dimen/px8</item>
+        <item name="android:paddingBottom">@dimen/px8</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="TableRowWeightCateColLeft" parent="TableCellMedium">
+        <item name="android:paddingLeft">@dimen/px4</item>
+        <item name="android:paddingRight">@dimen/px4</item>
+        <item name="android:layout_weight">0.64</item>
+    </style>
+
+    <style name="TableRowWeightCateColRight" parent="TableCellRegular">
+        <item name="android:layout_weight">0.36</item>
+    </style>
+
     <declare-styleable name="ViewItemRequired">
         <attr name="title" format="string" />
         <attr name="icon" format="reference" />

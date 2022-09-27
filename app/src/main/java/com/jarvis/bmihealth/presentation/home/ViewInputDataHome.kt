@@ -39,7 +39,7 @@ class ViewInputDataHome : ConstraintLayout {
     var onProfileListener: OnClickProfileListener? = null
 
 
-    fun setOnClickListener(onClickProfile: OnClickProfileListener) {
+    fun setOnClickViewListener(onClickProfile: OnClickProfileListener) {
         onProfileListener = onClickProfile
     }
 

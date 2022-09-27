@@ -13,6 +13,7 @@ import com.jarvis.bmihealth.presentation.main.MainActivity
 import com.jarvis.bmihealth.presentation.main.MainViewModel
 import com.jarvis.bmihealth.presentation.register.RegisterActivity
 import com.jarvis.bmihealth.presentation.utilx.click
+import com.jarvis.bmihealth.presentation.utilx.observe
 import dagger.hilt.android.AndroidEntryPoint
 
 @Suppress("unused")
@@ -36,11 +37,24 @@ class ProfileFragment(context: AppCompatActivity) :
             val intent = Intent(activity, RegisterActivity::class.java)
             startActivity(intent)
         }
+
+
+    }
+
+    override fun observeData() {
+        super.observeData()
+        observe(mainViewModel.profileUsers){
+            initData()
+        }
     }
 
     private fun initData() {
         val name = mainViewModel.profileUser.firstname + " " + mainViewModel.profileUser.lastname
         binding.avatar.setDataAvatar(false,name,null, mainViewModel.profileUser.avatar)
+        binding.tvName.text = name
+
+        binding.viewSetting.viewUnit.viewBinder.setTextValueStyle1()
     }
+
 }
 

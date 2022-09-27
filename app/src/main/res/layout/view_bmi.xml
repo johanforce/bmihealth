@@ -29,6 +29,7 @@
 
     <com.jarvis.design_system.textview.CustomTextView
         style="@style/T16H24B"
+        android:id="@+id/myBMI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_round_bmi"

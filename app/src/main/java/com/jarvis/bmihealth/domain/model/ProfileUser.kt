@@ -6,35 +6,35 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class ProfileUser(
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    var id: Int = 0,
     @ColumnInfo(name = "firstname")
-    val firstname: String,
+    val firstname: String = "",
     @ColumnInfo(name = "lastname")
-    val lastname: String,
+    val lastname: String = "",
     @ColumnInfo(name = "gender")
-    val gender: Int,
+    val gender: Int     = 0,
     @ColumnInfo(name = "birthday")
-    val birthday: Long,
+    val birthday: Long  = System.currentTimeMillis() ,
     @ColumnInfo(name = "age")
-    val age: Int,
+    val age: Int = 0,
     @ColumnInfo(name = "weight")
-    val weight: Double,
+    val weight: Double = 0.0,
     @ColumnInfo(name = "height")
-    val height: Double,
+    val height: Double  = 0.0,
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
     var avatar: ByteArray? = null,
     @ColumnInfo(name = "avatarUrl")
-    var avatarUrl: String,
+    var avatarUrl: String = "",
     @ColumnInfo(name = "bio")
-    val bio: String,
+    val bio: String = "",
     @ColumnInfo(name = "unit")
-    val unit: Int,
+    val unit: Int = 0,
     @ColumnInfo(name = "national")
-    val national: String,
+    val national: String = "vn",
     @ColumnInfo(name = "goal")
-    val goal: Int,
+    val goal: Int = 0,
     @ColumnInfo(name = "activity_level")
-    val activityLevel: Int
-) {
-    @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
-}
+    val activityLevel: Int = 0
+)

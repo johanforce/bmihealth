@@ -6,6 +6,7 @@
         android:id="@+id/clItem"
         android:layout_width="match_parent"
         android:layout_height="@dimen/px60"
+        android:clickable="true"
         android:background="@drawable/shape_item_data"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

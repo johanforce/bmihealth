@@ -81,11 +81,11 @@ class RegisterActivity :
             }
         }
 
-        observe(viewModel.isInsertProfile){
-            if(!isGoToFromProfile){
+        observe(viewModel.isInsertProfile) {
+            if (!isGoToFromProfile) {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
-            }else{
+            } else {
                 finish()
             }
         }
@@ -119,14 +119,16 @@ class RegisterActivity :
             val userInfo = getDataUserProfileModel()
             if (viewModel.profileUsers.value?.isEmpty() == true) {
                 viewModel.insertProfile(userInfo)
-            }else{
-                viewModel.updateProfile(userInfo)
+            } else {
+                updateUserProfileModel()
+                viewModel.updateProfile(viewModel.profileUser)
             }
         }
     }
 
     private fun getDataUserProfileModel(): ProfileUserModel {
         return ProfileUserModel(
+            1,
             binding.viewInfo.getFirstName() ?: "",
             binding.viewInfo.getLastName() ?: "",
             binding.viewInfoOther.gender,
@@ -142,6 +144,23 @@ class RegisterActivity :
             binding.viewRPE.goalTemp,
             binding.viewRPE.activityTemp
         )
+    }
+
+    private fun updateUserProfileModel() {
+        viewModel.profileUser.apply {
+            firstname = binding.viewInfo.getFirstName() ?: ""
+            lastname = binding.viewInfo.getLastName() ?: ""
+            gender = binding.viewInfoOther.gender
+            birthday = binding.viewInfoOther.birthDay
+            age = HealthIndexUtils.calculateAgeInYear(binding.viewInfoOther.birthDay)
+            avatar = binding.viewInfo.byteArray
+            weight = binding.viewInfoOther.weight
+            unit = binding.viewInfoOther.unit
+            height = binding.viewInfoOther.height
+            bio = binding.viewInfo.getBio()
+            goal = binding.viewRPE.goalTemp
+            activityLevel = binding.viewRPE.activityTemp
+        }
     }
 
     override fun onRequestPermissionsResult(

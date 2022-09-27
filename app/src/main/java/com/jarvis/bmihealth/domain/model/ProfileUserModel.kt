@@ -5,24 +5,26 @@ import com.jarvis.heathcarebmi.utils.GoalType
 import java.io.Serializable
 
 data class ProfileUserModel(
-    val firstname: String = "",
-    val lastname: String = "",
-    val gender: Int = 0,
-    val birthday: Long = 0L,
-    val age: Int = 0,
-    val avatar: ByteArray? = ByteArray(0),
-    val avatarUrl: String = "",
-    val weight: Double = 0.0,
-    val unit: Int = 0,
-    val height: Double = 0.0,
-    val bio: String = "",
-    val national: String = "",
+    var id: Int = 0,
+    var firstname: String = "",
+    var lastname: String = "",
+    var gender: Int = 0,
+    var birthday: Long = 0L,
+    var age: Int = 0,
+    var avatar: ByteArray? = ByteArray(0),
+    var avatarUrl: String = "",
+    var weight: Double = 0.0,
+    var unit: Int = 0,
+    var height: Double = 0.0,
+    var bio: String = "",
+    var national: String = "",
     var goal: Int? = GoalType.MAINTAIN_WEIGHT,
     var activityLevel: Int? = ActivityLevel.MODERATELY
-): Serializable {
+) : Serializable {
     companion object {
         fun convertEntityToModel(entity: ProfileUser): ProfileUserModel {
             return ProfileUserModel(
+                id = entity.id,
                 firstname = entity.firstname,
                 gender = entity.gender,
                 lastname = entity.lastname,
@@ -42,6 +44,7 @@ data class ProfileUserModel(
 
         fun convertModelToEntity(model: ProfileUserModel): ProfileUser {
             return ProfileUser(
+                id = model.id,
                 firstname = model.firstname,
                 gender = model.gender,
                 lastname = model.lastname,
@@ -54,8 +57,8 @@ data class ProfileUserModel(
                 bio = model.bio,
                 unit = model.unit,
                 national = model.national,
-                goal = model.goal?:0,
-                activityLevel = model.activityLevel?:0
+                goal = model.goal ?: 0,
+                activityLevel = model.activityLevel ?: 0
             )
         }
 

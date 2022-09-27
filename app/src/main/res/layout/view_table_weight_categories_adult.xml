@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TableLayout
+        android:id="@+id/table"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pri_2"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        view_table_weight_categories_child.xml        <TableRow
+            style="@style/TableHeaderWeightCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/px0.5"
+            android:background="@color/pri_3">
+
+            <com.jarvis.design_system.textview.CustomTextView
+                style="@style/TableHeaderWeightCategoryColLeft"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/bmi_table_name_adult"
+                android:textColor="@color/ink_3" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                style="@style/TableHeaderWeightCategoryColRight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/bmi_table_index_adult"
+                android:textColor="@color/ink_3" />
+        </TableRow>
+
+        <TableRow
+            style="@style/TableRowWeightCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/px0.5">
+
+            <com.jarvis.design_system.textview.CustomTextView
+                style="@style/TableRowWeightCateColLeft"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_01"
+                android:text="@string/bmi_very_under_weight"
+                android:textColor="@color/secondary" />
+
+
+            <com.jarvis.design_system.textview.CustomTextView
+                style="@style/TableRowWeightCateColRight"
+                android:layout_width="0dp"
+                android:background="@color/secondary"
+                android:text="@string/bmi_adult_type_1"
+                android:textColor="@color/ink_5" />
+        </TableRow>
+
+        <TableRow
+            style="@style/TableRowWeightCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/px0.5">
+
+            <com.jarvis.design_system.textview.CustomTextView
+                style="@style/TableRowWeightCateColLeft"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_01"
+                android:text="@string/bmi_under_weight"
+                android:textColor="@color/bmi_level1" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                style="@style/TableRowWeightCateColRight"
+                android:layout_width="0dp"
+                android:background="@color/bmi_level1"
+                android:text="@string/bmi_adult_type_2"
+                android:textColor="@color/ink_5" />
+        </TableRow>
+
+        <TableRow
+            style="@style/TableRowWeightCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/px0.5">
+
+            <com.jarvis.design_system.textview.CustomTextView
+                style="@style/TableRowWeightCateColLeft"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_01"
+                android:text="@string/bmi_healthy_weight"
+                android:textColor="@color/bmi_level2" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                style="@style/TableRowWeightCateColRight"
+                android:layout_width="0dp"
+                android:background="@color/bmi_level2"
+                android:text="@string/bmi_adult_type_3"
+                android:textColor="@color/ink_5" />
+        </TableRow>
+
+        <TableRow
+            style="@style/TableRowWeightCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/px0.5">
+
+            <com.jarvis.design_system.textview.CustomTextView
+                style="@style/TableRowWeightCateColLeft"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_01"
+                android:text="@string/bmi_over_weight"
+                android:textColor="@color/bmi_level3" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                style="@style/TableRowWeightCateColRight"
+                android:layout_width="0dp"
+                android:background="@color/bmi_level3"
+                android:text="@string/bmi_adult_type_4"
+                android:textColor="@color/ink_5" />
+        </TableRow>
+
+        <TableRow
+            style="@style/TableRowWeightCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/px0.5">
+
+            <com.jarvis.design_system.textview.CustomTextView
+                style="@style/TableRowWeightCateColLeft"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_01"
+                android:text="@string/bmi_moderatelt_1"
+                android:textColor="@color/bmi_level4" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                style="@style/TableRowWeightCateColRight"
+                android:layout_width="0dp"
+                android:background="@color/bmi_level4"
+                android:text="@string/bmi_adult_type_5"
+                android:textColor="@color/ink_5" />
+        </TableRow>
+
+        <TableRow
+            style="@style/TableRowWeightCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/px0.5">
+
+            <com.jarvis.design_system.textview.CustomTextView
+                style="@style/TableRowWeightCateColLeft"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_01"
+                android:text="@string/bmi_moderatelt_2"
+                android:textColor="@color/bmi_level5" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                style="@style/TableRowWeightCateColRight"
+                android:layout_width="0dp"
+                android:background="@color/bmi_level5"
+                android:text="@string/bmi_adult_type_6"
+                android:textColor="@color/ink_5" />
+        </TableRow>
+
+        <TableRow
+            style="@style/TableRowWeightCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/px0.5"
+            android:layout_marginBottom="@dimen/px0.5">
+
+            <com.jarvis.design_system.textview.CustomTextView
+                style="@style/TableRowWeightCateColLeft"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_01"
+                android:text="@string/bmi_moderatelt_3"
+                android:textColor="@color/bmi_level5" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                style="@style/TableRowWeightCateColRight"
+                android:layout_width="0dp"
+                android:background="@color/bmi_level5"
+                android:text="@string/bmi_adult_type_7"
+                android:textColor="@color/ink_5" />
+        </TableRow>
+    </TableLayout>
+
+    <View
+        android:layout_width="@dimen/px0.5"
+        android:layout_height="0dp"
+        android:background="@color/pri_2"
+        app:layout_constraintBottom_toBottomOf="@+id/table"
+        app:layout_constraintHorizontal_bias="0.64"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/table" />
+</androidx.constraintlayout.widget.ConstraintLayout>
