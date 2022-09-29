@@ -5,11 +5,8 @@ import androidx.lifecycle.viewModelScope
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.domain.usecase.UserProfileUseCase
 import com.jarvis.bmihealth.presentation.base.BaseViewModel
-import com.jarvis.bmihealth.presentation.selectmode.ThemeHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -48,5 +45,4 @@ class SelectModeViewModel @Inject constructor(private val userProfileUseCase: Us
         profileUser.themeMode = mode
         updateProfile(profileUser)
     }
-
 }

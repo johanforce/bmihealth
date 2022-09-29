@@ -210,3 +210,4 @@ class BmiUserIndexActivity :
         this.binding.tvStatusDes.text = getString(listStatusDesChild[index])
     }
 }
+

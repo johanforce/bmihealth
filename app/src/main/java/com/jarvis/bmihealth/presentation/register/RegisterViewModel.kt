@@ -2,11 +2,8 @@ package com.jarvis.bmihealth.presentation.register
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.jarvis.bmihealth.domain.model.ProfileUser
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.domain.usecase.UserProfileUseCase
-import com.jarvis.bmihealth.presentation.base.BaseViewModel
-import com.jarvis.bmihealth.presentation.utilx.Constant.MALE
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

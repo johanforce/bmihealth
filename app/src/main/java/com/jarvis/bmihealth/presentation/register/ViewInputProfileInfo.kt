@@ -194,23 +194,26 @@ class ViewInputProfileInfo : ConstraintLayout {
         binding?.edFirstName?.inputField?.setOnStateChangedListener(object :
             OnStateChangedListener {
             override fun onTyping() {
+                //do nothing
             }
 
             override fun onNormal() {
+                //do nothing
             }
 
             override fun onError() {
+                //do nothing
             }
         })
 
         binding?.edLastName?.inputField?.setOnStateChangedListener(object : OnStateChangedListener {
-            override fun onTyping() {
+            override fun onTyping() {  //do nothing
             }
 
-            override fun onNormal() {
+            override fun onNormal() {  //do nothing
             }
 
-            override fun onError() {
+            override fun onError() {  //do nothing
             }
         })
 
@@ -260,7 +263,7 @@ class ViewInputProfileInfo : ConstraintLayout {
     }
 
     fun getBio(): String {
-        return binding?.edBio?.inputField?.content?: "Bio"
+        return binding?.edBio?.inputField?.content ?: "Bio"
     }
 
     fun getLastName(): String? {

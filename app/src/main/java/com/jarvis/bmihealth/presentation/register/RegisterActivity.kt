@@ -2,15 +2,12 @@ package com.jarvis.bmihealth.presentation.register
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import com.jarvis.bmihealth.databinding.ActivityRegisterBinding
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.presentation.base.BaseActivity
-import com.jarvis.bmihealth.presentation.base.StateData
 import com.jarvis.bmihealth.presentation.main.MainActivity
-import com.jarvis.bmihealth.presentation.pref.AppPreference
 import com.jarvis.bmihealth.presentation.utilx.OtherProfile
 import com.jarvis.bmihealth.presentation.utilx.TypeUnit.Companion.METRIC
 import com.jarvis.bmihealth.presentation.utilx.click
@@ -19,7 +16,6 @@ import com.jarvis.bmihealth.presentation.utilx.observe
 import com.jarvis.design_system.toolbar.JxToolbar
 import com.jarvis.heathcarebmi.utils.HealthIndexUtils
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @Suppress("unused", "DEPRECATION")
 @AndroidEntryPoint
@@ -44,7 +40,7 @@ class RegisterActivity :
     }
 
     private fun getDataIntent() {
-
+        //do nothing
     }
 
     override fun setUpViews() {
@@ -105,7 +101,7 @@ class RegisterActivity :
         binding.viewInfoOther.setOnClickListener(object :
             ViewInputHealthInfo.OnClickProfileListener {
             override fun unitProfileUser(isKm: Boolean) {
-
+                //do nothing
             }
 
             override fun clickGender() {
@@ -187,6 +183,5 @@ class RegisterActivity :
             PermissionConst.REQUEST_CODE_PERMISSIONS
         )
     }
-
-
 }
+

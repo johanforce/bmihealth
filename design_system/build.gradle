@@ -6,8 +6,8 @@ android {
     compileSdk 32
 
     defaultConfig {
-        minSdk 21
-        targetSdk 31
+        minSdk 26
+        targetSdk 32
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -23,6 +23,12 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    lintOptions {
+        abortOnError false
+        checkAllWarnings true
+        warningsAsErrors true
     }
 }
 

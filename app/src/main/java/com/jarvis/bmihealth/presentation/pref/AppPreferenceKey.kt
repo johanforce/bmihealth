@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.jarvis.bmihealth.presentation.pref
 
 
@@ -45,7 +47,7 @@ interface AppPreferenceKey {
 
         const val KEY_BATTERY_CLICK = "key_battery_click"
         const val KEY_AUTO_START_CLICK = "key_auto_start_click"
-        const val KEY_TIME_FIRST_OPEN_APP_IN_DAY= "key_time_first_open_app_in_day"
+        const val KEY_TIME_FIRST_OPEN_APP_IN_DAY = "key_time_first_open_app_in_day"
 
         const val KEY_IS_FETCH_DATA_SUCCESS = "key_is_fetch_data_success"
         const val KEY_LONG_LAST_SYNC_TIME_WEIGHT = "key_last_sync_time_weight"

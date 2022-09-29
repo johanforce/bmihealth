@@ -1,3 +1,5 @@
+@file:Suppress("MemberVisibilityCanBePrivate")
+
 package com.jarvis.bmihealth.presentation.base
 
 import android.content.Intent
@@ -9,12 +11,13 @@ import android.view.MenuItem
 import android.view.Window
 import androidx.lifecycle.ViewModel
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.drawable.DrawableCompat.applyTheme
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.transition.platform.MaterialSharedAxis
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.presentation.pref.AppPreference
 import com.jarvis.bmihealth.presentation.pref.AppPreferenceKey
-import com.jarvis.bmihealth.presentation.pref.ThemeMode.Companion.LIGHT
+import com.jarvis.bmihealth.presentation.pref.ThemeMode.LIGHT
 import com.jarvis.bmihealth.presentation.selectmode.ThemeHelper
 import com.jarvis.design_system.toolbar.JxToolbar
 import kotlinx.coroutines.CoroutineScope

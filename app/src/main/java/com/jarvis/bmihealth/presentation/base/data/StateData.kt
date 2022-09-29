@@ -1,7 +1,6 @@
-package com.jarvis.bmihealth.presentation.base.data
+@file:Suppress("MemberVisibilityCanBePrivate")
 
-import com.jarvis.bmihealth.presentation.base.data.StateData.DataStatus
-import com.jarvis.bmihealth.presentation.base.data.StateData
+package com.jarvis.bmihealth.presentation.base.data
 
 class StateData<T> {
     var status: DataStatus

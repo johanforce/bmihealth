@@ -1,6 +1,6 @@
 package com.jarvis.bmihealth.domain.model
 
-import com.jarvis.bmihealth.presentation.pref.ThemeMode.Companion.LIGHT
+import com.jarvis.bmihealth.presentation.pref.ThemeMode.LIGHT
 import com.jarvis.heathcarebmi.utils.ActivityLevel
 import com.jarvis.heathcarebmi.utils.GoalType
 import java.io.Serializable

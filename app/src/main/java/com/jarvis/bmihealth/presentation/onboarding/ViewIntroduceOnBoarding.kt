@@ -21,7 +21,6 @@ import com.google.gson.GsonBuilder
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.ViewIntroduceOnboardingBinding
 import com.jarvis.bmihealth.presentation.onboarding.adapter.SlideAdapter
-import java.util.*
 
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 class ViewIntroduceOnBoarding : ConstraintLayout {

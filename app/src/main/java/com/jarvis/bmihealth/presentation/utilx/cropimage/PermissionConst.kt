@@ -1,3 +1,5 @@
+@file:Suppress("MayBeConstant")
+
 package com.jarvis.bmihealth.presentation.utilx.cropimage
 
 object PermissionConst {

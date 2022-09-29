@@ -7,7 +7,7 @@ import com.jarvis.bmihealth.databinding.ActivitySelectModeBinding
 import com.jarvis.bmihealth.presentation.base.BaseActivity
 import com.jarvis.bmihealth.presentation.pref.AppPreferenceKey
 import com.jarvis.bmihealth.presentation.pref.ThemeMode
-import com.jarvis.bmihealth.presentation.pref.ThemeMode.Companion.LIGHT
+import com.jarvis.bmihealth.presentation.pref.ThemeMode.LIGHT
 import com.jarvis.bmihealth.presentation.selectmode.ThemeHelper
 import com.jarvis.bmihealth.presentation.utilx.observe
 import com.jarvis.design_system.toolbar.JxToolbar

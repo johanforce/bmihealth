@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.jarvis.bmihealth.presentation.base.data
 
 sealed class ResultWrapper<out T> {

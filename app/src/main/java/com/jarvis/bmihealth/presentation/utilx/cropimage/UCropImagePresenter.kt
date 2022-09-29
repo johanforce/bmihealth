@@ -1,5 +1,8 @@
+@file:Suppress("unused", "FunctionName", "UNUSED_PARAMETER", "DEPRECATION")
+
 package com.jarvis.bmihealth.presentation.utilx.cropimage
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -15,7 +18,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.documentfile.provider.DocumentFile
 import com.jarvis.bmihealth.R
-import com.jarvis.bmihealth.presentation.base.BaseContext
 import com.jarvis.bmihealth.presentation.utilx.FileUtils
 import com.yalantis.ucrop.UCrop
 import id.zelory.compressor.Compressor
@@ -30,19 +32,21 @@ import kotlin.coroutines.CoroutineContext
 class UCropImagePresenter(context: AppCompatActivity) :
     BaseContext<AppCompatActivity>(context), CoroutineScope {
     companion object {
-        val REQUEST_GET_SINGLE_FILE = 126
-        val REQUEST_TAKE_PHOTO = 114
+        const val REQUEST_GET_SINGLE_FILE = 126
+        const val REQUEST_TAKE_PHOTO = 114
     }
 
     private var job = Job()
     private var maxW = 960
     private var maxH: Int = 1200
 
+    @SuppressLint("NotConstructor")
     fun UCropImagePresenter(activity: AppCompatActivity?, maxW: Int, maxH: Int) {
         this.maxW = maxW
         this.maxH = maxH
     }
 
+    @SuppressLint("NotConstructor")
     fun UCropImagePresenter(activity: AppCompatActivity?) {
         maxW = 960
         this.maxH = 1200
@@ -58,16 +62,24 @@ class UCropImagePresenter(context: AppCompatActivity) :
                     return@launch
                 }
             }
-            var uCrop = UCrop.of(context,uri, Uri.fromFile(File(context.cacheDir,
-                "avatar_custom_" + System.currentTimeMillis() + ".jpg")))
+            var uCrop = UCrop.of(
+                context, uri, Uri.fromFile(
+                    File(
+                        context.cacheDir,
+                        "avatar_custom_" + System.currentTimeMillis() + ".jpg"
+                    )
+                )
+            )
             uCrop.withAspectRatio(1F, 1F)
             uCrop = basisConfig(uCrop)
             uCrop = advancedConfig(uCrop)
             uCrop.start(context)
         } catch (e: java.lang.Exception) {
-            Toast.makeText(context,
+            Toast.makeText(
+                context,
                 context.resources.getString(R.string.addweight_content_error),
-                Toast.LENGTH_LONG).show()
+                Toast.LENGTH_LONG
+            ).show()
             e.printStackTrace()
         }
     }
@@ -93,7 +105,7 @@ class UCropImagePresenter(context: AppCompatActivity) :
     fun galleryAddPic(context: Context, currentPhotoPath: String?): Uri? {
         if (TextUtils.isEmpty(currentPhotoPath)) return null
         val mediaScanIntent = Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE)
-        val f = File(currentPhotoPath)
+        val f = currentPhotoPath?.let { File(it) }
         val contentUri = Uri.fromFile(f)
         mediaScanIntent.data = contentUri
         context.sendBroadcast(mediaScanIntent)
@@ -102,7 +114,7 @@ class UCropImagePresenter(context: AppCompatActivity) :
 
     @Throws(IOException::class)
     fun createImageFile(activity: Activity): File? {
-        val imageFileName = "JPEG_welltraining_avatar_"
+        val imageFileName = "JPEG_health_avatar_"
         val storageDir =
             activity.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         //        File storageDir = activity.getCacheDir();
@@ -113,6 +125,7 @@ class UCropImagePresenter(context: AppCompatActivity) :
         )
     }
 
+    @SuppressLint("QueryPermissionsNeeded")
     fun takePictureIntent(activity: Activity?): String? {
         if (activity == null) {
             return ""
@@ -128,9 +141,11 @@ class UCropImagePresenter(context: AppCompatActivity) :
             // Continue only if the File was successfully created
             if (photoFile != null) {
                 try {
-                    val photoURI = FileProvider.getUriForFile(activity,
+                    val photoURI = FileProvider.getUriForFile(
+                        activity,
                         activity.packageName + ".provider",
-                        photoFile)
+                        photoFile
+                    )
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
                     activity.startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO)
                 } catch (e: java.lang.Exception) {
@@ -141,6 +156,7 @@ class UCropImagePresenter(context: AppCompatActivity) :
         return if (photoFile == null) "" else photoFile.absolutePath
     }
 
+    @SuppressLint("ObsoleteSdkInt")
     fun chooseFromGallery(activity: Activity?) {
         try {
             if (activity == null) {

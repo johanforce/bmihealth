@@ -1,6 +1,6 @@
 @file:Suppress(
     "unused", "MemberVisibilityCanBePrivate", "FunctionName", "LocalVariableName",
-    "DEPRECATION"
+    "DEPRECATION", "MayBeConstant"
 )
 
 package com.jarvis.bmihealth.presentation.utilx
@@ -70,7 +70,9 @@ object FileUtils {
         file.isDirectory && !fileName.startsWith(HIDDEN_PREFIX)
     }
 
-    private fun FileUtils() {} //private constructor to enforce Singleton pattern
+    private fun FileUtils() {
+        //do nothing
+    } //private constructor to enforce Singleton pattern
 
 
     /**
@@ -337,6 +339,7 @@ object FileUtils {
                     }
                 }
             } catch (e: Exception) {
+                //do nothing
             } finally {
                 cursor?.close()
             }
@@ -427,5 +430,4 @@ object FileUtils {
         }
         return null
     }
-
 }

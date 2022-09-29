@@ -11,12 +11,12 @@ import com.jarvis.bmihealth.MainApplication
 @Suppress("UNCHECKED_CAST", "unused")
 class AppPreference private constructor() {
     private var mSharedPreferences: SharedPreferences
-    private val PREFS_NAME = "app_pref"
+    private val prefsName = "app_pref"
 
     init {
         mSharedPreferences =
             MainApplication.applicationContext()
-                .getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+                .getSharedPreferences(prefsName, Context.MODE_PRIVATE)
     }
 
     private object Holder {

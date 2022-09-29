@@ -55,7 +55,7 @@ class ColorArcProgressBar : View {
     private val aniSpeed = 1000
     private val longdegree = dipToPx(13f).toFloat()
     private val shortdegree = dipToPx(5f).toFloat()
-    private val DEGREE_PROGRESS_DISTANCE = dipToPx(8f)
+    private val degreeProgressDistance = dipToPx(8f)
     private var hintColor = context.getColor(R.color.ink_3)
     private val longDegreeColor = "#111111"
     private val shortDegreeColor = "#111111"
@@ -162,9 +162,9 @@ class ColorArcProgressBar : View {
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         val width =
-            (2 * longdegree + progressWidth + diameter + 2 * DEGREE_PROGRESS_DISTANCE).toInt()
+            (2 * longdegree + progressWidth + diameter + 2 * degreeProgressDistance).toInt()
         val height =
-            (2 * longdegree + progressWidth + diameter + 2 * DEGREE_PROGRESS_DISTANCE).toInt()
+            (2 * longdegree + progressWidth + diameter + 2 * degreeProgressDistance).toInt()
         setMeasuredDimension(width, height)
     }
 
@@ -172,14 +172,14 @@ class ColorArcProgressBar : View {
         diameter = 3 * screenWidth / 5
         //弧形的矩阵区域
         bgRect = RectF()
-        bgRect!!.top = longdegree + progressWidth / 2 + DEGREE_PROGRESS_DISTANCE
-        bgRect!!.left = longdegree + progressWidth / 2 + DEGREE_PROGRESS_DISTANCE
-        bgRect!!.right = diameter + (longdegree + progressWidth / 2 + DEGREE_PROGRESS_DISTANCE)
-        bgRect!!.bottom = diameter + (longdegree + progressWidth / 2 + DEGREE_PROGRESS_DISTANCE)
+        bgRect!!.top = longdegree + progressWidth / 2 + degreeProgressDistance
+        bgRect!!.left = longdegree + progressWidth / 2 + degreeProgressDistance
+        bgRect!!.right = diameter + (longdegree + progressWidth / 2 + degreeProgressDistance)
+        bgRect!!.bottom = diameter + (longdegree + progressWidth / 2 + degreeProgressDistance)
 
         //圆心
-        centerX = (2 * longdegree + progressWidth + diameter + 2 * DEGREE_PROGRESS_DISTANCE) / 2
-        centerY = (2 * longdegree + progressWidth + diameter + 2 * DEGREE_PROGRESS_DISTANCE) / 2
+        centerX = (2 * longdegree + progressWidth + diameter + 2 * degreeProgressDistance) / 2
+        centerY = (2 * longdegree + progressWidth + diameter + 2 * degreeProgressDistance) / 2
 
         //外部刻度线
         degreePaint = Paint()
@@ -238,9 +238,9 @@ class ColorArcProgressBar : View {
                     degreePaint!!.color = Color.parseColor(longDegreeColor)
                     canvas.drawLine(
                         centerX,
-                        centerY - diameter / 2 - progressWidth / 2 - DEGREE_PROGRESS_DISTANCE,
+                        centerY - diameter / 2 - progressWidth / 2 - degreeProgressDistance,
                         centerX,
-                        centerY - diameter / 2 - progressWidth / 2 - DEGREE_PROGRESS_DISTANCE - longdegree,
+                        centerY - diameter / 2 - progressWidth / 2 - degreeProgressDistance - longdegree,
                         degreePaint!!
                     )
                 } else {
@@ -248,9 +248,9 @@ class ColorArcProgressBar : View {
                     degreePaint!!.color = Color.parseColor(shortDegreeColor)
                     canvas.drawLine(
                         centerX,
-                        centerY - diameter / 2 - progressWidth / 2 - DEGREE_PROGRESS_DISTANCE - (longdegree - shortdegree) / 2,
+                        centerY - diameter / 2 - progressWidth / 2 - degreeProgressDistance - (longdegree - shortdegree) / 2,
                         centerX,
-                        centerY - diameter / 2 - progressWidth / 2 - DEGREE_PROGRESS_DISTANCE - (longdegree - shortdegree) / 2 - shortdegree,
+                        centerY - diameter / 2 - progressWidth / 2 - degreeProgressDistance - (longdegree - shortdegree) / 2 - shortdegree,
                         degreePaint!!
                     )
                 }

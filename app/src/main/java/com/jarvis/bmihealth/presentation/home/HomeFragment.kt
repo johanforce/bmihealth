@@ -2,15 +2,11 @@ package com.jarvis.bmihealth.presentation.home
 
 import android.app.Activity
 import android.content.Intent
-import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.FragmentHomeBinding
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
@@ -19,8 +15,6 @@ import com.jarvis.bmihealth.presentation.detail.BmiUserIndexActivity
 import com.jarvis.bmihealth.presentation.detail.BmrUserActivity
 import com.jarvis.bmihealth.presentation.detail.CaloriesRequiredActivity
 import com.jarvis.bmihealth.presentation.detail.HealthyWeightActivity
-import com.jarvis.bmihealth.presentation.main.MainActivity
-import com.jarvis.bmihealth.presentation.main.MainViewModel
 import com.jarvis.bmihealth.presentation.utilx.DeviceUtil
 import com.jarvis.bmihealth.presentation.utilx.TypeUnit.Companion.METRIC
 import com.jarvis.bmihealth.presentation.utilx.click
@@ -46,18 +40,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
-        if(!hidden){
-            viewModel?.getProfile()
+        if (!hidden) {
+            viewModel.getProfile()
         }
     }
 
     private fun setOnClickView() {
         binding.tvBodyIndex?.click {
-            viewModel?.isShowHealthIndex?.value = false
+            viewModel.isShowHealthIndex.value = false
         }
 
         binding.tvHealIndex?.click() {
-            viewModel?.isShowHealthIndex?.value = true
+            viewModel.isShowHealthIndex.value = true
         }
 
         binding.itemBMR?.setOnClickViewListener(object : ViewInputDataHome.OnClickProfileListener {

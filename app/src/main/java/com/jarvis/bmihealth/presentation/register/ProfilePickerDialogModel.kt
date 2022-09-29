@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.jarvis.bmihealth.presentation.register
 
 import android.content.Context
@@ -14,7 +16,6 @@ import com.jarvis.bmihealth.presentation.utilx.TypeUnit.Companion.METRIC
 import com.jarvis.bmihealth.presentation.utilx.TypeView
 import com.jarvis.design_system.dialog.NumberPickerModel
 import com.well.unitlibrary.UnitConverter
-import java.util.*
 import kotlin.math.roundToInt
 
 class ProfilePickerDialogModel(private val context: Context) {
@@ -128,7 +129,7 @@ class ProfilePickerDialogModel(private val context: Context) {
         value: Pair<Int, Int>,
         minIntValue: Int
     ): Pair<Int, Int> {
-        var valueFt = UnitConverter.convertCmToInch(value.first?.toDouble()?:0.0)
+        var valueFt = UnitConverter.convertCmToInch(value.first?.toDouble() ?: 0.0)
         if (valueFt < minIntValue) {
             valueFt = valueFt.roundToInt().toDouble()
         }
@@ -140,7 +141,9 @@ class ProfilePickerDialogModel(private val context: Context) {
         minIntValue: Int
     ): Pair<Int, Int> {
         var valueCm =
-            UnitConverter.convertFtToCm(value.first!!) + UnitConverter.convertInchToCm(value.second?.toDouble()?:0.0)
+            UnitConverter.convertFtToCm(value.first!!) + UnitConverter.convertInchToCm(
+                value.second?.toDouble() ?: 0.0
+            )
         if (valueCm < minIntValue) {
             valueCm = valueCm.roundToInt().toDouble()
         }
@@ -229,11 +232,9 @@ class ProfilePickerDialogModel(private val context: Context) {
 
     fun convertPairValueToDouble(pairValue: Pair<Int, Int>, typeUnit: Int, typeView: Int): Double {
         var valueFinal = pairValue.first.toDouble()
-        if (typeUnit == IMPERIAL) {
-            if (typeView == TypeView.height || typeView == TypeView.strideLength) {
-                valueFinal =
-                    UnitConverter.convertFeetToInch(pairValue.first.toDouble()) + pairValue.second
-            }
+        if (typeUnit == IMPERIAL && (typeView == TypeView.height || typeView == TypeView.strideLength)) {
+            valueFinal =
+                UnitConverter.convertFeetToInch(pairValue.first.toDouble()) + pairValue.second
         }
         if (typeView == TypeView.weight) {
             valueFinal = pairValue.first + pairValue.second / 10.0

@@ -106,14 +106,14 @@ class MainActivity :
             val colorProfileText =
                 if (position == Constant.KEY_PROFILE) ContextCompat.getColor(
                     this,
-                    R.color.pri_1
+                    R.color.pri_5
                 ) else ContextCompat.getColor(this, R.color.ink_2)
             binding.tvProfile.setTextColor(colorProfileText)
 
             val colorHomeText =
                 if (position == Constant.KEY_HOME) ContextCompat.getColor(
                     this,
-                    R.color.pri_1
+                    R.color.pri_5
                 ) else ContextCompat.getColor(this, R.color.ink_2)
             binding.tvHealth.setTextColor(colorHomeText)
 

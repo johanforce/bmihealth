@@ -3,16 +3,13 @@
 package com.jarvis.bmihealth.presentation.profile
 
 import android.content.Intent
-import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.FragmentProfileBinding
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.presentation.base.BaseFragment
 import com.jarvis.bmihealth.presentation.home.HomeViewModel
-import com.jarvis.bmihealth.presentation.main.MainViewModel
 import com.jarvis.bmihealth.presentation.pref.ThemeMode
 import com.jarvis.bmihealth.presentation.register.RegisterActivity
 import com.jarvis.bmihealth.presentation.selectmode.view.SelectModeActivity
@@ -34,6 +31,7 @@ class ProfileFragment :
         setOnClickView()
         viewModel.getProfile()
     }
+
     private fun initData() {
         val name =
             viewModel.profileUser.firstname + " " + viewModel.profileUser.lastname
@@ -47,7 +45,7 @@ class ProfileFragment :
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
-        if(!hidden){
+        if (!hidden) {
             viewModel.getProfile()
         }
     }

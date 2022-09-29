@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jarvis.bmihealth.databinding.ItemGoalOnboardingBinding
 
-class  GoalAdapter : RecyclerView.Adapter<GoalAdapter.ViewHolderView>() {
+class GoalAdapter : RecyclerView.Adapter<GoalAdapter.ViewHolderView>() {
     private var mDataset: MutableList<GoalModel> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderView {
@@ -49,5 +49,4 @@ class  GoalAdapter : RecyclerView.Adapter<GoalAdapter.ViewHolderView>() {
     override fun onBindViewHolder(holder: ViewHolderView, position: Int) {
         holder.bindView(mDataset[position], position)
     }
-
 }

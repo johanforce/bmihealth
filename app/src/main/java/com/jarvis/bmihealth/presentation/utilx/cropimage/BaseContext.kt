@@ -1,6 +1,6 @@
-package com.jarvis.bmihealth.presentation.base
+package com.jarvis.bmihealth.presentation.utilx.cropimage
 
 import android.content.Context
 
-@Suppress("unused")
 abstract class BaseContext<T : Context?>(var context: T)
+

@@ -3,7 +3,7 @@ package com.jarvis.bmihealth.domain.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.jarvis.bmihealth.presentation.pref.ThemeMode.Companion.LIGHT
+import com.jarvis.bmihealth.presentation.pref.ThemeMode.LIGHT
 
 @Entity
 data class ProfileUser(

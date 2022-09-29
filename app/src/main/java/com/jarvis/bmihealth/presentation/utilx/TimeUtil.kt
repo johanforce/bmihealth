@@ -13,7 +13,7 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.math.abs
 
-@Suppress("unused","ConstantLocale")
+@Suppress("unused", "ConstantLocale")
 object TimeUtil {
     val dM = SimpleDateFormat("d/M", Locale.getDefault())
     val ddMMyyyy = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
@@ -397,8 +397,8 @@ object TimeUtil {
         currentTime: Long,
         timezone: TimeZone
     ): Pair<Long, Long> {
-        val startTime : Long
-        val endTime : Long
+        val startTime: Long
+        val endTime: Long
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = currentTime
         calendar.timeZone = timezone

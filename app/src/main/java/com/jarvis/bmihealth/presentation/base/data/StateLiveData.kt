@@ -1,7 +1,8 @@
+@file:Suppress("unused")
+
 package com.jarvis.bmihealth.presentation.base.data
 
 import androidx.lifecycle.MutableLiveData
-import com.jarvis.bmihealth.presentation.base.data.StateData
 
 class StateLiveData<T> : MutableLiveData<StateData<T>?>() {
     /**

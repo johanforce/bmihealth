@@ -5,7 +5,6 @@ package com.jarvis.bmihealth.presentation.register
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.ViewRpeBinding
@@ -72,17 +71,23 @@ class ViewRPE : ConstraintLayout {
                 }
             }
 
-            override fun onStartTrackingTouch(seekBar: IndicatorSeekBar) {}
-            override fun onStopTrackingTouch(seekBar: IndicatorSeekBar) {}
+            override fun onStartTrackingTouch(seekBar: IndicatorSeekBar) {
+                //do nothing
+            }
+
+            override fun onStopTrackingTouch(seekBar: IndicatorSeekBar) {
+                //do nothing
+            }
         }
         setTextGoal(goalTemp, isKmSetting)
         binding!!.viewGoal.setOnListenerClick {
-
-//            listenerClick.onDialogClick();
             val dialogSetGoal = DialogSetGoal(context, goalTemp, isKmSetting)
             dialogSetGoal.show()
             dialogSetGoal.onListener(object : DialogSetGoal.ListenerClick {
-                override fun closeDialog(isClickBackgroud: Boolean) {}
+                override fun closeDialog(isClickBackgroud: Boolean) {
+                    //do nothing
+                }
+
                 override fun saveGoal(goal: Int) {
                     if (listenerClick != null) {
                         goalTemp = goal
@@ -155,7 +160,9 @@ class ViewRPE : ConstraintLayout {
             val dialogSetGoal = DialogSetGoal(context, index, isKmSetting)
             dialogSetGoal.show()
             dialogSetGoal.onListener(object : DialogSetGoal.ListenerClick {
-                override fun closeDialog(isClickBackgroud: Boolean) {}
+                override fun closeDialog(isClickBackgroud: Boolean) {
+                    //do nothing
+                }
                 override fun saveGoal(goal: Int) {
                     if (listenerClick != null) {
                         listenerClick!!.dataGoal(goal)

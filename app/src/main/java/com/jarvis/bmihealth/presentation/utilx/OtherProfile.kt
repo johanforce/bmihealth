@@ -39,5 +39,4 @@ class OtherProfile {
         val listWeightDefault = listOf(75.0, 60.0, 68.0)
         return listWeightDefault[gender]
     }
-
 }

@@ -3,7 +3,6 @@ package com.jarvis.bmihealth.presentation.onboarding
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.isVisible
 import com.jarvis.bmihealth.databinding.ActivityOnboardingBinding
 import com.jarvis.bmihealth.presentation.base.BaseActivity
@@ -36,7 +35,7 @@ class OnBoardingActivity :
             if (it.isNotEmpty()) {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
-            }else{
+            } else {
                 binding.clView.isVisible = true
             }
         }

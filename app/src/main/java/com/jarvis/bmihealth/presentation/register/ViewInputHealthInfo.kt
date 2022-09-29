@@ -11,7 +11,7 @@ import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.ViewInputHealthInfoBinding
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.presentation.utilx.Gender
-import com.jarvis.bmihealth.presentation.utilx.Gender.Companion.MALE
+import com.jarvis.bmihealth.presentation.utilx.Gender.MALE
 import com.jarvis.bmihealth.presentation.utilx.OtherProfile
 import com.jarvis.bmihealth.presentation.utilx.TimeUtil
 import com.jarvis.bmihealth.presentation.utilx.TypeUnit.Companion.METRIC

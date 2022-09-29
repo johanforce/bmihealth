@@ -44,34 +44,34 @@ object DeviceUtil {
         }
     }
 
-    fun levelBMIAdult(bmi: Double): Int{
-        return if(bmi < 16.0){
+    fun levelBMIAdult(bmi: Double): Int {
+        return if (bmi < 16.0) {
             BMILevelAdult.BMI_1
-        }else if(bmi >= 16 && bmi <18.5){
+        } else if (bmi >= 16 && bmi < 18.5) {
             BMILevelAdult.BMI_2
-        }else if(bmi >= 18.5 && bmi <25){
+        } else if (bmi >= 18.5 && bmi < 25) {
             BMILevelAdult.BMI_3
-        }else if(bmi >= 25 && bmi <30){
+        } else if (bmi >= 25 && bmi < 30) {
             BMILevelAdult.BMI_4
-        }else if(bmi >= 30 && bmi <35){
+        } else if (bmi >= 30 && bmi < 35) {
             BMILevelAdult.BMI_5
-        }else if(bmi >35 && bmi <40){
+        } else if (bmi > 35 && bmi < 40) {
             BMILevelAdult.BMI_6
-        }else {
+        } else {
             BMILevelAdult.BMI_7
         }
     }
 
-    fun levelBMChild(bmi: Double): Int{
-        return if(bmi < 3.0){
+    fun levelBMChild(bmi: Double): Int {
+        return if (bmi < 3.0) {
             BMILevelChild.BMI_1
-        }else if(bmi >= 3.0 && bmi <15.0){
+        } else if (bmi >= 3.0 && bmi < 15.0) {
             BMILevelChild.BMI_2
-        }else if(bmi >= 15 && bmi <85){
+        } else if (bmi >= 15 && bmi < 85) {
             BMILevelChild.BMI_3
-        }else if(bmi >= 85 && bmi <97){
+        } else if (bmi >= 85 && bmi < 97) {
             BMILevelChild.BMI_4
-        }else {
+        } else {
             BMILevelAdult.BMI_5
         }
     }
