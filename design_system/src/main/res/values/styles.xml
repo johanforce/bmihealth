@@ -2,10 +2,30 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="DSAppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="actionMenuTextColor">@color/pri_4</item>
-        <item name="android:statusBarColor" tools:targetApi="l">@color/bg_03</item>
-        <item name="android:actionMenuTextAppearance">@style/ToolbarButtonCTA</item>
         <item name="titleTextColor">@color/ink_5</item>
+        <item name="actionMenuTextColor">@color/pri_4</item>
+        <item name="actionMenuTextAppearance">@style/ToolbarButtonCTA</item>
+        <item name="colorControlHighlight">@color/press_color</item>
+
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/pri_1</item>
+        <item name="colorPrimaryVariant">@color/pri_1</item>
+        <item name="colorOnPrimary">@color/white_5</item>
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/pri_1</item>
+        <item name="colorSecondaryVariant">@color/pri_1</item>
+        <item name="colorOnSecondary">@color/black_5</item>
+
+        <!-- Snackbar color-->
+        <item name="snackbarStyle">@style/DSSnackbarStyle</item>
+        <item name="snackbarTextViewStyle">@style/DSSnackbarTextStyle</item>
+        <item name="snackbarButtonStyle">@style/DSSnackbarButtonStyle</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/bg_01</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
     </style>
 
     <style name="DSSnackbarStyle" parent="Widget.MaterialComponents.Snackbar">

@@ -21,6 +21,7 @@
         <com.jarvis.design_system.item.JxListItem
             android:id="@+id/view_select_light_mode"
             style="@style/ListItem.SizeS"
+            android:background="@color/bg_01"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:itemContentElement="onlyTitle"
@@ -39,6 +40,7 @@
             style="@style/ListItem.SizeS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/bg_01"
             app:itemContentElement="onlyTitle"
             app:itemEndElement="hide"
             app:itemStartElement="display"
@@ -58,6 +60,7 @@
             app:itemContentElement="onlyTitle"
             app:itemEndElement="hide"
             app:itemStartElement="display"
+            android:background="@color/bg_01"
             app:itemStartIcon="@drawable/selector_radio_button"
             app:itemTitle="@string/all_mode_system" />
 

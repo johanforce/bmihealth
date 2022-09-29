@@ -4,7 +4,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/bg_01">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivStartIcon"
@@ -29,7 +30,7 @@
             android:layout_marginStart="@dimen/px8"
             android:clickable="false"
             android:visibility="gone"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <com.jarvis.design_system.button.JxCheckBoxButton
             android:id="@+id/btnCheckbox"

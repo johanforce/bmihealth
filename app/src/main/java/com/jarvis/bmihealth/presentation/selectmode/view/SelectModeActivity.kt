@@ -7,6 +7,8 @@ import com.jarvis.bmihealth.databinding.ActivitySelectModeBinding
 import com.jarvis.bmihealth.presentation.base.BaseActivity
 import com.jarvis.bmihealth.presentation.pref.AppPreferenceKey
 import com.jarvis.bmihealth.presentation.pref.ThemeMode
+import com.jarvis.bmihealth.presentation.pref.ThemeMode.Companion.LIGHT
+import com.jarvis.bmihealth.presentation.selectmode.ThemeHelper
 import com.jarvis.bmihealth.presentation.utilx.observe
 import com.jarvis.design_system.toolbar.JxToolbar
 import com.jarvis.bmihealth.presentation.selectmode.viewmodel.SelectModeViewModel
@@ -30,11 +32,12 @@ class SelectModeActivity :
         super.setUpViews()
         binding.lifecycleOwner = this
         setOnClickView()
+        viewModel.getProfile()
     }
 
     private fun setOnClickView() {
         binding.viewSelectLightMode.click {
-            viewModel.selectMode(ThemeMode.LIGHT)
+            viewModel.selectMode(LIGHT)
         }
 
         binding.viewSelectDarkMode.click {
@@ -49,6 +52,16 @@ class SelectModeActivity :
     override fun observeData() {
         super.observeData()
 
+        observe(viewModel.profileUsers){
+            viewModel.updateDataView()
+        }
+
+        observe(viewModel.isChangeThemeMode){
+            if(it){
+                viewModel.themeMode.value = viewModel.profileUser.themeMode
+            }
+        }
+
         observe(viewModel.themeMode) { mode ->
             updateSelectModeButton(mode)
             appPreference?.putSync(AppPreferenceKey.KEY_THEMEMODE, mode)
@@ -57,7 +70,7 @@ class SelectModeActivity :
 
     private fun updateSelectModeButton(index: Int) {
         when (index) {
-            ThemeMode.LIGHT -> {
+            LIGHT -> {
                 binding.viewSelectLightMode.viewBinder.imageViewStartIcon.isSelected = true
                 binding.viewSelectDarkMode.viewBinder.imageViewStartIcon.isSelected = false
                 binding.viewSelectSystemMode.viewBinder.imageViewStartIcon.isSelected = false
@@ -85,6 +98,7 @@ class SelectModeActivity :
                 ).isAppearanceLightStatusBars = !isDarkTheme()
             }
         }
+        ThemeHelper.applyTheme(index)
     }
 
     override fun getToolbar(): JxToolbar {

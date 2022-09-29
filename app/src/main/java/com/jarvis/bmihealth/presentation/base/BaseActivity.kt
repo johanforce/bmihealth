@@ -11,19 +11,16 @@ import androidx.lifecycle.ViewModel
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.transition.platform.MaterialSharedAxis
-import com.jarvis.bmihealth.MainApplication
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.presentation.pref.AppPreference
 import com.jarvis.bmihealth.presentation.pref.AppPreferenceKey
-import com.jarvis.bmihealth.presentation.pref.ThemeMode
-import com.jarvis.bmihealth.presentation.pref.ThemeHelper
-import com.jarvis.bmihealth.presentation.register.RegisterViewModel
+import com.jarvis.bmihealth.presentation.pref.ThemeMode.Companion.LIGHT
+import com.jarvis.bmihealth.presentation.selectmode.ThemeHelper
 import com.jarvis.design_system.toolbar.JxToolbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
 abstract class BaseActivity<B : ViewBinding, T : ViewModel>(val bindingFactory: (LayoutInflater) -> B) :
@@ -38,12 +35,7 @@ abstract class BaseActivity<B : ViewBinding, T : ViewModel>(val bindingFactory: 
     open fun initDarkMode() {
         setTheme(R.style.DSAppTheme)
         val themeMode = appPreference?.get(AppPreferenceKey.KEY_THEMEMODE, Int::class.java)
-        if ((themeMode == ThemeMode.DARK || themeMode == ThemeMode.FOLLOW_SYSTEM)) {
-            appPreference?.putSync(AppPreferenceKey.KEY_THEMEMODE, ThemeMode.LIGHT)
-            ThemeHelper.applyTheme(ThemeMode.LIGHT)
-        } else {
-            ThemeHelper.applyTheme(themeMode!!)
-        }
+        ThemeHelper.applyTheme(themeMode?: LIGHT)
     }
 
     fun isDarkTheme(): Boolean {
@@ -65,7 +57,8 @@ abstract class BaseActivity<B : ViewBinding, T : ViewModel>(val bindingFactory: 
         setUpViews()
     }
 
-    open fun setUpViews() {}
+    open fun setUpViews() {
+    }
 
     open fun initCoroutineScope() {
         launch {

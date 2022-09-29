@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.FragmentProfileBinding
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
@@ -22,44 +23,41 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @Suppress("unused")
 @AndroidEntryPoint
-class ProfileFragment(context: AppCompatActivity) :
+class ProfileFragment :
     BaseFragment<FragmentProfileBinding>(FragmentProfileBinding::inflate) {
 
-    private val viewModel: HomeViewModel by context.viewModels()
-    private val mainViewModel: MainViewModel by context.viewModels()
+    private val viewModel: HomeViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun setUpViews() {
         binding.lifecycleOwner = this
 
         setOnClickView()
-        mainViewModel.getProfile()
+        viewModel.getProfile()
     }
-
     private fun initData() {
         val name =
-            mainViewModel.profileUser.firstname + " " + mainViewModel.profileUser.lastname
-        binding.avatar.setDataAvatar(false, name, null, mainViewModel.profileUser.avatar)
+            viewModel.profileUser.firstname + " " + viewModel.profileUser.lastname
+        binding.avatar.setDataAvatar(false, name, null, viewModel.profileUser.avatar)
         binding.tvName.text = name
-        binding.tvBio.text = mainViewModel.profileUser.bio
+        binding.tvBio.text = viewModel.profileUser.bio
         binding.tvName.text = name
-        changeUnit(mainViewModel.isKmSetting)
+        changeUnit(viewModel.isKmSetting)
         changeDarkMode()
     }
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         if(!hidden){
-            mainViewModel.getProfile()
+            viewModel.getProfile()
         }
     }
 
     override fun observeData() {
         super.observeData()
 
-        observe(mainViewModel.profileUsers) {
-            mainViewModel.profileUser = it.firstOrNull() ?: ProfileUserModel()
-            mainViewModel.updateDataView()
+        observe(viewModel.profileUsers) {
+            viewModel.profileUser = it.firstOrNull() ?: ProfileUserModel()
+            viewModel.updateDataView()
             initData()
         }
 
@@ -90,15 +88,15 @@ class ProfileFragment(context: AppCompatActivity) :
     }
 
     private fun changeUnitProfileUser() {
-        mainViewModel.isKmSetting = !mainViewModel.isKmSetting
-        mainViewModel.profileUser.unit =
-            if (mainViewModel.isKmSetting) TypeUnit.METRIC else TypeUnit.IMPERIAL
-        mainViewModel.updateProfile(mainViewModel.profileUser)
-        changeUnit(mainViewModel.isKmSetting)
+        viewModel.isKmSetting = !viewModel.isKmSetting
+        viewModel.profileUser.unit =
+            if (viewModel.isKmSetting) TypeUnit.METRIC else TypeUnit.IMPERIAL
+        viewModel.updateProfile(viewModel.profileUser)
+        changeUnit(viewModel.isKmSetting)
     }
 
     fun changeDarkMode() {
-        val themeMode = mainViewModel.profileUser.themeMode
+        val themeMode = viewModel.profileUser.themeMode
         var textState = getString(R.string.all_off)
         when (themeMode) {
             ThemeMode.LIGHT -> {

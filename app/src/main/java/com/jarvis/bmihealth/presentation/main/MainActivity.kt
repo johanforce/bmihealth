@@ -52,12 +52,12 @@ class MainActivity :
     }
 
     private fun initFragment() {
-        homeFragment = HomeFragment(this@MainActivity)
-        profileFragment = ProfileFragment(this@MainActivity)
-        otherFragment = OtherFragment(this@MainActivity)
-        fragments.add(otherFragment?: OtherFragment(this@MainActivity))
-        fragments.add(homeFragment ?: ProfileFragment(this@MainActivity))
-        fragments.add(profileFragment?: HomeFragment(this@MainActivity))
+        homeFragment = HomeFragment()
+        profileFragment = ProfileFragment()
+        otherFragment = OtherFragment()
+        fragments.add(otherFragment?: OtherFragment())
+        fragments.add(homeFragment ?: ProfileFragment())
+        fragments.add(profileFragment?: HomeFragment())
 
         val size = fragments.size
         val supportFragmentManager = supportFragmentManager

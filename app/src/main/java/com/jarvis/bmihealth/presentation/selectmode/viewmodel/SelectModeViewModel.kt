@@ -21,6 +21,8 @@ class SelectModeViewModel @Inject constructor(private val userProfileUseCase: Us
     var profileUsers = MutableLiveData<List<ProfileUserModel>>()
     var profileUser = ProfileUserModel()
 
+    var isChangeThemeMode = MutableLiveData<Boolean>()
+
     fun getProfile() {
         viewModelScope.launch {
             profileUsers.value = userProfileUseCase.getAllUserProfile()
@@ -28,10 +30,9 @@ class SelectModeViewModel @Inject constructor(private val userProfileUseCase: Us
     }
 
     fun updateProfile(userModel: ProfileUserModel) {
-        launch(Dispatchers.Main) {
-            withContext(Dispatchers.IO) {
-                userProfileUseCase.updateProfileUser(userModel)
-            }
+        viewModelScope.launch {
+            userProfileUseCase.updateProfileUser(userModel)
+            isChangeThemeMode.value = true
         }
     }
 
@@ -44,8 +45,6 @@ class SelectModeViewModel @Inject constructor(private val userProfileUseCase: Us
         if (mode == this.themeMode.value) {
             return
         }
-        ThemeHelper.applyTheme(mode)
-        themeMode.value = mode
         profileUser.themeMode = mode
         updateProfile(profileUser)
     }

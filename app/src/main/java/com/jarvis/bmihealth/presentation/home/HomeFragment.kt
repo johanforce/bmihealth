@@ -8,6 +8,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.FragmentHomeBinding
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
@@ -16,6 +19,7 @@ import com.jarvis.bmihealth.presentation.detail.BmiUserIndexActivity
 import com.jarvis.bmihealth.presentation.detail.BmrUserActivity
 import com.jarvis.bmihealth.presentation.detail.CaloriesRequiredActivity
 import com.jarvis.bmihealth.presentation.detail.HealthyWeightActivity
+import com.jarvis.bmihealth.presentation.main.MainActivity
 import com.jarvis.bmihealth.presentation.main.MainViewModel
 import com.jarvis.bmihealth.presentation.utilx.DeviceUtil
 import com.jarvis.bmihealth.presentation.utilx.TypeUnit.Companion.METRIC
@@ -24,14 +28,11 @@ import com.jarvis.bmihealth.presentation.utilx.observe
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment(context: AppCompatActivity) :
-    BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
-    private val viewModel: HomeViewModel by context.viewModels()
-    private val mainViewModel: MainViewModel by context.viewModels()
+    private val viewModel: HomeViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun setUpViews() {
         binding.lifecycleOwner = this
 
         initData()
@@ -39,23 +40,24 @@ class HomeFragment(context: AppCompatActivity) :
     }
 
     private fun initData() {
-        mainViewModel.getProfile()
+        viewModel.getProfile()
     }
+
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         if(!hidden){
-            mainViewModel.getProfile()
+            viewModel?.getProfile()
         }
     }
 
     private fun setOnClickView() {
         binding.tvBodyIndex?.click {
-            viewModel.isShowHealthIndex.value = false
+            viewModel?.isShowHealthIndex?.value = false
         }
 
         binding.tvHealIndex?.click() {
-            viewModel.isShowHealthIndex.value = true
+            viewModel?.isShowHealthIndex?.value = true
         }
 
         binding.itemBMR?.setOnClickViewListener(object : ViewInputDataHome.OnClickProfileListener {
@@ -89,32 +91,32 @@ class HomeFragment(context: AppCompatActivity) :
     }
 
     override fun observeData() {
-        observe(mainViewModel.profileUsers) { profiles ->
-            mainViewModel.profileUser = profiles.firstOrNull() ?: ProfileUserModel()
-            mainViewModel.isKmSetting = mainViewModel.profileUser.unit == METRIC
+        observe(viewModel.profileUsers) { profiles ->
+            viewModel.profileUser = profiles.firstOrNull() ?: ProfileUserModel()
+            viewModel.isKmSetting = viewModel.profileUser.unit == METRIC
             binding.viewBMI.progressBMI.setCurrentValues(
-                mainViewModel.getBMI().toFloat(),
-                mainViewModel.isChild
+                viewModel.getBMI().toFloat(),
+                viewModel.isChild
             )
-            val healthyWeight = mainViewModel.getHealthyWeight()
+            val healthyWeight = viewModel.getHealthyWeight()
             "${DeviceUtil.roundOffDecimal(healthyWeight.healthyWeightTo)} - ${
                 DeviceUtil.roundOffDecimal(
                     healthyWeight.healthyWeightFrom
                 )
             }".also { binding.viewBMI.tvWeight.text = it }
             binding.viewBMI.tvUnit.text =
-                if (mainViewModel.isKmSetting) getText(R.string.unit_kg) else getText(R.string.unit_lbs)
+                if (viewModel.isKmSetting) getText(R.string.unit_kg) else getText(R.string.unit_lbs)
             binding.viewBMI.tvBodyPercent.text =
-                DeviceUtil.roundOffDecimal(mainViewModel.getBodyFat())
-            binding.itemBMR?.setDataView(mainViewModel.getBMR().toDouble(), true)
-            binding.itemSaveWeight?.setDataView(mainViewModel.getCalories().toDouble(), true)
+                DeviceUtil.roundOffDecimal(viewModel.getBodyFat())
+            binding.itemBMR?.setDataView(viewModel.getBMR().toDouble(), true)
+            binding.itemSaveWeight?.setDataView(viewModel.getCalories().toDouble(), true)
             binding.itemHeat?.setDataView(90.0, true)
             binding.itemHeight?.setDataView(
-                mainViewModel.profileUser.height,
+                viewModel.profileUser.height,
                 false
             )
             binding.itemWeight?.setDataView(
-                mainViewModel.profileUser.weight,
+                viewModel.profileUser.weight,
                 false
             )
             binding.itemAge?.setDataView(23.0, true)

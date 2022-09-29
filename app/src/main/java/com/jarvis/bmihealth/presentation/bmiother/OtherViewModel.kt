@@ -6,8 +6,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class OtherViewModel @Inject constructor(private val userProfileUseCase: UserProfileUseCase) :
-    BaseViewModel() {
-
-
+class OtherViewModel @Inject constructor() : BaseViewModel() {
+    lateinit var userProfileUseCase: UserProfileUseCase
 }
