@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="android.content.Context" />
+
+        <import type="com.jarvis.bmihealth.presentation.utilx.share.ShareUtil" />
+
+        <import type="com.jarvis.bmihealth.presentation.utilx.share.OtherSharing" />
+
+        <import type="com.well.unitlibrary.UnitConverter" />
+
+        <variable
+            name="previewViewModel"
+            type="com.jarvis.bmihealth.presentation.bmiother.PreviewViewModel" />
+
+        <variable
+            name="activity"
+            type="androidx.appcompat.app.AppCompatActivity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_02">
+
+        <com.jarvis.design_system.toolbar.JxToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:toolbarAction2="@drawable/preview_ic_save"
+            app:toolbarBackIcon="@drawable/all_ic_back"
+            app:toolbarHideDivider="false"
+            app:toolbarTitle="@string/preview_toolbar"
+            app:toolbarViewStyle="backTitleIcon" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/px96">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/clPreview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/px16"
+                    android:layout_marginTop="@dimen/px16"
+                    android:background="@color/bg_01"
+                    android:elevation="@dimen/px6"
+                    app:cardCornerRadius="@dimen/px8"
+                    app:layout_constraintRight_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/bg_01">
+
+                        <com.jarvis.bmihealth.presentation.home.ViewHomeBMI
+                            android:id="@+id/viewBMI"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/px20"
+                            android:background="@color/bg_01"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.jarvis.bmihealth.presentation.bmiother.ViewItemRequired
+                            android:id="@+id/ivWeight"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/px12"
+                            android:layout_marginTop="@dimen/px12"
+                            android:layout_marginEnd="@dimen/px4"
+                            app:icon="@drawable/home_ic_weight"
+                            app:layout_constraintEnd_toStartOf="@id/ivHeight"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/viewBMI"
+                            app:title="@string/all_weight" />
+
+                        <com.jarvis.bmihealth.presentation.bmiother.ViewItemRequired
+                            android:id="@+id/ivHeight"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/px4"
+                            android:layout_marginTop="@dimen/px12"
+                            android:layout_marginEnd="@dimen/px12"
+                            app:icon="@drawable/home_ic_height"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/ivWeight"
+                            app:layout_constraintTop_toBottomOf="@id/viewBMI"
+                            app:title="@string/all_height"
+                            app:unit="" />
+
+                        <com.jarvis.bmihealth.presentation.bmiother.ViewItemRequired
+                            android:id="@+id/ivBMR"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/px12"
+                            android:layout_marginTop="@dimen/px8"
+                            android:layout_marginEnd="@dimen/px4"
+                            app:icon="@drawable/home_ic_bmr"
+                            app:layout_constraintEnd_toStartOf="@id/ivMainTain"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/ivHeight"
+                            app:title="@string/home_title_bmr"
+                            app:unit="@string/unit_kcal" />
+
+                        <com.jarvis.bmihealth.presentation.bmiother.ViewItemRequired
+                            android:id="@+id/ivMainTain"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/px4"
+                            android:layout_marginTop="@dimen/px8"
+                            android:layout_marginEnd="@dimen/px12"
+                            app:icon="@drawable/home_ic_maintain"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/ivBMR"
+                            app:layout_constraintTop_toBottomOf="@id/ivHeight"
+                            app:unit="@string/unit_kcal" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/px12"
+                            android:background="@color/bg_02"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/ivMainTain">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivGender"
+                                android:layout_width="@dimen/px44"
+                                android:layout_height="@dimen/px44"
+                                android:layout_marginVertical="@dimen/px12"
+                                android:layout_marginStart="@dimen/px16"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.jarvis.design_system.textview.CustomTextView
+                                android:id="@+id/tvName"
+                                style="@style/T16H24M"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/px12"
+                                android:textColor="@color/ink_5"
+                                app:layout_constraintBottom_toTopOf="@+id/tvAge"
+                                app:layout_constraintLeft_toRightOf="@+id/ivGender"
+                                app:layout_constraintTop_toTopOf="@+id/ivGender"
+                                app:layout_constraintVertical_chainStyle="packed"
+                                tools:text="My Friend" />
+
+                            <com.jarvis.design_system.textview.CustomTextView
+                                android:id="@+id/tvAge"
+                                style="@style/T10H14R"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/ink_3"
+                                app:layout_constraintBottom_toBottomOf="@id/ivGender"
+                                app:layout_constraintLeft_toLeftOf="@+id/tvName"
+                                app:layout_constraintTop_toBottomOf="@+id/tvName"
+                                app:layout_constraintVertical_chainStyle="packed"
+                                tools:text="18 Years old" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <com.jarvis.design_system.textview.CustomTextView
+                    android:id="@+id/tvShare"
+                    style="@style/T14H20R"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/px16"
+                    android:text="@string/preview_share"
+                    android:textColor="@color/ink_4"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/clPreview" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_share_fb"
+                    android:layout_width="@dimen/px40"
+                    android:layout_height="@dimen/px40"
+                    android:layout_marginStart="@dimen/px16"
+                    android:layout_marginTop="@dimen/px14"
+                    android:background="?android:selectableItemBackgroundBorderless"
+                    android:onClick="@{() -> previewViewModel.shareViaApp(clPreview, ShareUtil.FACEBOOK_PACKAGE, activity)}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/iv_share_twitter"
+                    app:layout_constraintTop_toBottomOf="@+id/tvShare"
+                    app:srcCompat="@drawable/all_iv_facebook" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_share_twitter"
+                    android:layout_width="@dimen/px40"
+                    android:layout_height="@dimen/px40"
+                    android:background="?android:selectableItemBackgroundBorderless"
+                    android:onClick="@{() -> previewViewModel.shareViaApp(clPreview, ShareUtil.TWITTER_PACKAGE, activity)}"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_share_fb"
+                    app:layout_constraintLeft_toRightOf="@+id/iv_share_fb"
+                    app:layout_constraintRight_toLeftOf="@+id/iv_share_instagram"
+                    app:layout_constraintTop_toTopOf="@+id/iv_share_fb"
+                    app:srcCompat="@drawable/all_iv_twitter" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_share_instagram"
+                    android:layout_width="@dimen/px40"
+                    android:layout_height="@dimen/px40"
+                    android:background="?android:selectableItemBackgroundBorderless"
+                    android:onClick="@{() -> previewViewModel.shareViaApp(clPreview, ShareUtil.INSTA_PACKAGE, activity)}"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_share_fb"
+                    app:layout_constraintLeft_toRightOf="@+id/iv_share_twitter"
+                    app:layout_constraintRight_toLeftOf="@+id/iv_share_more"
+                    app:layout_constraintTop_toTopOf="@+id/iv_share_fb"
+                    app:srcCompat="@drawable/all_iv_instagram" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_share_more"
+                    android:layout_width="@dimen/px40"
+                    android:layout_height="@dimen/px40"
+                    android:layout_marginEnd="@dimen/px16"
+                    android:background="?android:selectableItemBackgroundBorderless"
+                    android:onClick="@{() ->  previewViewModel.shareOther(clPreview, activity)}"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_share_fb"
+                    app:layout_constraintLeft_toRightOf="@+id/iv_share_instagram"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/iv_share_fb"
+                    app:srcCompat="@drawable/all_iv_other_app" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

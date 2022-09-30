@@ -5,14 +5,14 @@ package com.jarvis.bmihealth.presentation.profile
 import android.app.Activity
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.FragmentProfileBinding
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.presentation.base.BaseFragment
-import com.jarvis.bmihealth.presentation.detail.CaloriesRequiredActivity
 import com.jarvis.bmihealth.presentation.home.HomeViewModel
+import com.jarvis.bmihealth.presentation.main.MainActivity
+import com.jarvis.bmihealth.presentation.pref.AppPreferenceKey
 import com.jarvis.bmihealth.presentation.pref.ThemeMode
 import com.jarvis.bmihealth.presentation.register.RegisterActivity
 import com.jarvis.bmihealth.presentation.selectmode.view.SelectModeActivity
@@ -20,7 +20,9 @@ import com.jarvis.bmihealth.presentation.utilx.Constant
 import com.jarvis.bmihealth.presentation.utilx.TypeUnit
 import com.jarvis.bmihealth.presentation.utilx.click
 import com.jarvis.bmihealth.presentation.utilx.observe
+import com.jarvis.locale_helper.helper.LocaleHelper
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 @Suppress("unused")
 @AndroidEntryPoint
@@ -43,8 +45,17 @@ class ProfileFragment :
         binding.tvName.text = name
         binding.tvBio.text = viewModel.profileUser.bio
         binding.tvName.text = name
+
         changeUnit(viewModel.isKmSetting)
         changeDarkMode()
+        changeLanguage()
+    }
+
+    private fun changeLanguage() {
+        binding.viewSetting.viewLanguage.viewBinder.setTextValueStyle1(
+            LocaleHelper.getInstance()
+                .getCurrentDisplayLanguage((activity as? MainActivity))
+        )
     }
 
     override fun onHiddenChanged(hidden: Boolean) {
@@ -80,6 +91,21 @@ class ProfileFragment :
         binding.viewSetting.viewDarkMode.click {
             val intent = Intent(activity, SelectModeActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.viewSetting.viewLanguage.click {
+            LocaleHelper.getInstance()
+                .changeLanguage(
+                    activity, (activity as? MainActivity)?.localeDelegate
+                ) {
+                    appPreference?.put(AppPreferenceKey.KEY_IS_CHANGE_LANGUAGE, true)
+                    appPreference?.put(
+                        AppPreferenceKey.KEY_LOCALE_SETTING,
+                        Locale.getDefault().toString()
+                    )
+                    (activity as? MainActivity)?.finish()
+                    changeLanguage()
+                }
         }
     }
 

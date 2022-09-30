@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Divider1PxMercuryHorizontal">
-        <item name="android:layout_height">@dimen/px1</item>
+        <item name="android:layout_height">@dimen/px0.5</item>
         <item name="android:background">@color/mercury</item>
     </style>
 

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="@dimen/px312"
+            android:layout_height="@dimen/px306"
+            android:layout_marginHorizontal="@dimen/px16"
+            android:layout_marginLeft="@dimen/px24"
+            android:layout_marginTop="@dimen/px24"
+            android:layout_marginRight="@dimen/px24"
+            android:background="@drawable/selector_border_8px_bg_1"
+            android:paddingBottom="@dimen/px24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvTitle"
+                style="@style/T16H24M"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/px16"
+                android:text="@string/all_saved"
+                android:textColor="@color/shamrock"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/px4"
+                android:id="@+id/cvImage"
+                app:cardElevation="@dimen/px4"
+                android:layout_marginTop="@dimen/px16"
+                android:background="@color/bg_01"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivImage"
+                    android:layout_width="@dimen/px120"
+                    android:layout_height="@dimen/px170"
+                    android:src="@color/black"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="parent" />
+            </androidx.cardview.widget.CardView>
+
+            <com.jarvis.design_system.button.JxButton
+                android:id="@+id/btClose"
+                style="@style/ButtonPrimary.SizeL"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="@dimen/px16"
+                android:text="@string/all_close"
+                android:layout_marginTop="@dimen/px16"
+                app:layout_constraintTop_toBottomOf="@+id/cvImage"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

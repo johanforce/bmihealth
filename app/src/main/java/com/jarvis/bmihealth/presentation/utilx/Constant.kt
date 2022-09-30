@@ -9,5 +9,11 @@ object Constant {
     const val MALE = 0
     const val FEMALE = 1
 
+    const val FACEBOOK = "FACEBOOK"
+    const val INSTA = "INSTA"
+    const val TWITTER = "TWITTER"
+    const val ORTHER = "ORTHER"
+    const val GOOGLE = "GOOGLE"
+
     const val NEXT_SCREEN_TO_PROFILE = "NEXT_SCREEN_TO_PROFILE"
 }

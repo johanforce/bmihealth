@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/px12"
+        android:background="@drawable/selector_border_8px_bg_1"
+        android:paddingEnd="@dimen/px14">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivStartIcon"
+            android:layout_width="@dimen/px28"
+            android:layout_height="@dimen/px28"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/px12"
+            android:layout_marginTop="@dimen/px12"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/home_ic_gender"
+            tools:visibility="visible" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvTitle"
+            style="@style/T12H18R"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/px4"
+            android:layout_toEndOf="@+id/ivStartIcon"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:maxLines="1"
+            android:textColor="@color/ink_4"
+            app:layout_constraintLeft_toLeftOf="@+id/ivStartIcon"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivStartIcon"
+            tools:text="Titlesdfdfsdfgksdjfhkjsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdfh" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvIndex"
+            style="@style/T20H28M"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/px4"
+            android:layout_marginEnd="@dimen/px4"
+            android:layout_toEndOf="@+id/ivStartIcon"
+            android:gravity="start"
+            android:textColor="@color/ink_5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/ivStartIcon"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            tools:text="1200" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvUnit"
+            style="@style/T12H18R"
+            android:layout_width="0dp"
+            android:layout_marginStart="@dimen/px2"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/ivStartIcon"
+            android:gravity="start"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvIndex"
+            app:layout_constraintLeft_toRightOf="@+id/tvIndex"
+            android:textColor="@color/ink_5"
+            tools:text="@string/unit_kcal" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

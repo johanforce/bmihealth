@@ -2,6 +2,7 @@
 
 package com.jarvis.bmihealth.presentation.base
 
+import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
@@ -11,6 +12,7 @@ import android.view.MenuItem
 import android.view.Window
 import androidx.lifecycle.ViewModel
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.graphics.drawable.DrawableCompat.applyTheme
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.transition.platform.MaterialSharedAxis
@@ -20,6 +22,7 @@ import com.jarvis.bmihealth.presentation.pref.AppPreferenceKey
 import com.jarvis.bmihealth.presentation.pref.ThemeMode.LIGHT
 import com.jarvis.bmihealth.presentation.selectmode.ThemeHelper
 import com.jarvis.design_system.toolbar.JxToolbar
+import com.jarvis.locale_helper.helper.LocaleHelperActivityDelegateImpl
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -35,6 +38,8 @@ abstract class BaseActivity<B : ViewBinding, T : ViewModel>(val bindingFactory: 
 
     private lateinit var job: Job
 
+    var localeDelegate = LocaleHelperActivityDelegateImpl()
+
     open fun initDarkMode() {
         setTheme(R.style.DSAppTheme)
         val themeMode = appPreference?.get(AppPreferenceKey.KEY_THEMEMODE, Int::class.java)
@@ -44,6 +49,19 @@ abstract class BaseActivity<B : ViewBinding, T : ViewModel>(val bindingFactory: 
     fun isDarkTheme(): Boolean {
         val uiMode = this.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         return uiMode == Configuration.UI_MODE_NIGHT_YES
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
+        try {
+            var context = localeDelegate.attachBaseContext(newBase)
+            if (context == null) {
+                context = newBase
+            }
+            super.attachBaseContext(context)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
 

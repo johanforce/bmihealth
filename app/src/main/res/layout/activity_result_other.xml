@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_02">
+
+        <com.jarvis.design_system.toolbar.JxToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:toolbarBackIcon="@drawable/all_ic_back"
+            app:toolbarHideDivider="false"
+            app:toolbarTitle="@string/result_toolbar"
+            app:toolbarViewStyle="backTitleIcon" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/clBottom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:overScrollMode="never"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_02"
+                android:paddingBottom="@dimen/px16">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clBMI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/bg_01"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivGender"
+                        android:layout_width="@dimen/px48"
+                        android:layout_height="@dimen/px48"
+                        android:layout_marginStart="@dimen/px16"
+                        android:layout_marginTop="@dimen/px16"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/others_gender_male_on" />
+
+                    <com.jarvis.design_system.textview.CustomTextView
+                        android:id="@+id/tvName"
+                        style="@style/T16H24B"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/px12"
+                        android:textColor="@color/ink_5"
+                        app:layout_constraintBottom_toTopOf="@+id/tvAge"
+                        app:layout_constraintLeft_toRightOf="@+id/ivGender"
+                        app:layout_constraintTop_toTopOf="@+id/ivGender"
+                        app:layout_constraintVertical_chainStyle="packed"
+                        tools:text="@string/maintain_weight" />
+
+                    <com.jarvis.design_system.textview.CustomTextView
+                        android:id="@+id/tvAge"
+                        style="@style/T10H14R"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/ink_3"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivGender"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvName"
+                        app:layout_constraintTop_toBottomOf="@+id/tvName"
+                        app:layout_constraintVertical_chainStyle="packed"
+                        tools:text="@string/all_years_ago" />
+
+                    <com.jarvis.bmihealth.presentation.home.ViewHomeBMI
+                        android:id="@+id/viewBMI"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ivGender" />
+
+                    <com.jarvis.design_system.button.JxButton
+                        android:id="@+id/btnSave"
+                        style="@style/ButtonPrimary.SizeL"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/px32"
+                        android:paddingHorizontal="@dimen/px16"
+                        android:layout_marginTop="@dimen/px20"
+                        android:layout_marginEnd="@dimen/px20"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        app:layout_constraintWidth_max="@dimen/px120"
+                        android:text="@string/all_save"
+                        tools:text="sdfo dfhó dfhód d fọdf sodj sdgds sdgsdf"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:id="@+id/lineBMIBottom"
+                    style="@style/Divider1PxMercuryHorizontal"
+                    android:layout_width="match_parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/clBMI" />
+
+                <com.jarvis.design_system.textview.CustomTextView
+                    android:id="@+id/tvTitleBody"
+                    style="@style/TitleLabel"
+                    android:layout_marginTop="@dimen/px4"
+                    android:text="@string/home_body_measurement"
+                    android:textColor="@color/ink_5"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lineBMIBottom" />
+
+                <com.jarvis.bmihealth.presentation.bmiother.ViewItemRequired
+                    android:id="@+id/ivWeight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/px16"
+                    android:layout_marginEnd="@dimen/px4"
+                    app:icon="@drawable/home_ic_weight"
+                    app:index="61"
+                    app:layout_constraintEnd_toStartOf="@id/ivHeight"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitleBody"
+                    app:title="@string/all_weight"
+                    tools:unit="kg" />
+
+                <com.jarvis.bmihealth.presentation.bmiother.ViewItemRequired
+                    android:id="@+id/ivHeight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/px4"
+                    android:layout_marginEnd="@dimen/px16"
+                    app:icon="@drawable/home_ic_height"
+                    app:index="173"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ivWeight"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitleBody"
+                    app:title="@string/all_height"
+                    app:unit="cm" />
+
+                <com.jarvis.bmihealth.presentation.bmiother.ViewItemRequired
+                    android:id="@+id/tvTitleRequired"
+                    style="@style/TitleLabel"
+                    android:layout_marginTop="@dimen/px4"
+                    android:text="@string/home_title_required"
+                    android:textColor="@color/ink_5"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivHeight" />
+
+                <com.jarvis.bmihealth.presentation.bmiother.ViewItemRequired
+                    android:id="@+id/ivBMR"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/px16"
+                    android:layout_marginEnd="@dimen/px4"
+                    app:icon="@drawable/home_ic_bmr"
+                    app:index="1000"
+                    app:layout_constraintEnd_toStartOf="@id/ivMainTain"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitleRequired"
+                    app:title="@string/home_title_bmr"
+                    app:unit="@string/unit_kcal" />
+
+                <com.jarvis.bmihealth.presentation.bmiother.ViewItemRequired
+                    android:id="@+id/ivMainTain"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/px4"
+                    android:layout_marginEnd="@dimen/px16"
+                    app:icon="@drawable/home_ic_maintain"
+                    app:index="1300"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ivBMR"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitleRequired"
+                    app:title="@string/home_title_maintain"
+                    app:unit="@string/unit_kcal" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_01"
+            android:paddingVertical="@dimen/px16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <com.jarvis.design_system.button.JxButton
+                android:id="@+id/btReCal"
+                style="@style/ButtonPlain.SizeL"
+                android:layout_width="0dp"
+                android:layout_marginStart="@dimen/px16"
+                android:layout_marginEnd="@dimen/px8"
+                android:text="@string/other_bmi_recalculator"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/btShare"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.jarvis.design_system.button.JxButton
+                android:id="@+id/btShare"
+                style="@style/ButtonPrimary.SizeL"
+                android:layout_width="0dp"
+                android:layout_marginStart="@dimen/px8"
+                android:layout_marginEnd="@dimen/px16"
+                android:text="@string/all_share"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintLeft_toRightOf="@+id/btReCal"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            style="@style/Divider1PxMercuryHorizontal"
+            android:layout_width="match_parent"
+            app:layout_constraintBottom_toTopOf="@+id/clBottom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

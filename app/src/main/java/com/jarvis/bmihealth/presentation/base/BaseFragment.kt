@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.jarvis.bmihealth.presentation.pref.AppPreference
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -21,12 +22,13 @@ abstract class BaseFragment<Binding : ViewBinding>(val bindingFactory: (LayoutIn
         get() = Dispatchers.Main + job
 
     private lateinit var job: Job
-
+    var appPreference: AppPreference? = null
     open var useSharedViewModel: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         job = Job() // create the Job
+        appPreference = AppPreference.getInstance()
     }
 
     override fun onCreateView(

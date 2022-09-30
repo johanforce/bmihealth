@@ -1,5 +1,6 @@
 package com.jarvis.bmihealth.presentation.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -12,6 +13,8 @@ import com.jarvis.bmihealth.databinding.ActivityMainBinding
 import com.jarvis.bmihealth.presentation.base.BaseActivity
 import com.jarvis.bmihealth.presentation.bmiother.OtherFragment
 import com.jarvis.bmihealth.presentation.home.HomeFragment
+import com.jarvis.bmihealth.presentation.onboarding.OnBoardingActivity
+import com.jarvis.bmihealth.presentation.pref.AppPreferenceKey
 import com.jarvis.bmihealth.presentation.profile.ProfileFragment
 import com.jarvis.bmihealth.presentation.utilx.Constant
 import com.jarvis.bmihealth.presentation.utilx.click
@@ -37,6 +40,7 @@ class MainActivity :
     }
 
     override fun setUpViews() {
+        this.checkLanguageChanged()
         initFragment()
         clickShowFragment(Constant.KEY_HOME)
         setOnClickView()
@@ -120,6 +124,20 @@ class MainActivity :
             binding.ivHealth.isSelected = position == Constant.KEY_HOME
             binding.ivProfile.isSelected = position == Constant.KEY_PROFILE
         }
+    }
+
+    private fun checkLanguageChanged() {
+        if (this.appPreference?.get(AppPreferenceKey.KEY_IS_CHANGE_LANGUAGE, Boolean::class.java)!!
+        ) {
+            this.appPreference?.put(AppPreferenceKey.KEY_IS_CHANGE_LANGUAGE, false)
+            restartActivity()
+        }
+    }
+
+    private fun restartActivity() {
+        val intent = Intent(this, OnBoardingActivity::class.java)
+        finish()
+        startActivity(intent)
     }
 
 
