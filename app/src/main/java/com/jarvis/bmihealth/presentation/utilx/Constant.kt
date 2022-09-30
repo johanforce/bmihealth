@@ -8,4 +8,6 @@ object Constant {
 
     const val MALE = 0
     const val FEMALE = 1
+
+    const val NEXT_SCREEN_TO_PROFILE = "NEXT_SCREEN_TO_PROFILE"
 }

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bgBMI"
+        android:paddingHorizontal="@dimen/px8"
+        android:background="@color/bg_01">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clBMI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/px8"
+            android:background="@drawable/ripple_home_bmi_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivGender"
+                android:layout_width="@dimen/px28"
+                android:layout_height="@dimen/px28"
+                android:layout_marginStart="@dimen/px8"
+                android:src="@drawable/home_ic_gender"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                style="@style/T16H24M"
+                android:id="@+id/titleBMIAge"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/px8"
+                android:layout_marginRight="@dimen/px16"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text="@string/home_des_bmi"
+                android:textColor="@color/ink_5"
+                app:layout_constraintBottom_toBottomOf="@+id/ivGender"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintLeft_toRightOf="@+id/ivGender"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/ivGender" />
+
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvBMI"
+                style="@style/T30H38B"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/px16"
+                android:layout_marginTop="@dimen/px12"
+                android:textColor="@color/ink_5"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivGender"
+                tools:text="23.2" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvStatus"
+                style="@style/T16H24B"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/px24"
+                android:textColor="@color/secondary"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tvBMI"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="Healthy weight" />
+
+            <com.jarvis.heathcarebmi.views.BMIBarView
+                android:id="@+id/viewBmi"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px44"
+                android:layout_marginHorizontal="@dimen/px8"
+                android:layout_marginTop="@dimen/px8"
+                android:background="@drawable/ripple_home_bmi_view"
+                android:visibility="visible"
+                app:background_color="@color/bg_01"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvStatus"
+                app:ruler_color="@color/ink_5"
+                app:text_color="@color/ink_4" />
+
+            <View
+                android:id="@+id/viewLine"
+                style="@style/Divider1PxMercuryHorizontal"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="@dimen/px32"
+                android:layout_marginTop="@dimen/px8"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewBmi" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clHealthy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:paddingTop="@dimen/px8"
+            android:paddingBottom="@dimen/px8"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/clBody"
+            app:layout_constraintTop_toBottomOf="@+id/clBMI">
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvTitleWeight"
+                style="@style/T12H18R"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/home_healthy_weight"
+                android:textColor="@color/ink_4"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvIndexWeight"
+                style="@style/T20H28M"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/px4"
+                android:textColor="@color/ink_5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintLeft_toLeftOf="@+id/tvTitleWeight"
+                app:layout_constraintRight_toLeftOf="@+id/tvKg"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleWeight"
+                tools:text="10 - 14 " />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvKg"
+                style="@style/T12H18R"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/px2"
+                android:textColor="@color/ink_5"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tvIndexWeight"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintLeft_toRightOf="@id/tvIndexWeight"
+                app:layout_constraintRight_toRightOf="@+id/tvTitleWeight"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleWeight"
+                tools:text="kg" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clBody"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:paddingTop="@dimen/px8"
+            android:paddingBottom="@dimen/px8"
+            app:layout_constraintBottom_toBottomOf="@+id/clHealthy"
+            app:layout_constraintLeft_toRightOf="@+id/clHealthy"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/clHealthy">
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvTitlePercentFat"
+                style="@style/T12H18R"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/home_body_fat"
+                android:textColor="@color/ink_4"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvIndexFat"
+                style="@style/T20H28M"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/px4"
+                android:textColor="@color/ink_5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintLeft_toLeftOf="@+id/tvTitlePercentFat"
+                app:layout_constraintRight_toLeftOf="@+id/tvPercent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitlePercentFat"
+                tools:text="12.2 " />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvPercent"
+                style="@style/T12H18R"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/px2"
+                android:text="%"
+                android:textColor="@color/ink_5"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tvIndexFat"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintLeft_toRightOf="@id/tvIndexFat"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvIndexFat" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

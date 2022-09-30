@@ -2,17 +2,21 @@
 
 package com.jarvis.bmihealth.presentation.profile
 
+import android.app.Activity
 import android.content.Intent
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.FragmentProfileBinding
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.presentation.base.BaseFragment
+import com.jarvis.bmihealth.presentation.detail.CaloriesRequiredActivity
 import com.jarvis.bmihealth.presentation.home.HomeViewModel
 import com.jarvis.bmihealth.presentation.pref.ThemeMode
 import com.jarvis.bmihealth.presentation.register.RegisterActivity
 import com.jarvis.bmihealth.presentation.selectmode.view.SelectModeActivity
+import com.jarvis.bmihealth.presentation.utilx.Constant
 import com.jarvis.bmihealth.presentation.utilx.TypeUnit
 import com.jarvis.bmihealth.presentation.utilx.click
 import com.jarvis.bmihealth.presentation.utilx.observe
@@ -63,8 +67,10 @@ class ProfileFragment :
 
     private fun setOnClickView() {
         binding.tvEditProfile.click {
-            val intent = Intent(activity, RegisterActivity::class.java)
-            startActivity(intent)
+            val intent = Intent()
+            context?.let { it1 -> intent.setClass(it1, RegisterActivity::class.java) }
+            intent.putExtra(Constant.NEXT_SCREEN_TO_PROFILE, true)
+            resultLauncher.launch(intent)
         }
 
         binding.viewSetting.viewUnit.click {
@@ -109,6 +115,14 @@ class ProfileFragment :
         }
         binding.viewSetting.viewDarkMode.viewBinder.setTextValueStyle1(textState)
     }
+
+    private var resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                activity?.setResult(Activity.RESULT_OK, activity?.intent)
+                viewModel.getProfile()
+            }
+        }
 }
 
 

@@ -6,10 +6,10 @@
     <color name="transparent">#00FFFFFF</color>
 
     <color name="pri_5">#98BFFD</color>
-    <color name="pri_4">#FFEFE4</color>
-    <color name="pri_3">#FFD5A3</color>
-    <color name="pri_2">#FFA96A</color>
-    <color name="pri_1">#F37C25</color>
+    <color name="pri_4">#BEEEFF</color>
+    <color name="pri_3">#9DD7FA</color>
+    <color name="pri_2">#94BDFB</color>
+    <color name="pri_1">#73A8FB</color>
 
     <color name="ink_5">#2E3238</color>
     <color name="ink_4">#515861</color>

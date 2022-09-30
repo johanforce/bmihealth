@@ -1,5 +1,6 @@
 package com.jarvis.bmihealth.presentation.register
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -8,6 +9,7 @@ import com.jarvis.bmihealth.databinding.ActivityRegisterBinding
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.presentation.base.BaseActivity
 import com.jarvis.bmihealth.presentation.main.MainActivity
+import com.jarvis.bmihealth.presentation.utilx.Constant
 import com.jarvis.bmihealth.presentation.utilx.OtherProfile
 import com.jarvis.bmihealth.presentation.utilx.TypeUnit.Companion.METRIC
 import com.jarvis.bmihealth.presentation.utilx.click
@@ -40,7 +42,7 @@ class RegisterActivity :
     }
 
     private fun getDataIntent() {
-        //do nothing
+        isGoToFromProfile = intent.getBooleanExtra(Constant.NEXT_SCREEN_TO_PROFILE, false)
     }
 
     override fun setUpViews() {
@@ -80,6 +82,7 @@ class RegisterActivity :
         }
 
         observe(viewModel.isInsertProfile) {
+            setResult(Activity.RESULT_OK, intent)
             if (!isGoToFromProfile) {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)

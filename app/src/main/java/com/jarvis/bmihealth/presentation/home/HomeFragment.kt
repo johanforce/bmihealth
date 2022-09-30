@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.jarvis.bmihealth.R
@@ -62,18 +61,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             }
         })
 
-        binding.viewBMI.myBMI.click {
-            val intent = Intent()
-            activity?.let { it1 -> intent.setClass(it1, BmiUserIndexActivity::class.java) }
-            resultLauncher.launch(intent)
-        }
-
-        binding.viewBMI.clWeightBMI.click {
-            val intent = Intent()
-            context?.let { it1 -> intent.setClass(it1, HealthyWeightActivity::class.java) }
-            resultLauncher.launch(intent)
-        }
-
         binding.itemSaveWeight?.setOnClickViewListener(object :
             ViewInputDataHome.OnClickProfileListener {
             override fun clickView() {
@@ -82,13 +69,32 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 resultLauncher.launch(intent)
             }
         })
+
+        binding.viewHomeBMI?.setOnClick(object : ViewHomeBMI.OnClickListener {
+            override fun onClickHealthy() {
+                val intent = Intent()
+                context?.let { it1 -> intent.setClass(it1, HealthyWeightActivity::class.java) }
+                resultLauncher.launch(intent)
+            }
+
+            override fun onClickBody() {
+                TODO("Not yet implemented")
+            }
+
+            override fun onClickBMI() {
+                val intent = Intent()
+                activity?.let { it1 -> intent.setClass(it1, BmiUserIndexActivity::class.java) }
+                resultLauncher.launch(intent)
+            }
+
+        })
     }
 
     override fun observeData() {
         observe(viewModel.profileUsers) { profiles ->
             viewModel.profileUser = profiles.firstOrNull() ?: ProfileUserModel()
             viewModel.isKmSetting = viewModel.profileUser.unit == METRIC
-            binding.viewBMI.progressBMI.setCurrentValues(
+            binding.viewBMI?.progressBMI?.setCurrentValues(
                 viewModel.getBMI().toFloat(),
                 viewModel.isChild
             )
@@ -97,10 +103,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 DeviceUtil.roundOffDecimal(
                     healthyWeight.healthyWeightFrom
                 )
-            }".also { binding.viewBMI.tvWeight.text = it }
-            binding.viewBMI.tvUnit.text =
+            }".also { binding.viewBMI?.tvWeight?.text = it }
+            binding.viewBMI?.tvUnit?.text =
                 if (viewModel.isKmSetting) getText(R.string.unit_kg) else getText(R.string.unit_lbs)
-            binding.viewBMI.tvBodyPercent.text =
+            binding.viewBMI?.tvBodyPercent?.text =
                 DeviceUtil.roundOffDecimal(viewModel.getBodyFat())
             binding.itemBMR?.setDataView(viewModel.getBMR().toDouble(), true)
             binding.itemSaveWeight?.setDataView(viewModel.getCalories().toDouble(), true)
@@ -114,6 +120,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 false
             )
             binding.itemAge?.setDataView(23.0, true)
+
+            context?.let { it1 ->
+                binding.viewHomeBMI?.init(
+                    it1,
+                    viewModel.profileUser.weight,
+                    viewModel.profileUser.height,
+                    viewModel.profileUser.birthday,
+                    viewModel.profileUser.gender,
+                    viewModel.profileUser.unit == 0,
+                )
+            }
+            binding.viewHomeBMI?.showTitleView(true)
+
+            val name =
+                viewModel.profileUser.firstname + " " + viewModel.profileUser.lastname
+            binding.ivProfile?.setDataAvatar(false, name, null, viewModel.profileUser.avatar)
         }
 
         observe(viewModel.isShowHealthIndex) {
