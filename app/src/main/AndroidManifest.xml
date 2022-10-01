@@ -74,7 +74,12 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="Resuld"
+            android:name=".presentation.bmiother.ResultOtherActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".presentation.bmiother.PreviewActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
 

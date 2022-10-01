@@ -17,7 +17,7 @@ data class ProfileUserModel(
     var weight: Double = 0.0,
     var unit: Int = 0,
     var height: Double = 0.0,
-    var bio: String = "",
+    var bio: String = "Nâng ly lên vì những người về trước mặt trời, đổ rượu xuống cho ai kẹt trong màn đêm",
     var national: String = "",
     var goal: Int? = GoalType.MAINTAIN_WEIGHT,
     var activityLevel: Int? = ActivityLevel.MODERATELY,

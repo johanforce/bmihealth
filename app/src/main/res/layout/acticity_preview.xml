@@ -146,7 +146,7 @@
                             app:layout_constraintRight_toRightOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/ivMainTain">
 
-                            <androidx.appcompat.widget.AppCompatImageView
+                            <com.well.avatar.ViewAvatar
                                 android:id="@+id/ivGender"
                                 android:layout_width="@dimen/px44"
                                 android:layout_height="@dimen/px44"

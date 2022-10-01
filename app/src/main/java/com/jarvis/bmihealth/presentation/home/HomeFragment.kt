@@ -10,6 +10,7 @@ import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.FragmentHomeBinding
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.presentation.base.BaseFragment
+import com.jarvis.bmihealth.presentation.bmiother.ResultOtherActivity
 import com.jarvis.bmihealth.presentation.detail.BmiUserIndexActivity
 import com.jarvis.bmihealth.presentation.detail.BmrUserActivity
 import com.jarvis.bmihealth.presentation.detail.CaloriesRequiredActivity
@@ -88,6 +89,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             }
 
         })
+
+        binding.ivProfile?.click {
+            val intent = Intent()
+            activity?.let { it1 -> intent.setClass(it1, ResultOtherActivity::class.java) }
+            resultLauncher.launch(intent)
+        }
     }
 
     override fun observeData() {
@@ -122,14 +129,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             binding.itemAge?.setDataView(23.0, true)
 
             context?.let { it1 ->
-                binding.viewHomeBMI?.init(
-                    it1,
-                    viewModel.profileUser.weight,
-                    viewModel.profileUser.height,
-                    viewModel.profileUser.birthday,
-                    viewModel.profileUser.gender,
-                    viewModel.profileUser.unit == 0,
-                )
+                binding.viewHomeBMI?.init(it1, viewModel.profileUser, viewModel.isKmSetting)
             }
             binding.viewHomeBMI?.showTitleView(true)
 
@@ -168,6 +168,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 activity?.setResult(Activity.RESULT_OK, activity?.intent)
+                viewModel.getProfile()
             }
         }
 }

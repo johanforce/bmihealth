@@ -3,15 +3,20 @@
 package com.jarvis.bmihealth.presentation.detail
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.ActivityBmiUserBinding
 import com.jarvis.bmihealth.presentation.base.BaseActivity
+import com.jarvis.bmihealth.presentation.register.RegisterActivity
+import com.jarvis.bmihealth.presentation.utilx.Constant
 import com.jarvis.bmihealth.presentation.utilx.observe
 import com.jarvis.design_system.toolbar.JxToolbar
 import com.jarvis.heathcarebmi.utils.Consts
@@ -93,7 +98,10 @@ class BmiUserIndexActivity :
 
     private fun setOnClickView() {
         this.binding.tvEdit.setOnClickListener {
-
+            val intent = Intent()
+            this.let { it1 -> intent.setClass(it1, RegisterActivity::class.java) }
+            intent.putExtra(Constant.NEXT_SCREEN_TO_PROFILE, true)
+            resultLauncher.launch(intent)
         }
     }
 
@@ -209,5 +217,13 @@ class BmiUserIndexActivity :
         this.binding.tvStatus.setText(listStatusChild[index])
         this.binding.tvStatusDes.text = getString(listStatusDesChild[index])
     }
+
+    private var resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                this.setResult(Activity.RESULT_OK, this.intent)
+                viewModel.getProfile()
+            }
+        }
 }
 

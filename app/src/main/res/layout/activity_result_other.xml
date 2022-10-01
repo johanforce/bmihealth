@@ -44,7 +44,7 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <androidx.appcompat.widget.AppCompatImageView
+                    <com.well.avatar.ViewAvatar
                         android:id="@+id/ivGender"
                         android:layout_width="@dimen/px48"
                         android:layout_height="@dimen/px48"
@@ -90,7 +90,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/ivGender" />
 
                     <com.jarvis.design_system.button.JxButton
-                        android:id="@+id/btnSave"
+                        android:id="@+id/btnEdit"
                         style="@style/ButtonPrimary.SizeL"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/px32"
@@ -100,8 +100,7 @@
                         android:maxLines="1"
                         android:ellipsize="end"
                         app:layout_constraintWidth_max="@dimen/px120"
-                        android:text="@string/all_save"
-                        tools:text="sdfo dfhó dfhód d fọdf sodj sdgds sdgsdf"
+                        android:text="@string/all_edit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -152,8 +151,8 @@
                     app:title="@string/all_height"
                     app:unit="cm" />
 
-                <com.jarvis.bmihealth.presentation.bmiother.ViewItemRequired
-                    android:id="@+id/tvTitleRequired"
+                <com.jarvis.design_system.textview.CustomTextView
+                    android:id="@+id/tvLabelCalo"
                     style="@style/TitleLabel"
                     android:layout_marginTop="@dimen/px4"
                     android:text="@string/home_title_required"
@@ -172,7 +171,7 @@
                     app:index="1000"
                     app:layout_constraintEnd_toStartOf="@id/ivMainTain"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvTitleRequired"
+                    app:layout_constraintTop_toBottomOf="@id/tvLabelCalo"
                     app:title="@string/home_title_bmr"
                     app:unit="@string/unit_kcal" />
 
@@ -186,7 +185,7 @@
                     app:index="1300"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/ivBMR"
-                    app:layout_constraintTop_toBottomOf="@id/tvTitleRequired"
+                    app:layout_constraintTop_toBottomOf="@id/tvLabelCalo"
                     app:title="@string/home_title_maintain"
                     app:unit="@string/unit_kcal" />
 
@@ -204,28 +203,15 @@
             app:layout_constraintRight_toRightOf="parent">
 
             <com.jarvis.design_system.button.JxButton
-                android:id="@+id/btReCal"
-                style="@style/ButtonPlain.SizeL"
-                android:layout_width="0dp"
-                android:layout_marginStart="@dimen/px16"
-                android:layout_marginEnd="@dimen/px8"
-                android:text="@string/other_bmi_recalculator"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/btShare"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.jarvis.design_system.button.JxButton
                 android:id="@+id/btShare"
                 style="@style/ButtonPrimary.SizeL"
                 android:layout_width="0dp"
-                android:layout_marginStart="@dimen/px8"
+                android:layout_marginStart="@dimen/px16"
                 android:layout_marginEnd="@dimen/px16"
                 android:text="@string/all_share"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintLeft_toRightOf="@+id/btReCal"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>

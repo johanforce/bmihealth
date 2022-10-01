@@ -1,27 +1,26 @@
 package com.jarvis.bmihealth.presentation.bmiother
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.core.content.ContextCompat
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.ActivityResultOtherBinding
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.presentation.base.BaseActivity
-import com.jarvis.bmihealth.presentation.home.ViewHomeBMI
+import com.jarvis.bmihealth.presentation.register.RegisterActivity
+import com.jarvis.bmihealth.presentation.utilx.Constant
+import com.jarvis.bmihealth.presentation.utilx.click
+import com.jarvis.bmihealth.presentation.utilx.observe
 import com.jarvis.design_system.toolbar.JxToolbar
-import com.jarvis.design_system.toolbar.OnToolbarActionListener
 import com.jarvis.heathcarebmi.utils.HealthIndexUtils
 import com.well.unitlibrary.UnitConverter
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.util.*
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ResultOtherActivity :
-    BaseActivity<ActivityResultOtherBinding, ResultViewModel>(ActivityResultOtherBinding::inflate),
-    OnToolbarActionListener {
+    BaseActivity<ActivityResultOtherBinding, ResultViewModel>(ActivityResultOtherBinding::inflate) {
 
     private val viewModel: ResultViewModel by viewModels()
 
@@ -33,7 +32,6 @@ class ResultOtherActivity :
         R.string.onboarding_normal,
         R.string.onboarding_strict
     )
-    private var startForResult: ActivityResultLauncher<Intent>? = null
 
     override fun getToolbar(): JxToolbar {
         return binding.toolbar
@@ -44,80 +42,55 @@ class ResultOtherActivity :
         binding.lifecycleOwner = this
 
         viewModel.getProfile()
+        setOnClickView()
     }
 
-    private fun initView(profileUser : ProfileUserModel, isKmSetting: Boolean) {
-        this.binding.toolbar.setOnToolbarActiontListener(this)
-
-        binding.viewBMI.init(
-            this,
-            profileUser.weight,
-            profileUser.height,
-            profileUser.birthday,
-            profileUser.gender,
-            isKmSetting,
-            null
-        )
-        binding.viewBMI.disableClickView()
-        binding.btReCal.setOnClickListener {
-            finish()
-        }
+    private fun setOnClickView() {
         binding.btShare.setOnClickListener {
             val intent = Intent(this@ResultOtherActivity, PreviewActivity::class.java)
-            intent.putExtra("RESULT_OTHER", otherModel)
-            intent.putExtra("RESULT_AGE", HealthIndexUtils.calculateAgeInYear(otherModel.birthday))
-            intent.putExtra("RESULT_BMR", bmrOther)
-            intent.putExtra("RESULT_MAINTAIN", maintainOther)
-            intent.putExtra("RESULT_UNIT", isKmSetting)
             startActivity(intent)
         }
 
-        launch(Dispatchers.Main) {
-            listUser = withContext(Dispatchers.IO) {
-                appDAO.getAllActiveProfile()
-            }
-
-            binding.btnSave.setOnClickListener {
-                if (!listUser.isNullOrEmpty() && listUser.size >= 5) {
-                    val dialog = FullProfileDialog(this@ResultOtherActivity)
-                    dialog.init()
-                    dialog.setListener(object : FullProfileDialog.ListenerClick {
-                        override fun onManageProfileClick() {
-                            startActivity(Intent(this@ResultOtherActivity, ManageProfileActivity::class.java))
-                        }
-                    })
-                    dialog.show(true, false)
-                } else {
-                    val intent = Intent(this@ResultOtherActivity, AddProfileActivity::class.java)
-                    intent.putExtra("BMI_OTHER", otherModel)
-                    intent.putExtra("KEY_TO_ADD_PROFILE", 2)
-                    startForResult?.launch(intent)
-                }
-            }
+        binding.btnEdit.click {
+            val intent = Intent()
+            this.let { it1 -> intent.setClass(it1, RegisterActivity::class.java) }
+            intent.putExtra(Constant.NEXT_SCREEN_TO_PROFILE, true)
+            resultLauncher.launch(intent)
         }
-        loadDataOther(otherModel)
     }
 
-    private fun loadDataOther(otherModel: ProfileUserModel) {
+    override fun observeData() {
+        super.observeData()
+        observe(viewModel.profileUsers) {
+            viewModel.updateDataView()
+            initView(viewModel.profileUser, viewModel.isKmSetting)
+        }
+    }
+
+    private fun initView(profileUser: ProfileUserModel, isKmSetting: Boolean) {
+        binding.viewBMI.init(this, profileUser, isKmSetting)
+        binding.viewBMI.disableClickView()
+        loadDataOther(profileUser, isKmSetting)
+    }
+
+    private fun loadDataOther(otherModel: ProfileUserModel, isKmSetting: Boolean) {
         if ((otherModel.goal ?: 0) < 1) {
             otherModel.goal = 1
-        } else if (otherModel.goal > listRequired.size) {
+        } else if ((otherModel.goal ?: 1) > listRequired.size) {
             otherModel.goal = listRequired.size
         }
         this.binding.viewBMI.loadData(
-            otherModel.weight,
-            otherModel.height,
-            otherModel.birthday,
-            otherModel.gender,
-            isKmSetting,
-            null
+            otherModel,
+            isKmSetting
         )
 
         val name =
             otherModel.firstname + " " + otherModel.lastname
         this.binding.tvName.text = name
 
-        binding.ivMainTain.setTitle(getString(listRequired[otherModel.goal - 1]))
+        binding.ivMainTain.setTitle(getString(listRequired[(otherModel.goal ?: 1) - 1]))
+        binding.ivMainTain.setIndex(viewModel.getCalories().toString())
+        binding.ivBMR.setIndex(viewModel.getBMR().toString())
         this.binding.tvAge.text = getString(
             R.string.all_years_old,
             HealthIndexUtils.calculateAgeInYear(otherModel.birthday)
@@ -147,54 +120,15 @@ class ResultOtherActivity :
             )
             this.binding.ivHeight.setUnit("")
         }
-        bmrOther = HealthIndexUtils.getBmr(
-            otherModel.weight,
-            otherModel.height,
-            otherModel.birthday,
-            otherModel.gender
-        ).toInt()
-        this.binding.ivBMR.setIndex(UnitConverter.formatLong(bmrOther).toString())
-        var tdee = HealthIndexUtils.getTdee(
-            HealthIndexUtils.getBmr(
-                otherModel.weight,
-                otherModel.height,
-                otherModel.birthday,
-                otherModel.gender
-            ),
-            otherModel.activityLevel
-        )
-        maintainOther = HealthIndexUtils.getCaloRequired(tdee, otherModel.goals).toInt()
-        this.binding.ivMainTain.setIndex(UnitConverter.formatLong(maintainOther).toString())
-        if (otherModel.gender == 0) {
-            this.binding.ivGender.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.others_gender_male_on))
-        } else if (otherModel.gender == 1) {
-            this.binding.ivGender.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.others_gender_female_on))
-        } else {
-            this.binding.ivGender.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.gender_unknown_on))
+
+        binding.ivGender.setDataAvatar(false, name, null, viewModel.profileUser.avatar)
+    }
+
+    private var resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                this.setResult(Activity.RESULT_OK, intent)
+                viewModel.getProfile()
+            }
         }
-
-        this.binding.viewBMI.setOnClick(object : ViewHomeBMI.OnClickListener {
-            override fun onClickHealthy() {
-            }
-
-            override fun onClickBody() {
-            }
-
-            override fun onClickBMI() {
-            }
-
-        })
-    }
-
-    override fun onToolbarTextCtaClick() {
-
-    }
-
-    override fun onToolbarAction1Click() {
-
-    }
-
-    override fun onToolbarAction2Click() {
-
-    }
 }

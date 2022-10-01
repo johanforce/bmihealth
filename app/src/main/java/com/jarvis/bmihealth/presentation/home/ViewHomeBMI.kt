@@ -13,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.ViewHomeBmiBinding
+import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.heathcarebmi.utils.Consts
 import com.jarvis.heathcarebmi.utils.HealthIndexUtils
 import com.well.unitlibrary.UnitConverter
@@ -67,16 +68,13 @@ class ViewHomeBMI : ConstraintLayout, View.OnClickListener {
     @SuppressLint("ClickableViewAccessibility")
     fun init(
         context: Context,
-        weight: Double,
-        height: Double,
-        birthday: Long,
-        gender: Int,
+        userProfile: ProfileUserModel,
         isKmSetting: Boolean
     ) {
         val layoutInflater =
             context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         binding = ViewHomeBmiBinding.inflate(layoutInflater, this, true)
-        loadData(weight, height, birthday, gender, isKmSetting)
+        loadData(userProfile, isKmSetting)
         binding!!.clBody.setOnClickListener(this)
         binding!!.clHealthy.setOnClickListener(this)
         binding!!.clBMI.setOnClickListener(this)
@@ -93,33 +91,30 @@ class ViewHomeBMI : ConstraintLayout, View.OnClickListener {
 
     @SuppressLint("SetTextI18n")
     fun loadData(
-        weight: Double,
-        height: Double,
-        birthday: Long,
-        gender: Int,
+        profileUserModel: ProfileUserModel,
         isKmSetting: Boolean
     ) {
         binding!!.viewBmi.setBarHeight(resources.getDimension(R.dimen.px10))
             .addBmiValueChangedListener { bmiValue: Double, _: String?, _: Int, idBMI: Int ->
-                if (HealthIndexUtils.calculateAgeInMonth(birthday) < Consts.MAX_CHILD_AGE_IN_MONTH) {
+                if (HealthIndexUtils.calculateAgeInMonth(profileUserModel.birthday) < Consts.MAX_CHILD_AGE_IN_MONTH) {
                     binding!!.tvStatus.setText(childTypeResource[idBMI])
                     setColorHealthyWeightChild(idBMI)
                 } else {
                     binding!!.tvStatus.setText(adultTypeResource[idBMI])
                     setColorHealthyWeightAdult(idBMI)
                 }
-                setBmiText(birthday, HealthIndexUtils.getBmi(birthday, gender, weight, height))
+                setBmiText(profileUserModel.birthday, HealthIndexUtils.getBmi(profileUserModel.birthday, profileUserModel.gender, profileUserModel.weight, profileUserModel.height))
                 bMI = bmiValue
             }
-            .setBMIValue(birthday, HealthIndexUtils.getBmi(birthday, gender, weight, height))
-        bodyOther = HealthIndexUtils.getBodyFatPercentage(bMI, gender, birthday)
-        if (HealthIndexUtils.calculateAgeInMonth(birthday) < Consts.MAX_CHILD_AGE_IN_MONTH) {
+            .setBMIValue(profileUserModel.birthday, HealthIndexUtils.getBmi(profileUserModel.birthday, profileUserModel.gender, profileUserModel.weight, profileUserModel.height))
+        bodyOther = HealthIndexUtils.getBodyFatPercentage(bMI, profileUserModel.gender, profileUserModel.birthday)
+        if (HealthIndexUtils.calculateAgeInMonth(profileUserModel.birthday) < Consts.MAX_CHILD_AGE_IN_MONTH) {
             binding!!.clBody.visibility = GONE
         } else {
             binding!!.clBody.visibility = VISIBLE
         }
         binding!!.tvIndexFat.text = formatDoubleToString(bodyOther, 1) + ""
-        val healthyWeight = HealthIndexUtils.getHealthyWeight(birthday, gender, height)
+        val healthyWeight = HealthIndexUtils.getHealthyWeight(profileUserModel.birthday, profileUserModel.gender, profileUserModel.height)
         if (isKmSetting) {
             binding!!.tvIndexWeight.text = formatDoubleToString(
                 healthyWeight.healthyWeightFrom,
@@ -136,7 +131,7 @@ class ViewHomeBMI : ConstraintLayout, View.OnClickListener {
             )
             binding!!.tvKg.text = context.getString(R.string.unit_lbs)
         }
-        val age = HealthIndexUtils.calculateAgeInYear(birthday)
+        val age = HealthIndexUtils.calculateAgeInYear(profileUserModel.birthday)
         when {
             age < 10 -> {
                 binding!!.titleBMIAge.text = context.getString(R.string.bmi_toolbar_child)

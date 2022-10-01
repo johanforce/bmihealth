@@ -15,6 +15,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @Suppress("unused")
+@HiltViewModel
 open class ProfileUserViewModel @Inject constructor() : BaseViewModel() {
 
     @Inject

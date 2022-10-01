@@ -176,6 +176,7 @@ class ViewInputProfileInfo : ConstraintLayout {
         byteArray = userProfile.avatar
         setFirstName(userProfile.firstname)
         setLastName(userProfile.lastname)
+        setBio(userProfile.bio)
         setAvatar(
             userProfile.firstname + " " + userProfile.lastname,
             userProfile.avatarUrl,
