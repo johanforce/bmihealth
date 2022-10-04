@@ -5,6 +5,7 @@ package com.jarvis.bmihealth.presentation.profile
 import android.app.Activity
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.FragmentProfileBinding
@@ -44,6 +45,7 @@ class ProfileFragment :
         binding.avatar.setDataAvatar(false, name, null, viewModel.profileUser.avatar)
         binding.tvName.text = name
         binding.tvBio.text = viewModel.profileUser.bio
+        binding.tvBio.isVisible = !binding.tvBio.text.isNullOrEmpty()
         binding.tvName.text = name
 
         changeUnit(viewModel.isKmSetting)

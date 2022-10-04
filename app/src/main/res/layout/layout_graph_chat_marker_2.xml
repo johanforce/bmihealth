@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tool="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
     android:id="@+id/layoutMarker"
-    android:background="@color/transparent"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/transparent">
 
     <RelativeLayout
         android:id="@+id/bg"
-        android:padding="@dimen/_10dp"
-        android:background="@drawable/bg_content_chart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_20dp"
+        android:layout_marginBottom="@dimen/px20"
+        android:background="@drawable/bg_content_chart"
+        android:padding="@dimen/px10"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+        <com.jarvis.design_system.textview.CustomTextView
             android:id="@+id/tvSys"
+            style="@style/T12H18M"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/white"
-            android:textSize="@dimen/font_size_12sp"
+            android:textColor="@color/bg_jx_5"
             tool:text="sdfklgdfkl" />
 
-        <TextView
+        <com.jarvis.design_system.textview.CustomTextView
             android:id="@+id/tvDias"
+            style="@style/T12H18M"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvSys"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/white"
-            android:textSize="@dimen/font_size_12sp"/>
+            android:textColor="@color/bg_jx_5" />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

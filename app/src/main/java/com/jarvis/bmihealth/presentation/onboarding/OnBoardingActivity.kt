@@ -35,6 +35,7 @@ class OnBoardingActivity :
             if (it.isNotEmpty()) {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
+                finish()
             } else {
                 binding.clView.isVisible = true
             }
@@ -45,11 +46,13 @@ class OnBoardingActivity :
         binding.btLogin.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         binding.clSkipLogin.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }

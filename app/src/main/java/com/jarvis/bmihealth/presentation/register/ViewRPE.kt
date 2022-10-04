@@ -8,20 +8,20 @@ import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.ViewRpeBinding
+import com.jarvis.bmihealth.presentation.utilx.ActivityEnum
+import com.jarvis.bmihealth.presentation.utilx.GoalEnum
 import com.warkiz.widget.IndicatorSeekBar
 import com.warkiz.widget.OnSeekChangeListener
 import com.warkiz.widget.SeekParams
-import java.util.*
 
 class ViewRPE : ConstraintLayout {
     private var binding: ViewRpeBinding? = null
-    var currentRPE = 3
     private var isKmSetting = false
     private var stringTitle: String? = null
     private var stringDes: String? = null
     private var listenerClick: ListenerClick? = null
-    var goalTemp = -1
-    var activityTemp = -1
+    var goalTemp = GoalEnum.MAINTAIN_WEIGHT.index
+    var activityTemp = ActivityEnum.MODERATELY.index
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
@@ -43,27 +43,24 @@ class ViewRPE : ConstraintLayout {
     }
 
     fun init(context: Context, isSetting: Boolean, activity: Int, goal: Int) {
-        goalTemp = goal
-        isKmSetting = isSetting
         val layoutInflater =
             context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         binding = ViewRpeBinding.inflate(layoutInflater, this, true)
-        currentRPE = activity
-        setActivityLevel(activity)
-        updateRPE(activity)
+        activityTemp = activity + 1
+        goalTemp = goal
+        isKmSetting= isSetting
+
+        setActivityLevel(activityTemp)
+        updateRPE(activityTemp)
+
         binding!!.sbEffortNew.onSeekChangeListener = object : OnSeekChangeListener {
             override fun onSeeking(seekParams: SeekParams) {
                 if (seekParams.thumbPosition < 1) {
                     binding!!.sbEffortNew.setProgress(1f)
-                    stringTitle = getContext().getString(R.string.rpe_sedentary)
-                    stringDes = getContext().getString(R.string.rpe_sedentary_des)
-                    setValueRPE(stringTitle, stringDes)
-                }
-                if (seekParams.thumbPosition < 1) {
-                    activityTemp = 1
-                    updateRPE(1)
+                    updateRPE(0)
+                    activityTemp = 0
                 } else {
-                    activityTemp = seekParams.thumbPosition
+                    activityTemp = seekParams.thumbPosition-1
                     updateRPE(seekParams.thumbPosition)
                 }
                 if (listenerClick != null) {
@@ -79,8 +76,9 @@ class ViewRPE : ConstraintLayout {
                 //do nothing
             }
         }
+
         setTextGoal(goalTemp, isKmSetting)
-        binding!!.viewGoal.setOnListenerClick {
+        binding?.viewGoal?.setOnListenerClick {
             val dialogSetGoal = DialogSetGoal(context, goalTemp, isKmSetting)
             dialogSetGoal.show()
             dialogSetGoal.onListener(object : DialogSetGoal.ListenerClick {
@@ -90,33 +88,38 @@ class ViewRPE : ConstraintLayout {
 
                 override fun saveGoal(goal: Int) {
                     if (listenerClick != null) {
-                        goalTemp = goal
-                        listenerClick!!.dataGoal(goal)
+                        listenerClick?.dataGoal(goal)
                     }
+                    goalTemp = goal
                     setTextGoal(goal, isKmSetting)
                 }
             })
         }
     }
 
-    private fun progessToLevel(progess: Int): Int {
-        return if (progess < 2) {
-            1
-        } else if (progess < 4) {
-            1
-        } else if (progess < 6) {
-            2
-        } else if (progess < 8) {
-            3
-        } else if (progess < 10) {
-            4
+    private fun progressToLevel(progress: Int): Int {
+        return if (progress < 2) {
+            ActivityEnum.SEDENTARY.index
+        } else if (progress < 4) {
+            ActivityEnum.SEDENTARY.index
+        } else if (progress < 6) {
+            ActivityEnum.LIGHT_ACTIVE.index
+        } else if (progress < 8) {
+            ActivityEnum.MODERATELY.index
+        } else if (progress < 10) {
+            ActivityEnum.VERY_ACTIVE.index
         } else {
-            5
+            ActivityEnum.EXTREMELY_ACTIVE.index
         }
     }
 
     fun updateRPE(rpe: Int) {
         when (rpe) {
+            0 -> {
+                stringTitle = context.getString(R.string.rpe_sedentary)
+                stringDes = context.getString(R.string.rpe_sedentary_des)
+                setValueRPE(stringTitle, stringDes)
+            }
             1 -> {
                 stringTitle = context.getString(R.string.rpe_sedentary)
                 stringDes = context.getString(R.string.rpe_sedentary_des)
@@ -143,7 +146,6 @@ class ViewRPE : ConstraintLayout {
                 setValueRPE(stringTitle, stringDes)
             }
         }
-        currentRPE = rpe
     }
 
     fun setValueRPE(title: String?, des: String?) {
@@ -163,6 +165,7 @@ class ViewRPE : ConstraintLayout {
                 override fun closeDialog(isClickBackgroud: Boolean) {
                     //do nothing
                 }
+
                 override fun saveGoal(goal: Int) {
                     if (listenerClick != null) {
                         listenerClick!!.dataGoal(goal)
@@ -183,74 +186,39 @@ class ViewRPE : ConstraintLayout {
     }
 
     fun setTextGoal(temp: Int, isSetting: Boolean) {
-        val valueWeight: String
-        val des: String
-        val unit: String = if (isSetting) context!!.getString(R.string.unit_kg) else {
-            context!!.getString(R.string.unit_lbs)
-        }
-        when (temp) {
-            1 -> {
-                valueWeight = if (isSetting) "1" else "2.2"
-                des = "(-$valueWeight$unit/" + context!!.getString(R.string.all_week)
-                    .lowercase(
-                        Locale.getDefault()
-                    ) + ")"
-                binding!!.viewGoalTitle.text =
-                    context!!.getString(R.string.onboarding_strict_loos)
-                binding!!.viewGoalDes.text = des
-                binding!!.viewGoalDes.visibility = VISIBLE
+        binding!!.viewGoalTitle.text =
+            when (temp) {
+                GoalEnum.WEIGHT_LOSS_III.index -> GoalEnum.WEIGHT_LOSS_III.title
+                GoalEnum.WEIGHT_LOSS_II.index -> GoalEnum.WEIGHT_LOSS_II.title
+                GoalEnum.WEIGHT_LOSS_I.index -> GoalEnum.WEIGHT_LOSS_I.title
+                GoalEnum.MAINTAIN_WEIGHT.index -> {
+                    GoalEnum.MAINTAIN_WEIGHT.title
+                }
+                GoalEnum.WEIGHT_GAIN_I.index -> GoalEnum.WEIGHT_GAIN_I.title
+                GoalEnum.WEIGHT_GAIN_II.index -> GoalEnum.WEIGHT_GAIN_II.title
+                else -> GoalEnum.MAINTAIN_WEIGHT.title
             }
-            2 -> {
-                valueWeight = if (isSetting) "0.5" else "1.1"
-                des = "(-$valueWeight$unit/" + context!!.getString(R.string.all_week)
-                    .lowercase(
-                        Locale.getDefault()
-                    ) + ")"
-                binding!!.viewGoalTitle.text =
-                    context!!.getString(R.string.onboarding_mormal_weight)
-                binding!!.viewGoalDes.text = des
-                binding!!.viewGoalDes.visibility = VISIBLE
-            }
-            3 -> {
-                valueWeight = if (isSetting) "0.25" else "0.55"
-                des = "(-$valueWeight$unit/" + context!!.getString(R.string.all_week)
-                    .lowercase(
-                        Locale.getDefault()
-                    ) + ")"
-                binding!!.viewGoalTitle.text =
-                    context!!.getString(R.string.onboarding_comfortable)
-                binding!!.viewGoalDes.text = des
-                binding!!.viewGoalDes.visibility = VISIBLE
-            }
-            4 -> {
-                valueWeight = if (isSetting) "" else ""
-                des = ""
-                binding!!.viewGoalTitle.text =
-                    context!!.getString(R.string.onboarding_maintain)
-                binding!!.viewGoalDes.visibility = GONE
-            }
-            5 -> {
-                valueWeight = if (isSetting) "0.5" else "1.1"
-                des = "(+$valueWeight$unit/" + context!!.getString(R.string.all_week)
-                    .lowercase(
-                        Locale.getDefault()
-                    ) + ")"
-                binding!!.viewGoalTitle.text =
-                    context!!.getString(R.string.onboarding_normal)
-                binding!!.viewGoalDes.text = des
-                binding!!.viewGoalDes.visibility = VISIBLE
-            }
-            6 -> {
-                valueWeight = if (isSetting) "1" else "2.2"
-                des = "(+$valueWeight$unit/" + context!!.getString(R.string.all_week)
-                    .lowercase(
-                        Locale.getDefault()
-                    ) + ")"
-                binding!!.viewGoalTitle.text =
-                    context!!.getString(R.string.onboarding_strict)
-                binding!!.viewGoalDes.text = des
-                binding!!.viewGoalDes.visibility = VISIBLE
-            }
-        }
+
+        binding!!.viewGoalDes.text =
+            if (isSetting)
+                when (temp) {
+                    GoalEnum.WEIGHT_LOSS_III.index -> GoalEnum.WEIGHT_LOSS_III.desMetric
+                    GoalEnum.WEIGHT_LOSS_II.index -> GoalEnum.WEIGHT_LOSS_II.desMetric
+                    GoalEnum.WEIGHT_LOSS_I.index -> GoalEnum.WEIGHT_LOSS_I.desMetric
+                    GoalEnum.MAINTAIN_WEIGHT.index -> GoalEnum.MAINTAIN_WEIGHT.desMetric
+                    GoalEnum.WEIGHT_GAIN_I.index -> GoalEnum.WEIGHT_GAIN_I.desMetric
+                    GoalEnum.WEIGHT_GAIN_II.index -> GoalEnum.WEIGHT_GAIN_II.desMetric
+                    else -> GoalEnum.MAINTAIN_WEIGHT.desMetric
+                }
+            else
+                when (temp) {
+                    GoalEnum.WEIGHT_LOSS_III.index -> GoalEnum.WEIGHT_LOSS_III.desImperial
+                    GoalEnum.WEIGHT_LOSS_II.index -> GoalEnum.WEIGHT_LOSS_II.desImperial
+                    GoalEnum.WEIGHT_LOSS_I.index -> GoalEnum.WEIGHT_LOSS_I.desImperial
+                    GoalEnum.MAINTAIN_WEIGHT.index -> GoalEnum.MAINTAIN_WEIGHT.desImperial
+                    GoalEnum.WEIGHT_GAIN_I.index -> GoalEnum.WEIGHT_GAIN_I.desImperial
+                    GoalEnum.WEIGHT_GAIN_II.index -> GoalEnum.WEIGHT_GAIN_II.desImperial
+                    else -> GoalEnum.MAINTAIN_WEIGHT.desImperial
+                }
     }
 }

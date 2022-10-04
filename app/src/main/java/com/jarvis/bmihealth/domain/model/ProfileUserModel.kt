@@ -1,8 +1,9 @@
 package com.jarvis.bmihealth.domain.model
 
 import com.jarvis.bmihealth.presentation.pref.ThemeMode.LIGHT
-import com.jarvis.heathcarebmi.utils.ActivityLevel
-import com.jarvis.heathcarebmi.utils.GoalType
+import com.jarvis.bmihealth.presentation.utilx.ActivityEnum
+import com.jarvis.bmihealth.presentation.utilx.GoalEnum
+import com.jarvis.bmihealth.presentation.utilx.TypeUnit.Companion.METRIC
 import java.io.Serializable
 
 data class ProfileUserModel(
@@ -15,12 +16,12 @@ data class ProfileUserModel(
     var avatar: ByteArray? = ByteArray(0),
     var avatarUrl: String = "",
     var weight: Double = 0.0,
-    var unit: Int = 0,
+    var unit: Int = METRIC,
     var height: Double = 0.0,
-    var bio: String = "Nâng ly lên vì những người về trước mặt trời, đổ rượu xuống cho ai kẹt trong màn đêm",
+    var bio: String = "",
     var national: String = "",
-    var goal: Int? = GoalType.MAINTAIN_WEIGHT,
-    var activityLevel: Int? = ActivityLevel.MODERATELY,
+    var goal: Int? = GoalEnum.MAINTAIN_WEIGHT.index,
+    var activityLevel: Int? = ActivityEnum.MODERATELY.index,
     var themeMode: Int? = LIGHT
 ) : Serializable {
     companion object {

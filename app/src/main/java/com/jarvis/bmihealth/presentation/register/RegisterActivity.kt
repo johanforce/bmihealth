@@ -9,12 +9,9 @@ import com.jarvis.bmihealth.databinding.ActivityRegisterBinding
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.presentation.base.BaseActivity
 import com.jarvis.bmihealth.presentation.main.MainActivity
-import com.jarvis.bmihealth.presentation.utilx.Constant
-import com.jarvis.bmihealth.presentation.utilx.OtherProfile
+import com.jarvis.bmihealth.presentation.utilx.*
 import com.jarvis.bmihealth.presentation.utilx.TypeUnit.Companion.METRIC
-import com.jarvis.bmihealth.presentation.utilx.click
 import com.jarvis.bmihealth.presentation.utilx.cropimage.PermissionConst
-import com.jarvis.bmihealth.presentation.utilx.observe
 import com.jarvis.design_system.toolbar.JxToolbar
 import com.jarvis.heathcarebmi.utils.HealthIndexUtils
 import dagger.hilt.android.AndroidEntryPoint
@@ -55,7 +52,12 @@ class RegisterActivity :
 
     private fun initDataToOnBoarding() {
         binding.viewInfoOther.initDefaultValue(OtherProfile())
-        binding.viewRPE.init(this, viewModel.profileUser.unit == METRIC, 3, 4)
+        binding.viewRPE.init(
+            this,
+            viewModel.profileUser.unit == METRIC,
+            ActivityEnum.MODERATELY.index,
+            GoalEnum.MAINTAIN_WEIGHT.index
+        )
     }
 
     private fun initDataToProfile() {
@@ -64,8 +66,8 @@ class RegisterActivity :
         binding.viewRPE.init(
             this,
             viewModel.profileUser.unit == METRIC,
-            viewModel.profileUser.goal ?: 0,
-            viewModel.profileUser.activityLevel ?: 4
+            viewModel.profileUser.activityLevel ?: ActivityEnum.MODERATELY.index,
+            viewModel.profileUser.goal ?: GoalEnum.MAINTAIN_WEIGHT.index
         )
     }
 
@@ -86,6 +88,7 @@ class RegisterActivity :
             if (!isGoToFromProfile) {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
+                finish()
             } else {
                 finish()
             }
@@ -185,6 +188,11 @@ class RegisterActivity :
             PermissionConst.REQUIRED_PERMISSIONS_CAMERA,
             PermissionConst.REQUEST_CODE_PERMISSIONS
         )
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 }
 

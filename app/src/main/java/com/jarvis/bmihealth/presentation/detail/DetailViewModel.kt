@@ -9,8 +9,8 @@ import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.domain.usecase.UserProfileUseCase
 import com.jarvis.bmihealth.presentation.base.BaseViewModel
+import com.jarvis.bmihealth.presentation.utilx.GoalEnum
 import com.jarvis.bmihealth.presentation.utilx.TypeUnit
-import com.jarvis.heathcarebmi.utils.GoalType
 import com.jarvis.heathcarebmi.utils.HealthIndexUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -68,23 +68,23 @@ class DetailViewModel @Inject constructor(private val userProfileUseCase: UserPr
 
     fun getTextGoal(goal: Int, context: Context): String {
         when (goal) {
-            GoalType.STRICT_GAIN_WEIGHT -> {
-                return context.getString(R.string.onboarding_strict)
-            }
-            GoalType.STRICT_LOSS_WEIGHT -> {
+            GoalEnum.WEIGHT_LOSS_III.index -> {
                 return context.getString(R.string.onboarding_strict_loos)
             }
-            GoalType.NORMAL_LOSS_WEIGHT -> {
+            GoalEnum.WEIGHT_LOSS_II.index -> {
                 return context.getString(R.string.onboarding_mormal_weight)
             }
-            GoalType.COMFORTABLE_LOSS_WEIGHT -> {
+            GoalEnum.WEIGHT_LOSS_I.index -> {
                 return context.getString(R.string.onboarding_comfortable)
             }
-            GoalType.MAINTAIN_WEIGHT -> {
+            GoalEnum.MAINTAIN_WEIGHT.index -> {
                 return context.getString(R.string.onboarding_maintain)
             }
-            GoalType.NORMAL_GAIN_WEIGHT -> {
+            GoalEnum.WEIGHT_GAIN_I.index -> {
                 return context.getString(R.string.onboarding_normal)
+            }
+            GoalEnum.WEIGHT_GAIN_II.index -> {
+                return context.getString(R.string.onboarding_strict)
             }
         }
         return ""
@@ -92,23 +92,23 @@ class DetailViewModel @Inject constructor(private val userProfileUseCase: UserPr
 
     fun getTextDescriptionGoal(goal: Int, context: Context): String {
         when (goal) {
-            GoalType.STRICT_GAIN_WEIGHT -> {
-                return context.getString(R.string.all_strict_gain_description)
-            }
-            GoalType.STRICT_LOSS_WEIGHT -> {
+            GoalEnum.WEIGHT_LOSS_III.index -> {
                 return context.getString(R.string.all_strict_loss_description)
             }
-            GoalType.NORMAL_LOSS_WEIGHT -> {
+            GoalEnum.WEIGHT_LOSS_II.index -> {
                 return context.getString(R.string.all_normal_loss_description)
             }
-            GoalType.COMFORTABLE_LOSS_WEIGHT -> {
+            GoalEnum.WEIGHT_LOSS_I.index -> {
                 return context.getString(R.string.all_comfortable_loss_description)
             }
-            GoalType.MAINTAIN_WEIGHT -> {
+            GoalEnum.MAINTAIN_WEIGHT.index -> {
                 return context.getString(R.string.all_maintain_weight_description)
             }
-            GoalType.NORMAL_GAIN_WEIGHT -> {
+            GoalEnum.WEIGHT_GAIN_I.index -> {
                 return context.getString(R.string.all_normal_gain_description)
+            }
+            GoalEnum.WEIGHT_GAIN_II.index -> {
+                return context.getString(R.string.all_strict_gain_description)
             }
         }
         return ""

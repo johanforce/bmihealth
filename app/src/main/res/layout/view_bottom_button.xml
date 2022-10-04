@@ -25,6 +25,6 @@
             android:layout_marginTop="@dimen/px14"
             android:layout_marginEnd="@dimen/px16"
             android:layout_marginBottom="@dimen/px24"
-            android:text="@string/onboarding_next" />
+            android:text="@string/all_save" />
     </FrameLayout>
 </layout>

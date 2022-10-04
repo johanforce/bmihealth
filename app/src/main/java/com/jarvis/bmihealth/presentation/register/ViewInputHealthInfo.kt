@@ -170,8 +170,8 @@ class ViewInputHealthInfo : FrameLayout {
     fun initDefaultValue(profile: OtherProfile?) {
         val userProfile = ProfileUserModel(
             1,
-            "Well",
-            "Be",
+            "Health",
+            "for you",
             profile?.gender?: MALE,
             profile?.birthday ?: 0L,
             0,

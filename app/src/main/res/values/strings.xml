@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BMIHealth</string>
+    <string name="app_name">HealthyU</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -607,4 +607,16 @@
     <string name="reauthentication">Reauthentication</string>
     <string name="version">Version</string>
     <string name="bio">Bio</string>
+
+    <string name="goal_des_metric_1">-1 kg/week</string>
+    <string name="goal_des_metric_2">-0,5 kg/week</string>
+    <string name="goal_des_metric_3">-0.25 kg/week</string>
+    <string name="goal_des_metric_5">+0.5 kg/week</string>
+    <string name="goal_des_metric_6">+1 kg/week</string>
+
+    <string name="goal_des_imperial_1">-2.2 lbs/week</string>
+    <string name="goal_des_imperial_2">-1.1 lbs/week</string>
+    <string name="goal_des_imperial_3">-0.55 lbs/week</string>
+    <string name="goal_des_imperial_5">+1.1 lbs/week</string>
+    <string name="goal_des_imperial_6">+2.2 lbs/week</string>
 </resources>

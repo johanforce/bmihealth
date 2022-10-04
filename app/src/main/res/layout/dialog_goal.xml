@@ -39,6 +39,7 @@
                 android:id="@+id/btCancel"
                 style="@style/ButtonPlain.Mini.SizeS"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:text="@string/all_cancel"
                 android:textColor="@color/ink_3"
                 app:layout_constraintBottom_toBottomOf="@+id/btSave"

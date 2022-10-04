@@ -1,77 +1,64 @@
-package com.jarvis.bmihealth.presentation.register;
+package com.jarvis.bmihealth.presentation.register
 
-import android.content.Context;
-import android.view.View;
+import android.content.Context
+import android.view.View
+import com.jarvis.bmihealth.R
+import com.jarvis.bmihealth.databinding.DialogGoalBinding
+import com.jarvis.bmihealth.presentation.register.ViewGoalEdit.OnListenerPosition
+import com.jarvis.design_system.dialog.BaseAlertDialog
 
-import com.jarvis.bmihealth.R;
-import com.jarvis.bmihealth.databinding.DialogGoalBinding;
-import com.jarvis.bmihealth.presentation.pref.AppPreference;
-import com.jarvis.design_system.dialog.BaseAlertDialog;
+class DialogSetGoal(context: Context, index: Int, isKmS: Boolean) :
+    BaseAlertDialog<DialogGoalBinding?>(context, R.layout.dialog_goal), View.OnClickListener {
+    private var temp = 0
+    private val isKmSetting: Boolean
 
-public class DialogSetGoal extends BaseAlertDialog<DialogGoalBinding> implements View.OnClickListener {
-    private static final String PACKAGENAME = "com.facebook.katana";
-    private final Context context;
-    private int temp;
-    private final boolean isKmSetting;
-    private GoalModel goalModel;
-    private final AppPreference appPreference;
-    private ListenerClick listenerClick;
-    private final boolean isClickBackGround = true;
+    private var listenerClick: ListenerClick? = null
+    private val isClickBackGround = true
 
-    public DialogSetGoal(Context context, int index, boolean isKmS) {
-        super(context, R.layout.dialog_goal);
-        this.context = context;
-        this.listenerOnClick();
-        this.appPreference = AppPreference.getInstance();
-        this.isKmSetting = isKmS;
-        binding.rvGoal.initView(context, this.isKmSetting, index);
-//        binding.rvGoal.setDataChoose(index);
-        binding.rvGoal.setListenerPosition(new ViewGoalEdit.OnListenerPosition() {
-            @Override
-            public void positionItem(int position) {
-                temp = position;
-            }
-
-        });
+    fun onListener(listenerClick: ListenerClick?) {
+        this.listenerClick = listenerClick
     }
 
-    public void onListener(ListenerClick listenerClick) {
-        this.listenerClick = listenerClick;
+    private fun listenerOnClick() {
+        binding!!.btCancel.setOnClickListener(this)
+        binding!!.btSave.setOnClickListener(this)
     }
 
-    private void listenerOnClick() {
-        this.binding.btCancel.setOnClickListener(this);
-        this.binding.btSave.setOnClickListener(this);
-    }
+    override fun onShowDialog() {}
 
-    @Override
-    protected void onShowDialog() {
-
-    }
-
-    @Override
-    protected void onDismissDialog() {
+    override fun onDismissDialog() {
         if (listenerClick != null) {
-            listenerClick.closeDialog(isClickBackGround);
+            listenerClick!!.closeDialog(isClickBackGround)
         }
     }
 
-    @Override
-    public void onClick(View v) {
-        if(v.getId() == R.id.btCancel){
-            dismiss();
-        }else if(v.getId() == R.id.btSave){
-            listenerClick.saveGoal(temp);
-            dismiss();
+    override fun onClick(v: View) {
+        if (v.id == R.id.btCancel) {
+            dismiss()
+        } else if (v.id == R.id.btSave) {
+            listenerClick!!.saveGoal(temp)
+            dismiss()
         }
     }
 
-
-
-    public interface ListenerClick {
-        void closeDialog(boolean isClickBackgroud);
-
-        void saveGoal(int goal);
+    interface ListenerClick {
+        fun closeDialog(isClickBackgroud: Boolean)
+        fun saveGoal(goal: Int)
     }
 
+    init {
+        listenerOnClick()
+        isKmSetting = isKmS
+        temp = index
+        binding!!.rvGoal.initView(context, isKmSetting, temp)
+        binding!!.rvGoal.setListenerPosition(object : OnListenerPosition {
+            override fun positionItem(position: Int) {
+                temp = if(position == 0){
+                    0
+                }else{
+                    position -1
+                }
+            }
+        })
+    }
 }

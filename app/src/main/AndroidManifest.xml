@@ -20,6 +20,7 @@
         android:enabled="true"
         android:label="@string/app_name"
         android:largeHeap="true"
+        android:icon="@drawable/ic_logo_app"
         android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.App.Starting"

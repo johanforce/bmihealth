@@ -15,6 +15,7 @@ import com.jarvis.bmihealth.presentation.detail.BmiUserIndexActivity
 import com.jarvis.bmihealth.presentation.detail.BmrUserActivity
 import com.jarvis.bmihealth.presentation.detail.CaloriesRequiredActivity
 import com.jarvis.bmihealth.presentation.detail.HealthyWeightActivity
+import com.jarvis.bmihealth.presentation.utilx.ActivityEnum
 import com.jarvis.bmihealth.presentation.utilx.TypeUnit.Companion.METRIC
 import com.jarvis.bmihealth.presentation.utilx.click
 import com.jarvis.bmihealth.presentation.utilx.observe
@@ -61,6 +62,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             }
         })
 
+        binding.itemSaveWeight.setTitle(
+            viewModel.updateTitleCalories(
+                viewModel.profileUser.activityLevel ?: ActivityEnum.MODERATELY.index
+            )
+        )
         binding.itemSaveWeight.setOnClickViewListener(object :
             ViewInputDataHome.OnClickProfileListener {
             override fun clickView() {

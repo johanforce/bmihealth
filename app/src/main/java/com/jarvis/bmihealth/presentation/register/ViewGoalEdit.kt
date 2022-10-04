@@ -7,14 +7,14 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.ViewGoalEditBinding
 import com.jarvis.bmihealth.presentation.pref.AppPreference
+import com.jarvis.bmihealth.presentation.utilx.GoalEnum
 
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 class ViewGoalEdit : ConstraintLayout {
     var binding: ViewGoalEditBinding? = null
-    private lateinit var appPreference: AppPreference
+
     private var mGoalAdapter: GoalAdapter = GoalAdapter()
     private var mLayoutManager: RecyclerView.LayoutManager? = null
     var onListenerPosition: OnListenerPosition? = null
@@ -37,7 +37,6 @@ class ViewGoalEdit : ConstraintLayout {
     )
 
     fun initView(context: Context, boolean: Boolean, index: Int) {
-        appPreference = AppPreference.getInstance()
         val layoutInflater =
             context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         binding = ViewGoalEditBinding.inflate(layoutInflater, this, true)
@@ -70,7 +69,7 @@ class ViewGoalEdit : ConstraintLayout {
         })
         val snapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(binding?.rcGoal)
-        binding?.rcGoal?.scrollToPosition(index - 1)
+        binding?.rcGoal?.scrollToPosition(index)
     }
 
     fun setDataChoose(index: Int) {
@@ -78,50 +77,72 @@ class ViewGoalEdit : ConstraintLayout {
     }
 
     fun getListGoal(isMetric: Boolean): MutableList<GoalModel> {
-        val listGoal: MutableList<GoalModel> = ArrayList()
-        val unit =
-            if (isMetric) context.getString(R.string.unit_kg) else context.getString(R.string.unit_lbs)
-
-        val modelTab1 = GoalModel()
-        val valueLossWeight = if (isMetric) "1" else "2.2"
-        modelTab1.title = context.getString(R.string.onboarding_strict_loos)
-        modelTab1.des = "- " + valueLossWeight.plus(" ").plus(unit).plus(" / ")
-            .plus(context.getString(R.string.all_week).lowercase())
-        listGoal.add(modelTab1)
-
-        val modelTab3 = GoalModel()
-        modelTab3.title = context.getString(R.string.onboarding_mormal_weight)
-        val valueMormalLossWeight = if (isMetric) "0.5" else "1.1"
-        modelTab3.des = "- " + valueMormalLossWeight.plus(" ").plus(unit).plus(" / ")
-            .plus(context.getString(R.string.all_week).lowercase())
-        listGoal.add(modelTab3)
-
-        val modelTab4 = GoalModel()
-        modelTab4.title = context.getString(R.string.onboarding_comfortable)
-        val value4 = if (isMetric) "0.25" else "0.55"
-        modelTab4.des =
-            "- " + value4.plus(" ").plus(unit).plus(" / ")
-                .plus(context.getString(R.string.all_week).lowercase())
-        listGoal.add(modelTab4)
-
-        val modelTab2 = GoalModel()
-        modelTab2.title = context.getString(R.string.onboarding_maintain)
-        listGoal.add(modelTab2)
-
-
-        val modelTab5 = GoalModel()
-        modelTab5.title = context.getString(R.string.onboarding_normal)
-        val value5 = if (isMetric) "0.5" else "1.1"
-        modelTab5.des = "+ " + value5.plus(" ").plus(unit).plus(" / ")
-            .plus(context.getString(R.string.all_week).lowercase())
-        listGoal.add(modelTab5)
-
-        val modelTab6 = GoalModel()
-        modelTab6.title = context.getString(R.string.onboarding_strict)
-        val value6 = if (isMetric) "1" else "2.2"
-        modelTab6.des = "+ " + value6.plus(" ").plus(unit).plus(" / ")
-            .plus(context.getString(R.string.all_week).lowercase())
-        listGoal.add(modelTab6)
+        val listGoal = mutableListOf<GoalModel>()
+        if (isMetric) {
+            listGoal.add(
+                GoalModel(
+                    GoalEnum.WEIGHT_LOSS_III.title,
+                    GoalEnum.WEIGHT_LOSS_III.desMetric
+                )
+            )
+            listGoal.add(
+                GoalModel(
+                    GoalEnum.WEIGHT_LOSS_II.title,
+                    GoalEnum.WEIGHT_LOSS_II.desMetric
+                )
+            )
+            listGoal.add(GoalModel(GoalEnum.WEIGHT_LOSS_I.title, GoalEnum.WEIGHT_LOSS_I.desMetric))
+            listGoal.add(
+                GoalModel(
+                    GoalEnum.MAINTAIN_WEIGHT.title,
+                    GoalEnum.MAINTAIN_WEIGHT.desMetric
+                )
+            )
+            listGoal.add(GoalModel(GoalEnum.WEIGHT_GAIN_I.title, GoalEnum.WEIGHT_GAIN_I.desMetric))
+            listGoal.add(
+                GoalModel(
+                    GoalEnum.WEIGHT_GAIN_II.title,
+                    GoalEnum.WEIGHT_GAIN_II.desMetric
+                )
+            )
+        } else {
+            listGoal.add(
+                GoalModel(
+                    GoalEnum.WEIGHT_LOSS_III.title,
+                    GoalEnum.WEIGHT_LOSS_III.desImperial
+                )
+            )
+            listGoal.add(
+                GoalModel(
+                    GoalEnum.WEIGHT_LOSS_II.title,
+                    GoalEnum.WEIGHT_LOSS_II.desImperial
+                )
+            )
+            listGoal.add(
+                GoalModel(
+                    GoalEnum.WEIGHT_LOSS_I.title,
+                    GoalEnum.WEIGHT_LOSS_I.desImperial
+                )
+            )
+            listGoal.add(
+                GoalModel(
+                    GoalEnum.MAINTAIN_WEIGHT.title,
+                    GoalEnum.MAINTAIN_WEIGHT.desImperial
+                )
+            )
+            listGoal.add(
+                GoalModel(
+                    GoalEnum.WEIGHT_GAIN_I.title,
+                    GoalEnum.WEIGHT_GAIN_I.desImperial
+                )
+            )
+            listGoal.add(
+                GoalModel(
+                    GoalEnum.WEIGHT_GAIN_II.title,
+                    GoalEnum.WEIGHT_GAIN_II.desImperial
+                )
+            )
+        }
         return listGoal
     }
 

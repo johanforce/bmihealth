@@ -138,7 +138,7 @@ class MainActivity :
 
 
     override fun onBackPressed() {
-        if (this.currentIndex != 1) {
+        if (this.currentIndex != Constant.KEY_HOME) {
             this.viewModel.tempFrag.value = 1
             clickShowFragment(Constant.KEY_HOME)
             return

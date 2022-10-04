@@ -258,7 +258,7 @@ class ViewInputProfileInfo : ConstraintLayout {
 
     fun getFirstName(): String? {
         if (binding?.edFirstName?.inputField?.content?.trim() == "" && binding?.edLastName?.inputField?.content?.trim() == "") {
-            return "Well"
+            return "Health"
         }
         return binding?.edFirstName?.inputField?.content
     }
@@ -269,7 +269,7 @@ class ViewInputProfileInfo : ConstraintLayout {
 
     fun getLastName(): String? {
         if (binding?.edFirstName?.inputField?.content?.trim() == "" && binding?.edLastName?.inputField?.content?.trim() == "") {
-            return "Be"
+            return "for you"
         }
         return binding?.edLastName?.inputField?.content
     }

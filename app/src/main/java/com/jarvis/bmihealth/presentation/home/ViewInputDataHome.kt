@@ -104,6 +104,10 @@ class ViewInputDataHome : ConstraintLayout {
         }
     }
 
+    fun setTitle(data: String) {
+        binding?.tvDex?.text = data
+    }
+
     private fun initClickListener() {
         binding?.clItem?.setOnClickListener {
             onProfileListener?.clickView()
