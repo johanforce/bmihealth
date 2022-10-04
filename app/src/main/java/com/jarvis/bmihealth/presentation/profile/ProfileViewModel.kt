@@ -32,17 +32,14 @@ class ProfileViewModel @Inject constructor() : BaseViewModel() {
         }
     }
 
-    fun getProfile() {
+    fun getProfile() =
         viewModelScope.launch {
             profileUsers.value = userProfileUseCase.getAllUserProfile()
         }
-    }
 
     fun updateProfile(userModel: ProfileUserModel) {
-        launch(Dispatchers.Main) {
-            withContext(Dispatchers.IO) {
-                userProfileUseCase.updateProfileUser(userModel)
-            }
+        viewModelScope.launch {
+            userProfileUseCase.updateProfileUser(userModel)
         }
     }
 

@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.ActivityMainBinding
 import com.jarvis.bmihealth.presentation.base.BaseActivity
-import com.jarvis.bmihealth.presentation.bmiother.OtherFragment
 import com.jarvis.bmihealth.presentation.home.HomeFragment
 import com.jarvis.bmihealth.presentation.onboarding.OnBoardingActivity
 import com.jarvis.bmihealth.presentation.pref.AppPreferenceKey
@@ -28,7 +27,6 @@ class MainActivity :
     private var isBackPress = false
     private var homeFragment: HomeFragment? = null
     private var profileFragment: ProfileFragment? = null
-    private var otherFragment: OtherFragment? = null
     private val fragments: MutableList<Fragment> = arrayListOf()
     private var currentIndex: Int = 0
 
@@ -58,8 +56,6 @@ class MainActivity :
     private fun initFragment() {
         homeFragment = HomeFragment()
         profileFragment = ProfileFragment()
-        otherFragment = OtherFragment()
-        fragments.add(otherFragment?: OtherFragment())
         fragments.add(homeFragment ?: ProfileFragment())
         fragments.add(profileFragment?: HomeFragment())
 

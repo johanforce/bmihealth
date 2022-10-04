@@ -18,10 +18,14 @@ import android.os.Environment
 import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.webkit.MimeTypeMap
+import com.itextpdf.text.Document
+import com.itextpdf.text.pdf.PdfWriter
 import java.io.File
 import java.io.FileFilter
+import java.io.FileOutputStream
 import java.text.DecimalFormat
 import java.util.*
+
 
 object FileUtils {
     const val MIME_TYPE_AUDIO = "audio/*"

@@ -2,9 +2,8 @@ package com.jarvis.bmihealth.presentation.utilx
 
 @Suppress("unused")
 object Constant {
-    const val KEY_HOME = 1
-    const val KEY_OTHER = 0
-    const val KEY_PROFILE = 2
+    const val KEY_HOME = 0
+    const val KEY_PROFILE = 1
 
     const val MALE = 0
     const val FEMALE = 1
@@ -16,4 +15,7 @@ object Constant {
     const val GOOGLE = "GOOGLE"
 
     const val NEXT_SCREEN_TO_PROFILE = "NEXT_SCREEN_TO_PROFILE"
+
+    const val TYPE_PULSE = 2
+    const val TYPE_WEIGHT = 3
 }

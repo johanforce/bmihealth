@@ -9,15 +9,16 @@ import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.ActicityPreviewBinding
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.presentation.base.BaseActivity
-import com.jarvis.bmihealth.presentation.base.ProfileUserViewModel
-import com.jarvis.bmihealth.presentation.home.ViewHomeBMI
 import com.jarvis.bmihealth.presentation.utilx.StorageUtils
+import com.jarvis.bmihealth.presentation.utilx.click
 import com.jarvis.bmihealth.presentation.utilx.observe
+import com.jarvis.bmihealth.presentation.utilx.share.ShareUtil
 import com.jarvis.design_system.toolbar.JxToolbar
 import com.jarvis.design_system.toolbar.OnToolbarActionListener
 import com.jarvis.heathcarebmi.utils.HealthIndexUtils
 import com.well.unitlibrary.UnitConverter
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class PreviewActivity :
@@ -44,6 +45,25 @@ class PreviewActivity :
         binding.lifecycleOwner = this
 
         viewModel.getProfile()
+        setOnClickView()
+    }
+
+    private fun setOnClickView() {
+        binding.ivShareTwitter.click {
+            viewModel.shareViaApp(binding.clPreview, ShareUtil.TWITTER_PACKAGE, this)
+        }
+
+        binding.ivShareInstagram.click {
+            viewModel.shareViaApp(binding.clPreview, ShareUtil.INSTA_PACKAGE, this)
+        }
+
+        binding.ivShareFb.click {
+            viewModel.shareViaApp(binding.clPreview, ShareUtil.FACEBOOK_PACKAGE, this)
+        }
+
+        binding.ivShareMore.click {
+            viewModel.shareOther(binding.clPreview, this)
+        }
     }
 
     override fun observeData() {
@@ -58,7 +78,7 @@ class PreviewActivity :
     private fun initView(otherModel: ProfileUserModel, isKmSetting: Boolean) {
         this.binding.toolbar.setOnToolbarActiontListener(this)
 
-        binding.viewBMI.init(this, viewModel.profileUser, viewModel.isKmSetting,)
+        binding.viewBMI.init(this, viewModel.profileUser, viewModel.isKmSetting)
         binding.viewBMI.disableClickView()
 
         val name =

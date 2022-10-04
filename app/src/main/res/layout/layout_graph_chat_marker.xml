@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bg"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layoutMarker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/bgMid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_content_chart"
+            android:gravity="center"
+            android:minHeight="@dimen/px40"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/px8"
+            android:paddingVertical="@dimen/px4"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvSys"
+                style="@style/T12H18M"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/bg_jx_5"
+                tools:text="@tools:sample/lorem" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvDias"
+                style="@style/T12H18M"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvSys"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/bg_jx_5"
+                tools:text="@tools:sample/lorem" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <View
+            android:id="@+id/ivTriangle"
+            android:layout_width="@dimen/px20"
+            android:layout_height="@dimen/px20"
+            android:layout_marginTop="-2dp"
+            android:background="@drawable/v_triangle"
+            android:visibility="visible"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bgMid" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layoutMarkerLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:gravity="start"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/bgLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_content_chart_left"
+            android:gravity="start|center_vertical"
+            android:minHeight="@dimen/px40"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/px8"
+            android:paddingVertical="@dimen/px4"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvSysLeft"
+                style="@style/T12H18M"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/bg_jx_5"
+                tools:text="@tools:sample/lorem" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvDiasLeft"
+                style="@style/T12H18M"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvSysLeft"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/bg_jx_5"
+                tools:text="@tools:sample/lorem" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <View
+            android:id="@+id/ivTriangleLeft"
+            android:layout_width="@dimen/px20"
+            android:layout_height="@dimen/px20"
+            android:layout_marginTop="-2dp"
+            android:background="@drawable/triangle_square_left"
+            app:layout_constraintLeft_toLeftOf="@+id/bgLeft"
+            app:layout_constraintTop_toBottomOf="@+id/bgLeft" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layoutMarkerRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:gravity="end"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/bgRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_content_chart_right"
+            android:gravity="center|end"
+            android:minHeight="@dimen/px40"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/px8"
+            android:paddingVertical="@dimen/px4"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvSysRight"
+                style="@style/T12H18M"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/bg_jx_5"
+                tools:text="@tools:sample/lorem" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvDiasRight"
+                style="@style/T12H18M"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvSysRight"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/bg_jx_5"
+                tools:text="@tools:sample/lorem" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <View
+            android:id="@+id/ivTriangleRight"
+            android:layout_width="@dimen/px20"
+            android:layout_height="@dimen/px20"
+            android:layout_marginTop="-2dp"
+            android:background="@drawable/triangle_square_right"
+            app:layout_constraintRight_toRightOf="@+id/bgRight"
+            app:layout_constraintTop_toBottomOf="@+id/bgRight" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</FrameLayout>

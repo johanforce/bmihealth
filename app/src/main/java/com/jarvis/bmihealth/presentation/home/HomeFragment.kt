@@ -15,7 +15,6 @@ import com.jarvis.bmihealth.presentation.detail.BmiUserIndexActivity
 import com.jarvis.bmihealth.presentation.detail.BmrUserActivity
 import com.jarvis.bmihealth.presentation.detail.CaloriesRequiredActivity
 import com.jarvis.bmihealth.presentation.detail.HealthyWeightActivity
-import com.jarvis.bmihealth.presentation.utilx.DeviceUtil
 import com.jarvis.bmihealth.presentation.utilx.TypeUnit.Companion.METRIC
 import com.jarvis.bmihealth.presentation.utilx.click
 import com.jarvis.bmihealth.presentation.utilx.observe
@@ -46,15 +45,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     }
 
     private fun setOnClickView() {
-        binding.tvBodyIndex?.click {
+        binding.tvBodyIndex.click {
             viewModel.isShowHealthIndex.value = false
         }
 
-        binding.tvHealIndex?.click() {
+        binding.tvHealIndex.click() {
             viewModel.isShowHealthIndex.value = true
         }
 
-        binding.itemBMR?.setOnClickViewListener(object : ViewInputDataHome.OnClickProfileListener {
+        binding.itemBMR.setOnClickViewListener(object : ViewInputDataHome.OnClickProfileListener {
             override fun clickView() {
                 val intent = Intent()
                 context?.let { it1 -> intent.setClass(it1, BmrUserActivity::class.java) }
@@ -62,7 +61,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             }
         })
 
-        binding.itemSaveWeight?.setOnClickViewListener(object :
+        binding.itemSaveWeight.setOnClickViewListener(object :
             ViewInputDataHome.OnClickProfileListener {
             override fun clickView() {
                 val intent = Intent()
@@ -71,7 +70,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             }
         })
 
-        binding.viewHomeBMI?.setOnClick(object : ViewHomeBMI.OnClickListener {
+        binding.viewHomeBMI.setOnClick(object : ViewHomeBMI.OnClickListener {
             override fun onClickHealthy() {
                 val intent = Intent()
                 context?.let { it1 -> intent.setClass(it1, HealthyWeightActivity::class.java) }
@@ -90,7 +89,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
         })
 
-        binding.ivProfile?.click {
+        binding.ivProfile.click {
             val intent = Intent()
             activity?.let { it1 -> intent.setClass(it1, ResultOtherActivity::class.java) }
             resultLauncher.launch(intent)
@@ -101,50 +100,37 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         observe(viewModel.profileUsers) { profiles ->
             viewModel.profileUser = profiles.firstOrNull() ?: ProfileUserModel()
             viewModel.isKmSetting = viewModel.profileUser.unit == METRIC
-            binding.viewBMI?.progressBMI?.setCurrentValues(
-                viewModel.getBMI().toFloat(),
-                viewModel.isChild
-            )
-            val healthyWeight = viewModel.getHealthyWeight()
-            "${DeviceUtil.roundOffDecimal(healthyWeight.healthyWeightTo)} - ${
-                DeviceUtil.roundOffDecimal(
-                    healthyWeight.healthyWeightFrom
-                )
-            }".also { binding.viewBMI?.tvWeight?.text = it }
-            binding.viewBMI?.tvUnit?.text =
-                if (viewModel.isKmSetting) getText(R.string.unit_kg) else getText(R.string.unit_lbs)
-            binding.viewBMI?.tvBodyPercent?.text =
-                DeviceUtil.roundOffDecimal(viewModel.getBodyFat())
-            binding.itemBMR?.setDataView(viewModel.getBMR().toDouble(), true)
-            binding.itemSaveWeight?.setDataView(viewModel.getCalories().toDouble(), true)
-            binding.itemHeat?.setDataView(90.0, true)
-            binding.itemHeight?.setDataView(
+
+            binding.itemBMR.setDataView(viewModel.getBMR().toDouble(), true)
+            binding.itemSaveWeight.setDataView(viewModel.getCalories().toDouble(), true)
+            binding.itemHeat.setDataView(90.0, true)
+            binding.itemHeight.setDataView(
                 viewModel.profileUser.height,
                 false
             )
-            binding.itemWeight?.setDataView(
+            binding.itemWeight.setDataView(
                 viewModel.profileUser.weight,
                 false
             )
-            binding.itemAge?.setDataView(23.0, true)
+            binding.itemAge.setDataView(23.0, true)
 
             context?.let { it1 ->
-                binding.viewHomeBMI?.init(it1, viewModel.profileUser, viewModel.isKmSetting)
+                binding.viewHomeBMI.init(it1, viewModel.profileUser, viewModel.isKmSetting)
             }
-            binding.viewHomeBMI?.showTitleView(true)
+            binding.viewHomeBMI.showTitleView(true)
 
             val name =
                 viewModel.profileUser.firstname + " " + viewModel.profileUser.lastname
-            binding.ivProfile?.setDataAvatar(false, name, null, viewModel.profileUser.avatar)
+            binding.ivProfile.setDataAvatar(false, name, null, viewModel.profileUser.avatar)
         }
 
         observe(viewModel.isShowHealthIndex) {
             viewModel.isShowHealthIndex.value = null
-            binding.listBody?.visibility = if (it) View.GONE else View.VISIBLE
-            binding.listHealth?.visibility = if (it) View.VISIBLE else View.GONE
+            binding.listBody.visibility = if (it) View.GONE else View.VISIBLE
+            binding.listHealth.visibility = if (it) View.VISIBLE else View.GONE
             if (it) {
-                binding.tvBodyIndex?.background = null
-                binding.tvHealIndex?.background =
+                binding.tvBodyIndex.background = null
+                binding.tvHealIndex.background =
                     activity?.let { it1 ->
                         ContextCompat.getDrawable(
                             it1,
@@ -152,8 +138,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                         )
                     }
             } else {
-                binding.tvHealIndex?.background = null
-                binding.tvBodyIndex?.background =
+                binding.tvHealIndex.background = null
+                binding.tvBodyIndex.background =
                     activity?.let { it1 ->
                         ContextCompat.getDrawable(
                             it1,
