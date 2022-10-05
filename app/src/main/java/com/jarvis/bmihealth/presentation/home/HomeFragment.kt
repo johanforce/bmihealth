@@ -7,6 +7,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.jarvis.bmihealth.R
+import com.jarvis.bmihealth.common.enums.TypeUnits
+import com.jarvis.bmihealth.common.enums.ActivityEnum
+import com.jarvis.bmihealth.common.extensions.click
+import com.jarvis.bmihealth.common.observe
 import com.jarvis.bmihealth.databinding.FragmentHomeBinding
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.presentation.base.BaseFragment
@@ -15,10 +19,8 @@ import com.jarvis.bmihealth.presentation.detail.BmiUserIndexActivity
 import com.jarvis.bmihealth.presentation.detail.BmrUserActivity
 import com.jarvis.bmihealth.presentation.detail.CaloriesRequiredActivity
 import com.jarvis.bmihealth.presentation.detail.HealthyWeightActivity
-import com.jarvis.bmihealth.presentation.utilx.ActivityEnum
-import com.jarvis.bmihealth.presentation.utilx.TypeUnit.Companion.METRIC
-import com.jarvis.bmihealth.presentation.utilx.click
-import com.jarvis.bmihealth.presentation.utilx.observe
+import com.jarvis.bmihealth.presentation.home.widget.ViewHomeBMI
+import com.jarvis.bmihealth.presentation.home.widget.ViewInputDataHome
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -50,7 +52,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             viewModel.isShowHealthIndex.value = false
         }
 
-        binding.tvHealIndex.click() {
+        binding.tvHealIndex.click {
             viewModel.isShowHealthIndex.value = true
         }
 
@@ -105,7 +107,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     override fun observeData() {
         observe(viewModel.profileUsers) { profiles ->
             viewModel.profileUser = profiles.firstOrNull() ?: ProfileUserModel()
-            viewModel.isKmSetting = viewModel.profileUser.unit == METRIC
+            viewModel.isKmSetting = viewModel.profileUser.unit == TypeUnits.METRIC.index
 
             binding.itemBMR.setDataView(viewModel.getBMR().toDouble(), true)
             binding.itemSaveWeight.setDataView(viewModel.getCalories().toDouble(), true)

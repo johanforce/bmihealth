@@ -15,8 +15,8 @@ import com.jarvis.bmihealth.databinding.ActivityHealthyWeightBinding
 import com.jarvis.bmihealth.presentation.base.BaseActivity
 import com.jarvis.bmihealth.presentation.base.BaseViewModel
 import com.jarvis.bmihealth.presentation.register.RegisterActivity
-import com.jarvis.bmihealth.presentation.utilx.Constant
-import com.jarvis.bmihealth.presentation.utilx.observe
+import com.jarvis.bmihealth.presentation.common.Constant
+import com.jarvis.bmihealth.common.observe
 import com.jarvis.design_system.toolbar.JxToolbar
 import com.well.unitlibrary.UnitConverter
 import com.well.unitlibrary.UnitConverter.formatDoubleToString

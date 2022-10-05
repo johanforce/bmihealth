@@ -13,14 +13,14 @@ import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.presentation.base.BaseFragment
 import com.jarvis.bmihealth.presentation.home.HomeViewModel
 import com.jarvis.bmihealth.presentation.main.MainActivity
-import com.jarvis.bmihealth.presentation.pref.AppPreferenceKey
-import com.jarvis.bmihealth.presentation.pref.ThemeMode
+import com.jarvis.bmihealth.presentation.common.pref.AppPreferenceKey
+import com.jarvis.bmihealth.common.enums.ThemeMode
 import com.jarvis.bmihealth.presentation.register.RegisterActivity
-import com.jarvis.bmihealth.presentation.selectmode.view.SelectModeActivity
-import com.jarvis.bmihealth.presentation.utilx.Constant
-import com.jarvis.bmihealth.presentation.utilx.TypeUnit
-import com.jarvis.bmihealth.presentation.utilx.click
-import com.jarvis.bmihealth.presentation.utilx.observe
+import com.jarvis.bmihealth.presentation.selectmode.SelectModeActivity
+import com.jarvis.bmihealth.presentation.common.Constant
+import com.jarvis.bmihealth.common.enums.TypeUnits
+import com.jarvis.bmihealth.common.extensions.click
+import com.jarvis.bmihealth.common.observe
 import com.jarvis.locale_helper.helper.LocaleHelper
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
@@ -122,22 +122,22 @@ class ProfileFragment :
     private fun changeUnitProfileUser() {
         viewModel.isKmSetting = !viewModel.isKmSetting
         viewModel.profileUser.unit =
-            if (viewModel.isKmSetting) TypeUnit.METRIC else TypeUnit.IMPERIAL
+            if (viewModel.isKmSetting) TypeUnits.METRIC.index else TypeUnits.IMPERIAL.index
         viewModel.updateProfile(viewModel.profileUser)
         changeUnit(viewModel.isKmSetting)
     }
 
-    fun changeDarkMode() {
+    private fun changeDarkMode() {
         val themeMode = viewModel.profileUser.themeMode
         var textState = getString(R.string.all_off)
         when (themeMode) {
-            ThemeMode.LIGHT -> {
+            ThemeMode.LIGHT.index -> {
                 textState = getString(R.string.all_off)
             }
-            ThemeMode.DARK -> {
+            ThemeMode.DARK.index -> {
                 textState = getString(R.string.all_on)
             }
-            ThemeMode.FOLLOW_SYSTEM -> {
+            ThemeMode.FOLLOW_SYSTEM.index -> {
                 textState = getString(R.string.all_mode_system)
             }
         }

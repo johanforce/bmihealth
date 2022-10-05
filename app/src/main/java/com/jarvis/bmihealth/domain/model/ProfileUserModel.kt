@@ -1,9 +1,9 @@
 package com.jarvis.bmihealth.domain.model
 
-import com.jarvis.bmihealth.presentation.pref.ThemeMode.LIGHT
-import com.jarvis.bmihealth.presentation.utilx.ActivityEnum
-import com.jarvis.bmihealth.presentation.utilx.GoalEnum
-import com.jarvis.bmihealth.presentation.utilx.TypeUnit.Companion.METRIC
+import com.jarvis.bmihealth.common.enums.TypeUnits
+import com.jarvis.bmihealth.common.enums.ActivityEnum
+import com.jarvis.bmihealth.common.enums.GoalEnum
+import com.jarvis.bmihealth.common.enums.ThemeMode
 import java.io.Serializable
 
 data class ProfileUserModel(
@@ -16,13 +16,13 @@ data class ProfileUserModel(
     var avatar: ByteArray? = ByteArray(0),
     var avatarUrl: String = "",
     var weight: Double = 0.0,
-    var unit: Int = METRIC,
+    var unit: Int = TypeUnits.METRIC.index,
     var height: Double = 0.0,
     var bio: String = "",
     var national: String = "",
     var goal: Int? = GoalEnum.MAINTAIN_WEIGHT.index,
     var activityLevel: Int? = ActivityEnum.MODERATELY.index,
-    var themeMode: Int? = LIGHT
+    var themeMode: Int? = ThemeMode.LIGHT.index,
 ) : Serializable {
     companion object {
         fun convertEntityToModel(entity: ProfileUser): ProfileUserModel {
@@ -63,7 +63,7 @@ data class ProfileUserModel(
                 national = model.national,
                 goal = model.goal ?: 0,
                 activityLevel = model.activityLevel ?: 0,
-                themeMode = model.themeMode ?: LIGHT
+                themeMode = model.themeMode ?: ThemeMode.LIGHT.index
             )
         }
 

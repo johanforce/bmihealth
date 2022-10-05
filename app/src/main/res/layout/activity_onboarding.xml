@@ -9,7 +9,7 @@
         android:visibility="invisible"
         android:background="@color/bg_01">
 
-        <com.jarvis.bmihealth.presentation.onboarding.ViewIntroduceOnBoarding
+        <com.jarvis.bmihealth.presentation.onboarding.widget.ViewIntroduceOnBoarding
             android:id="@+id/vIntroduce"
             android:layout_width="match_parent"
             android:layout_height="0dp"

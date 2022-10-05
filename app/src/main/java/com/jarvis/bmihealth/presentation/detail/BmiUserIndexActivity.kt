@@ -16,8 +16,8 @@ import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.ActivityBmiUserBinding
 import com.jarvis.bmihealth.presentation.base.BaseActivity
 import com.jarvis.bmihealth.presentation.register.RegisterActivity
-import com.jarvis.bmihealth.presentation.utilx.Constant
-import com.jarvis.bmihealth.presentation.utilx.observe
+import com.jarvis.bmihealth.presentation.common.Constant
+import com.jarvis.bmihealth.common.observe
 import com.jarvis.design_system.toolbar.JxToolbar
 import com.jarvis.heathcarebmi.utils.Consts
 import com.jarvis.heathcarebmi.utils.HealthIndexUtils
@@ -105,7 +105,7 @@ class BmiUserIndexActivity :
         }
     }
 
-    override fun observeData() {
+    override fun observeData() = with(viewModel) {
         super.observeData()
         observe(viewModel.profileUsers) {
             viewModel.updateDataView()

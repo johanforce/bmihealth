@@ -8,7 +8,7 @@ import com.jarvis.bmihealth.databinding.ActivityOnboardingBinding
 import com.jarvis.bmihealth.presentation.base.BaseActivity
 import com.jarvis.bmihealth.presentation.main.MainActivity
 import com.jarvis.bmihealth.presentation.register.RegisterActivity
-import com.jarvis.bmihealth.presentation.utilx.observe
+import com.jarvis.bmihealth.common.observe
 import dagger.hilt.android.AndroidEntryPoint
 
 @Suppress("unused")

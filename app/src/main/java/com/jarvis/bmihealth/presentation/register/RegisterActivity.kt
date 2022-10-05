@@ -5,13 +5,20 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
+import com.jarvis.bmihealth.common.cropimage.PermissionConst
+import com.jarvis.bmihealth.common.enums.ActivityEnum
+import com.jarvis.bmihealth.common.enums.GoalEnum
+import com.jarvis.bmihealth.common.enums.TypeUnits
+import com.jarvis.bmihealth.common.extensions.click
+import com.jarvis.bmihealth.common.observe
 import com.jarvis.bmihealth.databinding.ActivityRegisterBinding
+import com.jarvis.bmihealth.domain.model.OtherProfile
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.presentation.base.BaseActivity
+import com.jarvis.bmihealth.presentation.common.Constant
 import com.jarvis.bmihealth.presentation.main.MainActivity
-import com.jarvis.bmihealth.presentation.utilx.*
-import com.jarvis.bmihealth.presentation.utilx.TypeUnit.Companion.METRIC
-import com.jarvis.bmihealth.presentation.utilx.cropimage.PermissionConst
+import com.jarvis.bmihealth.presentation.register.widget.ViewInputHealthInfo
+import com.jarvis.bmihealth.presentation.register.widget.ViewInputProfileInfo
 import com.jarvis.design_system.toolbar.JxToolbar
 import com.jarvis.heathcarebmi.utils.HealthIndexUtils
 import dagger.hilt.android.AndroidEntryPoint
@@ -54,7 +61,7 @@ class RegisterActivity :
         binding.viewInfoOther.initDefaultValue(OtherProfile())
         binding.viewRPE.init(
             this,
-            viewModel.profileUser.unit == METRIC,
+            viewModel.profileUser.unit == TypeUnits.METRIC.index,
             ActivityEnum.MODERATELY.index,
             GoalEnum.MAINTAIN_WEIGHT.index
         )
@@ -65,7 +72,7 @@ class RegisterActivity :
         binding.viewInfoOther.setUserInfo(viewModel.profileUser)
         binding.viewRPE.init(
             this,
-            viewModel.profileUser.unit == METRIC,
+            viewModel.profileUser.unit == TypeUnits.METRIC.index,
             viewModel.profileUser.activityLevel ?: ActivityEnum.MODERATELY.index,
             viewModel.profileUser.goal ?: GoalEnum.MAINTAIN_WEIGHT.index
         )

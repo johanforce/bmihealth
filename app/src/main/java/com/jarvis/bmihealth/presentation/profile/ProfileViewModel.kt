@@ -1,3 +1,5 @@
+@file:Suppress("MemberVisibilityCanBePrivate")
+
 package com.jarvis.bmihealth.presentation.profile
 
 import androidx.lifecycle.MutableLiveData
@@ -5,12 +7,10 @@ import androidx.lifecycle.viewModelScope
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.domain.usecase.UserProfileUseCase
 import com.jarvis.bmihealth.presentation.base.BaseViewModel
-import com.jarvis.bmihealth.presentation.utilx.TypeUnit
+import com.jarvis.bmihealth.common.enums.TypeUnits
 import com.jarvis.heathcarebmi.utils.HealthIndexUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @Suppress("unused")
@@ -45,7 +45,7 @@ class ProfileViewModel @Inject constructor() : BaseViewModel() {
 
     fun updateDataView() {
         profileUser = profileUsers.value?.firstOrNull() ?: ProfileUserModel()
-        isKmSetting = profileUser.unit == TypeUnit.METRIC
+        isKmSetting = profileUser.unit == TypeUnits.METRIC.index
         isChild = HealthIndexUtils.isChild(profileUser.birthday)
     }
 

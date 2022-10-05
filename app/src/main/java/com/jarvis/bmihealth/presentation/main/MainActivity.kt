@@ -13,11 +13,11 @@ import com.jarvis.bmihealth.databinding.ActivityMainBinding
 import com.jarvis.bmihealth.presentation.base.BaseActivity
 import com.jarvis.bmihealth.presentation.home.HomeFragment
 import com.jarvis.bmihealth.presentation.onboarding.OnBoardingActivity
-import com.jarvis.bmihealth.presentation.pref.AppPreferenceKey
+import com.jarvis.bmihealth.presentation.common.pref.AppPreferenceKey
 import com.jarvis.bmihealth.presentation.profile.ProfileFragment
-import com.jarvis.bmihealth.presentation.utilx.Constant
-import com.jarvis.bmihealth.presentation.utilx.click
-import com.jarvis.bmihealth.presentation.utilx.observe
+import com.jarvis.bmihealth.presentation.common.Constant
+import com.jarvis.bmihealth.common.extensions.click
+import com.jarvis.bmihealth.common.observe
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

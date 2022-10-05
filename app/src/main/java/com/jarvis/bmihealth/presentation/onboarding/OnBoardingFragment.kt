@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.google.gson.GsonBuilder
 import com.jarvis.bmihealth.databinding.FragmentTabOnbroadingBinding
 import com.jarvis.bmihealth.presentation.base.BaseFragment
+import com.jarvis.bmihealth.presentation.onboarding.model.OnBoardingModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @Suppress("DEPRECATION")

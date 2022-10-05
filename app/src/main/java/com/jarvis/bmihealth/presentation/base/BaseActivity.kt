@@ -10,17 +10,16 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.Window
-import androidx.lifecycle.ViewModel
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.graphics.drawable.DrawableCompat.applyTheme
+import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.transition.platform.MaterialSharedAxis
 import com.jarvis.bmihealth.R
-import com.jarvis.bmihealth.presentation.pref.AppPreference
-import com.jarvis.bmihealth.presentation.pref.AppPreferenceKey
-import com.jarvis.bmihealth.presentation.pref.ThemeMode.LIGHT
-import com.jarvis.bmihealth.presentation.selectmode.ThemeHelper
+import com.jarvis.bmihealth.presentation.common.pref.AppPreference
+import com.jarvis.bmihealth.presentation.common.pref.AppPreferenceKey
+import com.jarvis.bmihealth.common.enums.ThemeMode.LIGHT
+import com.jarvis.bmihealth.common.helper.ThemeHelper
 import com.jarvis.design_system.toolbar.JxToolbar
 import com.jarvis.locale_helper.helper.LocaleHelperActivityDelegateImpl
 import kotlinx.coroutines.CoroutineScope
@@ -43,7 +42,7 @@ abstract class BaseActivity<B : ViewBinding, T : ViewModel>(val bindingFactory: 
     open fun initDarkMode() {
         setTheme(R.style.DSAppTheme)
         val themeMode = appPreference?.get(AppPreferenceKey.KEY_THEMEMODE, Int::class.java)
-        ThemeHelper.applyTheme(themeMode?: LIGHT)
+        ThemeHelper.applyTheme(themeMode ?: LIGHT.index)
     }
 
     fun isDarkTheme(): Boolean {

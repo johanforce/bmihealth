@@ -6,13 +6,13 @@ import android.os.Build
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.jarvis.bmihealth.R
+import com.jarvis.bmihealth.common.extensions.click
+import com.jarvis.bmihealth.common.observe
+import com.jarvis.bmihealth.common.share.ShareUtil
+import com.jarvis.bmihealth.common.utils.StorageUtils
 import com.jarvis.bmihealth.databinding.ActicityPreviewBinding
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.presentation.base.BaseActivity
-import com.jarvis.bmihealth.presentation.utilx.StorageUtils
-import com.jarvis.bmihealth.presentation.utilx.click
-import com.jarvis.bmihealth.presentation.utilx.observe
-import com.jarvis.bmihealth.presentation.utilx.share.ShareUtil
 import com.jarvis.design_system.toolbar.JxToolbar
 import com.jarvis.design_system.toolbar.OnToolbarActionListener
 import com.jarvis.heathcarebmi.utils.HealthIndexUtils
@@ -27,15 +27,6 @@ class PreviewActivity :
 
     private val viewModel: PreviewViewModel by viewModels()
 
-    private val listRequired = arrayListOf(
-        R.string.onboarding_strict_loos,
-        R.string.onboarding_mormal_weight,
-        R.string.onboarding_comfortable,
-        R.string.onboarding_maintain,
-        R.string.onboarding_normal,
-        R.string.onboarding_strict
-    )
-
     override fun getToolbar(): JxToolbar {
         return binding.toolbar
     }
@@ -44,8 +35,12 @@ class PreviewActivity :
         super.onCreate(savedInstanceState)
         binding.lifecycleOwner = this
 
-        viewModel.getProfile()
+        initData()
         setOnClickView()
+    }
+
+    private fun initData() {
+        viewModel.getProfile()
     }
 
     private fun setOnClickView() {
@@ -69,7 +64,7 @@ class PreviewActivity :
     override fun observeData() {
         super.observeData()
 
-        observe(viewModel.profileUsers){
+        observe(viewModel.profileUsers) {
             viewModel.updateDataView()
             initView(viewModel.profileUser, viewModel.isKmSetting)
         }
@@ -122,11 +117,11 @@ class PreviewActivity :
     }
 
     override fun onToolbarTextCtaClick() {
-
+        TODO("Not yet implemented")
     }
 
     override fun onToolbarAction1Click() {
-
+        TODO("Not yet implemented")
     }
 
     override fun onToolbarAction2Click() {

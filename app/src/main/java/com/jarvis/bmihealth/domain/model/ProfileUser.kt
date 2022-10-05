@@ -3,11 +3,11 @@ package com.jarvis.bmihealth.domain.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.jarvis.bmihealth.presentation.pref.ThemeMode.LIGHT
-import com.jarvis.bmihealth.presentation.utilx.ActivityEnum
-import com.jarvis.bmihealth.presentation.utilx.Gender.MALE
-import com.jarvis.bmihealth.presentation.utilx.GoalEnum
-import com.jarvis.bmihealth.presentation.utilx.TypeUnit.Companion.METRIC
+import com.jarvis.bmihealth.common.enums.TypeUnits
+import com.jarvis.bmihealth.common.enums.ThemeMode.LIGHT
+import com.jarvis.bmihealth.common.enums.ActivityEnum
+import com.jarvis.bmihealth.common.enums.GenderEnum.MALE
+import com.jarvis.bmihealth.common.enums.GoalEnum
 
 @Entity
 data class ProfileUser(
@@ -19,7 +19,7 @@ data class ProfileUser(
     @ColumnInfo(name = "lastname")
     val lastname: String = "",
     @ColumnInfo(name = "gender")
-    val gender: Int = MALE,
+    val gender: Int = MALE.index,
     @ColumnInfo(name = "birthday")
     val birthday: Long = System.currentTimeMillis(),
     @ColumnInfo(name = "age")
@@ -35,7 +35,7 @@ data class ProfileUser(
     @ColumnInfo(name = "bio")
     val bio: String = "",
     @ColumnInfo(name = "unit")
-    val unit: Int = METRIC,
+    val unit: Int = TypeUnits.METRIC.index,
     @ColumnInfo(name = "national")
     val national: String = "vn",
     @ColumnInfo(name = "goal")
@@ -43,5 +43,5 @@ data class ProfileUser(
     @ColumnInfo(name = "activity_level")
     val activityLevel: Int = ActivityEnum.MODERATELY.index,
     @ColumnInfo(name = "theme_mode")
-    val themeMode: Int = LIGHT
+    val themeMode: Int = LIGHT.index
 )

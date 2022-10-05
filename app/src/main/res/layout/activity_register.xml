@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <com.jarvis.bmihealth.presentation.register.ViewInputProfileInfo
+                <com.jarvis.bmihealth.presentation.register.widget.ViewInputProfileInfo
                     android:id="@+id/view_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -54,13 +54,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/view_info" />
 
-                <com.jarvis.bmihealth.presentation.register.ViewInputHealthInfo
+                <com.jarvis.bmihealth.presentation.register.widget.ViewInputHealthInfo
                     android:id="@+id/view_info_other"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/tvHealthInfo" />
 
-                <com.jarvis.bmihealth.presentation.register.ViewRPE
+                <com.jarvis.bmihealth.presentation.register.widget.ViewRPE
                     android:id="@+id/viewRPE"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

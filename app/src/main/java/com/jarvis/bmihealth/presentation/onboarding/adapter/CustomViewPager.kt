@@ -1,3 +1,5 @@
+@file:Suppress("NAME_SHADOWING")
+
 package com.jarvis.bmihealth.presentation.onboarding.adapter
 
 import android.content.Context

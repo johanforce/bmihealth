@@ -9,8 +9,8 @@ import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.domain.usecase.UserProfileUseCase
 import com.jarvis.bmihealth.presentation.base.BaseViewModel
-import com.jarvis.bmihealth.presentation.utilx.GoalEnum
-import com.jarvis.bmihealth.presentation.utilx.TypeUnit
+import com.jarvis.bmihealth.common.enums.GoalEnum
+import com.jarvis.bmihealth.common.enums.TypeUnits
 import com.jarvis.heathcarebmi.utils.HealthIndexUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -51,7 +51,7 @@ class DetailViewModel @Inject constructor(private val userProfileUseCase: UserPr
 
     fun updateDataView() {
         profileUser = profileUsers.value?.firstOrNull() ?: ProfileUserModel()
-        isKmSetting = profileUser.unit == TypeUnit.METRIC
+        isKmSetting = profileUser.unit == TypeUnits.METRIC.index
         isChild = HealthIndexUtils.isChild(profileUser.birthday)
         setDataWeight()
     }

@@ -6,9 +6,10 @@ import android.app.Activity
 import android.view.View
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.presentation.base.ProfileUserViewModel
-import com.jarvis.bmihealth.presentation.utilx.StorageUtils
-import com.jarvis.bmihealth.presentation.utilx.share.OtherSharing
-import com.jarvis.bmihealth.presentation.utilx.share.PackageNameSharing
+import com.jarvis.bmihealth.common.utils.StorageUtils
+import com.jarvis.bmihealth.common.share.OtherSharing
+import com.jarvis.bmihealth.common.share.PackageNameSharing
+import com.jarvis.bmihealth.presentation.bmiother.widget.ViewSaved
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

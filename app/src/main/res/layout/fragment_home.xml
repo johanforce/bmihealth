@@ -47,7 +47,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.jarvis.bmihealth.presentation.home.ViewHomeBMI
+        <com.jarvis.bmihealth.presentation.home.widget.ViewHomeBMI
             android:id="@+id/viewHomeBMI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/clTabLayout">
 
-            <com.jarvis.bmihealth.presentation.home.ViewInputDataHome
+            <com.jarvis.bmihealth.presentation.home.widget.ViewInputDataHome
                 android:id="@+id/itemBMR"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -121,7 +121,7 @@
                 app:text_data="1200 kcal"
                 app:text_des="@string/bmr" />
 
-            <com.jarvis.bmihealth.presentation.home.ViewInputDataHome
+            <com.jarvis.bmihealth.presentation.home.widget.ViewInputDataHome
                 android:id="@+id/itemSaveWeight"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -133,7 +133,7 @@
                 app:text_data="1200 kcal"
                 app:text_des="Save Weight" />
 
-            <com.jarvis.bmihealth.presentation.home.ViewInputDataHome
+            <com.jarvis.bmihealth.presentation.home.widget.ViewInputDataHome
                 android:id="@+id/itemHeat"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -156,7 +156,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/clTabLayout">
 
-            <com.jarvis.bmihealth.presentation.home.ViewInputDataHome
+            <com.jarvis.bmihealth.presentation.home.widget.ViewInputDataHome
                 android:id="@+id/itemHeight"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -167,7 +167,7 @@
                 app:text_des="@string/all_height"
                 tools:text_data="1200 kcal" />
 
-            <com.jarvis.bmihealth.presentation.home.ViewInputDataHome
+            <com.jarvis.bmihealth.presentation.home.widget.ViewInputDataHome
                 android:id="@+id/itemWeight"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -179,7 +179,7 @@
                 app:text_des="@string/all_weight"
                 tools:text_data="1200 kcal" />
 
-            <com.jarvis.bmihealth.presentation.home.ViewInputDataHome
+            <com.jarvis.bmihealth.presentation.home.widget.ViewInputDataHome
                 android:id="@+id/itemAge"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

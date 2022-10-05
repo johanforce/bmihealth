@@ -6,12 +6,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
 import com.jarvis.bmihealth.R
+import com.jarvis.bmihealth.common.observe
 import com.jarvis.bmihealth.databinding.ActivityBmrDetailBinding
 import com.jarvis.bmihealth.presentation.base.BaseActivity
+import com.jarvis.bmihealth.presentation.common.Constant
 import com.jarvis.bmihealth.presentation.register.RegisterActivity
-import com.jarvis.bmihealth.presentation.utilx.Constant
 import com.jarvis.design_system.toolbar.JxToolbar
 import com.well.unitlibrary.UnitConverter
 import dagger.hilt.android.AndroidEntryPoint
@@ -48,10 +48,10 @@ class BmrUserActivity :
     override fun observeData() = with(viewModel) {
         super.observeData()
 
-        viewModel.profileUsers.observe(this@BmrUserActivity, Observer {
+        observe(viewModel.profileUsers) {
             viewModel.updateDataView()
             updateView()
-        })
+        }
     }
 
     private fun updateView() {
@@ -62,7 +62,6 @@ class BmrUserActivity :
     private fun setOnClickView() {
         this.binding.tvEdit.setOnClickListener(this)
     }
-
 
     override fun onClick(v: View?) {
         when (v!!.id) {
