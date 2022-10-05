@@ -35,7 +35,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/logo_app" />
 
-            <com.well.avatar.ViewAvatar
+            <com.jarvis.avatar.ViewAvatar
                 android:id="@+id/ivProfile"
                 android:layout_width="@dimen/px40"
                 android:layout_height="@dimen/px40"

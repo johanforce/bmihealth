@@ -16,7 +16,7 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
 
-        <com.well.avatar.ViewAvatar
+        <com.jarvis.avatar.ViewAvatar
             android:id="@+id/avatar_view"
             android:layout_width="@dimen/px80"
             android:layout_height="@dimen/px80"
