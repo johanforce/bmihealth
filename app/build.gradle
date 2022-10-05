@@ -62,7 +62,7 @@ android {
 }
 
 dependencies {
-    implementation project(':design_system')
+    implementation 'com.github.johanforce:Design_System:1.0.1'
     implementation project(':heathcarebmi')
     implementation project(':ucrop')
     implementation project(':unitlibrary')
