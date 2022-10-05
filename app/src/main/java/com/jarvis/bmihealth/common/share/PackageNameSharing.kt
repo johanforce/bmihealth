@@ -26,12 +26,16 @@ class PackageNameSharing(context: Activity?, shareLayout: View?, private val pac
             return
         }
         saveViewMap(context, shareLayout).subscribe(object : SingleObserver<File> {
-            override fun onSubscribe(d: Disposable) {}
+            override fun onSubscribe(d: Disposable) {
+                //do nothing
+            }
             override fun onSuccess(file: File) {
                 showDialogShare(file)
             }
 
-            override fun onError(e: Throwable) {}
+            override fun onError(e: Throwable) {
+                //do nothing
+            }
         })
     }
 
@@ -51,4 +55,5 @@ class PackageNameSharing(context: Activity?, shareLayout: View?, private val pac
             e.printStackTrace()
         }
     }
+
 }

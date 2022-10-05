@@ -1,4 +1,4 @@
-package com.jarvis.bmihealth.common
+package com.jarvis.bmihealth.common.utils
 
 import android.util.Log
 

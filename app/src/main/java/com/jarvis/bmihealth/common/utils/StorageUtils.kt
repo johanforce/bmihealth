@@ -74,6 +74,7 @@ object StorageUtils {
                 )
             }
         } catch (e: IOException) {
+            //do nothing
         }
     }
 
@@ -113,8 +114,11 @@ object StorageUtils {
         }.subscribeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe(object : CompletableObserver {
-                override fun onSubscribe(d: Disposable) {}
+                override fun onSubscribe(d: Disposable) {
+                    //do nothing
+                }
                 override fun onComplete() {
+                    //do nothing
                 }
 
                 override fun onError(e: Throwable) {

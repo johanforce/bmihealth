@@ -2,7 +2,7 @@
  * Copyright © OMRON HEALTHCARE Co., Ltd. 2020. All rights reserved.
  */
 
-package com.jarvis.bmihealth.common
+package com.jarvis.bmihealth.common.extensions
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData

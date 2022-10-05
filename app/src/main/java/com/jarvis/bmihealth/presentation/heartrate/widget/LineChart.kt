@@ -12,8 +12,8 @@ import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider
 import com.github.mikephil.charting.renderer.LineChartRenderer
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.common.extensions.dpToPx
-import com.jarvis.bmihealth.common.roundCellingGraph
-import com.jarvis.bmihealth.common.roundFloorGraph
+import com.jarvis.bmihealth.common.extensions.roundCellingGraph
+import com.jarvis.bmihealth.common.extensions.roundFloorGraph
 import kotlin.math.abs
 
 /**

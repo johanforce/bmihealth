@@ -7,7 +7,7 @@ import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import com.jarvis.bmihealth.R
-import com.jarvis.bmihealth.common.observe
+import com.jarvis.bmihealth.common.extensions.observe
 import com.jarvis.bmihealth.databinding.ActivityBmrDetailBinding
 import com.jarvis.bmihealth.presentation.base.BaseActivity
 import com.jarvis.bmihealth.presentation.common.Constant

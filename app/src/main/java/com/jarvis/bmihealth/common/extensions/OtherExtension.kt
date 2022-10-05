@@ -4,7 +4,7 @@
 
 @file:Suppress("DEPRECATION", "unused")
 
-package com.jarvis.bmihealth.common
+package com.jarvis.bmihealth.common.extensions
 
 import android.content.Context
 import android.content.Intent

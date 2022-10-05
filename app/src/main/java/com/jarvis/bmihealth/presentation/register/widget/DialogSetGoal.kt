@@ -24,7 +24,9 @@ class DialogSetGoal(context: Context, index: Int, isKmS: Boolean) :
         binding!!.btSave.setOnClickListener(this)
     }
 
-    override fun onShowDialog() {}
+    override fun onShowDialog() {
+        //do nothing
+    }
 
     override fun onDismissDialog() {
         if (listenerClick != null) {

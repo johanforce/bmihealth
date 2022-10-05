@@ -20,7 +20,7 @@ import com.jarvis.bmihealth.presentation.selectmode.SelectModeActivity
 import com.jarvis.bmihealth.presentation.common.Constant
 import com.jarvis.bmihealth.common.enums.TypeUnits
 import com.jarvis.bmihealth.common.extensions.click
-import com.jarvis.bmihealth.common.observe
+import com.jarvis.bmihealth.common.extensions.observe
 import com.jarvis.locale_helper.helper.LocaleHelper
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*

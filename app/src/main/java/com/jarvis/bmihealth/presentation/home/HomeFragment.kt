@@ -10,7 +10,7 @@ import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.common.enums.TypeUnits
 import com.jarvis.bmihealth.common.enums.ActivityEnum
 import com.jarvis.bmihealth.common.extensions.click
-import com.jarvis.bmihealth.common.observe
+import com.jarvis.bmihealth.common.extensions.observe
 import com.jarvis.bmihealth.databinding.FragmentHomeBinding
 import com.jarvis.bmihealth.domain.model.ProfileUserModel
 import com.jarvis.bmihealth.presentation.base.BaseFragment

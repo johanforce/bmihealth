@@ -17,7 +17,7 @@ import com.jarvis.bmihealth.presentation.common.pref.AppPreferenceKey
 import com.jarvis.bmihealth.presentation.profile.ProfileFragment
 import com.jarvis.bmihealth.presentation.common.Constant
 import com.jarvis.bmihealth.common.extensions.click
-import com.jarvis.bmihealth.common.observe
+import com.jarvis.bmihealth.common.extensions.observe
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

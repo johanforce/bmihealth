@@ -6,7 +6,7 @@ import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.common.enums.ThemeMode
 import com.jarvis.bmihealth.common.extensions.click
 import com.jarvis.bmihealth.common.helper.ThemeHelper
-import com.jarvis.bmihealth.common.observe
+import com.jarvis.bmihealth.common.extensions.observe
 import com.jarvis.bmihealth.databinding.ActivitySelectModeBinding
 import com.jarvis.bmihealth.presentation.base.BaseActivity
 import com.jarvis.bmihealth.presentation.common.pref.AppPreferenceKey

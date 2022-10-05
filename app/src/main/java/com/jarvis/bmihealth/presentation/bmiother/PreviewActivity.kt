@@ -7,7 +7,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.common.extensions.click
-import com.jarvis.bmihealth.common.observe
+import com.jarvis.bmihealth.common.extensions.observe
 import com.jarvis.bmihealth.common.share.ShareUtil
 import com.jarvis.bmihealth.common.utils.StorageUtils
 import com.jarvis.bmihealth.databinding.ActicityPreviewBinding

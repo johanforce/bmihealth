@@ -24,7 +24,9 @@ class ViewSaved(context: Context, bitmap: Bitmap) :
         binding!!.btClose.setOnClickListener(this)
     }
 
-    override fun onShowDialog() {}
+    override fun onShowDialog() {
+        //do nothing
+    }
     override fun onDismissDialog() {
         if (listenerClick != null) {
             listenerClick!!.closeDialog(isClickBackGround)
