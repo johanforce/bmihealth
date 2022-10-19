@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_bg_bottom_dialog">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivFinger"
+            android:layout_width="@dimen/px120"
+            android:layout_height="@dimen/px120"
+            android:layout_marginTop="@dimen/px24"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/finger_found" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvTitle"
+            style="@style/T20H28M"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/px24"
+            android:layout_marginTop="@dimen/px28"
+            android:gravity="center"
+            android:text="@string/heart_rate_no_finger_found"
+            android:textColor="@color/black_5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivFinger" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvDes"
+            style="@style/T14H20R"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/px16"
+            android:layout_marginTop="@dimen/px8"
+            android:gravity="center"
+            android:text="@string/heart_rate_no_finger_found_des"
+            android:textColor="@color/black_4"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+        <com.jarvis.design_system.button.JxButton
+            android:id="@+id/btStop"
+            style="@style/ButtonPlain.Mini.SizeXL"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/px16"
+            android:layout_marginTop="@dimen/px40"
+            android:layout_marginEnd="@dimen/px16"
+            android:layout_marginBottom="@dimen/px24"
+            android:paddingVertical="@dimen/px8"
+            android:text="@string/heart_rate_stop"
+            android:textColor="@color/black_5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/btContinue"
+            app:layout_constraintTop_toBottomOf="@+id/tvDes" />
+
+        <com.jarvis.design_system.button.JxButton
+            android:id="@+id/btContinue"
+            style="@style/ButtonPrimary.SizeL"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/px16"
+            android:paddingVertical="@dimen/px8"
+            android:text="@string/heart_rate_continue"
+            app:layout_constraintBottom_toBottomOf="@id/btStop"
+            app:layout_constraintLeft_toRightOf="@+id/btStop"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btStop" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

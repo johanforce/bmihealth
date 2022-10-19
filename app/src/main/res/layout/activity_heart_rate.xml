@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_01">
+
+        <com.jarvis.design_system.toolbar.JxToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:toolbarBackIcon="@drawable/all_ic_back"
+            app:toolbarHideDivider="false"
+            app:toolbarTitle="@string/bmi_toolbar_adult"
+            app:toolbarViewStyle="backTitle"
+            tools:layout_height="@dimen/px52" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/desHeartRate"
+            style="@style/T14H20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/px24"
+            android:text="@string/des_heart_rate"
+            android:gravity="center"
+            android:textColor="@color/ink_5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+        <com.jarvis.widget_custom.ShapeRipple
+            android:id="@+id/viewWave"
+            android:layout_width="@dimen/px226"
+            android:layout_height="@dimen/px226"
+            app:layout_constraintBottom_toTopOf="@+id/tvLastResult"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/desHeartRate" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/px60"
+            android:layout_height="@dimen/px60"
+            app:layout_constraintBottom_toBottomOf="@+id/viewWave"
+            app:layout_constraintLeft_toLeftOf="@+id/viewWave"
+            app:layout_constraintRight_toRightOf="@+id/viewWave"
+            app:layout_constraintTop_toTopOf="@+id/viewWave" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvLastResult"
+            style="@style/T12H18R"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/px24"
+            android:layout_marginBottom="@dimen/px24"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/btStart"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:text="@string/heart_rate_result" />
+
+        <com.jarvis.design_system.button.JxButton
+            android:id="@+id/btStart"
+            style="@style/ButtonPrimary.SizeL"
+            android:layout_marginHorizontal="@dimen/px40"
+            android:background="@color/red"
+            android:text="@string/heart_rate_start_measure"
+            app:layout_constraintBottom_toTopOf="@+id/tvTips"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvTips"
+            style="@style/T12H18R"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/px24"
+            android:layout_marginBottom="@dimen/px12"
+            android:gravity="center"
+            android:text="@string/heart_rate_tips"
+            android:textColor="@color/ink_3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

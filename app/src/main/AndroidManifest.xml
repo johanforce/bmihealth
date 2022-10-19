@@ -88,6 +88,11 @@
             android:launchMode="singleTask"
             android:screenOrientation="unspecified" />
 
+        <activity
+            android:name=".presentation.heartrate.StartHeartRateActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="unspecified" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
