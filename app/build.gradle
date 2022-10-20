@@ -64,6 +64,7 @@ android {
 dependencies {
     implementation 'com.github.johanforce:Design_System:1.0.2'
     implementation project(':heathcarebmi')
+    implementation project(':widget_custom')
     implementation project(':ucrop')
     implementation project(':unitlibrary')
     implementation project(':locale_helper')
