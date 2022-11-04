@@ -14,7 +14,7 @@ import com.jarvis.bmihealth.presentation.common.Constant.MIN_HEIGHT_CM
 import com.jarvis.bmihealth.presentation.common.Constant.MIN_STRIDE_LENGTH_CM
 import com.jarvis.bmihealth.presentation.common.Constant.MIN_WEIGHT_KG
 import com.jarvis.design_system.dialog.NumberPickerModel
-import com.well.unitlibrary.UnitConverter
+import com.jarvis.heathcarebmi.utils.UnitConverter
 import kotlin.math.roundToInt
 
 class ProfilePickerDialogModel(private val context: Context) {

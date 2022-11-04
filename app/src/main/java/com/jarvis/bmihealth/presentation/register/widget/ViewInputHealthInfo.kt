@@ -16,13 +16,13 @@ import com.jarvis.bmihealth.common.enums.TypeUnits
 import com.jarvis.bmihealth.common.enums.TypeView
 import com.jarvis.bmihealth.common.utils.TimeUtil
 import com.jarvis.bmihealth.databinding.ViewInputHealthInfoBinding
-import com.jarvis.bmihealth.domain.model.OtherProfile
-import com.jarvis.bmihealth.domain.model.ProfileUserModel
+import com.jarvis.bmihealth.domain.model.model.OtherProfile
+import com.jarvis.bmihealth.domain.model.model.ProfileUserModel
 import com.jarvis.bmihealth.presentation.register.model.ProfilePickerDialogModel
 import com.jarvis.design_system.dialog.DatePickerDialog
 import com.jarvis.design_system.dialog.NumberPickerModel
 import com.jarvis.design_system.dialog.NumberUnitPickerDialog
-import com.well.unitlibrary.UnitConverter
+import com.jarvis.heathcarebmi.utils.UnitConverter
 import java.text.SimpleDateFormat
 import java.util.*
 

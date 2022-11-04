@@ -23,4 +23,6 @@ object Constant {
 
     const val TYPE_PULSE = 2
     const val TYPE_WEIGHT = 3
+
+    const val HEART_RATE_RESULT = "HEART_RATE_RESULT"
 }

@@ -14,9 +14,9 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.utils.MPPointF
 import com.jarvis.bmihealth.R
+import com.jarvis.bmihealth.common.enums.MeasurementGraphTypeEnum
 import com.jarvis.bmihealth.common.extensions.dpToPx
 import com.jarvis.bmihealth.common.extensions.roundCelling
-import com.jarvis.bmihealth.common.enums.MeasurementGraphTypeEnum
 
 @Suppress("unused")
 @SuppressLint("ViewConstructor")

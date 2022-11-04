@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/alabaster">
+
+        <include
+            android:id="@+id/layoutTitle"
+            layout="@layout/layout_top_navigation_date_time"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/px32"
+            android:overScrollMode="never">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/llCalendar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@color/white_5"
+                    android:paddingBottom="@dimen/px16"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent">
+
+                    <com.kizitonwose.calendarview.CalendarView
+                        android:id="@+id/cvYear1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/px16"
+                        android:layout_marginHorizontal="@dimen/px12"
+                        app:cv_orientation="horizontal"
+                        app:cv_monthHeaderResource="@layout/month_header_calendar"
+                        app:cv_scrollMode="paged"
+                        app:cv_dayViewResource="@layout/example_calendar_day"
+                        app:cv_isCanScrollHorizontal="false"
+                        app:cv_maxRowCount="6"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <com.kizitonwose.calendarview.CalendarView
+                        android:id="@+id/cvYear2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/px16"
+                        android:layout_marginHorizontal="@dimen/px12"
+                        app:cv_orientation="horizontal"
+                        app:cv_dayViewResource="@layout/example_calendar_day"
+                        app:cv_monthHeaderResource="@layout/month_header_calendar"
+                        app:cv_scrollMode="paged"
+                        app:cv_isCanScrollHorizontal="false"
+                        app:cv_maxRowCount="6"
+                        app:layout_constraintTop_toBottomOf="@+id/cvYear1"/>
+
+                    <com.kizitonwose.calendarview.CalendarView
+                        android:id="@+id/cvYear3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/px16"
+                        android:layout_marginHorizontal="@dimen/px12"
+                        app:cv_orientation="horizontal"
+                        app:cv_dayViewResource="@layout/example_calendar_day"
+                        app:cv_monthHeaderResource="@layout/month_header_calendar"
+                        app:cv_scrollMode="paged"
+                        app:cv_maxRowCount="6"
+                        app:layout_constraintTop_toBottomOf="@+id/cvYear2"/>
+
+                    <com.kizitonwose.calendarview.CalendarView
+                        android:id="@+id/cvYear4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/px16"
+                        android:layout_marginHorizontal="@dimen/px12"
+                        app:cv_orientation="horizontal"
+                        app:cv_dayViewResource="@layout/example_calendar_day"
+                        app:cv_monthHeaderResource="@layout/month_header_calendar"
+                        app:cv_scrollMode="paged"
+                        app:cv_isCanScrollHorizontal="false"
+                        app:cv_maxRowCount="6"
+                        app:layout_constraintTop_toBottomOf="@+id/cvYear3"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintTop_toBottomOf="@+id/llCalendar"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycleHistory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:overScrollMode="never" />
+
+                    <include
+                        android:id="@+id/viewEmpty"
+                        layout="@layout/view_empty_history"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"
+                        tools:visibility="invisible" />
+                </RelativeLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>

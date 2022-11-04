@@ -7,18 +7,19 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.jarvis.bmihealth.R
-import com.jarvis.bmihealth.common.enums.TypeUnits
 import com.jarvis.bmihealth.common.enums.ActivityEnum
+import com.jarvis.bmihealth.common.enums.TypeUnits
 import com.jarvis.bmihealth.common.extensions.click
 import com.jarvis.bmihealth.common.extensions.observe
 import com.jarvis.bmihealth.databinding.FragmentHomeBinding
-import com.jarvis.bmihealth.domain.model.ProfileUserModel
+import com.jarvis.bmihealth.domain.model.model.ProfileUserModel
 import com.jarvis.bmihealth.presentation.base.BaseFragment
 import com.jarvis.bmihealth.presentation.bmiother.ResultOtherActivity
 import com.jarvis.bmihealth.presentation.detail.BmiUserIndexActivity
 import com.jarvis.bmihealth.presentation.detail.BmrUserActivity
 import com.jarvis.bmihealth.presentation.detail.CaloriesRequiredActivity
 import com.jarvis.bmihealth.presentation.detail.HealthyWeightActivity
+import com.jarvis.bmihealth.presentation.heartrate.StartHeartRateActivity
 import com.jarvis.bmihealth.presentation.home.widget.ViewHomeBMI
 import com.jarvis.bmihealth.presentation.home.widget.ViewInputDataHome
 import dagger.hilt.android.AndroidEntryPoint
@@ -60,6 +61,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             override fun clickView() {
                 val intent = Intent()
                 context?.let { it1 -> intent.setClass(it1, BmrUserActivity::class.java) }
+                resultLauncher.launch(intent)
+            }
+        })
+
+        binding.itemHeat.setOnClickViewListener(object : ViewInputDataHome.OnClickProfileListener {
+            override fun clickView() {
+                val intent = Intent()
+                context?.let { it1 -> intent.setClass(it1, StartHeartRateActivity::class.java) }
                 resultLauncher.launch(intent)
             }
         })

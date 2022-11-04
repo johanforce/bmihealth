@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.jarvis.bmihealth.presentation.heartrate.widget
 
 import android.content.Context

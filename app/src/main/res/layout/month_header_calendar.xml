@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.jarvis.design_system.textview.CustomTextView
+        android:id="@+id/tv_month_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/px8"
+        android:layout_marginStart="@dimen/px6"
+        android:gravity="start"
+        android:textColor="@color/ink_5"
+        style="@style/T10H14R"
+        tools:text="JUNE" />
+
+</LinearLayout>
+

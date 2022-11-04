@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ivDotDay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="@dimen/px4"
+    android:layout_marginVertical="@dimen/px6">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivDot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/circle_pri4"/>
+</FrameLayout>
+

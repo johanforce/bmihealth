@@ -3,8 +3,11 @@ package com.jarvis.bmihealth.di
 import android.app.Application
 import androidx.room.Room
 import com.jarvis.bmihealth.data.datasource.AppDatabase
+import com.jarvis.bmihealth.data.repository.HeartRateRepositoryImpl
 import com.jarvis.bmihealth.data.repository.ProfileUserRepositoryImpl
+import com.jarvis.bmihealth.domain.repository.HeartRateRepository
 import com.jarvis.bmihealth.domain.repository.ProfileUserRepository
+import com.jarvis.bmihealth.domain.usecase.HeartRateUseCase
 import com.jarvis.bmihealth.domain.usecase.UserProfileUseCase
 import dagger.Module
 import dagger.Provides
@@ -31,6 +34,17 @@ object AppComponent {
 
     @Provides
     @Singleton
+    fun provideHeartRateRepository(appDatabase: AppDatabase): HeartRateRepository =
+        HeartRateRepositoryImpl(appDatabase.heartRateDao)
+
+
+    @Provides
+    @Singleton
     fun provideProfileUserUseCases(profileUserRepository: ProfileUserRepository): UserProfileUseCase =
         UserProfileUseCase(profileUserRepository)
+
+    @Provides
+    @Singleton
+    fun provideHeartRateUseCases(heartRateRepository: HeartRateRepository): HeartRateUseCase =
+        HeartRateUseCase(heartRateRepository)
 }

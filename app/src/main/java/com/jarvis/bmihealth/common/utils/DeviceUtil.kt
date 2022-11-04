@@ -14,6 +14,7 @@ import com.jarvis.heathcarebmi.utils.BMILevelAdult
 import com.jarvis.heathcarebmi.utils.BMILevelChild
 import java.math.RoundingMode
 import java.text.DecimalFormat
+import java.util.*
 
 object DeviceUtil {
 
@@ -118,5 +119,11 @@ object DeviceUtil {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
+
+    fun upCaseFirst(string: String): String? {
+        return if (TextUtils.isEmpty(string) || string.length < 2) {
+            string
+        } else string.substring(0, 1).uppercase(Locale.getDefault()) + string.substring(1)
     }
 }

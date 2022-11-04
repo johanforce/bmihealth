@@ -18,8 +18,8 @@ import com.jarvis.bmihealth.presentation.register.RegisterActivity
 import com.jarvis.bmihealth.presentation.common.Constant
 import com.jarvis.bmihealth.common.extensions.observe
 import com.jarvis.design_system.toolbar.JxToolbar
-import com.well.unitlibrary.UnitConverter
-import com.well.unitlibrary.UnitConverter.formatDoubleToString
+import com.jarvis.heathcarebmi.utils.UnitConverter
+import com.jarvis.heathcarebmi.utils.UnitConverter.formatDoubleToString
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

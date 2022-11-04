@@ -2,10 +2,10 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "dc8c532e6239ffc802511f4fa6cdf86d",
+    "identityHash": "43c3c87b12f9c670bd11b36d5c5ac9f0",
     "entities": [
       {
-        "tableName": "ProfileUser",
+        "tableName": "ProfileUserEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `firstname` TEXT NOT NULL, `lastname` TEXT NOT NULL, `gender` INTEGER NOT NULL, `birthday` INTEGER NOT NULL, `age` INTEGER NOT NULL, `weight` REAL NOT NULL, `height` REAL NOT NULL, `avatar` BLOB, `avatarUrl` TEXT NOT NULL, `bio` TEXT NOT NULL, `unit` INTEGER NOT NULL, `national` TEXT NOT NULL, `goal` INTEGER NOT NULL, `activity_level` INTEGER NOT NULL, `theme_mode` INTEGER NOT NULL)",
         "fields": [
           {
@@ -113,12 +113,74 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "HeartRateEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id_heart_rate` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `id` INTEGER NOT NULL, `heart_rate` INTEGER NOT NULL, `activity` INTEGER NOT NULL, `breath` INTEGER NOT NULL, `sp_o2` INTEGER NOT NULL, `date_time` INTEGER NOT NULL, `note` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "idHeartRate",
+            "columnName": "id_heart_rate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "heartRate",
+            "columnName": "heart_rate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "activity",
+            "columnName": "activity",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "breath",
+            "columnName": "breath",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sPo2",
+            "columnName": "sp_o2",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dateTime",
+            "columnName": "date_time",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "note",
+            "columnName": "note",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id_heart_rate"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'dc8c532e6239ffc802511f4fa6cdf86d')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '43c3c87b12f9c670bd11b36d5c5ac9f0')"
     ]
   }
 }

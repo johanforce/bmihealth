@@ -619,4 +619,33 @@
     <string name="goal_des_imperial_3">-0.55 lbs/week</string>
     <string name="goal_des_imperial_5">+1.1 lbs/week</string>
     <string name="goal_des_imperial_6">+2.2 lbs/week</string>
+
+    <string name="heart_rate_tutorial_title">Place your finger or wrist on the camera to start tracking</string>
+    <string name="heart_rate_checking">Checking…</string>
+    <string name="heart_rate_result_null">Last result: ——</string>
+    <string name="heart_rate">Heart Rate</string>
+    <string name="heart_rate_hold">Measuring…\nHold your finger or wrist</string>
+    <string name="heart_rate_done">Measuring…\nAlmost done! Hold your finger or wrist</string>
+    <string name="des_heart_rate">Place your finger or wrist on the camera to start tracking</string>
+    <string name="heart_rate_tips">*Tip: Use professional measuring devices \nfor more accurate results</string>
+    <string name="heart_rate_start_measure">Start measure</string>
+    <string name="heart_rate_no_finger_found">No finger found</string>
+    <string name="heart_rate_no_finger_found_des">Make sure to place your finger or wrist right in the camera lens.</string>
+    <string name="heart_rate_stop">Stop track</string>
+    <string name="heart_rate_continue">Continue</string>
+    <string name="heart_rate_result"><![CDATA[Last Result: <html><font color="#EB4545"><a >%1$sbpm</a></font></html> ( %2$s )]]></string>
+    <string name="history_heart_rate">Diary Heart Rate</string>
+    <string name="home_recent_empty">Your heart rate history will appear here.</string>
+    <string name="text_null">--</string>
+
+    <string name="heart_rate_general">General</string>
+    <string name="heart_rate_relax">Relax</string>
+    <string name="heart_rate_working">Working</string>
+    <string name="heart_rate_wake_up">Wake up</string>
+    <string name="heart_rate_tired">Tired</string>
+    <string name="heart_rate_before">Before workout</string>
+    <string name="all_bpm">BPM</string>
+    <string name="heart_rate_result_title_activity">What’s your current activity level?</string>
+    <string name="heart_rate_note_hint">Take note something</string>
+    <string name="heart_rate_result_diary">%s BPM</string>
 </resources>

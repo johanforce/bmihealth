@@ -5,8 +5,15 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.flash" />
+
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <queries>
         <package android:name="com.instagram.android" />
@@ -24,7 +31,8 @@
         android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.App.Starting"
-        tools:replace="android:allowBackup">
+        tools:replace="android:allowBackup"
+        tools:ignore="DataExtractionRules">
         <activity
             android:name=".presentation.onboarding.OnBoardingActivity"
             android:exported="true"
@@ -85,6 +93,26 @@
 
         <activity
             android:name=".presentation.bmiother.PreviewActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="unspecified" />
+
+        <activity
+            android:name=".presentation.heartrate.StartHeartRateActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="unspecified" />
+
+        <activity
+            android:name=".presentation.heartrate.HeartRateTrackingActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="unspecified" />
+
+        <activity
+            android:name=".presentation.heartrate.diary.DiaryHeartRateActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="unspecified" />
+
+        <activity
+            android:name=".presentation.heartrate.result.HeartRateResultActivity"
             android:launchMode="singleTask"
             android:screenOrientation="unspecified" />
 

@@ -4,12 +4,16 @@ package com.jarvis.bmihealth.common.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.TypedValue
 import com.jarvis.bmihealth.R
 import com.jarvis.locale_helper.helper.LocaleHelper
-import com.well.unitlibrary.UnitConverter
+import com.jarvis.heathcarebmi.utils.UnitConverter
 import java.text.DateFormatSymbols
 import java.text.ParseException
 import java.text.SimpleDateFormat
+import java.time.DayOfWeek
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.math.abs
@@ -29,6 +33,7 @@ object TimeUtil {
     const val simpleDateFormatMonthDateYear = "MMMM, yyyy"
     const val simpleMMMddyyyy = "MMM dd, yyyy"
     const val MMMMyyyy = "MMMM yyyy"
+    val MMMddyyyyhhmm = SimpleDateFormat("MMM dd, yyyy | hh:mm aaa", Locale.getDefault())
     const val yyyyMMdd = "yyyyMMdd"
     val MMMddyyyy = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
 
@@ -54,6 +59,16 @@ object TimeUtil {
         return MMMddyyyy.format(date)
     }
 
+    fun formatTimeHourMinute(dateInMillis: Long): String {
+        val date = Date(dateInMillis)
+        return mmss.format(date)
+    }
+
+    fun formatDateHeartRate(dateInMillis: Long): String {
+        val date = Date(dateInMillis)
+        return MMMddyyyyhhmm.format(date)
+    }
+
 
     @SuppressLint("SimpleDateFormat")
     fun formatDateDayHHmmss(dateInMillis: Long): String {
@@ -61,6 +76,12 @@ object TimeUtil {
         val dateFormat = SimpleDateFormat("HH:mm:ss")
         dateFormat.format(dateInMillis)
         return dateFormat.format(date)
+    }
+
+    fun getFormatShortMonthDay(context: Context?): DateTimeFormatter? {
+        return if (LocaleHelper.getInstance().getCurrentLanguageCode(context).equals("vi")) {
+            DateTimeFormatter.ofPattern("dd MMM")
+        } else DateTimeFormatter.ofPattern("MMM dd")
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -534,6 +555,12 @@ object TimeUtil {
         }
         return parse
     }
+
+    fun formatDateDayToMonthDayYear(dateInMillis: Long): String {
+        val date = Date(dateInMillis)
+        return capitalizeDate(simpleDateFormatMonthDateYear.format(date))
+    }
+
 }
 
 class ListStringTimeDisplay(hoursValue: Int, minValue: Int, context: Context) {
@@ -554,4 +581,26 @@ class ListStringTimeDisplay(hoursValue: Int, minValue: Int, context: Context) {
         }
         this.minValue = UnitConverter.formatDoubleToString(minValue.toDouble())
     }
+
 }
+
+fun daysOfWeek(context: Context): Array<DayOfWeek> {
+    val firstDayOfWeek = DayOfWeek.MONDAY
+    var daysOfWeek = DayOfWeek.values()
+    if (firstDayOfWeek != DayOfWeek.MONDAY) {
+        val rhs = daysOfWeek.sliceArray(firstDayOfWeek.ordinal..daysOfWeek.indices.last)
+        val lhs = daysOfWeek.sliceArray(0 until firstDayOfWeek.ordinal)
+        daysOfWeek = rhs + lhs
+    }
+    return daysOfWeek
+}
+
+fun getDayCode(date: LocalDate): Int {
+    return date.toString().replace("-", "").toInt()
+}
+
+fun dpToPx(dp: Int, context: Context): Int =
+    TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP, dp.toFloat(),
+        context.resources.displayMetrics
+    ).toInt()

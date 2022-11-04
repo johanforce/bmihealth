@@ -11,12 +11,12 @@ import com.jarvis.bmihealth.common.extensions.observe
 import com.jarvis.bmihealth.common.share.ShareUtil
 import com.jarvis.bmihealth.common.utils.StorageUtils
 import com.jarvis.bmihealth.databinding.ActicityPreviewBinding
-import com.jarvis.bmihealth.domain.model.ProfileUserModel
+import com.jarvis.bmihealth.domain.model.model.ProfileUserModel
 import com.jarvis.bmihealth.presentation.base.BaseActivity
 import com.jarvis.design_system.toolbar.JxToolbar
 import com.jarvis.design_system.toolbar.OnToolbarActionListener
 import com.jarvis.heathcarebmi.utils.HealthIndexUtils
-import com.well.unitlibrary.UnitConverter
+import com.jarvis.heathcarebmi.utils.UnitConverter
 import dagger.hilt.android.AndroidEntryPoint
 
 
