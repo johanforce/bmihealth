@@ -21,10 +21,10 @@ import com.github.mikephil.charting.utils.Transformer
 import com.github.mikephil.charting.utils.Utils
 import com.github.mikephil.charting.utils.ViewPortHandler
 import com.jarvis.bmihealth.R
-import com.jarvis.bmihealth.presentation.common.Constant
+import com.jarvis.bmihealth.common.enums.MeasurementGraphTypeEnum
 import com.jarvis.bmihealth.common.extensions.roundCellingGraph
 import com.jarvis.bmihealth.common.extensions.roundFloorGraph
-import com.jarvis.bmihealth.common.enums.MeasurementGraphTypeEnum
+import com.jarvis.bmihealth.presentation.common.Constant
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.max
@@ -575,3 +575,4 @@ class GraphLineView @JvmOverloads constructor(
         return minValue to maxValue
     }
 }
+

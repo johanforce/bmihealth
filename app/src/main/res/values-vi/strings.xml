@@ -437,4 +437,6 @@
     <string name="all_min">phút</string>
     <string name="all_minutes">phút</string>
     <string name="all_minute">phút</string>
+
+    <string name="heart_rate_tutorial_title">Đặt ngón tay hoặc cổ tay của bạn lên máy ảnh để bắt đầu theo dõi</string>
 </resources>

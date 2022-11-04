@@ -7,7 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.ActivityResultOtherBinding
-import com.jarvis.bmihealth.domain.model.ProfileUserModel
+import com.jarvis.bmihealth.domain.model.model.ProfileUserModel
 import com.jarvis.bmihealth.presentation.base.BaseActivity
 import com.jarvis.bmihealth.presentation.register.RegisterActivity
 import com.jarvis.bmihealth.presentation.common.Constant
@@ -15,7 +15,7 @@ import com.jarvis.bmihealth.common.extensions.click
 import com.jarvis.bmihealth.common.extensions.observe
 import com.jarvis.design_system.toolbar.JxToolbar
 import com.jarvis.heathcarebmi.utils.HealthIndexUtils
-import com.well.unitlibrary.UnitConverter
+import com.jarvis.heathcarebmi.utils.UnitConverter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

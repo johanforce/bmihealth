@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/bgData"
+        android:layout_margin="@dimen/px4">
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/exOneDayText"
+            style="@style/T12H20"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/ink_5"
+            app:textFont="medium"
+            tools:text="22" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</FrameLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/alabaster">
+
+    <View
+        android:id="@+id/line"
+        style="@style/Divider1PxWildSandHorizontal"
+        android:layout_width="match_parent" />
+
+    <com.jarvis.design_system.textview.CustomTextView
+        android:id="@+id/tvTitle"
+        style="@style/T12H18B"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/px8"
+        android:paddingHorizontal="@dimen/px16"
+        android:paddingVertical="@dimen/px6"
+        android:textColor="@color/ink_4"
+        tools:text="SUNDAY | 20/11/2021" />
+
+    <View
+        style="@style/Divider1PxWildSandHorizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/px4"/>
+</LinearLayout>

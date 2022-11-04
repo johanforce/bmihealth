@@ -90,7 +90,9 @@ abstract class BaseActivity<B : ViewBinding, T : ViewModel>(val bindingFactory: 
 
     }
 
-    open fun observeData() {}
+    open fun observeData() {
+        //do nothing
+    }
 
     private fun initAnim() {
         window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)

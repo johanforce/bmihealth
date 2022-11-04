@@ -1,6 +1,6 @@
 package com.jarvis.bmihealth.domain.usecase
 
-import com.jarvis.bmihealth.domain.model.ProfileUserModel
+import com.jarvis.bmihealth.domain.model.model.ProfileUserModel
 import com.jarvis.bmihealth.domain.repository.ProfileUserRepository
 
 class UserProfileUseCase(

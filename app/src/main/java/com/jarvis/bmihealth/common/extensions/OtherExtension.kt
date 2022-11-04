@@ -24,6 +24,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import java.math.RoundingMode
 import java.text.DecimalFormat
+import java.time.LocalDate
+import java.time.YearMonth
 import java.util.*
 
 private const val MINUTE_COEFFICIENT = 60 * 1000
@@ -185,3 +187,12 @@ fun Number.formatCelling(format: String): String {
 }
 
 fun Date.copy(onEdit: Date.() -> Unit = {}) = Date(time).apply { onEdit() }
+
+val LocalDate.yearMonth: YearMonth
+    get() = YearMonth.of(year, month)
+
+val YearMonth.next: YearMonth
+    get() = this.plusMonths(1)
+
+val YearMonth.previous: YearMonth
+    get() = this.minusMonths(1)

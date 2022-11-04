@@ -16,7 +16,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.ViewInputProfileInfoBinding
-import com.jarvis.bmihealth.domain.model.ProfileUserModel
+import com.jarvis.bmihealth.domain.model.model.ProfileUserModel
 import com.jarvis.bmihealth.common.utils.AddWeightUtil
 import com.jarvis.bmihealth.common.utils.DeviceUtil
 import com.jarvis.bmihealth.common.utils.FragmentUtils

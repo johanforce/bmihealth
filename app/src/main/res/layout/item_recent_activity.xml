@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clExerciseDiary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_01"
+        android:minHeight="@dimen/px64">
+
+        <View
+            android:id="@+id/activityColor"
+            android:layout_width="@dimen/px4"
+            android:layout_height="@dimen/px56"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@color/pri_1" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivStartIcon"
+            android:layout_width="@dimen/px48"
+            android:layout_height="@dimen/px48"
+            android:layout_centerVertical="true"
+            android:layout_marginVertical="@dimen/px8"
+            android:layout_marginStart="@dimen/px16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvTitle"
+            style="@style/T14H20R"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/px8"
+            android:textColor="@color/ink_3"
+            app:layout_constraintStart_toEndOf="@+id/ivStartIcon"
+            app:layout_constraintTop_toTopOf="@id/ivStartIcon"
+            tools:text="Cycling" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvBPM"
+            style="@style/T16H24M"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/px4"
+            android:textColor="@color/ink_5"
+            app:layout_constraintStart_toStartOf="@+id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            tools:text="100 km" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvStartTime"
+            style="@style/T12H18R"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/px12"
+            android:layout_marginEnd="@dimen/px16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="21 Mar, 10:31AM"
+            tools:visibility="visible" />
+
+        <View
+            android:id="@+id/viewLine"
+            style="@style/Divider1PxInk100Horizontal"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -10,7 +10,6 @@ rootProject.name = "BMIHealth"
 include ':app'
 include ':heathcarebmi'
 include ':ucrop'
-include ':unitlibrary'
 include ':locale_helper'
 include ':compressor'
-include ':widget_custom'
+include ':calender-library'

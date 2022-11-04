@@ -9,7 +9,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.FragmentProfileBinding
-import com.jarvis.bmihealth.domain.model.ProfileUserModel
+import com.jarvis.bmihealth.domain.model.model.ProfileUserModel
 import com.jarvis.bmihealth.presentation.base.BaseFragment
 import com.jarvis.bmihealth.presentation.home.HomeViewModel
 import com.jarvis.bmihealth.presentation.main.MainActivity

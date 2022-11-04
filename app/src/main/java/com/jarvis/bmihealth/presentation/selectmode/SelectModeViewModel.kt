@@ -2,7 +2,7 @@ package com.jarvis.bmihealth.presentation.selectmode
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.jarvis.bmihealth.domain.model.ProfileUserModel
+import com.jarvis.bmihealth.domain.model.model.ProfileUserModel
 import com.jarvis.bmihealth.domain.usecase.UserProfileUseCase
 import com.jarvis.bmihealth.presentation.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

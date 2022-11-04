@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_01">
+
+        <com.jarvis.design_system.toolbar.JxToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:toolbarBackIcon="@drawable/all_ic_back"
+            app:toolbarHideDivider="false"
+            app:toolbarTitle="@string/heart_rate"
+            app:toolbarViewStyle="backTitle"
+            tools:layout_height="@dimen/px52" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/btStart"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.jarvis.design_system.textview.CustomTextView
+                    android:id="@+id/desDay"
+                    style="@style/T16H20M"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/px16"
+                    android:gravity="center"
+                    android:textColor="@color/ink_5"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Wed, 24 August 2021" />
+
+                <com.jarvis.design_system.textview.CustomTextView
+                    android:id="@+id/desTime"
+                    style="@style/T12H18R"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/px16"
+                    android:layout_marginTop="@dimen/px2"
+                    android:gravity="center"
+                    android:textColor="@color/ink_4"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/desDay"
+                    tools:text="15:04" />
+
+                <com.jarvis.design_system.textview.CustomTextView
+                    android:id="@+id/tvHeartRate"
+                    style="@style/T46H56B"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/px20"
+                    android:textColor="@color/ink_5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/tvBpm"
+                    app:layout_constraintTop_toBottomOf="@+id/desTime"
+                    tools:text="96" />
+
+                <com.jarvis.design_system.textview.CustomTextView
+                    android:id="@+id/tvBpm"
+                    style="@style/T16H24M"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/px4"
+                    android:layout_marginTop="@dimen/px2"
+                    android:textColor="@color/ink_5"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvHeartRate"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintLeft_toRightOf="@+id/tvHeartRate"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvHeartRate"
+                    android:text="@string/all_bpm" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivBeat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/px20"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvHeartRate"
+                    app:srcCompat="@drawable/iv_beat" />
+
+                <com.jarvis.design_system.textview.CustomTextView
+                    android:id="@+id/tvTitleActivity"
+                    style="@style/T14H20M"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/px16"
+                    android:layout_marginTop="@dimen/px24"
+                    android:text="@string/heart_rate_result_title_activity"
+                    android:textColor="@color/ink_5"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivBeat" />
+
+                <GridLayout
+                    android:id="@+id/gridActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="4"
+
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitleActivity">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivGeneral"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/px20"
+                            app:srcCompat="@drawable/selector_general" />
+
+                        <com.jarvis.design_system.textview.CustomTextView
+                            style="@style/T10H14R"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/px8"
+                            android:gravity="center_horizontal"
+                            android:text="@string/heart_rate_general"
+                            android:textColor="@color/ink_5" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivRelax"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/px20"
+                            app:srcCompat="@drawable/selector_relax" />
+
+                        <com.jarvis.design_system.textview.CustomTextView
+                            style="@style/T10H14R"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/px8"
+                            android:gravity="center_horizontal"
+                            android:text="@string/heart_rate_relax"
+                            android:textColor="@color/ink_5" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivWorking"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/px20"
+                            app:srcCompat="@drawable/selector_working" />
+
+                        <com.jarvis.design_system.textview.CustomTextView
+                            style="@style/T10H14R"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/px8"
+                            android:gravity="center_horizontal"
+                            android:text="@string/heart_rate_working"
+                            android:textColor="@color/ink_5" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivWakeUp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/px20"
+                            app:srcCompat="@drawable/selector_wake_up" />
+
+                        <com.jarvis.design_system.textview.CustomTextView
+                            style="@style/T10H14R"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/px8"
+                            android:gravity="center_horizontal"
+                            android:text="@string/heart_rate_wake_up"
+                            android:textColor="@color/ink_5" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivTired"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/px20"
+                            app:srcCompat="@drawable/selector_tired" />
+
+                        <com.jarvis.design_system.textview.CustomTextView
+                            style="@style/T10H14R"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/px8"
+                            android:gravity="center_horizontal"
+                            android:text="@string/heart_rate_tired"
+                            android:textColor="@color/ink_5" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivBeforeWorkout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/px20"
+                            app:srcCompat="@drawable/selector_before_workout" />
+
+                        <com.jarvis.design_system.textview.CustomTextView
+                            style="@style/T10H14R"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/px8"
+                            android:gravity="center_horizontal"
+                            android:text="@string/heart_rate_before"
+                            android:textColor="@color/ink_5" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </GridLayout>
+
+                <com.jarvis.design_system.textview.CustomTextView
+                    android:id="@+id/tvTitleNote"
+                    style="@style/T14H20M"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/px16"
+                    android:layout_marginTop="@dimen/px16"
+                    android:text="@string/addweight_keep_note"
+                    android:textColor="@color/ink_5"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/gridActivity" />
+
+                <com.jarvis.design_system.textview.CustomEditText
+                    android:id="@+id/edtNote"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/px16"
+                    android:layout_marginTop="@dimen/px12"
+                    android:hint="@string/heart_rate_note_hint"
+                    android:textColorHint="@color/ink_2"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:maxLength="200"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitleNote" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.jarvis.design_system.button.JxButton
+            android:id="@+id/btStart"
+            style="@style/ButtonPrimary.SizeL"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="@dimen/px16"
+            android:layout_marginBottom="@dimen/px16"
+            android:backgroundTint="@color/red"
+            android:text="@string/heart_rate_start_measure"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

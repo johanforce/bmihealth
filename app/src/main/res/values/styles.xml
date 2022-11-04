@@ -67,4 +67,9 @@
         <attr name="unit" format="string" />
         <attr name="index" format="string" />
     </declare-styleable>
+
+    <style name="ButtonPrimary.SizeL" parent="ButtonPrimary">
+        <item name="android:layout_height">@dimen/px40</item>
+        <item name="android:background">@drawable/selector_button_primary</item>
+    </style>
 </resources>

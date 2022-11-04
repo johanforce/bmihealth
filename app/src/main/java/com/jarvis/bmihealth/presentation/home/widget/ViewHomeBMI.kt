@@ -13,10 +13,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.jarvis.bmihealth.R
 import com.jarvis.bmihealth.databinding.ViewHomeBmiBinding
-import com.jarvis.bmihealth.domain.model.ProfileUserModel
+import com.jarvis.bmihealth.domain.model.model.ProfileUserModel
 import com.jarvis.heathcarebmi.utils.Consts
 import com.jarvis.heathcarebmi.utils.HealthIndexUtils
-import com.well.unitlibrary.UnitConverter
+import com.jarvis.heathcarebmi.utils.UnitConverter
 import java.math.RoundingMode
 import java.text.NumberFormat
 
